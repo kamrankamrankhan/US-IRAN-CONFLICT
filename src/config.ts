@@ -19,8 +19,8 @@ export const siteConfig: SiteConfig = {
   title: "US-Iran Conflict 2026 | Geopolitical Crisis Analysis",
   description: "A comprehensive analysis of the US-Iran conflict escalation in 2026, covering Operation Epic Fury, nuclear tensions, military buildup, and regional impact.",
   language: "en",
-  siteUrl: "https://us-iran-conflict-2026.vercel.app",
-  ogImage: undefined, // e.g. "https://us-iran-conflict-2026.vercel.app/og-image.jpg" once you add public/og-image.jpg
+  siteUrl: "https://usiranconflict.com",
+  ogImage: undefined, // e.g. "https://usiranconflict.com/og-image.jpg" once you add public/og-image.jpg
 };
 
 // -- Hero Section -------------------------------------------------------------
