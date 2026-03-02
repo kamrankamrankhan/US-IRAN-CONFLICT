@@ -52,10 +52,35 @@
     </script>
   </head>
   <body>
-    <!-- Static headings for SEO tools that scan entry HTML before JS renders -->
-    <div style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
+    <!-- SEO: static content and internal links for crawlers (visually hidden, no layout impact) -->
+    <div id="seo-content" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
       <h1>US Iran conflict: Middle East geopolitics analysis</h1>
       <h2>Sanctions, nuclear talks, and regional tensions</h2>
+      <nav aria-label="Site navigation">
+        <h3>Explore this site</h3>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/article">Full analysis article</a></li>
+          <li><a href="/blogs">Blogs and updates</a></li>
+          <li><a href="/live-coverage">Live coverage and news</a></li>
+          <li><a href="/topic/operation-epic-fury">Operation Epic Fury</a></li>
+          <li><a href="/topic/nuclear-program">Iran nuclear program</a></li>
+          <li><a href="/topic/military-buildup">Military buildup</a></li>
+          <li><a href="/topic/economic-sanctions">Economic sanctions</a></li>
+          <li><a href="/topic/proxy-networks">Proxy networks</a></li>
+          <li><a href="/topic/regional-impact">Regional impact</a></li>
+        </ul>
+      </nav>
+      <section>
+        <h2>Overview of the US-Iran conflict</h2>
+        <p>The United States and Iran have been locked in a tense standoff for decades, with relations hitting new lows in 2026. This site offers a comprehensive analysis of the crisis, including military developments, sanctions, nuclear diplomacy, and regional fallout. Understanding the roots of the conflict and current events is essential for anyone following Middle East geopolitics.</p>
+        <h2>Background and context</h2>
+        <p>US-Iran relations have been strained since the 1979 Islamic Revolution and the hostage crisis. Decades of sanctions, proxy conflicts, and failed nuclear negotiations have deepened mistrust. In 2026, tensions have escalated further amid renewed military action, stricter sanctions, and stalled talks over Iran’s nuclear program. Regional actors, including Israel and Gulf states, are deeply involved in the dynamics of the crisis.</p>
+        <h2>Key topics we cover</h2>
+        <p>Operation Epic Fury refers to the coordinated military operations that have defined the current phase of the conflict. We analyze its objectives, timeline, and consequences. Iran’s nuclear program remains at the center of international concern; we track developments in enrichment, inspections, and diplomacy. Military buildup on both sides—naval deployments, missile systems, and regional bases—is documented and explained. Economic sanctions have crippled Iran’s economy and reshaped global energy markets; we examine their scope and impact. Proxy networks extend the conflict across the Middle East, from Yemen to Syria to Iraq. Finally, we assess the regional impact on stability, refugees, and alliances.</p>
+        <h2>Why this analysis matters</h2>
+        <p>Accurate, fact-based analysis helps policymakers, journalists, and the public understand one of the most volatile crises in the world today. Our featured article, blogs, and topic pages provide context, expert perspectives, and key takeaways. Visit our full analysis for an in-depth report, browse our blogs for regular updates, and use the topic pages to dive into Operation Epic Fury, the nuclear program, military buildup, sanctions, proxy networks, and regional impact. For live coverage and links to major news sources, see our live coverage page.</p>
+      </section>
     </div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
