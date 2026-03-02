@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap (update the host to your production URL if different)
-Sitemap: https://us-iran-conflict-2026.vercel.app/sitemap.xml
+Sitemap: https://usiranconflict.com/sitemap.xml

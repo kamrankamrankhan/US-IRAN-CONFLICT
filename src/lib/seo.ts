@@ -51,16 +51,42 @@ function setArticleJsonLd(articleJsonLd: Record<string, unknown> | undefined): v
   }
 }
 
+function runtimeBaseUrl(): string {
+  if (typeof window !== 'undefined' && window.location?.origin) return window.location.origin;
+  return siteConfig.siteUrl.replace(/\/$/, '');
+}
+
+function toAbsoluteUrl(base: string, maybeUrl: string): string {
+  if (/^https?:\/\//i.test(maybeUrl)) return maybeUrl;
+  const path = maybeUrl.startsWith('/') ? maybeUrl : `/${maybeUrl}`;
+  return `${base}${path}`;
+}
+
+function normalizeArticleJsonLd(
+  articleJsonLd: Record<string, unknown> | undefined,
+  absoluteUrl: string,
+): Record<string, unknown> | undefined {
+  if (!articleJsonLd) return undefined;
+  const cloned: Record<string, unknown> = { ...articleJsonLd };
+  cloned.url = absoluteUrl;
+
+  const meop = cloned.mainEntityOfPage;
+  if (meop && typeof meop === 'object' && !Array.isArray(meop)) {
+    cloned.mainEntityOfPage = { ...(meop as Record<string, unknown>), '@id': absoluteUrl };
+  }
+  return cloned;
+}
+
 /**
  * Update document title, meta tags (description, Open Graph, Twitter Card), and optional Article JSON-LD.
  * Call on route change or when page-specific SEO is needed.
  */
 export function updateSEO(options: SEOOptions): void {
   const { title, description, path, image, articleJsonLd } = options;
-  const baseUrl = siteConfig.siteUrl.replace(/\/$/, '');
+  const baseUrl = runtimeBaseUrl();
   const canonicalPath = path ?? (typeof window !== 'undefined' ? window.location.pathname : '/');
   const url = `${baseUrl}${canonicalPath.startsWith('/') ? canonicalPath : `/${canonicalPath}`}`;
-  const imageUrl = image ?? siteConfig.ogImage ?? `${baseUrl}/favicon.svg`;
+  const imageUrl = toAbsoluteUrl(baseUrl, image ?? siteConfig.ogImage ?? '/favicon.svg');
 
   document.title = title;
 
@@ -83,7 +109,7 @@ export function updateSEO(options: SEOOptions): void {
   }
   canonical.href = url;
 
-  setArticleJsonLd(articleJsonLd);
+  setArticleJsonLd(normalizeArticleJsonLd(articleJsonLd, url));
 }
 
 const baseUrl = () => siteConfig.siteUrl.replace(/\/$/, '');
