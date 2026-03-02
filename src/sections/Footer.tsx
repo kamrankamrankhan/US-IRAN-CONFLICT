@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Instagram, Twitter, Youtube, Music2, Mail, ExternalLink } from 'lucide-react';
@@ -154,14 +155,14 @@ const Footer = () => {
               </h4>
               <ul className="space-y-3">
                 {footerConfig.quickLinks.map((link) => (
-                  <li key={link}>
-                    <a
-                      href="#"
+                  <li key={link.slug}>
+                    <Link
+                      to={link.path}
                       className="text-sm text-white/50 hover:text-neon-soft transition-colors flex items-center gap-2 group"
                     >
-                      <span>{link}</span>
+                      <span>{link.label}</span>
                       <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>

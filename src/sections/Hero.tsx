@@ -1,13 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
-import { Play, Music, Disc, Calendar } from 'lucide-react';
-import { heroConfig } from '../config';
+import { Play, Music, Disc, Calendar, ChevronDown, FileText, Radio } from 'lucide-react';
+import { heroConfig, topicLinks } from '../config';
 
 const ICON_MAP = {
   disc: Disc,
   play: Play,
   calendar: Calendar,
   music: Music,
+  blog: FileText,
+  radio: Radio,
 };
 
 const Hero = () => {
@@ -22,6 +25,8 @@ const Hero = () => {
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
   const [hasEntered, setHasEntered] = useState(false);
+  const [topicsOpen, setTopicsOpen] = useState(false);
+  const topicsRef = useRef<HTMLDivElement>(null);
   const TARGET_TEXT = heroConfig.decodeText;
   const CHARS = heroConfig.decodeChars || 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()';
   const [displayText, setDisplayText] = useState(' '.repeat(TARGET_TEXT.length));
@@ -91,6 +96,19 @@ const Hero = () => {
     audioRef.current?.play().catch(() => {});
   };
 
+  // Close Key Topics dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (topicsRef.current && !topicsRef.current.contains(e.target as Node)) {
+        setTopicsOpen(false);
+      }
+    };
+    if (topicsOpen) {
+      document.addEventListener('click', handleClickOutside);
+    }
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, [topicsOpen]);
+
   return (
     <section
       ref={heroRef}
@@ -141,20 +159,61 @@ const Hero = () => {
         ref={navRef}
         className="fixed top-6 left-1/2 -translate-x-1/2 z-50 nav-pill rounded-full px-2 py-2"
       >
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-1 flex-wrap justify-center">
           {heroConfig.navItems.map((item) => {
             const IconComponent = ICON_MAP[item.icon];
+            const className = "flex items-center gap-2 px-4 py-2 text-xs font-mono-custom uppercase tracking-wider text-white/80 hover:text-white transition-colors rounded-full hover:bg-white/5";
+            if (item.path) {
+              return (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={className}
+                >
+                  <IconComponent className="w-3.5 h-3.5" />
+                  <span>{item.label}</span>
+                </Link>
+              );
+            }
             return (
               <button
                 key={item.sectionId}
                 onClick={() => scrollToSection(item.sectionId)}
-                className="flex items-center gap-2 px-4 py-2 text-xs font-mono-custom uppercase tracking-wider text-white/80 hover:text-white transition-colors rounded-full hover:bg-white/5"
+                className={className}
               >
                 <IconComponent className="w-3.5 h-3.5" />
                 <span>{item.label}</span>
               </button>
             );
           })}
+          {/* Key Topics dropdown - clickable links to topic pages */}
+          <div className="relative" ref={topicsRef}>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setTopicsOpen((o) => !o);
+              }}
+              className="flex items-center gap-2 px-4 py-2 text-xs font-mono-custom uppercase tracking-wider text-white/80 hover:text-white transition-colors rounded-full hover:bg-white/5"
+            >
+              <span>Key Topics</span>
+              <ChevronDown className={`w-3.5 h-3.5 transition-transform ${topicsOpen ? 'rotate-180' : ''}`} />
+            </button>
+            {topicsOpen && (
+              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 py-2 min-w-[200px] rounded-xl bg-void-black/95 border border-white/10 shadow-xl z-50">
+                {topicLinks.map((link) => (
+                  <Link
+                    key={link.slug}
+                    to={link.path}
+                    className="block px-4 py-2.5 text-xs font-mono-custom uppercase tracking-wider text-white/80 hover:text-white hover:bg-white/5 transition-colors"
+                    onClick={() => setTopicsOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </nav>
 
