@@ -48,13 +48,13 @@ export const heroConfig: HeroConfig = {
   ctaPrimary: "Explore Analysis",
   ctaPrimaryTarget: "crisis-cube",
   ctaSecondary: "View Timeline",
-  ctaSecondaryTarget: "timeline",
+  ctaSecondaryTarget: "gallery",
   cornerLabel: "CRISIS ALERT",
   cornerDetail: "MARCH 2026",
   navItems: [
     { label: "Crisis Overview", sectionId: "crisis-cube", icon: "disc" },
     { label: "Visual Intel", sectionId: "gallery", icon: "play" },
-    { label: "Timeline", sectionId: "timeline", icon: "calendar" },
+    { label: "Timeline", sectionId: "gallery", icon: "calendar" },
     { label: "Analysis", sectionId: "contact", icon: "music" },
   ],
 };
@@ -308,10 +308,6 @@ export interface FooterConfig {
   contactTitle: string;
   emailLabel: string;
   email: string;
-  phoneLabel: string;
-  phone: string;
-  addressLabel: string;
-  address: string;
   newsletterTitle: string;
   newsletterDescription: string;
   newsletterButtonText: string;
@@ -343,11 +339,7 @@ export const footerConfig: FooterConfig = {
   ],
   contactTitle: "Intelligence Contact",
   emailLabel: "Email",
-  email: "intel@strategic-report.com",
-  phoneLabel: "Secure Line",
-  phone: "+1 (202) 555-0199",
-  addressLabel: "Headquarters",
-  address: "Washington, DC",
+  email: "kamrankamrankhan825@gmail.com",
   newsletterTitle: "Crisis Alerts",
   newsletterDescription: "Subscribe for real-time updates on the evolving situation",
   newsletterButtonText: "Subscribe",

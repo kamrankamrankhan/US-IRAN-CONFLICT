@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Instagram, Twitter, Youtube, Music2, Mail, Phone, MapPin, ExternalLink } from 'lucide-react';
+import { Instagram, Twitter, Youtube, Music2, Mail, ExternalLink } from 'lucide-react';
 import { footerConfig } from '../config';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -180,20 +180,6 @@ const Footer = () => {
                     <a href={`mailto:${footerConfig.email}`} className="text-sm text-white hover:text-neon-soft transition-colors">
                       {footerConfig.email}
                     </a>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Phone className="w-4 h-4 text-neon-soft/60 mt-0.5" />
-                  <div>
-                    <p className="text-sm text-white/50">{footerConfig.phoneLabel}</p>
-                    <span className="text-sm text-white">{footerConfig.phone}</span>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <MapPin className="w-4 h-4 text-neon-soft/60 mt-0.5" />
-                  <div>
-                    <p className="text-sm text-white/50">{footerConfig.addressLabel}</p>
-                    <span className="text-sm text-white">{footerConfig.address}</span>
                   </div>
                 </li>
               </ul>
