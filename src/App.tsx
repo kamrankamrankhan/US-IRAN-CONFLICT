@@ -5,7 +5,6 @@ import { siteConfig } from './config';
 import Hero from './sections/Hero';
 import AlbumCube from './sections/AlbumCube';
 import ParallaxGallery from './sections/ParallaxGallery';
-import TourSchedule from './sections/TourSchedule';
 import Footer from './sections/Footer';
 
 function App() {
@@ -35,9 +34,6 @@ function App() {
 
       {/* Parallax Gallery Section */}
       <ParallaxGallery />
-
-      {/* Tour Schedule Section */}
-      <TourSchedule />
 
       {/* Footer Section */}
       <Footer />

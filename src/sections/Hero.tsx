@@ -20,6 +20,8 @@ const Hero = () => {
   const navRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const [hasEntered, setHasEntered] = useState(false);
   const TARGET_TEXT = heroConfig.decodeText;
   const CHARS = heroConfig.decodeChars || 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()';
   const [displayText, setDisplayText] = useState(' '.repeat(TARGET_TEXT.length));
@@ -82,16 +84,51 @@ const Hero = () => {
     }
   };
 
+  // Start music on first user interaction (required by browsers), then it plays automatically
+  const handleEnter = () => {
+    if (hasEntered) return;
+    setHasEntered(true);
+    audioRef.current?.play().catch(() => {});
+  };
+
   return (
     <section
       ref={heroRef}
       className="relative w-full h-screen overflow-hidden bg-void-black"
     >
-      {/* Background image */}
-      <div className="absolute inset-0 z-0">
+      {/* One-time overlay: one click to enter → music starts automatically */}
+      {!hasEntered && (
         <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${heroConfig.backgroundImage})` }}
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-void-black/90 cursor-pointer"
+          onClick={(e) => {
+            e.stopPropagation();
+            handleEnter();
+          }}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              handleEnter();
+            }
+          }}
+          role="button"
+          tabIndex={0}
+          aria-label="Click or press Enter to enter site and start music"
+        >
+          <p className="font-mono-custom text-sm md:text-base text-white/80 uppercase tracking-[0.3em] animate-pulse">
+            Click anywhere to enter
+          </p>
+        </div>
+      )}
+
+      {/* Background video (replaces static image) */}
+      <div className="absolute inset-0 z-0">
+        <video
+          className="w-full h-full object-cover"
+          src="/138115-768324070_small.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
         />
         {/* Dark overlay */}
         <div className="absolute inset-0 video-overlay" />
@@ -123,6 +160,8 @@ const Hero = () => {
 
       {/* Hero content */}
       <div className="relative z-10 flex flex-col items-center justify-end h-full pb-20 px-4">
+        {/* Background music - uses a working sample URL; replace with /your-music.mp3 in public/ if you prefer */}
+        <audio ref={audioRef} src="/background-track.mp3" loop preload="auto" />
         {/* Logo / Brand */}
         <div className="absolute top-8 left-8">
           <div className="flex items-center gap-2">
