@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import './index.css';
 import useLenis from './hooks/useLenis';
 import { getPageSEO, updateSEO } from './lib/seo';
@@ -33,25 +34,28 @@ function App() {
   }, [location.pathname]);
 
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={
-          <main className="relative w-full min-h-screen bg-void-black overflow-x-hidden">
-            <Hero />
-            <AlbumCube />
-            <ParallaxGallery />
-            <FeaturedArticle />
-            <Footer />
-          </main>
-        }
-      />
-      <Route path="/topic/:slug" element={<TopicPage />} />
-      <Route path="/article" element={<ArticlePage />} />
-      <Route path="/blogs" element={<BlogsListPage />} />
-      <Route path="/blog/:slug" element={<BlogPostPage />} />
-      <Route path="/live-coverage" element={<LiveCoveragePage />} />
-    </Routes>
+    <>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <main className="relative w-full min-h-screen bg-void-black overflow-x-hidden">
+              <Hero />
+              <AlbumCube />
+              <ParallaxGallery />
+              <FeaturedArticle />
+              <Footer />
+            </main>
+          }
+        />
+        <Route path="/topic/:slug" element={<TopicPage />} />
+        <Route path="/article" element={<ArticlePage />} />
+        <Route path="/blogs" element={<BlogsListPage />} />
+        <Route path="/blog/:slug" element={<BlogPostPage />} />
+        <Route path="/live-coverage" element={<LiveCoveragePage />} />
+      </Routes>
+      <Analytics />
+    </>
   );
 }
 
