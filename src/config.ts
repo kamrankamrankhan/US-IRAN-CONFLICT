@@ -21,7 +21,9 @@ export const siteConfig: SiteConfig = {
 export interface HeroNavItem {
   label: string;
   sectionId: string;
-  icon: "disc" | "play" | "calendar" | "music";
+  icon: "disc" | "play" | "calendar" | "music" | "blog" | "radio";
+  /** If set, nav item links to this path instead of scrolling to section */
+  path?: string;
 }
 
 export interface HeroConfig {
@@ -52,10 +54,10 @@ export const heroConfig: HeroConfig = {
   cornerLabel: "CRISIS ALERT",
   cornerDetail: "MARCH 2026",
   navItems: [
-    { label: "Crisis Overview", sectionId: "crisis-cube", icon: "disc" },
     { label: "Visual Intel", sectionId: "gallery", icon: "play" },
-    { label: "Timeline", sectionId: "gallery", icon: "calendar" },
     { label: "Analysis", sectionId: "contact", icon: "music" },
+    { label: "Blogs", sectionId: "", icon: "blog", path: "/blogs" },
+    { label: "Live coverage", sectionId: "", icon: "radio", path: "/live-coverage" },
   ],
 };
 
@@ -281,6 +283,61 @@ export const tourScheduleConfig: TourScheduleConfig = {
   ],
 };
 
+// -- Topic Pages (Key Topics) -------------------------------------------------
+export interface TopicLink {
+  label: string;
+  path: string;
+  slug: string;
+}
+
+export interface TopicPageContent {
+  title: string;
+  description: string;
+  body: string;
+}
+
+export const topicLinks: TopicLink[] = [
+  { label: "Operation Epic Fury", path: "/topic/operation-epic-fury", slug: "operation-epic-fury" },
+  { label: "Nuclear Program", path: "/topic/nuclear-program", slug: "nuclear-program" },
+  { label: "Military Buildup", path: "/topic/military-buildup", slug: "military-buildup" },
+  { label: "Economic Sanctions", path: "/topic/economic-sanctions", slug: "economic-sanctions" },
+  { label: "Proxy Networks", path: "/topic/proxy-networks", slug: "proxy-networks" },
+  { label: "Regional Impact", path: "/topic/regional-impact", slug: "regional-impact" },
+];
+
+export const topicPagesConfig: Record<string, TopicPageContent> = {
+  "operation-epic-fury": {
+    title: "Operation Epic Fury",
+    description: "The US-led military operation launched in February 2026 targeting Iranian infrastructure across 24 provinces.",
+    body: "Operation Epic Fury represents a significant escalation in the US-Iran conflict. Launched on February 28, 2026, the operation involved coordinated strikes against military and nuclear facilities. Over 1,200 munitions were deployed across 24 provinces, with reported civilian casualties and widespread infrastructure damage. The operation marked a fundamental shift from diplomatic pressure to direct military action and triggered immediate Iranian retaliation.",
+  },
+  "nuclear-program": {
+    title: "Nuclear Program",
+    description: "Iran's nuclear enrichment activities and the international response to its nuclear capabilities.",
+    body: "Iran's nuclear program has been a central point of tension. Enrichment levels have reached approximately 60%, with significant stockpiles of uranium reported. Failed negotiations in Geneva (February 2026) preceded the military escalation. The program continues to be monitored by the IAEA, with ongoing concerns about weaponization potential and breakout time. International sanctions and diplomatic efforts have so far been unable to halt or reverse key aspects of the program.",
+  },
+  "military-buildup": {
+    title: "Military Buildup",
+    description: "US troop deployments and regional military posture in response to the crisis.",
+    body: "The US has deployed an estimated 40,000–50,000 troops to the region in response to the crisis. This buildup includes naval assets in the Strait of Hormuz, air force units across allied bases, and ground forces in several countries. The deployment aims to deter further escalation, protect allies, and maintain freedom of navigation. Regional partners have also increased their readiness, contributing to a heightened state of military tension across the Middle East.",
+  },
+  "economic-sanctions": {
+    title: "Economic Sanctions",
+    description: "International sanctions targeting Iran's economy and their impact on trade and stability.",
+    body: "A comprehensive sanctions regime has been applied against Iran, targeting oil exports, banking, and key industries. The restoration of maximum pressure policies in early 2026 intensified economic strain. Sanctions have affected global energy markets, with volatility in oil prices and supply chain concerns. The humanitarian impact and effectiveness of sanctions remain debated, while Iran has sought alternative trade routes and partners to mitigate the economic pressure.",
+  },
+  "proxy-networks": {
+    title: "Proxy Networks",
+    description: "Iran's use of proxy forces and non-state actors across the region.",
+    body: "Iran maintains extensive proxy networks across the Middle East, including groups in Lebanon, Syria, Iraq, Yemen, and Gaza. These networks have been involved in retaliatory attacks following Operation Epic Fury. Proxy actions include missile and drone strikes, militia operations, and asymmetric warfare. The networks complicate direct diplomacy and create escalation risks, as attacks can be difficult to attribute and control. Regional stability is heavily influenced by the actions of these aligned groups.",
+  },
+  "regional-impact": {
+    title: "Regional Impact",
+    description: "Effects of the conflict on neighboring countries and the wider Middle East.",
+    body: "The conflict has affected at least eight nations directly, with spillover in security, refugees, and economics. Key flashpoints include the Strait of Hormuz, Iraq, Syria, and the Levant. Regional allies have been drawn into the crisis, and the risk of a broader regional war remains high. Diplomatic efforts, including emergency UN Security Council meetings, have so far been unable to de-escalate. The situation threatens global energy supplies and has increased volatility in financial markets.",
+  },
+};
+
 // -- Footer Section -----------------------------------------------------------
 export interface FooterImage {
   id: number;
@@ -304,7 +361,7 @@ export interface FooterConfig {
   brandName: string;
   brandDescription: string;
   quickLinksTitle: string;
-  quickLinks: string[];
+  quickLinks: TopicLink[];
   contactTitle: string;
   emailLabel: string;
   email: string;
@@ -329,14 +386,7 @@ export const footerConfig: FooterConfig = {
   brandName: "US-IRAN CONFLICT 2026",
   brandDescription: "A comprehensive analysis of the most serious escalation in the Middle East since the June 2025 Twelve-Day War. Operation Epic Fury marks a fundamental shift in regional dynamics.",
   quickLinksTitle: "Key Topics",
-  quickLinks: [
-    "Operation Epic Fury",
-    "Nuclear Program",
-    "Military Buildup",
-    "Economic Sanctions",
-    "Proxy Networks",
-    "Regional Impact",
-  ],
+  quickLinks: topicLinks,
   contactTitle: "Intelligence Contact",
   emailLabel: "Email",
   email: "kamrankamrankhan825@gmail.com",
