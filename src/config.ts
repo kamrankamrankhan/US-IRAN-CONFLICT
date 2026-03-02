@@ -9,12 +9,18 @@ export interface SiteConfig {
   title: string;
   description: string;
   language: string;
+  /** Full site URL for canonical and Open Graph (e.g. https://yoursite.com). No trailing slash. */
+  siteUrl: string;
+  /** Optional: absolute URL for social share image (e.g. https://yoursite.com/og-image.jpg). Use 1200×630 for best results. Add image to public/ and set this to siteUrl + "/og-image.jpg". */
+  ogImage?: string;
 }
 
 export const siteConfig: SiteConfig = {
   title: "US-Iran Conflict 2026 | Geopolitical Crisis Analysis",
   description: "A comprehensive analysis of the US-Iran conflict escalation in 2026, covering Operation Epic Fury, nuclear tensions, military buildup, and regional impact.",
   language: "en",
+  siteUrl: "https://us-iran-conflict-2026.vercel.app",
+  ogImage: undefined, // e.g. "https://us-iran-conflict-2026.vercel.app/og-image.jpg" once you add public/og-image.jpg
 };
 
 // -- Hero Section -------------------------------------------------------------
