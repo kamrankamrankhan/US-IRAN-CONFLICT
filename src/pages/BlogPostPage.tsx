@@ -45,11 +45,32 @@ const BlogPostPage = () => {
           )}
         </p>
         <h1 className="font-display text-3xl md:text-4xl lg:text-5xl text-white leading-tight mb-6">
-          {post.title}
+          {post.titleLink ? (
+            <a
+              href={post.titleLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-neon-cyan transition-colors underline underline-offset-4"
+            >
+              {post.title}
+            </a>
+          ) : (
+            post.title
+          )}
         </h1>
         <p className="text-lg text-white/70 leading-relaxed mb-12">
           {post.excerpt}
         </p>
+
+        {post.image && (
+          <figure className="mb-12 rounded-lg overflow-hidden border border-white/10">
+            <img
+              src={post.image}
+              alt=""
+              className="w-full h-auto object-cover"
+            />
+          </figure>
+        )}
 
         {isExternal && post.externalUrl ? (
           <div className="space-y-6">
@@ -65,6 +86,19 @@ const BlogPostPage = () => {
               Read full coverage on {post.externalSource || 'source'}
               <ExternalLink className="w-4 h-4" />
             </a>
+          </div>
+        ) : post.sections && post.sections.length > 0 ? (
+          <div className="space-y-10">
+            {post.sections.map((section, i) => (
+              <section key={i}>
+                <h2 className="font-display text-xl md:text-2xl text-white mb-4">
+                  {section.title}
+                </h2>
+                <p className="text-white/80 leading-relaxed text-lg">
+                  {section.content}
+                </p>
+              </section>
+            ))}
           </div>
         ) : (
           <div className="prose prose-invert max-w-none">
