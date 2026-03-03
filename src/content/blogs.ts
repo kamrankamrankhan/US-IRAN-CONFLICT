@@ -2,15 +2,26 @@
 // Blog posts — war/conflict related. Each has its own page at /blog/:slug
 // =============================================================================
 
+export interface BlogPostSection {
+  title: string;
+  content: string;
+}
+
 export interface BlogPost {
   slug: string;
   title: string;
   excerpt: string;
   date: string;
   content: string;
+  /** Optional hero image URL (e.g. /blog-hero.jpg) */
+  image?: string;
+  /** If set, article body is rendered as sections with H2 headings; otherwise content is used as single block */
+  sections?: BlogPostSection[];
   /** If set, this post links to external coverage; content is used as fallback on our page */
   externalUrl?: string;
   externalSource?: string;
+  /** If set, the post title becomes a clickable link to this URL (e.g. promo/external destination) */
+  titleLink?: string;
 }
 
 export const blogs: BlogPost[] = [
@@ -40,6 +51,45 @@ export const blogs: BlogPost[] = [
     content: "CNBC is covering the Iran-U.S. conflict with a focus on markets and business: Iran's commander on closing the Strait of Hormuz, oil and gold price moves, tanker rates, flight cancellations, FedEx and Amazon delays, and Congress war powers. Follow the link for live updates.",
     externalUrl: "https://www.cnbc.com/2026/03/02/us-iran-live-updates-trump-oil-gold.html",
     externalSource: "CNBC",
+  },
+  {
+    slug: "us-iran-conflict-causes-and-impact",
+    title: "US Iran Conflict: Causes and Impact",
+    excerpt: "Explore the US Iran conflict, including nuclear tensions, US sanctions on Iran, Strait of Hormuz risks, and rising Middle East instability shaping global security and oil markets.",
+    date: "2026-03-03",
+    content: "A comprehensive look at the US Iran conflict: causes, nuclear dispute, military escalation, regional dynamics, and global impact.",
+    image: "/gallery-6.jpg",
+    titleLink: "https://enjoy-game.club/m/share?channel=7&userId=9061450&shareCode=9061450&t=45908&bindCode=0",
+    sections: [
+      {
+        title: "Historical Background of US–Iran Relations",
+        content: "A long history of political suspicion and strategic competition is the foundation of the US Iran conflict. The relations have worsened sharply after the Iranian Revolution of 1979 that changed the political regime of Iran and that Islam ceased to be closely associated with Washington. The hostage crisis was another step leading to the increase in hostility and the U.S. policy towards Tehran was developed by generations. Gradually, the foreign policy failed, and economic coercion and strategic isolation were put in place. The US sanctions against Iran turned into one of the main instruments with the purpose to inhibit the power of the country and its military potential in the region. These actions impacted greatly on the Iranian economy as they cemented the political strains between the two nations.",
+      },
+      {
+        title: "Nuclear Dispute and Sanctions",
+        content: "One of the factors that have led to the US Iran conflict is the Iran nuclear ambitions. The Iran nuclear program, especially uranium enrichment activities, which have the potential of making weapons, have been the subject of concern of the international community for a long time. In 2015, Iran came into a temporary de-escalation agreement with the Joint Comprehensive Plan of Action (JCPOA nuclear deal) that restricted Iranian nuclear activities in exchange for relief of sanctions. The U.S. withdrawal of the agreement however rekindled the US Iran war that resulted in the reinstatement of sanctions and diplomatic tension. Negotiations have been rather sporadic since that time with trust having been weak.",
+      },
+      {
+        title: "Military Escalation and Regional Tensions",
+        content: "In addition to the nuclear factor, the US Iran conflict has also spread to the military and proxy levels in the Middle East. The two countries have fought each other by proxy wars in allied groups, and alliances and this has contributed to the overall instability in the Middle East. The tension has also escalated in the Strait of Hormuz which is a strategically important oil transit route in the world. Any form of disruption in this slim water passage has a direct effect in world energy markets. Confrontation of Iran, naval maneuvers, and missile showcases associated with the Iran missile program have raised the issue of the likelihood of direct military involvement.",
+      },
+      {
+        title: "Israel and Regional Dynamics",
+        content: "The US Iran conflict is more of a close relationship with regional security issues especially Israel Iran tensions. Iran has been perceived by Israel as an existential threat by their military strength and nuclear-driven nuclear development and this has resulted in covert and open countermeasures. Meanwhile, the Gulf states watch the situation attentively, juggling between security cooperation with the United States and the danger of regionalization. The U.S. military forces in the Middle East still play a major role in disheartening factors, but they are a cause of a continuum of friction.",
+      },
+      {
+        title: "Economic and Global Impact",
+        content: "The impact of the US Iran conflict extends way out of the Middle East. The developments in the region are very sensitive to the energy markets. Any increase in the situation that touches on oil infrastructures or sea transportation may cause price fluctuations around the globe. The international trade, financial systems, and diplomatic alignments also are a subject of sanctions and countermeasures. The situation with the countries that rely on the energy resources of the Middle East, the course of the conflict is monitored by them with the understanding that even minor conflicts can have a worldwide impact.",
+      },
+      {
+        title: "Diplomatic Efforts and Future Outlook",
+        content: "There has been ongoing escalation but still there is an attempt to go after it diplomatically. The efforts at indirect negotiations, regional mediation efforts, international pressures are meant to forestall a wider war. There are however unresolved issues regarding the sanctions relief, nuclear transparency, and security in the region, which complicate the process. The US Iran conflict lies in the hands of both governments to make strategic decisions. De-escalation would be based on compromising and re-establishing diplomatic networks. Unless engaged on a long-term basis, the threat of a subsequent confrontation will be considered high.",
+      },
+      {
+        title: "Conclusion",
+        content: "To conclude, the US Iran conflict is not a one-time thing, but a complicated geopolitical fight that was influenced by history, nuclear issues, regional relations, and economic interests of the global community. Its development will still affect stability in the Middle East and international security in the future.",
+      },
+    ],
   },
   {
     slug: "operation-epic-fury-what-we-know",

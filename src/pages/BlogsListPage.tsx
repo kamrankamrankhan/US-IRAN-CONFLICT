@@ -48,7 +48,19 @@ const BlogsListPage = () => {
                   )}
                 </div>
                 <h2 className="font-display text-xl md:text-2xl text-white mb-2">
-                  {post.title}
+                  {post.titleLink ? (
+                    <a
+                      href={post.titleLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="text-white hover:text-neon-cyan transition-colors underline underline-offset-2"
+                    >
+                      {post.title}
+                    </a>
+                  ) : (
+                    post.title
+                  )}
                 </h2>
                 <p className="text-white/60 text-sm leading-relaxed">
                   {post.excerpt}
