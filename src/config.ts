@@ -20,7 +20,7 @@ export const siteConfig: SiteConfig = {
   description: "A comprehensive analysis of the US-Iran conflict escalation in 2026, covering Operation Epic Fury, nuclear tensions, military buildup, and regional impact.",
   language: "en",
   siteUrl: "https://usiranconflict.com",
-  ogImage: undefined, // e.g. "https://usiranconflict.com/og-image.jpg" once you add public/og-image.jpg
+  ogImage: "https://usiranconflict.com/gallery-6.jpg",
 };
 
 // -- Hero Section -------------------------------------------------------------
