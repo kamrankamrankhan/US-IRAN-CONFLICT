@@ -1,5 +1,6 @@
 /**
  * SEO utilities: update document title and meta tags for sharing and crawlers.
+ * Optimized for "US Iran War" and related search queries.
  */
 
 import { siteConfig } from '../config';
@@ -16,6 +17,8 @@ export interface SEOOptions {
   image?: string;
   /** Optional Article JSON-LD for blog/article pages. If not set, any existing Article script is removed. */
   articleJsonLd?: Record<string, unknown>;
+  /** Keywords for meta keywords tag */
+  keywords?: string;
 }
 
 function ensureMeta(name: string, property = false): HTMLMetaElement {
@@ -82,7 +85,7 @@ function normalizeArticleJsonLd(
  * Call on route change or when page-specific SEO is needed.
  */
 export function updateSEO(options: SEOOptions): void {
-  const { title, description, path, image, articleJsonLd } = options;
+  const { title, description, path, image, articleJsonLd, keywords } = options;
   const baseUrl = runtimeBaseUrl();
   const canonicalPath = path ?? (typeof window !== 'undefined' ? window.location.pathname : '/');
   const url = `${baseUrl}${canonicalPath.startsWith('/') ? canonicalPath : `/${canonicalPath}`}`;
@@ -91,16 +94,29 @@ export function updateSEO(options: SEOOptions): void {
   document.title = title;
 
   setMeta('description', description);
+  setMeta('title', title);
+  if (keywords) {
+    setMeta('keywords', keywords);
+  }
+  
+  // Open Graph
   setMeta('og:title', title, true);
   setMeta('og:description', description, true);
   setMeta('og:image', imageUrl, true);
   setMeta('og:url', url, true);
   setMeta('og:type', articleJsonLd ? 'article' : 'website', true);
+  setMeta('og:image:width', '1200', true);
+  setMeta('og:image:height', '630', true);
+  setMeta('og:site_name', 'US Iran Conflict Analysis', true);
+  
+  // Twitter Card
   setMeta('twitter:card', 'summary_large_image');
   setMeta('twitter:title', title);
   setMeta('twitter:description', description);
   setMeta('twitter:image', imageUrl);
+  setMeta('twitter:site', '@usiranconflict');
 
+  // Canonical URL
   let canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
   if (!canonical) {
     canonical = document.createElement('link');
@@ -114,11 +130,39 @@ export function updateSEO(options: SEOOptions): void {
 
 const baseUrl = () => siteConfig.siteUrl.replace(/\/$/, '');
 
-function buildPublisher(): { '@type': string; name: string; url: string } {
+function buildPublisher(): { '@type': string; name: string; url: string; logo?: { '@type': string; url: string } } {
   return {
     '@type': 'Organization',
     name: 'Strategic Intelligence',
     url: baseUrl(),
+    logo: {
+      '@type': 'ImageObject',
+      url: `${baseUrl()}/favicon.svg`,
+    },
+  };
+}
+
+function buildArticleJsonLd(
+  post: { title: string; excerpt: string; date: string; image?: string },
+  url: string,
+  keywords?: string
+): Record<string, unknown> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'NewsArticle',
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    dateModified: post.date,
+    image: post.image ? toAbsoluteUrl(baseUrl(), post.image) : `${baseUrl()}/gallery-6.jpg`,
+    author: buildPublisher(),
+    publisher: buildPublisher(),
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    url,
+    articleSection: 'Geopolitics',
+    keywords: keywords || 'US Iran war, Iran conflict, Middle East crisis',
+    inLanguage: 'en-US',
+    isAccessibleForFree: true,
   };
 }
 
@@ -127,12 +171,18 @@ function buildPublisher(): { '@type': string; name: string; url: string } {
  * Used by App to set SEO on route change.
  */
 export function getPageSEO(pathname: string): SEOOptions {
-  const baseTitle = siteConfig.title;
-  const baseDescription = siteConfig.description;
-  const siteName = baseTitle.split(' | ')[0];
+  const baseTitle = 'US Iran War 2026 | Complete Conflict Analysis & Latest News';
+  const baseDescription = 'Complete coverage of the US-Iran war 2026: Operation Epic Fury, nuclear tensions, Strait of Hormuz crisis, oil prices impact, and real-time updates. Expert analysis on the Middle East conflict.';
+  const baseKeywords = 'US Iran war, Iran war 2026, US Iran conflict, Middle East war, Operation Epic Fury, Iran nuclear program, Strait of Hormuz, Iran US tensions';
+  const siteName = 'US Iran Conflict Analysis';
 
   if (pathname === '/' || pathname === '') {
-    return { title: baseTitle, description: baseDescription, path: '/' };
+    return { 
+      title: baseTitle, 
+      description: baseDescription, 
+      path: '/',
+      keywords: baseKeywords,
+    };
   }
 
   if (pathname === '/article') {
@@ -141,26 +191,30 @@ export function getPageSEO(pathname: string): SEOOptions {
       title: `${articleMeta.headline} | ${siteName}`,
       description: articleMeta.metaDescription,
       path: '/article',
+      keywords: 'US Iran war analysis, Operation Epic Fury details, Iran conflict analysis, Middle East geopolitics',
       articleJsonLd: {
         '@context': 'https://schema.org',
-        '@type': 'Article',
+        '@type': 'NewsArticle',
         headline: articleMeta.headline,
         description: articleMeta.metaDescription,
         datePublished: '2026-03-01',
-        dateModified: '2026-03-01',
+        dateModified: '2026-03-05',
         author: buildPublisher(),
         publisher: buildPublisher(),
         mainEntityOfPage: { '@type': 'WebPage', '@id': url },
         url,
+        articleSection: 'Geopolitics',
+        keywords: 'US Iran war, Iran conflict, Middle East crisis',
       },
     };
   }
 
   if (pathname === '/blogs') {
     return {
-      title: `Blogs | ${siteName}`,
-      description: 'Analysis and reporting on the US-Iran conflict, regional tensions, and related developments.',
+      title: `US Iran War News & Analysis | Latest Updates | ${siteName}`,
+      description: 'Latest news and analysis on the US-Iran war 2026. Stay informed on Operation Epic Fury, nuclear tensions, Strait of Hormuz crisis, and regional developments.',
       path: '/blogs',
+      keywords: 'US Iran war news, Iran conflict updates, Middle East news, Iran war latest',
     };
   }
 
@@ -170,22 +224,24 @@ export function getPageSEO(pathname: string): SEOOptions {
     const post = blogs.find((b) => b.slug === slug);
     if (post) {
       const url = `${baseUrl()}${pathname}`;
+      let keywords = 'US Iran war, Iran conflict';
+      
+      // Custom keywords based on blog content
+      if (slug === 'us-iran-conflict-causes-and-impact') {
+        keywords = 'US Iran conflict, Iran war causes, US Iran relations, Middle East tensions, Iran nuclear program, US sanctions Iran';
+      } else if (slug === 'global-oil-prices-rise-kharg-island-attack') {
+        keywords = 'Kharg Island attack, Iran oil prices, US Iran oil war, global oil crisis, Iran oil exports, Persian Gulf conflict';
+      } else if (slug === 'strait-of-hormuz-crisis-global-energy-crisis') {
+        keywords = 'Strait of Hormuz crisis, Iran blockade, global energy crisis, oil shipping, Hormuz chokepoint, Iran US tensions';
+      }
+      
       return {
         title: `${post.title} | ${siteName}`,
         description: post.excerpt,
         path: pathname,
-        articleJsonLd: {
-          '@context': 'https://schema.org',
-          '@type': 'Article',
-          headline: post.title,
-          description: post.excerpt,
-          datePublished: post.date,
-          dateModified: post.date,
-          author: buildPublisher(),
-          publisher: buildPublisher(),
-          mainEntityOfPage: { '@type': 'WebPage', '@id': url },
-          url,
-        },
+        image: post.image,
+        keywords,
+        articleJsonLd: buildArticleJsonLd(post, url, keywords),
       };
     }
   }
@@ -195,21 +251,37 @@ export function getPageSEO(pathname: string): SEOOptions {
     const slug = topicMatch[1];
     const topic = topicPagesConfig[slug];
     if (topic) {
+      const topicKeywords: Record<string, string> = {
+        'operation-epic-fury': 'Operation Epic Fury, US Iran military operation, Iran strikes 2026, US military Iran',
+        'nuclear-program': 'Iran nuclear program, Iran uranium enrichment, JCPOA, Iran nuclear deal, nuclear weapons Iran',
+        'military-buildup': 'US military Middle East, Iran military, US troops Middle East, Persian Gulf military',
+        'economic-sanctions': 'Iran sanctions, US sanctions Iran, Iran economy, oil sanctions, Iran trade',
+        'proxy-networks': 'Iran proxy forces, Hezbollah, Iran militias, Middle East proxies, Iran Syria Iraq',
+        'regional-impact': 'Middle East conflict, Iran regional influence, Gulf states, regional war Iran',
+      };
+      
       return {
-        title: `${topic.title} | ${siteName}`,
+        title: `${topic.title} | US Iran War 2026 | ${siteName}`,
         description: topic.description,
         path: pathname,
+        keywords: topicKeywords[slug] || 'US Iran war, Iran conflict',
       };
     }
   }
 
   if (pathname === '/live-coverage') {
     return {
-      title: `Live coverage | ${siteName}`,
-      description: 'Real-time reporting and analysis from Al Jazeera, CNN, and CNBC on the US-Iran conflict.',
+      title: `Live Coverage: US Iran War Updates | Breaking News | ${siteName}`,
+      description: 'Real-time reporting and breaking news on the US-Iran war from Al Jazeera, CNN, CNBC and other major sources. Live updates on Middle East conflict.',
       path: '/live-coverage',
+      keywords: 'US Iran war live, Iran conflict live updates, Middle East breaking news, Iran war today',
     };
   }
 
-  return { title: baseTitle, description: baseDescription, path: pathname };
+  return { 
+    title: baseTitle, 
+    description: baseDescription, 
+    path: pathname,
+    keywords: baseKeywords,
+  };
 }

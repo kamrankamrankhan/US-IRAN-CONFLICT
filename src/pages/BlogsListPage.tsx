@@ -24,11 +24,11 @@ const BlogsListPage = () => {
         <div className="flex items-center gap-3 mb-10">
           <FileText className="w-8 h-8 text-neon-cyan" />
           <h1 className="font-display text-3xl md:text-4xl text-white">
-            Blogs
+            US Iran War News & Analysis
           </h1>
         </div>
         <p className="text-white/60 mb-12 max-w-2xl">
-          Analysis and reporting on the US-Iran conflict, regional tensions, and related developments.
+          Latest news and in-depth analysis on the US-Iran war 2026. Stay informed on Operation Epic Fury, nuclear tensions, Strait of Hormuz crisis, Kharg Island attacks, and regional developments.
         </p>
 
         <ul className="space-y-6">
