@@ -144,4 +144,46 @@ export const blogs: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: "iran-us-israel-conflict-global-impact",
+    title: "Rising Tensions: The Iran, U.S., Israel Conflict and Its Global Impact",
+    excerpt:
+      "How the February 28 escalation involving the U.S., Israel, and Iran reshaped the region—from leadership succession and retaliation to the Strait of Hormuz, global energy markets, nuclear history, and the shift from proxy war to direct confrontation.",
+    date: "2026-03-24",
+    content:
+      "Analysis of the Iran–U.S.–Israel conflict: the February 28 escalation, regional and global consequences, Iran’s nuclear program, proxy networks, and the path from indirect conflict to open military confrontation.",
+    image: "/blog-iran-us-israel-global-impact.png",
+    sections: [
+      {
+        title: "Introduction",
+        content:
+          "On February 28, a major escalation occurred when the U.S. and Israel launched coordinated attacks against Iran after weeks of rising tensions and military buildup. Strikes hit key military targets and senior figures in the Iranian government, reportedly including the death of Supreme Leader Ayatollah Ali Khamenei. Iran’s Assembly of Experts then elected his son, Mojtaba Khamenei, to succeed him. Iran retaliated against U.S. military bases and critical infrastructure across the region. Israel, meanwhile, intensified its military posture in Lebanon after Hezbollah fired rockets into Israeli territory in support of Iran. The human toll has been severe: more than 1,800 people killed, including U.S. service members and civilians. Reports of a U.S. strike on an elementary school in Iran—killing at least 175 students—have become a focal point of international outrage. The trajectory of the war has also been clouded by President Trump’s shifting and sometimes contradictory statements about U.S. war aims.",
+      },
+      {
+        title: "Regional Crisis with Global Consequences",
+        content:
+          "What began as targeted strikes has widened into a regional crisis with global ripple effects, including serious disruption to supply chains. Among the most consequential developments is Iran’s reported success in restricting traffic through the Strait of Hormuz—a chokepoint for a large share of world oil exports. That closure helped trigger a worldwide energy shock and led the International Energy Agency to release hundreds of millions of barrels from strategic stockpiles to stabilize markets.",
+      },
+      {
+        title: "Background: Iran’s Nuclear Program",
+        content:
+          "Iran’s nuclear ambitions date back to the late 1950s. During the Iran–Iraq War in the 1980s, Tehran pursued nuclear capabilities partly as a hedge against external threats. In the early 2000s, previously concealed nuclear work came to light. Iran eventually accepted limits on its program, but disputes over transparency and compliance brought United Nations sanctions that weighed heavily on growth and employment—helping push Iran toward negotiations with major powers. The 2015 Joint Comprehensive Plan of Action (JCPOA) committed Iran to restraining its nuclear activities in exchange for sanctions relief. Even with that agreement, friction continued over missile development and regional policy.",
+      },
+      {
+        title: "Expansion of Influence through Regional Proxies",
+        content:
+          "Beyond the nuclear file, Iran has expanded its reach through partners and proxies in Lebanon, Syria, Iraq, Yemen, and Gaza. U.S. policymakers have long cited Iranian funding, training, and arms transfers to these groups as a core driver of instability and a reason for sustained pressure on Tehran.",
+      },
+      {
+        title: "Renewed Pressure and Escalation",
+        content:
+          "During his first term, President Trump withdrew the United States from the JCPOA and reimposed harsh sanctions, seeking leverage for a new agreement—moves that sharpened bilateral hostility. A chain of incidents in 2020—including attacks on oil tankers, the shootdown of a U.S. drone, and the killing of General Qasem Soleimani—pushed tensions higher. Iran responded by rolling back compliance with nuclear constraints and accelerating uranium enrichment.",
+      },
+      {
+        title: "From Proxy Conflict to Direct Confrontation",
+        content:
+          "Israel and Iran clashed for years mainly through intermediaries, but that pattern broke down after the 2023 Hamas–Israel war, when Iran-backed groups stepped up attacks across the region. By 2024, fighting had escalated into direct exchanges: Israeli strikes on Iranian military targets met large-scale Iranian retaliation, marking a shift from shadow war to open state-on-state confrontation—and setting the stage for the wider crisis visible today.",
+      },
+    ],
+  },
 ];
