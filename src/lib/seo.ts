@@ -233,6 +233,9 @@ export function getPageSEO(pathname: string): SEOOptions {
         keywords = 'Kharg Island attack, Iran oil prices, US Iran oil war, global oil crisis, Iran oil exports, Persian Gulf conflict';
       } else if (slug === 'strait-of-hormuz-crisis-global-energy-crisis') {
         keywords = 'Strait of Hormuz crisis, Iran blockade, global energy crisis, oil shipping, Hormuz chokepoint, Iran US tensions';
+      } else if (slug === 'iran-us-israel-conflict-global-impact') {
+        keywords =
+          'Iran US Israel conflict, Middle East war 2026, Strait of Hormuz closure, Iran nuclear program, JCPOA, Hezbollah Lebanon, Iran proxies, US Iran escalation';
       }
       
       return {
