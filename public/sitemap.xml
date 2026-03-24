@@ -6,20 +6,20 @@
   <!-- Homepage - Highest Priority -->
   <url>
     <loc>https://usiranconflict.com/</loc>
-    <lastmod>2026-03-05</lastmod>
+    <lastmod>2026-03-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://usiranconflict.com/gallery-6.jpg</image:loc>
-      <image:title>US Iran War 2026 Conflict Analysis</image:title>
-      <image:caption>Comprehensive coverage of the US-Iran conflict</image:caption>
+      <image:title>US Iran War 2026 and Israel Iran Conflict Analysis</image:title>
+      <image:caption>Comprehensive coverage of the US-Iran war and Israel-Iran conflict</image:caption>
     </image:image>
   </url>
   
   <!-- Article Page -->
   <url>
     <loc>https://usiranconflict.com/article</loc>
-    <lastmod>2026-03-05</lastmod>
+    <lastmod>2026-03-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -27,7 +27,7 @@
   <!-- Blogs List Page -->
   <url>
     <loc>https://usiranconflict.com/blogs</loc>
-    <lastmod>2026-03-05</lastmod>
+    <lastmod>2026-03-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
@@ -35,9 +35,72 @@
   <!-- Live Coverage Page -->
   <url>
     <loc>https://usiranconflict.com/live-coverage</loc>
-    <lastmod>2026-03-05</lastmod>
+    <lastmod>2026-03-24</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.9</priority>
+  </url>
+  
+  <!-- Blog Post: Israel Iran Direct Conflict -->
+  <url>
+    <loc>https://usiranconflict.com/blog/israel-iran-direct-conflict-2026</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Strategic Intelligence</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-03-24</news:publication_date>
+      <news:title>Israel Iran War: How Decades of Proxy Conflict Became Direct Confrontation</news:title>
+      <news:keywords>Israel Iran war, Israel Iran conflict, Iran proxy war, Hezbollah, Hamas, Middle East war</news:keywords>
+    </news:news>
+    <image:image>
+      <image:loc>https://usiranconflict.com/blog-iran-us-israel-global-impact.png</image:loc>
+      <image:title>Israel Iran Conflict Analysis</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Blog Post: Hezbollah Israel War -->
+  <url>
+    <loc>https://usiranconflict.com/blog/hezbollah-israel-war-lebanon-front</loc>
+    <lastmod>2026-03-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Strategic Intelligence</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-03-22</news:publication_date>
+      <news:title>Hezbollah Israel War: The Lebanon Front Explained</news:title>
+      <news:keywords>Hezbollah Israel war, Lebanon Israel conflict, Hezbollah missiles, Iran proxy, Israel Lebanon border</news:keywords>
+    </news:news>
+    <image:image>
+      <image:loc>https://usiranconflict.com/gallery-5.jpg</image:loc>
+      <image:title>Hezbollah Israel Lebanon Conflict</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Blog Post: Gaza War -->
+  <url>
+    <loc>https://usiranconflict.com/blog/gaza-war-israel-hamas-2026</loc>
+    <lastmod>2026-03-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Strategic Intelligence</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-03-20</news:publication_date>
+      <news:title>Gaza War 2026: Israel Hamas Conflict and the Humanitarian Crisis</news:title>
+      <news:keywords>Gaza war, Israel Hamas war, Hamas October 7, Gaza humanitarian crisis, Israel Palestine conflict</news:keywords>
+    </news:news>
+    <image:image>
+      <image:loc>https://usiranconflict.com/gallery-4.jpg</image:loc>
+      <image:title>Gaza War Israel Hamas</image:title>
+    </image:image>
   </url>
   
   <!-- Blog Post: US Iran Conflict Causes and Impact -->
@@ -103,46 +166,110 @@
     </image:image>
   </url>
   
+  <!-- Blog Post: Iran US Israel Global Impact -->
+  <url>
+    <loc>https://usiranconflict.com/blog/iran-us-israel-conflict-global-impact</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Strategic Intelligence</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-03-24</news:publication_date>
+      <news:title>Rising Tensions: The Iran, U.S., Israel Conflict and Its Global Impact</news:title>
+      <news:keywords>Iran US Israel conflict, Middle East war, Operation Epic Fury, Iran nuclear program, regional escalation</news:keywords>
+    </news:news>
+    <image:image>
+      <image:loc>https://usiranconflict.com/blog-iran-us-israel-global-impact.png</image:loc>
+      <image:title>Iran US Israel Conflict Global Impact</image:title>
+    </image:image>
+  </url>
+  
   <!-- Topic Pages -->
   <url>
     <loc>https://usiranconflict.com/topic/operation-epic-fury</loc>
-    <lastmod>2026-03-05</lastmod>
+    <lastmod>2026-03-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://usiranconflict.com/topic/nuclear-program</loc>
-    <lastmod>2026-03-05</lastmod>
+    <lastmod>2026-03-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://usiranconflict.com/topic/military-buildup</loc>
-    <lastmod>2026-03-05</lastmod>
+    <lastmod>2026-03-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://usiranconflict.com/topic/economic-sanctions</loc>
-    <lastmod>2026-03-05</lastmod>
+    <lastmod>2026-03-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://usiranconflict.com/topic/proxy-networks</loc>
-    <lastmod>2026-03-05</lastmod>
+    <lastmod>2026-03-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://usiranconflict.com/topic/regional-impact</loc>
-    <lastmod>2026-03-05</lastmod>
+    <lastmod>2026-03-24</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- New Israel Iran Topic Pages -->
+  <url>
+    <loc>https://usiranconflict.com/topic/israel-iran-conflict</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://usiranconflict.com/topic/gaza-war</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://usiranconflict.com/topic/hezbollah</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://usiranconflict.com/topic/hamas</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://usiranconflict.com/topic/strait-of-hormuz</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://usiranconflict.com/topic/oil-prices</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
 </urlset>
