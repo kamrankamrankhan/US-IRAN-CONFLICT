@@ -26,6 +26,164 @@ export interface BlogPost {
 
 export const blogs: BlogPost[] = [
   {
+    slug: "israel-iran-direct-conflict-2026",
+    title: "Israel Iran War: How Decades of Proxy Conflict Became Direct Confrontation",
+    excerpt: "The Israel Iran conflict has evolved from shadow warfare to open military confrontation. Explore the history, key events, Iran's proxy networks, and how the 2026 escalation has brought the two nations to the brink of all-out war.",
+    date: "2026-03-24",
+    content: "Analysis of the Israel-Iran conflict evolution from proxy warfare to direct military confrontation in 2026.",
+    image: "/blog-iran-us-israel-global-impact.png",
+    sections: [
+      {
+        title: "Introduction: A New Era of Israel Iran Conflict",
+        content: "For decades, Israel and Iran fought through intermediaries - a shadow war waged through proxy groups, cyber attacks, and targeted assassinations. That changed dramatically in 2024 and escalated further in 2026. Today, the Israel Iran conflict has entered a dangerous new phase of direct military confrontation, with missile strikes, air attacks, and the very real threat of a broader regional war that could reshape the Middle East.",
+      },
+      {
+        title: "Historical Background: From Allies to Enemies",
+        content: "Israel and Iran maintained close relations before the 1979 Islamic Revolution. Iran was one of the first Muslim-majority countries to recognize Israel, and the two nations cooperated on energy, security, and regional issues. The revolution transformed Iran into Israel's most determined adversary. Iran's new leadership refused to recognize Israel's right to exist and made opposition to the Jewish state a cornerstone of its foreign policy. Over the following decades, Iran built a network of proxy forces across the Middle East, including Hezbollah in Lebanon, Hamas and Islamic Jihad in Gaza, and various militias in Syria and Iraq. These groups became the primary vehicles for Iran's conflict with Israel, allowing Tehran to project power and threaten Israeli security without direct military engagement.",
+      },
+      {
+        title: "Iran's Proxy Network Against Israel",
+        content: "Iran has invested billions of dollars in building and maintaining proxy forces that surround Israel. Hezbollah in Lebanon is the most powerful, with an estimated 150,000 missiles pointed at Israeli cities. Hamas in Gaza, which launched the October 7, 2023 attack on Israel, receives Iranian funding, training, and weapons. Palestinian Islamic Jihad operates alongside Hamas in Gaza. Various Iranian-backed militias in Syria have attempted to establish a presence near Israel's northern border. The Houthi rebels in Yemen, though distant, have launched missiles and drones at Israel, demonstrating the reach of Iran's proxy network. This ring of proxy forces has been described by Israeli officials as a 'ring of fire' encircling the Jewish state, forcing Israel to develop sophisticated missile defense systems like Iron Dome, David's Sling, and Arrow.",
+      },
+      {
+        title: "The October 7 Hamas Attack and Its Consequences",
+        content: "The Hamas attack on Israel on October 7, 2023, marked a turning point in the Israel Iran conflict. Hamas fighters killed approximately 1,200 Israelis and took over 200 hostages in the deadliest attack on Jews since the Holocaust. While Iran denied direct involvement in planning the attack, its long-standing support for Hamas made it complicit in Israeli eyes. Israel's response in Gaza was swift and devastating, launching a military campaign aimed at destroying Hamas's military capabilities and governing infrastructure. The Gaza war became the bloodiest round of Israeli-Palestinian fighting in history, drawing international attention and criticism. The conflict also opened a second front on Israel's northern border, where Hezbollah began daily rocket and missile attacks in support of Hamas.",
+      },
+      {
+        title: "From Proxy War to Direct Confrontation",
+        content: "For years, Israel conducted airstrikes against Iranian targets in Syria, preventing Iran from establishing a permanent military presence near Israel's border. Iran generally avoided direct retaliation, preferring to respond through its proxies. This pattern began to change in early 2024. In April 2024, after an Israeli strike on an Iranian consulate building in Damascus killed several Iranian commanders, Iran launched its first direct attack on Israel, firing over 300 missiles and drones. Most were intercepted by Israel and its allies, but the attack marked a fundamental shift in the conflict. Israel responded with limited strikes on Iranian military facilities. The precedent had been set: Iran and Israel were now willing to attack each other directly.",
+      },
+      {
+        title: "The 2026 Escalation: Open Warfare",
+        content: "The February 28, 2026 US military operation against Iran, Operation Epic Fury, triggered a cascade of events that brought Israel and Iran closer to all-out war than ever before. Iran retaliated against both US and Israeli targets, firing ballistic missiles at Israeli cities. Israel's Iron Dome and other defense systems intercepted most of the incoming threats, but some missiles penetrated Israeli defenses, causing damage and casualties. Israel responded with massive airstrikes on Iranian military and nuclear facilities. Hezbollah in Lebanon launched thousands of rockets at northern Israel, while Israel conducted ground operations and airstrikes in southern Lebanon. The Houthis in Yemen added their own attacks, firing missiles at Israel and threatening Red Sea shipping. For the first time, Israel and Iran were engaged in direct, sustained military combat across multiple fronts.",
+      },
+      {
+        title: "Israel's Military Capabilities and Strategy",
+        content: "Israel possesses one of the most capable militaries in the Middle East, with advanced aircraft, missile defense systems, and nuclear capability. The Israel Defense Forces (IDF) have extensive combat experience and sophisticated intelligence capabilities. Israel's air force can strike targets across the region, including in Iran. The country's missile defense network, including Iron Dome, David's Sling, and the Arrow system, provides layered protection against various aerial threats. Israel's undeclared nuclear arsenal serves as an ultimate deterrent against existential threats. In the current conflict, Israel has focused on degrading Iran's ability to project power, striking at Iranian military infrastructure, weapons storage facilities, and command and control systems. Israel has also targeted Iranian proxy forces, particularly Hezbollah in Lebanon, to reduce the immediate threat to Israeli population centers.",
+      },
+      {
+        title: "Iran's Military Strategy and Capabilities",
+        content: "Iran has developed asymmetric military capabilities designed to counter Israel's technological advantages. Iran's ballistic missile program is the largest in the Middle East, with missiles capable of reaching Israel and beyond. Iran has invested heavily in drone technology, producing sophisticated unmanned aerial vehicles that have been used against Israeli and US targets. Iran's Revolutionary Guard Corps (IRGC) oversees both conventional military forces and the network of proxy groups that form Iran's forward defense. In a direct conflict with Israel, Iran relies on overwhelming missile and drone attacks to saturate Israeli air defenses, while its proxy forces attack Israel from multiple directions. Iran has also threatened to close the Strait of Hormuz, which would disrupt global oil supplies and potentially draw additional countries into the conflict.",
+      },
+      {
+        title: "Regional and Global Implications",
+        content: "The direct Israel Iran conflict has profound implications for the entire Middle East and the world. Arab states that had been normalizing relations with Israel under the Abraham Accords face difficult choices between their new partnerships and public sympathy for Palestinians. Iran's regional rivals, including Saudi Arabia and the Gulf states, must navigate between concern about Iranian power and wariness of Israeli actions. The conflict has disrupted global energy markets, with oil prices rising sharply as shipping through the Strait of Hormuz is threatened. The United States, Israel's closest ally, has deployed additional military forces to the region to defend Israel and deter further Iranian escalation. Russia and China have called for restraint while criticizing US and Israeli actions, adding a layer of great power competition to an already complex conflict.",
+      },
+      {
+        title: "The Humanitarian Impact",
+        content: "The Israel Iran conflict has created severe humanitarian crises across the region. In Gaza, Israel's war against Hamas has caused massive destruction and tens of thousands of casualties. In Lebanon, the conflict between Israel and Hezbollah has displaced hundreds of thousands of civilians on both sides of the border. Iranian missile attacks on Israel have caused casualties and damage, though Israel's missile defenses have limited the impact. Inside Iran, Israeli and US strikes have targeted military facilities but have also caused civilian casualties. The psychological impact of living under constant threat of missile attacks affects millions of people across Israel, Lebanon, and Iran.",
+      },
+      {
+        title: "What Comes Next: Scenarios for the Future",
+        content: "The future trajectory of the Israel Iran conflict remains highly uncertain. Several scenarios are possible: Continued escalation leading to a full-scale regional war involving multiple nations and potentially drawing in the United States and other global powers. A negotiated de-escalation, though the deep hostility between the parties and the complex web of proxy relationships make this difficult. A prolonged low-intensity conflict, with periodic escalations and ongoing proxy warfare. An Iranian nuclear breakout, which could trigger a major Israeli or US military response. The path forward depends on decisions made in Tehran, Jerusalem, Washington, and other regional capitals. What is certain is that the Israel Iran conflict has entered a new and more dangerous phase, with implications that extend far beyond the Middle East.",
+      },
+      {
+        title: "Conclusion",
+        content: "The transformation of the Israel Iran conflict from proxy warfare to direct confrontation represents one of the most significant shifts in Middle Eastern security in decades. The old rules that kept Israel and Iran from openly fighting each other have broken down. As both nations continue to trade blows directly, the risk of miscalculation and escalation grows. The international community faces the challenge of preventing a regional conflagration while addressing the underlying issues that drive the conflict. For civilians in Israel, Iran, Lebanon, Gaza, and beyond, the costs of this conflict are measured in lives lost, homes destroyed, and futures uncertain. The Israel Iran war of 2026 may well determine the shape of the Middle East for generations to come.",
+      },
+    ],
+  },
+  {
+    slug: "hezbollah-israel-war-lebanon-front",
+    title: "Hezbollah Israel War: The Lebanon Front Explained",
+    excerpt: "Hezbollah's war against Israel has opened a devastating second front in the Middle East conflict. Learn about Hezbollah's origins, Iran's support, missile capabilities, and the impact on Lebanon and Israel in 2026.",
+    date: "2026-03-22",
+    content: "Comprehensive analysis of the Hezbollah-Israel conflict on the Lebanon front in 2026.",
+    image: "/gallery-5.jpg",
+    sections: [
+      {
+        title: "Introduction to the Hezbollah Israel Conflict",
+        content: "Hezbollah, Iran's most powerful proxy force, has opened a critical second front against Israel from southern Lebanon. Since October 2023, daily rocket attacks, artillery exchanges, and ground operations have turned the Israel-Lebanon border into one of the most active conflict zones in the Middle East. The Hezbollah Israel war represents a major escalation in the broader Iran Israel conflict, with implications for regional stability, civilian populations, and global security.",
+      },
+      {
+        title: "Who is Hezbollah?",
+        content: "Hezbollah (Party of God) was founded in 1982 in response to Israel's invasion of Lebanon. The organization emerged from Lebanon's Shia Muslim community, which had been marginalized in the country's sectarian political system. Iran provided the funding, training, and ideological framework for Hezbollah's establishment, making it effectively an extension of Iranian power in Lebanon. Over four decades, Hezbollah has evolved from a militia into a political-military organization that dominates Lebanese politics while maintaining an independent military capability that rivals the Lebanese national army. Hezbollah operates schools, hospitals, and social services, building loyalty among Lebanon's Shia population. The organization is designated as a terrorist group by the United States, Israel, and several other nations, but is recognized as a legitimate political party in Lebanon and has members in Lebanon's parliament and cabinet.",
+      },
+      {
+        title: "Hezbollah's Military Capabilities",
+        content: "Hezbollah possesses one of the most formidable non-state military forces in the world. Estimates suggest the organization has an arsenal of 150,000 missiles and rockets of varying ranges and capabilities. This includes short-range Katyusha rockets for attacks on northern Israel, medium-range missiles that can reach Tel Aviv and central Israel, and long-range precision-guided missiles capable of striking specific military and infrastructure targets. Hezbollah has anti-tank guided missiles that have proven effective against Israeli armored vehicles. The organization operates drones for reconnaissance and attack missions, including kamikaze drones that can strike targets with precision. Hezbollah's fighters are experienced from years of combat in Syria, where they supported the Assad regime. The organization has an estimated 20,000 to 50,000 full-time fighters, with additional reserves that can be mobilized.",
+      },
+      {
+        title: "Iran's Support for Hezbollah",
+        content: "Hezbollah would not exist in its current form without Iranian support. Iran provides an estimated $700 million to $1 billion annually to Hezbollah, funding its military operations, social services, and political activities. Iran's Revolutionary Guard Corps (IRGC) trains Hezbollah fighters and helps plan operations. Weapons flow from Iran to Hezbollah through Syria, including advanced missiles and guidance systems. Iran sees Hezbollah as a strategic asset, providing a way to threaten Israel without direct Iranian involvement. Hezbollah's massive missile arsenal serves as a deterrent against Israeli attacks on Iran and as a potential retaliation capability. In the current conflict, Hezbollah's actions are closely coordinated with Iranian strategic objectives.",
+      },
+      {
+        title: "The 2023-2026 Escalation on the Lebanon Front",
+        content: "When Hamas attacked Israel on October 7, 2023, Hezbollah began launching rockets and missiles into northern Israel the following day. The stated purpose was to open a second front and divide Israeli forces. Initially, Hezbollah maintained a calculated escalation, firing enough rockets to tie down Israeli forces but not so many as to trigger a full-scale war. This changed over time as the Gaza war intensified and the regional situation deteriorated. Israel evacuated tens of thousands of civilians from northern Israel due to Hezbollah attacks. The IDF responded with airstrikes on Hezbollah positions in southern Lebanon and targeted killings of Hezbollah commanders. By early 2026, the conflict had escalated significantly, with Israel conducting ground operations in southern Lebanon and Hezbollah launching hundreds of rockets daily.",
+      },
+      {
+        title: "Impact on Northern Israel",
+        content: "Hezbollah's attacks have transformed life in northern Israel. Approximately 60,000 Israelis have been evacuated from communities near the Lebanon border, many for over a year. Kiryat Shmona, the largest city in northern Israel, has been largely emptied of its population. Rockets and missiles have damaged homes, businesses, and infrastructure. Israel's Iron Dome system intercepts many incoming threats, but some penetrate the defenses. The economic impact is severe, with agriculture, tourism, and small businesses devastated. Israeli civilians live with constant air raid sirens and the knowledge that larger attacks could come at any time. The Israeli government faces pressure to restore security to the north, even if that means a major military operation against Hezbollah.",
+      },
+      {
+        title: "Impact on Lebanon",
+        content: "Lebanon is paying a heavy price for Hezbollah's war against Israel. Southern Lebanon has been heavily damaged by Israeli airstrikes, with homes, farms, and infrastructure destroyed. Hundreds of thousands of Lebanese have been displaced from the border region. Lebanon's already fragile economy has been further damaged, with agricultural land unusable and trade disrupted. Israel's targeted killings have eliminated experienced Hezbollah commanders. Lebanese civilians who do not support Hezbollah are caught in the crossfire, unable to escape the conflict. There is growing frustration in Lebanon with Hezbollah's unilateral decision to drag the country into war. However, criticism of Hezbollah remains risky, as the organization has historically suppressed domestic opposition.",
+      },
+      {
+        title: "Israel's Military Response",
+        content: "Israel has employed a range of military options against Hezbollah. Airstrikes target Hezbollah weapons depots, command centers, and rocket launching sites. Israel has assassinated senior Hezbollah commanders, including those responsible for missile operations. Ground operations in southern Lebanon aim to clear Hezbollah positions near the border and create a security zone. Israel has used advanced technology, including drones and surveillance systems, to track Hezbollah movements and target its leadership. The IDF has mobilized reserves and deployed additional forces to the northern front. Israel's strategy aims to degrade Hezbollah's capabilities while avoiding a full-scale war that would devastate both sides. The challenge is that Hezbollah's vast missile arsenal cannot be destroyed without a massive military campaign that would cause enormous casualties.",
+      },
+      {
+        title: "The Risk of All-Out War",
+        content: "The Hezbollah Israel conflict contains the seeds of a much larger war. If Hezbollah were to launch a massive missile barrage at Israeli cities, Israel would likely respond with overwhelming force, potentially targeting all of Lebanon. If Israel were to launch a major ground invasion of Lebanon, Hezbollah would fight a determined defense, potentially drawing in additional Iranian support. The conflict could spread beyond Israel and Lebanon, with Iran becoming directly involved and other regional actors joining the fight. Diplomats from the United States, France, and other countries have worked to prevent the conflict from exploding into full-scale war, but the situation remains volatile. A single major attack or miscalculation could trigger a catastrophic escalation.",
+      },
+      {
+        title: "Conclusion",
+        content: "The Hezbollah Israel war on the Lebanon front represents one of the most dangerous dimensions of the broader Middle East conflict. Hezbollah's vast missile arsenal, Iran's support, and the determination of both sides make this a conflict with no easy resolution. Civilians on both sides of the border have borne the brunt of the fighting, with displacement, destruction, and death becoming daily realities. The international community faces a difficult challenge in preventing further escalation while addressing the legitimate security concerns of all parties. As the conflict continues, the risk of a wider war that would devastate Lebanon and Israel remains alarmingly high.",
+      },
+    ],
+  },
+  {
+    slug: "gaza-war-israel-hamas-2026",
+    title: "Gaza War 2026: Israel Hamas Conflict and the Humanitarian Crisis",
+    excerpt: "The Gaza war between Israel and Hamas has reshaped the Middle East. Explore the origins of the conflict, the October 7 attack, Israel's military response, humanitarian impact, and implications for the Israel Iran proxy war.",
+    date: "2026-03-20",
+    content: "In-depth analysis of the Gaza war, Israel-Hamas conflict, and humanitarian crisis in 2026.",
+    image: "/gallery-4.jpg",
+    sections: [
+      {
+        title: "Introduction to the Gaza War",
+        content: "The Gaza war that began on October 7, 2023, has become one of the deadliest and most destructive conflicts in the Israeli-Palestinian history. What started as a surprise Hamas attack on Israel has evolved into a prolonged war with profound humanitarian consequences, regional implications, and connections to the broader Israel Iran conflict. Understanding the Gaza war is essential to understanding the current Middle East crisis.",
+      },
+      {
+        title: "The October 7, 2023 Hamas Attack",
+        content: "On October 7, 2023, Hamas launched an unprecedented attack on Israel. Approximately 3,000 Hamas fighters breached Israel's border with Gaza, attacking kibbutzim, military bases, and a music festival. The attackers killed approximately 1,200 Israelis, making it the deadliest single day for Jews since the Holocaust. Hamas took approximately 250 hostages back to Gaza, including women, children, and elderly. The attack shocked Israel and the world, shattering assumptions about Israel's security and the status quo with Gaza. Hamas justified the attack as a response to Israeli occupation, settlement expansion in the West Bank, and the treatment of Palestinians. The attack was coordinated with Iran-backed Hezbollah in Lebanon, though the extent of Iranian foreknowledge remains debated.",
+      },
+      {
+        title: "Israel's Military Response",
+        content: "Israel declared war on Hamas immediately after the October 7 attack, launching a military campaign with the stated goals of destroying Hamas's military and governing capabilities and securing the release of hostages. The Israeli military campaign has involved extensive airstrikes, artillery bombardment, and ground operations throughout Gaza. Israel has targeted Hamas fighters, tunnels, weapons facilities, and government buildings. The campaign has been characterized by intense urban warfare in densely populated areas. Israel has faced criticism for the scale of destruction and civilian casualties, while arguing that Hamas uses civilians as human shields by operating in residential areas and using civilian infrastructure for military purposes. The war has continued for over a year, with occasional ceasefires for hostage releases but no permanent end in sight.",
+      },
+      {
+        title: "The Humanitarian Crisis in Gaza",
+        content: "The Gaza war has created a humanitarian catastrophe of unprecedented scale in the territory. Over 40,000 Palestinians have been killed, according to Gaza health authorities, with a significant proportion being women and children. Approximately 80% of Gaza's population of 2.3 million has been displaced, often multiple times. Gaza's infrastructure has been devastated, with homes, schools, hospitals, water systems, and electrical grids damaged or destroyed. Access to food, clean water, medicine, and fuel has been severely limited, leading to warnings of famine. Israel has controlled the flow of humanitarian aid into Gaza, arguing that Hamas diverts aid for military purposes. International organizations have struggled to deliver assistance amid the fighting and breakdown of civil order. The psychological impact on Gaza's children, who have lived through months of bombardment and displacement, will last for generations.",
+      },
+      {
+        title: "The Hostage Situation",
+        content: "The approximately 250 hostages taken by Hamas on October 7 have been a central issue in the war. Some hostages were released during a brief ceasefire in November 2023 in exchange for Palestinian prisoners held by Israel. Other hostages have been rescued by Israeli military operations, and some have been found dead. Approximately 100 hostages remain in Gaza, though Israeli authorities believe many of them are no longer alive. The hostage situation has created intense pressure on the Israeli government from families of the captives, who have organized protests demanding a deal for their release. Hamas has conditioned the release of hostages on a permanent ceasefire and full Israeli withdrawal from Gaza, terms Israel has rejected. The fate of the hostages remains one of the most emotional and difficult issues in the conflict.",
+      },
+      {
+        title: "Hamas: Origins and Iran Connection",
+        content: "Hamas (Islamic Resistance Movement) was founded in 1987 during the First Intifada as an offshoot of the Muslim Brotherhood. The organization gained popularity by providing social services and by its uncompromising stance against Israel. Hamas won Palestinian legislative elections in 2006 and seized control of Gaza from the Palestinian Authority in 2007. Since then, Hamas has governed Gaza while maintaining its military wing, the Qassam Brigades. Iran has been a major supporter of Hamas, providing funding, weapons, and training. The relationship has not always been smooth - Hamas broke with Iran temporarily over the Syrian civil war - but the alliance has strengthened in recent years. Iran sees Hamas as part of its 'axis of resistance' against Israel and the United States. Hamas's October 7 attack was a demonstration of the capabilities Iran has helped build.",
+      },
+      {
+        title: "Regional and International Reactions",
+        content: "The Gaza war has polarized international opinion. Israel's closest ally, the United States, has provided military and diplomatic support while expressing concern about civilian casualties and calling for more humanitarian aid. European countries have generally supported Israel's right to self-defense while criticizing aspects of the military campaign. Arab and Muslim-majority countries have condemned Israel and called for an immediate ceasefire. The United Nations and international human rights organizations have accused Israel of war crimes and possible genocide, charges Israel denies. Protests and debates over the war have occurred worldwide, with universities, cities, and governments divided over how to respond. The war has strained relations between Israel and some of its Arab neighbors, including those that had normalized relations under the Abraham Accords.",
+      },
+      {
+        title: "Gaza War and the Broader Israel Iran Conflict",
+        content: "The Gaza war is not an isolated conflict but a key component of the broader Israel Iran confrontation. Hamas is part of Iran's network of proxy forces that threaten Israel from multiple directions. The October 7 attack and subsequent war have tied down Israeli forces and attention, potentially limiting Israel's ability to address other threats. Iran has used the Gaza war to rally regional support and to justify pressure on Israel and the United States. The war has also influenced Iranian calculations about the risks and opportunities of direct confrontation with Israel. The 2026 escalation that brought open warfare between Israel and Iran cannot be understood without reference to the Gaza war that preceded and paralleled it.",
+      },
+      {
+        title: "The Future of Gaza",
+        content: "The question of what happens after the war remains unresolved. Israel has stated that it will maintain security control over Gaza indefinitely, a position opposed by the United States and most of the international community. Various proposals for post-war Gaza include: an international peacekeeping force, administration by the Palestinian Authority, or a coalition of Arab nations. Hamas continues to fight, betting that international pressure will force Israel to withdraw before its destruction is complete. The destruction in Gaza is so extensive that reconstruction would take years and billions of dollars, but donors are reluctant to commit without a clear political framework. For the people of Gaza, the future is uncertain, but the present is desperate.",
+      },
+      {
+        title: "Conclusion",
+        content: "The Gaza war has been a tragedy for Israelis and Palestinians alike. The October 7 attack inflicted trauma on Israel that will shape the nation for decades. Israel's military response has caused suffering in Gaza on a scale that has shocked the world. The war has become intertwined with regional dynamics, including the Israel Iran conflict, making resolution even more complex. As the fighting continues, civilians on both sides bear the cost of a conflict with no clear end in sight. The Gaza war will be remembered as a pivotal moment in Middle Eastern history, but whether it leads to lasting change or merely another chapter in an endless conflict remains to be seen.",
+      },
+    ],
+  },
+  {
     slug: "us-iran-conflict-causes-and-impact",
     title: "US Iran Conflict: Causes and Impact",
     excerpt: "Explore the US Iran conflict, including nuclear tensions, US sanctions on Iran, Strait of Hormuz risks, and rising Middle East instability shaping global security and oil markets.",
@@ -151,23 +309,23 @@ export const blogs: BlogPost[] = [
       "How the February 28 escalation involving the U.S., Israel, and Iran reshaped the region—from leadership succession and retaliation to the Strait of Hormuz, global energy markets, nuclear history, and the shift from proxy war to direct confrontation.",
     date: "2026-03-24",
     content:
-      "Analysis of the Iran–U.S.–Israel conflict: the February 28 escalation, regional and global consequences, Iran’s nuclear program, proxy networks, and the path from indirect conflict to open military confrontation.",
+      "Analysis of the Iran–U.S.–Israel conflict: the February 28 escalation, regional and global consequences, Iran's nuclear program, proxy networks, and the path from indirect conflict to open military confrontation.",
     image: "/blog-iran-us-israel-global-impact.png",
     sections: [
       {
         title: "Introduction",
         content:
-          "On February 28, a major escalation occurred when the U.S. and Israel launched coordinated attacks against Iran after weeks of rising tensions and military buildup. Strikes hit key military targets and senior figures in the Iranian government, reportedly including the death of Supreme Leader Ayatollah Ali Khamenei. Iran’s Assembly of Experts then elected his son, Mojtaba Khamenei, to succeed him. Iran retaliated against U.S. military bases and critical infrastructure across the region. Israel, meanwhile, intensified its military posture in Lebanon after Hezbollah fired rockets into Israeli territory in support of Iran. The human toll has been severe: more than 1,800 people killed, including U.S. service members and civilians. Reports of a U.S. strike on an elementary school in Iran—killing at least 175 students—have become a focal point of international outrage. The trajectory of the war has also been clouded by President Trump’s shifting and sometimes contradictory statements about U.S. war aims.",
+          "On February 28, a major escalation occurred when the U.S. and Israel launched coordinated attacks against Iran after weeks of rising tensions and military buildup. Strikes hit key military targets and senior figures in the Iranian government, reportedly including the death of Supreme Leader Ayatollah Ali Khamenei. Iran's Assembly of Experts then elected his son, Mojtaba Khamenei, to succeed him. Iran retaliated against U.S. military bases and critical infrastructure across the region. Israel, meanwhile, intensified its military posture in Lebanon after Hezbollah fired rockets into Israeli territory in support of Iran. The human toll has been severe: more than 1,800 people killed, including U.S. service members and civilians. Reports of a U.S. strike on an elementary school in Iran—killing at least 175 students—have become a focal point of international outrage. The trajectory of the war has also been clouded by President Trump's shifting and sometimes contradictory statements about U.S. war aims.",
       },
       {
         title: "Regional Crisis with Global Consequences",
         content:
-          "What began as targeted strikes has widened into a regional crisis with global ripple effects, including serious disruption to supply chains. Among the most consequential developments is Iran’s reported success in restricting traffic through the Strait of Hormuz—a chokepoint for a large share of world oil exports. That closure helped trigger a worldwide energy shock and led the International Energy Agency to release hundreds of millions of barrels from strategic stockpiles to stabilize markets.",
+          "What began as targeted strikes has widened into a regional crisis with global ripple effects, including serious disruption to supply chains. Among the most consequential developments is Iran's reported success in restricting traffic through the Strait of Hormuz—a chokepoint for a large share of world oil exports. That closure helped trigger a worldwide energy shock and led the International Energy Agency to release hundreds of millions of barrels from strategic stockpiles to stabilize markets.",
       },
       {
-        title: "Background: Iran’s Nuclear Program",
+        title: "Background: Iran's Nuclear Program",
         content:
-          "Iran’s nuclear ambitions date back to the late 1950s. During the Iran–Iraq War in the 1980s, Tehran pursued nuclear capabilities partly as a hedge against external threats. In the early 2000s, previously concealed nuclear work came to light. Iran eventually accepted limits on its program, but disputes over transparency and compliance brought United Nations sanctions that weighed heavily on growth and employment—helping push Iran toward negotiations with major powers. The 2015 Joint Comprehensive Plan of Action (JCPOA) committed Iran to restraining its nuclear activities in exchange for sanctions relief. Even with that agreement, friction continued over missile development and regional policy.",
+          "Iran's nuclear ambitions date back to the late 1950s. During the Iran–Iraq War in the 1980s, Tehran pursued nuclear capabilities partly as a hedge against external threats. In the early 2000s, previously concealed nuclear work came to light. Iran eventually accepted limits on its program, but disputes over transparency and compliance brought United Nations sanctions that weighed heavily on growth and employment—helping push Iran toward negotiations with major powers. The 2015 Joint Comprehensive Plan of Action (JCPOA) committed Iran to restraining its nuclear activities in exchange for sanctions relief. Even with that agreement, friction continued over missile development and regional policy.",
       },
       {
         title: "Expansion of Influence through Regional Proxies",
