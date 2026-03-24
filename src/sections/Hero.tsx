@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
-import { Play, Music, Disc, Calendar, ChevronDown, FileText, Radio, Volume2, VolumeX, Menu, X } from 'lucide-react';
+import { Play, Music, Disc, Calendar, ChevronDown, FileText, Radio, Volume2, VolumeX, Menu, X, Newspaper } from 'lucide-react';
 import { heroConfig, topicLinks } from '../config';
 
 const ICON_MAP = {
@@ -11,6 +11,7 @@ const ICON_MAP = {
   music: Music,
   blog: FileText,
   radio: Radio,
+  news: Newspaper,
 };
 
 const Hero = () => {

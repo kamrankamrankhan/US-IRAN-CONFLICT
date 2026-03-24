@@ -6,6 +6,7 @@ import ArticlePage from './pages/ArticlePage';
 import BlogsListPage from './pages/BlogsListPage';
 import BlogPostPage from './pages/BlogPostPage';
 import LiveCoveragePage from './pages/LiveCoveragePage';
+import NewsPage from './pages/NewsPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 export const router = createBrowserRouter([
@@ -19,6 +20,7 @@ export const router = createBrowserRouter([
       { path: 'blogs', element: <BlogsListPage /> },
       { path: 'blog/:slug', element: <BlogPostPage /> },
       { path: 'live-coverage', element: <LiveCoveragePage /> },
+      { path: 'news', element: <NewsPage /> },
       { path: '*', element: <NotFoundPage /> },
     ],
   },

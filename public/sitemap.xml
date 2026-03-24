@@ -40,6 +40,23 @@
     <priority>0.9</priority>
   </url>
   
+  <!-- News Page -->
+  <url>
+    <loc>https://usiranconflict.com/news</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.95</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Strategic Intelligence</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-03-24</news:publication_date>
+      <news:title>US Iran War and Israel Iran Conflict News</news:title>
+      <news:keywords>US Iran war news, Israel Iran conflict, Middle East war news, Iran nuclear, Hezbollah, Hamas, Gaza war</news:keywords>
+    </news:news>
+  </url>
+  
   <!-- Blog Post: Israel Iran Direct Conflict -->
   <url>
     <loc>https://usiranconflict.com/blog/israel-iran-direct-conflict-2026</loc>
