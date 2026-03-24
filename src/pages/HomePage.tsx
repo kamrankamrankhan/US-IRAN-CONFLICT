@@ -3,6 +3,8 @@ import AlbumCube from '../sections/AlbumCube';
 import ParallaxGallery from '../sections/ParallaxGallery';
 import Footer from '../sections/Footer';
 import FeaturedArticle from '../sections/FeaturedArticle';
+import BlogsSection from '../sections/BlogsSection';
+import NewsSection from '../sections/NewsSection';
 
 export default function HomePage() {
   return (
@@ -10,6 +12,8 @@ export default function HomePage() {
       <Hero />
       <AlbumCube />
       <ParallaxGallery />
+      <NewsSection />
+      <BlogsSection />
       <FeaturedArticle />
       <Footer />
     </main>
