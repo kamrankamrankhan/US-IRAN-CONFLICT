@@ -12,7 +12,8 @@ import {
   Clock,
   RefreshCw
 } from 'lucide-react';
-import { newsItems, newsCategories, breakingNews, newsSources, NewsItem } from '../content/news';
+import { newsItems, newsCategories, breakingNews, newsSources } from '../content/news';
+import type { NewsItem } from '../content/news';
 
 const categoryIcons: Record<string, React.ReactNode> = {
   breaking: <AlertTriangle className="w-4 h-4 text-red-400" />,
