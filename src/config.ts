@@ -27,7 +27,7 @@ export const siteConfig: SiteConfig = {
 export interface HeroNavItem {
   label: string;
   sectionId: string;
-  icon: "disc" | "play" | "calendar" | "music" | "blog" | "radio";
+  icon: "disc" | "play" | "calendar" | "music" | "blog" | "radio" | "news";
   /** If set, nav item links to this path instead of scrolling to section */
   path?: string;
 }
@@ -63,6 +63,7 @@ export const heroConfig: HeroConfig = {
     { label: "Visual Intel", sectionId: "gallery", icon: "play" },
     { label: "Analysis", sectionId: "contact", icon: "music" },
     { label: "Blogs", sectionId: "", icon: "blog", path: "/blogs" },
+    { label: "News", sectionId: "", icon: "news", path: "/news" },
     { label: "Live coverage", sectionId: "", icon: "radio", path: "/live-coverage" },
   ],
 };
