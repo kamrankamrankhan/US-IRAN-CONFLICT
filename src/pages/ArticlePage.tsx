@@ -18,12 +18,28 @@ const ArticlePage = () => {
       </header>
 
       <div className="max-w-3xl mx-auto px-6 py-12 md:py-20">
+        {/* Hero Image */}
+        {articleMeta.image && (
+          <div className="mb-12 -mx-6 md:mx-0 md:rounded-lg overflow-hidden">
+            <img
+              src={articleMeta.image}
+              alt={articleMeta.headline}
+              className="w-full h-auto object-cover"
+            />
+          </div>
+        )}
+
         <p className="font-mono-custom text-xs text-neon-soft/60 uppercase tracking-wider mb-2">
           {articleMeta.byline} · {articleMeta.date}
         </p>
         <h1 className="font-display text-3xl md:text-4xl lg:text-5xl text-white leading-tight mb-8">
           {articleMeta.headline}
         </h1>
+
+        {/* Meta description as intro */}
+        <p className="text-xl text-white/70 leading-relaxed mb-12 pb-12 border-b border-white/10">
+          {articleMeta.metaDescription}
+        </p>
 
         {articleSections.map((section) => (
           <section key={section.id} id={section.id} className="mb-12">
@@ -38,7 +54,7 @@ const ArticlePage = () => {
 
         <section className="mt-16 pt-12 border-t border-white/10">
           <h2 className="font-display text-xl md:text-2xl text-white mb-6">
-            Key takeaways
+            Key Takeaways
           </h2>
           <ul className="space-y-4">
             {keyTakeaways.map((takeaway, index) => (
@@ -54,6 +70,25 @@ const ArticlePage = () => {
             ))}
           </ul>
         </section>
+
+        {/* Keywords */}
+        {articleMeta.keywords && (
+          <div className="mt-12 pt-8 border-t border-white/10">
+            <h4 className="text-sm font-mono-custom uppercase tracking-wider text-white/50 mb-4">
+              Related Topics
+            </h4>
+            <div className="flex flex-wrap gap-2">
+              {articleMeta.keywords.split(', ').map((keyword, index) => (
+                <span
+                  key={index}
+                  className="px-3 py-1 bg-white/5 text-white/60 text-sm rounded-full font-mono-custom"
+                >
+                  {keyword}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
 
         <div className="mt-16 pt-8">
           <Link
