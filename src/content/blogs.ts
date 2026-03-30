@@ -585,4 +585,65 @@ export const blogs: BlogPost[] = [
       },
     ],
   },
+  // ============================================================================
+  // BLOG 12: COMPREHENSIVE SEO BLOG - US IRAN ISRAEL WAR
+  // ============================================================================
+  {
+    slug: "us-iran-israel-war-2026-axis-of-resistance",
+    title: "US-Iran-Israel War 2026: Axis of Resistance Explained",
+    excerpt: "US-Iran-Israel war 2026: Complete guide to Iran's Axis of Resistance, Hezbollah Hamas Houthis proxy network, Operation Epic Fury timeline, and global impact. Expert analysis with facts and sources.",
+    date: "2026-03-29",
+    content: "Comprehensive analysis of the US-Iran-Israel war 2026, Iran's proxy networks, Axis of Resistance strategy, and global implications with FAQ section.",
+    image: "/blog-us-iran-israel-war-2026.jpg",
+    sections: [
+      {
+        title: "US-Iran-Israel War 2026: Understanding the Conflict",
+        content: "The US-Iran-Israel war of 2026 represents the most dangerous escalation in Middle East geopolitics in decades. What began as decades-long shadow warfare has erupted into open military confrontation, drawing in major powers and threatening global stability. This comprehensive analysis examines the conflict's origins, Iran's strategic proxy network known as the Axis of Resistance, key events from 2025-2026, and the profound implications for international security. According to the Council on Foreign Relations, Iran's regional strategy has fundamentally reshaped Middle Eastern security dynamics, making this conflict essential to understand for anyone following global affairs.",
+      },
+      {
+        title: "What Is the Axis of Resistance? Iran's Proxy Network Explained",
+        content: "The Axis of Resistance refers to Iran's extensive network of allied governments, militias, and political movements across the Middle East. This proxy network, coordinated by Iran's Islamic Revolutionary Guard Corps (IRGC), enables Tehran to project power far beyond its borders while maintaining plausible deniability. According to BBC News, Iran has invested billions of dollars building this network over four decades. The core members include Hezbollah in Lebanon, Hamas and Palestinian Islamic Jihad in Gaza, Houthi rebels in Yemen, and various Shiite militias in Iraq and Syria. Together, these groups give Iran strategic depth against Israel and the United States, creating what Israeli officials call a 'ring of fire' encircling their nation.",
+      },
+      {
+        title: "Hezbollah: Iran's Most Powerful Proxy in Lebanon",
+        content: "Hezbollah represents Iran's most capable and sophisticated proxy force. Founded in 1982 during Israel's invasion of Lebanon, Hezbollah has evolved into a 'state within a state' with an estimated 150,000 missiles and rockets aimed at Israel, according to Reuters. Iran provides $700 million to $1 billion annually in funding, along with advanced weapons and training through the IRGC Quds Force. Hezbollah operates schools, hospitals, and social services, building deep loyalty among Lebanon's Shia population. The organization has 20,000-50,000 full-time fighters, battle-hardened from years of combat in Syria supporting the Assad regime. In the 2026 conflict, Hezbollah has opened a critical second front against Israel, launching thousands of rockets daily and engaging in ground combat.",
+      },
+      {
+        title: "Hamas and Palestinian Islamic Jihad: Iran's Gaza Proxies",
+        content: "Hamas, which has governed Gaza since 2007, receives significant Iranian support including funding, weapons, and training. The October 7, 2023 Hamas attack on Israel, which killed approximately 1,200 people, demonstrated capabilities Iran helped build over years. According to Al Jazeera, Iran's relationship with Hamas has strengthened since 2023, with increased weapons transfers and coordination. Palestinian Islamic Jihad maintains even closer ties to Tehran. While Hamas operates with some independence, the alliance serves both parties: Hamas gains resources while Iran gains a forward position against Israel and influence over the Palestinian cause. This relationship has made the Gaza war a central component of the broader Iran-Israel confrontation.",
+      },
+      {
+        title: "Houthi Rebels in Yemen: Iran's Red Sea Proxy",
+        content: "The Houthi movement, formally known as Ansar Allah, has emerged as a significant Iranian proxy capable of disrupting global trade. Iranian-supplied missiles and drones have enabled Houthi attacks on commercial shipping in the Red Sea, affecting approximately 12% of global trade passing through the Bab al-Mandab strait. According to the United Nations, these attacks have increased shipping costs by 300% for some routes and forced vessels to divert around Africa's Cape of Good Hope. While Iran's control over the Houthis is less direct than over Hezbollah, the relationship serves Iranian strategic interests by threatening Saudi Arabia's southern border and providing leverage against the United States and its allies.",
+      },
+      {
+        title: "Timeline of US-Iran-Israel Conflict: 2025-2026",
+        content: "The escalation timeline reveals how proxy warfare evolved into direct confrontation: **Early 2025** - Nuclear negotiations in Geneva stall as Iran exceeds JCPOA uranium enrichment limits, reaching 60% purity. **Late 2025** - US restores 'maximum pressure' sanctions, cutting Iranian oil exports by over 80%. **February 4, 2026** - Washington reinstates comprehensive sanctions on Iran's oil, banking, and shipping sectors. **February 26, 2026** - Last-ditch nuclear talks in Geneva collapse without agreement. **February 28, 2026** - Operation Epic Fury launched: US strikes Iranian nuclear facilities (Natanz, Fordow) and military targets across 24 provinces. Iran retaliates with ballistic missile attacks on US bases in Iraq, Qatar, UAE, and Saudi Arabia. **March 2026** - Israel conducts airstrikes on Iranian territory. Hezbollah launches daily rocket attacks. Houthis intensify Red Sea shipping attacks. The conflict continues to escalate.",
+      },
+      {
+        title: "Operation Epic Fury: February 28, 2026 Explained",
+        content: "Operation Epic Fury marks the most significant US military action against Iran since the 1980s. Launched at 05:00 local time on February 28, 2026, the operation deployed B-2 stealth bombers, F-35 fighters, Tomahawk cruise missiles, and submarine-launched weapons against Iranian nuclear facilities, military bases, and IRGC command centers. Over 1,200 precision-guided munitions were deployed across 24 of Iran's 31 provinces. Iranian sources report over 130 civilian casualties, including a tragic incident at an elementary school. The operation triggered immediate Iranian retaliation, with ballistic missiles targeting US military bases across the region. The UN Security Council convened emergency sessions but failed to reach consensus. Oil prices surged 15% within hours.",
+      },
+      {
+        title: "Global Impact of US-Iran-Israel War 2026",
+        content: "The conflict has created far-reaching consequences: **Energy Markets** - Oil prices surged 15-20% to above $100 per barrel. The Strait of Hormuz, handling 21 million barrels daily (20% of global consumption), faces Iranian closure threats. **Global Economy** - Inflation has accelerated, supply chains disrupted, and financial markets experienced volatility. **Humanitarian Crisis** - Over 130 Iranian civilians killed, 60,000 Israelis evacuated from northern communities, hundreds of thousands displaced in Lebanon, and Gaza's humanitarian catastrophe continues. **Regional Stability** - At least eight nations directly affected: Israel, Lebanon, Iraq, Syria, Yemen, Saudi Arabia, UAE, and Qatar. According to the International Energy Agency, strategic petroleum reserves have been released to stabilize markets.",
+      },
+      {
+        title: "Why Did the Iran Nuclear Deal Fail?",
+        content: "The Joint Comprehensive Plan of Action (JCPOA), signed in 2015, temporarily constrained Iran's nuclear program in exchange for sanctions relief. The agreement limited uranium enrichment to 3.67% and imposed international monitoring. However, the US withdrawal in 2018 under the Trump administration and subsequent sanctions prompted Iran to gradually exceed all JCPOA limits. By 2026, Iran had enriched uranium to 60% purity, stockpiled approximately 972 kg, and restricted IAEA inspector access. According to Wikipedia's comprehensive coverage, the nuclear deal's collapse was driven by mutual distrust, regional competition, and domestic politics in both nations. The failure of diplomacy paved the way for military confrontation.",
+      },
+      {
+        title: "FAQ: US-Iran-Israel War 2026",
+        content: "**Q: What started the US-Iran-Israel war in 2026?** A: The direct war began with Operation Epic Fury on February 28, 2026, when the US launched military strikes on Iranian nuclear and military facilities. This followed years of proxy warfare, failed nuclear negotiations, and restored sanctions. **Q: What is the Axis of Resistance?** A: The Axis of Resistance is Iran's network of proxy forces including Hezbollah, Hamas, Houthis, and Iraqi militias. It allows Iran to project power across the Middle East while maintaining plausible deniability. **Q: How many missiles does Hezbollah have?** A: According to intelligence estimates, Hezbollah possesses approximately 150,000 missiles and rockets capable of reaching all of Israel. **Q: What is Iran's nuclear breakout time?** A: Experts estimate Iran could produce weapons-grade uranium for a nuclear weapon in 2-3 weeks given current enrichment levels and stockpiles. **Q: How has the war affected oil prices?** A: Oil prices surged 15-20% following the February 2026 escalation, with Brent crude exceeding $100 per barrel due to Strait of Hormuz threat.",
+      },
+      {
+        title: "Will the US-Iran-Israel War Escalate Further?",
+        content: "The trajectory remains highly uncertain. Multiple scenarios exist: **Diplomatic Resolution** - Renewed negotiations after a period of de-escalation, though deep hostility complicates this path. **Prolonged Conflict** - Continued proxy warfare, periodic escalations, and sustained sanctions pressure. **Iranian Nuclear Breakout** - Iran develops nuclear weapons capability, potentially triggering major Israeli or US military response. **Regional War** - Conflict spreads to additional nations, Strait of Hormuz closed, major casualties from missile attacks. According to analysis from the International Crisis Group, the risk of miscalculation leading to broader war remains 'alarmingly high.' The merger of the Gaza war, Hezbollah front, and broader Iran confrontation has created multiple escalation pathways that are difficult to control.",
+      },
+      {
+        title: "Conclusion: Understanding the Middle East Crisis",
+        content: "The US-Iran-Israel war of 2026 represents a fundamental shift in Middle East geopolitics. Decades of proxy warfare have given way to direct military confrontation, with profound implications for regional stability and global security. Iran's Axis of Resistance—Hezbollah, Hamas, Houthis, and allied militias—demonstrates how asymmetric strategies can challenge even the most powerful nations. The humanitarian costs are measured in thousands of lives lost, millions displaced, and futures uncertain. For the international community, the challenge is preventing broader regional war while addressing the underlying issues driving the conflict. Understanding this complex conflict is essential for anyone seeking to comprehend contemporary international relations. The path forward depends on decisions in Washington, Tehran, Jerusalem, and regional capitals—decisions that will shape the Middle East for generations.",
+      },
+    ],
+  },
 ];
