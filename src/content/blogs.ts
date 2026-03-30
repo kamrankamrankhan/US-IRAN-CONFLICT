@@ -344,4 +344,204 @@ export const blogs: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: "iran-nuclear-program-history-dangers",
+    title: "Iran's Nuclear Program: History, Dangers, and International Response",
+    excerpt: "Iran's nuclear program has been a source of international tension for decades. Explore the history of Iran's nuclear ambitions, the dangers of nuclear proliferation, and the international community's response including sanctions and diplomatic efforts.",
+    date: "2026-03-25",
+    content: "Comprehensive analysis of Iran's nuclear program, from its origins to the current crisis and international response.",
+    image: "/blog-iran-nuclear-program.jpg",
+    sections: [
+      {
+        title: "Introduction to Iran's Nuclear Program",
+        content: "Iran's nuclear program represents one of the most contentious issues in international relations, raising fears of nuclear proliferation in an already volatile Middle East. For decades, the international community has grappled with how to prevent Iran from developing nuclear weapons while respecting its right to peaceful nuclear energy. The 2026 escalation has brought these concerns to the forefront, with military strikes targeting Iranian nuclear facilities and renewed fears of a nuclear-armed Iran.",
+      },
+      {
+        title: "Origins of Iran's Nuclear Ambitions",
+        content: "Iran's nuclear program began in the 1950s with support from the United States under the Atoms for Peace program. The Shah of Iran envisioned a modern, nuclear-powered Iran with ambitious energy projects. After the 1979 Islamic Revolution, the program was initially suspended but gradually resumed in the 1980s during the Iran-Iraq War. Iran secretly pursued uranium enrichment capabilities, hiding key facilities from international inspectors for years. The revelation of hidden nuclear sites in 2002, including the Natanz enrichment facility and Arak heavy water reactor, triggered an international crisis and raised suspicions about Iran's true intentions.",
+      },
+      {
+        title: "The Nuclear Fuel Cycle and Weapons Potential",
+        content: "Understanding Iran's nuclear program requires understanding the dual-use nature of nuclear technology. Uranium enrichment for nuclear power plants can also produce weapons-grade material if taken to higher levels. Iran has enriched uranium to 60% purity, approaching the 90% needed for weapons. The Arak heavy water reactor, if completed, could produce plutonium suitable for weapons. Iran has also developed ballistic missiles capable of delivering nuclear warheads. While Iran maintains its program is peaceful, the technical capabilities it has developed give it a 'breakout' capability to produce nuclear weapons on short notice if it chose to do so.",
+      },
+      {
+        title: "International Concerns and Non-Proliferation",
+        content: "The international community's concerns about Iran's nuclear program extend beyond Iran itself. A nuclear-armed Iran could trigger a regional arms race, with Saudi Arabia, Turkey, Egypt, and other nations potentially seeking their own nuclear weapons. This would undermine the global non-proliferation regime and increase the risk of nuclear weapons falling into the hands of non-state actors. Iran's support for proxy groups and its hostile rhetoric toward Israel and the United States amplify fears about how nuclear weapons might be used or transferred. The possibility of nuclear terrorism, while low, cannot be dismissed.",
+      },
+      {
+        title: "The JCPOA: Diplomatic Solution and Its Collapse",
+        content: "In 2015, after years of negotiations, Iran and six world powers (the United States, United Kingdom, France, Germany, Russia, and China) reached the Joint Comprehensive Plan of Action (JCPOA). The agreement placed strict limits on Iran's nuclear program in exchange for sanctions relief. International monitors gained unprecedented access to Iranian nuclear facilities. For several years, the agreement successfully constrained Iran's nuclear activities. However, in 2018, the Trump administration withdrew the United States from the deal, reimposing harsh sanctions. Iran responded by gradually exceeding the limits of the agreement, enriching uranium to higher levels and restricting inspector access. By 2026, the JCPOA had effectively collapsed.",
+      },
+      {
+        title: "The 2026 Crisis: Military Strikes on Nuclear Facilities",
+        content: "The escalation of 2026 brought direct military action against Iran's nuclear infrastructure. Israeli and U.S. strikes targeted key nuclear facilities, including Natanz, Fordow, and other sites. The extent of damage to Iran's nuclear program remains unclear, but the attacks represent a major escalation. Iran has vowed to rebuild and potentially accelerate its nuclear activities. The strikes have also raised concerns about radioactive contamination and environmental damage. Critics argue that military action may actually accelerate Iran's push for nuclear weapons, as the regime now sees them as essential for deterrence against future attacks.",
+      },
+      {
+        title: "The Debate Over Military vs. Diplomatic Solutions",
+        content: "The crisis has reignited debate over how to handle Iran's nuclear program. Proponents of military action argue that diplomacy failed and that Iran cannot be trusted to honor agreements. They point to Iran's history of deception and its aggressive regional activities as evidence that a nuclear-armed Iran would be catastrophic. Critics of military action argue that strikes can only delay, not prevent, Iran's nuclear development. They warn that military action unites Iranians around the regime, undermines internal opposition, and may push Iran to openly pursue nuclear weapons. The long-term effectiveness of military strikes on nuclear facilities is uncertain, as Iran has dispersed and hardened its nuclear infrastructure.",
+      },
+      {
+        title: "Regional and Global Implications",
+        content: "The nuclear crisis has implications far beyond Iran's borders. Regional allies of the United States, including Israel and Saudi Arabia, have long viewed a nuclear-armed Iran as an existential threat. China and Russia have opposed harsh measures against Iran, complicating international response. European nations have sought to preserve diplomacy but have limited leverage. The potential for miscalculation is high: a misread intelligence report, a stray missile, or a domestic Iranian political crisis could trigger a wider conflict involving nuclear-armed powers.",
+      },
+      {
+        title: "The Path Forward",
+        content: "Resolving the Iran nuclear crisis requires addressing not only the technical aspects of nuclear enrichment but also the underlying regional tensions and security concerns that drive Iran's nuclear ambitions. A comprehensive solution would need to include: verification mechanisms that truly prevent weaponization, regional security arrangements that address legitimate Iranian concerns, economic incentives for compliance, and consequences for violations that all major powers will enforce. Whether such a solution is possible in the current environment of hostility and mistrust remains deeply uncertain.",
+      },
+      {
+        title: "Conclusion",
+        content: "Iran's nuclear program remains one of the most dangerous flashpoints in international relations. Decades of diplomacy, sanctions, and now direct military action have not resolved the fundamental question of whether Iran will acquire nuclear weapons. The 2026 escalation has made the situation more volatile than ever. As the international community grapples with this challenge, the stakes could not be higher: the prospect of a nuclear-armed Iran would reshape the Middle East and potentially trigger a new era of nuclear proliferation with consequences that extend around the globe.",
+      },
+    ],
+  },
+  {
+    slug: "us-sanctions-iran-economic-warfare",
+    title: "US Sanctions on Iran: Economic Warfare and Its Global Consequences",
+    excerpt: "US sanctions on Iran represent one of the most extensive economic pressure campaigns in modern history. Explore how sanctions work, their impact on Iran's economy and people, and the broader implications for global trade and international relations.",
+    date: "2026-03-26",
+    content: "In-depth analysis of US sanctions on Iran, their mechanisms, economic impact, humanitarian consequences, and global effects.",
+    image: "/blog-us-sanctions-iran.jpg",
+    sections: [
+      {
+        title: "Introduction to US Sanctions on Iran",
+        content: "US sanctions on Iran constitute one of the most comprehensive economic pressure campaigns ever deployed against a nation. For over four decades, successive US administrations have used sanctions to try to change Iranian behavior, targeting everything from oil exports to financial transactions to individual officials. The sanctions have inflicted severe damage on Iran's economy, but their effectiveness in achieving US policy goals remains debated. The 2026 escalation has brought renewed sanctions pressure alongside military action, raising questions about the role of economic warfare in international relations.",
+      },
+      {
+        title: "History of US Sanctions",
+        content: "US sanctions on Iran began after the 1979 Islamic Revolution and the subsequent hostage crisis. Initial sanctions froze Iranian assets in the United States and banned trade. Over the decades, sanctions expanded dramatically. The 1990s saw sanctions on Iranian oil and trade, expanded by both executive orders and congressional legislation. The 2000s brought UN Security Council sanctions targeting Iran's nuclear program. The 2010s featured the 'maximum pressure' campaign of the Trump administration, which imposed secondary sanctions on countries and companies dealing with Iran. Despite brief relief under the JCPOA, sanctions have remained a central tool of US policy toward Iran.",
+      },
+      {
+        title: "How Sanctions Work",
+        content: "US sanctions on Iran operate through multiple mechanisms. Primary sanctions prohibit US persons and companies from engaging in transactions with Iran. Secondary sanctions threaten penalties against non-US entities that do business with Iran, effectively forcing foreign companies to choose between the US and Iranian markets. Financial sanctions cut Iran off from the global banking system, making it difficult to conduct international trade. Sectoral sanctions target specific industries including oil, shipping, automotive, and construction. Individual sanctions freeze assets and ban travel for designated Iranian officials and entities. The result is an economic stranglehold that affects virtually every aspect of Iran's international economic relations.",
+      },
+      {
+        title: "Economic Impact on Iran",
+        content: "The economic impact of sanctions on Iran has been severe. Oil exports, historically the backbone of Iran's economy, have fluctuated dramatically based on sanctions enforcement. The Iranian rial has lost most of its value, causing inflation that has eroded living standards. Foreign investment has largely fled the country. Iranian businesses struggle to import raw materials and export products. The banking system is isolated from international finance. Economic growth has been volatile, with periods of deep recession. While Iran has developed workarounds, including cryptocurrency transactions and barter arrangements, these cannot fully compensate for the loss of normal economic relations.",
+      },
+      {
+        title: "Humanitarian Consequences",
+        content: "While sanctions technically exempt humanitarian goods like food and medicine, in practice they have created severe difficulties for ordinary Iranians. Banks and shipping companies are reluctant to process transactions involving Iran even for exempt goods, fearing inadvertent sanctions violations. This has led to shortages of medicines and medical equipment. The economic hardship caused by sanctions has increased poverty and reduced access to healthcare. Critics argue that sanctions amount to collective punishment of civilians, violating international humanitarian principles. Supporters contend that the Iranian government, not sanctions, is responsible for its people's suffering, and that sanctions pressure is necessary to change dangerous Iranian behavior.",
+      },
+      {
+        title: "Sanctions Evasion and Adaptation",
+        content: "Iran has developed sophisticated methods to evade sanctions. Front companies in third countries obscure the Iranian origin of transactions. Ship-to-ship transfers at sea allow Iranian oil to reach markets while disguising its origin. Cryptocurrency provides an alternative to traditional banking. Barter arrangements allow Iran to trade oil for goods without financial transactions. Domestic production has been boosted in some sectors to reduce dependence on imports. Iran has also built relationships with countries like China and Russia that are willing to challenge US sanctions. These adaptations reduce but cannot eliminate the impact of sanctions.",
+      },
+      {
+        title: "Global Implications",
+        content: "US sanctions on Iran have implications far beyond the bilateral relationship. European allies have struggled with US secondary sanctions that affect their companies' ability to do legitimate business. The use of the dollar's dominant position in global finance to enforce sanctions has led to discussions about alternatives to the dollar-based financial system. China and Russia have criticized US sanctions as overreach and have sought to develop payment systems independent of US control. The sanctions regime tests the limits of American economic power and raises questions about the weaponization of finance in international relations.",
+      },
+      {
+        title: "Effectiveness of Sanctions",
+        content: "The effectiveness of sanctions on Iran is hotly debated. Supporters point to the economic pressure that brought Iran to the negotiating table in 2015, resulting in the JCPOA nuclear deal. They argue that only maximum pressure can change Iranian behavior on nuclear issues, regional activities, and human rights. Critics argue that sanctions have failed to change the fundamental nature of the Iranian regime or its key policies. They point out that Iran has continued its nuclear program, supported proxy groups, and repressed domestic dissent despite decades of sanctions. Some argue that sanctions strengthen hardliners by creating external enemies and enabling the regime to blame foreigners for economic problems.",
+      },
+      {
+        title: "Sanctions and the 2026 Crisis",
+        content: "The 2026 military escalation has brought sanctions back to the forefront. New sanctions have been imposed targeting Iranian officials and entities connected to missile development and regional activities. Meanwhile, Iran's ability to export oil—a key revenue source—has been disrupted by military action against oil facilities and the threat to shipping through the Strait of Hormuz. The combination of military pressure and economic sanctions represents the most intense pressure Iran has faced since the Iran-Iraq War. How the Iranian regime and population respond to this pressure remains to be seen.",
+      },
+      {
+        title: "Conclusion",
+        content: "US sanctions on Iran represent a long-term experiment in economic warfare. They have inflicted significant damage on Iran's economy and contributed to pressure that led to diplomatic negotiations. However, they have not achieved the fundamental goal of changing Iranian behavior on nuclear issues, regional policy, or domestic governance. The humanitarian costs have been substantial. As the 2026 crisis unfolds, the role of sanctions alongside military action raises profound questions about the ethics, effectiveness, and future of economic pressure as a tool of international policy.",
+      },
+    ],
+  },
+  {
+    slug: "red-sea-crisis-houthi-attacks-shipping",
+    title: "Red Sea Crisis: Houthi Attacks and Global Shipping Disruption",
+    excerpt: "Yemen's Houthi rebels have disrupted global shipping through attacks in the Red Sea. Learn about the origins of the crisis, Iran's role, impact on global trade, and the international response to this critical chokepoint.",
+    date: "2026-03-27",
+    content: "Comprehensive analysis of the Red Sea shipping crisis, Houthi attacks, international response, and global economic impact.",
+    image: "/blog-red-sea-crisis.jpg",
+    sections: [
+      {
+        title: "Introduction to the Red Sea Crisis",
+        content: "The Red Sea crisis that began in late 2023 has emerged as one of the most significant disruptions to global trade in recent decades. Yemen's Houthi rebels, backed by Iran, have launched repeated attacks on commercial shipping passing through the Bab al-Mandab strait, one of the world's most important maritime chokepoints. The crisis demonstrates how a relatively small group, armed with Iranian weapons, can disrupt global commerce and draw major powers into military confrontation. The 2026 escalation has intensified the crisis, with broader implications for regional security and the global economy.",
+      },
+      {
+        title: "Who Are the Houthis?",
+        content: "The Houthis are an armed group from Yemen's Zaidi Shia Muslim community that emerged in the 1990s in opposition to the Yemeni government. They seized control of Yemen's capital, Sana'a, in 2014, sparking a civil war that has lasted nearly a decade. A Saudi-led coalition intervened in 2015 to try to restore the internationally recognized government, but the conflict settled into a bloody stalemate. The Houthis have survived despite facing one of the world's most powerful military coalitions, thanks in part to Iranian support. The group's formal name, Ansar Allah (Supporters of God), reflects their religious and ideological orientation. They have developed significant military capabilities, including ballistic missiles and drones that can reach deep into Saudi Arabia and the Red Sea.",
+      },
+      {
+        title: "Iran's Support for the Houthis",
+        content: "Iran's relationship with the Houthis is part of its broader network of proxy forces across the Middle East. While Iran does not directly control the Houthis, it provides weapons, training, and technical assistance. Iranian-made missiles and drones have enabled Houthi attacks on shipping and on Saudi territory. The Houthis serve Iran's interests by threatening Saudi Arabia's southern border and, more recently, by disrupting international shipping in support of Iranian objectives. The Red Sea attacks have given Iran leverage in its confrontations with the United States and Israel, demonstrating that even a relatively weak proxy can impose significant costs on global commerce.",
+      },
+      {
+        title: "The Strategic Importance of the Red Sea",
+        content: "The Red Sea is a critical artery for global trade, connecting the Mediterranean via the Suez Canal to the Indian Ocean. Approximately 12% of global trade passes through this route, including significant portions of the world's oil shipments and container cargo. The Bab al-Mandab strait, at the southern end of the Red Sea, is only about 18 miles wide at its narrowest point, making it vulnerable to attack from Yemen's coast. Ships passing through must come within range of Houthi missiles and drones. The alternative route around the Cape of Good Hope adds approximately 10-14 days to shipping times, significantly increasing costs.",
+      },
+      {
+        title: "The Shipping Attacks Begin",
+        content: "In November 2023, following the outbreak of the Israel-Hamas war, the Houthis announced that they would attack ships passing through the Red Sea that were connected to Israel or its allies. They launched missiles and drones at commercial vessels, and in some cases, used helicopter-borne gunmen to hijack ships. The attacks continued and expanded, targeting vessels with various connections, real or perceived, to Israel, the United States, and other nations. Insurance rates for Red Sea shipping skyrocketed, and many shipping companies began routing vessels around Africa rather than risk the Red Sea passage.",
+      },
+      {
+        title: "International Military Response",
+        content: "The United States and allies responded to the Red Sea attacks by establishing Operation Prosperity Guardian, a multinational naval task force to protect shipping. Warships from the US, UK, and other nations deployed to the region, intercepting Houthi missiles and drones and conducting strikes against Houthi military targets in Yemen. The military response has had limited success in stopping the attacks. The Houthis have adapted, using mobile launchers and other tactics to continue operations. The conflict has escalated, with Houthi attacks extending to US and UK naval vessels, and coalition strikes targeting increasingly deep into Houthi-controlled territory.",
+      },
+      {
+        title: "Impact on Global Trade",
+        content: "The Red Sea crisis has had significant effects on global commerce. Shipping costs have risen dramatically as vessels take longer routes or pay higher insurance premiums. Delivery times have increased for goods traveling from Asia to Europe and the eastern United States. Some supply chains have been disrupted, contributing to inflationary pressures. The energy market has been particularly affected, with concerns about oil shipments leading to price volatility. The crisis demonstrates how vulnerable the global economy is to disruptions at key maritime chokepoints.",
+      },
+      {
+        title: "The 2026 Escalation",
+        content: "The broader Middle East escalation of 2026 has intensified the Red Sea crisis. The Houthis have expanded their attacks in support of Iran, targeting a wider range of vessels and launching more sophisticated weapons. US and coalition forces have intensified strikes on Houthi positions, but the group remains capable of operations. The conflict has become part of the larger Iran-US-Israel confrontation, with the Houthis serving as one component of Iran's multi-front pressure campaign. The risk of escalation, including direct Iranian involvement or a major incident causing significant casualties, remains high.",
+      },
+      {
+        title: "Humanitarian Concerns in Yemen",
+        content: "The Red Sea crisis intersects with the ongoing humanitarian catastrophe in Yemen. Years of civil war have created one of the world's worst humanitarian crises, with millions facing hunger and disease. Houthi attacks on shipping complicate the delivery of humanitarian aid, while military strikes on Yemen risk further civilian casualties. The group's ability to continue attacks despite military pressure suggests that there is no easy resolution. A negotiated solution would require addressing Yemen's civil war, regional tensions, and the broader Iran-Saudi rivalry that fuels the conflict.",
+      },
+      {
+        title: "Conclusion",
+        content: "The Red Sea crisis exemplifies the interconnected nature of modern security threats. A rebel group in one of the world's poorest countries, armed by Iran, can disrupt global trade and draw major powers into military confrontation. The crisis demonstrates the vulnerability of global supply chains to disruption at maritime chokepoints and the difficulty of defending against asymmetric threats. As the 2026 escalation continues, the Red Sea remains a flashpoint that could trigger wider conflict. Resolving the crisis will require addressing not only the immediate threat to shipping but also the underlying conflicts in Yemen and the broader regional tensions that fuel them.",
+      },
+    ],
+  },
+  {
+    slug: "iran-proxy-network-axis-of-resistance",
+    title: "Iran's Proxy Network: The Axis of Resistance Across the Middle East",
+    excerpt: "Iran has built an extensive network of proxy forces across the Middle East, creating what it calls the 'Axis of Resistance.' Explore how Iran's proxy network operates, key groups like Hezbollah and Hamas, and the implications for regional security.",
+    date: "2026-03-28",
+    content: "Detailed analysis of Iran's proxy network across the Middle East, including Hezbollah, Hamas, Houthi rebels, and Iraqi militias.",
+    image: "/blog-iran-proxy-network.jpg",
+    sections: [
+      {
+        title: "Introduction to Iran's Proxy Network",
+        content: "Iran's network of proxy forces across the Middle East represents one of the most sophisticated and extensive asymmetric warfare strategies in modern history. Through what Tehran calls the 'Axis of Resistance,' Iran projects power far beyond its borders, threatens its enemies from multiple directions, and maintains plausible deniability for attacks carried out by its proxies. This network has fundamentally reshaped the security landscape of the Middle East and is a central factor in the current crisis. Understanding Iran's proxy strategy is essential to understanding the broader Iran-US-Israel confrontation.",
+      },
+      {
+        title: "The Strategic Logic of Proxy Warfare",
+        content: "Iran's reliance on proxy forces is rooted in its strategic position and vulnerabilities. Following the 1979 revolution, Iran faced a hostile international environment and powerful enemies with superior conventional military forces. Building proxy networks allowed Iran to project power at relatively low cost and with reduced risk of direct retaliation. Proxies provide strategic depth, attacking Iran's enemies from multiple directions. They offer plausible deniability, making it harder to attribute attacks directly to Iran. They create leverage in negotiations and regional politics. And they allow Iran to maintain pressure on enemies without the risks of direct state-on-state conflict. This strategy has proven remarkably effective, though the 2024-2026 escalation has tested its limits.",
+      },
+      {
+        title: "Hezbollah: The Crown Jewel of Iran's Proxies",
+        content: "Hezbollah in Lebanon is the most powerful and sophisticated of Iran's proxy forces. Founded in 1982 with Iranian support, Hezbollah has evolved from a militia into a 'state within a state' with an estimated 150,000 missiles, a political party with cabinet ministers, and extensive social services. Iran provides an estimated $700 million to $1 billion annually to Hezbollah, along with advanced weapons and training. Hezbollah fighters are battle-hardened from years of combat in Syria supporting the Assad regime. The organization's massive missile arsenal is designed to overwhelm Israeli air defenses and serve as a deterrent against attacks on Iran. In the current conflict, Hezbollah has opened a critical second front against Israel, tying down Israeli forces and demonstrating the value of Iran's proxy strategy.",
+      },
+      {
+        title: "Hamas and Palestinian Islamic Jihad",
+        content: "Iran's support for Palestinian militant groups represents another dimension of its proxy network. Hamas, which governs Gaza, receives Iranian funding, weapons, and training, despite periodic tensions over the Syrian civil war. Palestinian Islamic Jihad is even more closely aligned with Iran. The October 7, 2023 Hamas attack on Israel demonstrated the capabilities Iran has helped build in Gaza. Hamas's rockets, drones, and tunnel networks have all benefited from Iranian support. While Hamas maintains some independence from Iran, the alliance serves both parties: Hamas gains resources and legitimacy, while Iran gains a forward position against Israel and the ability to influence the Palestinian cause.",
+      },
+      {
+        title: "Houthi Rebels in Yemen",
+        content: "The Houthi movement in Yemen is a more recent addition to Iran's proxy network but has proven highly effective. Iranian support has enabled the Houthis to survive a Saudi-led military intervention and develop capabilities including ballistic missiles and drones. The Houthis have used these weapons to attack Saudi territory and, more recently, to disrupt global shipping through the Red Sea. While Iran's control over the Houthis is less direct than over Hezbollah, the relationship serves Iranian strategic interests by threatening Saudi Arabia's southern flank and providing leverage in the confrontation with the United States and its allies.",
+      },
+      {
+        title: "Shiite Militias in Iraq",
+        content: "Iran has cultivated extensive influence among Iraq's Shiite majority, building a network of militias that operate as part of the Popular Mobilization Forces (PMF) while maintaining loyalty to Iran. These groups, including Kataib Hezbollah and Asaib Ahl al-Haq, have attacked US forces in Iraq and pose a threat to American personnel and interests. Iran's influence in Iraq gives it leverage over a neighbor that hosts US troops and is a major oil producer. The Iraqi government's dependence on Iran-aligned political parties complicates its relationship with the United States and its ability to control these militia groups.",
+      },
+      {
+        title: "Forces in Syria",
+        content: "Iran has invested heavily in propping up the Assad regime in Syria, deploying both Iranian personnel and proxy fighters to support the government. Iranian-backed militias, including Hezbollah and Iraqi groups, have been crucial to Assad's survival. Iran has sought to establish a permanent military presence in Syria, including bases near the Israeli border, prompting Israeli airstrikes. Syria serves as a crucial land bridge between Iran and its proxies in Lebanon, allowing the transfer of weapons and personnel. The Syrian civil war has demonstrated both the capabilities and limitations of Iran's proxy strategy, with significant costs in blood and treasure.",
+      },
+      {
+        title: "Coordination and Control",
+        content: "Iran's proxy network is not a monolith but a diverse collection of groups with varying degrees of loyalty and independence. The Islamic Revolutionary Guard Corps (IRGC) Quds Force, formerly led by Qasem Soleimani until his assassination in 2020, coordinates Iran's proxy operations. Regular meetings, shared training facilities, and weapons transfers help maintain the network. However, each proxy has its own interests and constituencies. Hamas has at times defied Iranian wishes, and the Houthis operate with considerable autonomy. Iran's ability to control its proxies is not absolute, but the relationship provides significant influence and strategic options.",
+      },
+      {
+        title: "The Proxy Network in the 2026 Conflict",
+        content: "The 2026 escalation has demonstrated both the strengths and vulnerabilities of Iran's proxy network. Hezbollah has opened a major front against Israel, forcing Israel to divide its military focus. Hamas, though severely damaged by the Gaza war, continues to resist. The Houthis have disrupted global shipping, imposing economic costs on Iran's enemies. Iraqi militias have threatened US forces. However, the shift from proxy war to direct confrontation has exposed Iran itself to attack. Israeli and US strikes have targeted Iranian territory directly, breaking the old rules that kept the conflict contained. Iran's proxy network remains a formidable asset, but the calculus of asymmetric warfare is changing.",
+      },
+      {
+        title: "Conclusion",
+        content: "Iran's proxy network has been one of the most successful asymmetric warfare strategies of the modern era, allowing a relatively weak state to project power and challenge far stronger adversaries. Hezbollah, Hamas, the Houthis, and other proxies have given Iran leverage across the Middle East and made it a central player in regional security. However, the 2026 escalation has transformed the conflict from proxy warfare to direct confrontation, with consequences that are still unfolding. The proxy network remains a key Iranian asset, but the rules of engagement have fundamentally changed. Understanding this network is essential to understanding the current crisis and its potential trajectories.",
+      },
+    ],
+  },
 ];
