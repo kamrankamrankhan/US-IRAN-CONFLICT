@@ -226,17 +226,44 @@ export function getPageSEO(pathname: string): SEOOptions {
       const url = `${baseUrl()}${pathname}`;
       let keywords = 'US Iran war, Iran conflict';
       
-      // Custom keywords based on blog content
-      if (slug === 'us-iran-conflict-causes-and-impact') {
-        keywords = 'US Iran conflict, Iran war causes, US Iran relations, Middle East tensions, Iran nuclear program, US sanctions Iran';
-      } else if (slug === 'global-oil-prices-rise-kharg-island-attack') {
-        keywords = 'Kharg Island attack, Iran oil prices, US Iran oil war, global oil crisis, Iran oil exports, Persian Gulf conflict';
-      } else if (slug === 'strait-of-hormuz-crisis-global-energy-crisis') {
-        keywords = 'Strait of Hormuz crisis, Iran blockade, global energy crisis, oil shipping, Hormuz chokepoint, Iran US tensions';
-      } else if (slug === 'iran-us-israel-conflict-global-impact') {
-        keywords =
-          'Iran US Israel conflict, Middle East war 2026, Strait of Hormuz closure, Iran nuclear program, JCPOA, Hezbollah Lebanon, Iran proxies, US Iran escalation';
-      }
+      // Comprehensive keywords based on blog content - Original blogs
+      const keywordMap: Record<string, string> = {
+        'us-iran-conflict-causes-and-impact': 'US Iran conflict, Iran war causes, US Iran relations, Middle East tensions, Iran nuclear program, US sanctions Iran',
+        'global-oil-prices-rise-kharg-island-attack': 'Kharg Island attack, Iran oil prices, US Iran oil war, global oil crisis, Iran oil exports, Persian Gulf conflict',
+        'strait-of-hormuz-crisis-global-energy-crisis': 'Strait of Hormuz crisis, Iran blockade, global energy crisis, oil shipping, Hormuz chokepoint, Iran US tensions',
+        'iran-us-israel-conflict-global-impact': 'Iran US Israel conflict, Middle East war 2026, Strait of Hormuz closure, Iran nuclear program, JCPOA, Hezbollah Lebanon, Iran proxies, US Iran escalation',
+        'israel-iran-war-2026-direct-confrontation': 'Israel Iran war 2026, Israel Iran direct conflict, Iran missile attacks, Israel airstrikes Iran, Hezbollah involvement, Middle East escalation',
+        'hezbollah-israel-war-2026-lebanon-front': 'Hezbollah Israel war, Lebanon front conflict, Hezbollah 150000 missiles, Iran proxy, Israel Lebanon border, Hezbollah rockets',
+        'gaza-war-2026-israel-hamas-humanitarian-crisis': 'Gaza war 2026, Israel Hamas conflict, October 7 attack, Gaza humanitarian crisis, Hamas Iran support, Israel Gaza',
+        'us-iran-conflict-causes-nuclear-sanctions-strait-hormuz': 'US Iran conflict, Iran nuclear program, US sanctions, Strait of Hormuz crisis, Iran US relations, nuclear tensions',
+        'kharg-island-attack-global-oil-prices-surge': 'Kharg Island attack, global oil prices, Iran oil terminal, oil price surge, energy crisis, Persian Gulf',
+        'iran-proxy-network-hezbollah-hamas-houthis': 'Iran proxy network, Hezbollah, Hamas, Houthis, Iran militias, Axis of Resistance, Quds Force',
+        'us-iran-israel-war-2026-axis-of-resistance': 'US Iran Israel war 2026, Axis of Resistance, Iran proxy forces, Operation Epic Fury timeline, Iran Israel conflict',
+        
+        // Oil Prices by Country - Comprehensive Keywords
+        'saudi-arabia-oil-prices-2026-global-energy-market': 'Saudi Arabia oil prices, Aramco, OPEC+, Saudi oil production, Middle East oil, Arab Light crude, Saudi Vision 2030, Saudi petroleum exports, Kingdom oil revenue',
+        'usa-oil-prices-2026-shale-production-energy-independence': 'USA oil prices, WTI crude, US shale production, American oil, Permian Basin, US strategic petroleum reserve, American energy independence, US oil exports',
+        'russia-oil-prices-2026-sanctions-ural-crude-global-market': 'Russia oil prices, Urals crude, Russian oil sanctions, Russia China oil, Russian oil exports, Moscow oil, Russia India oil trade, Russian petroleum',
+        'china-oil-prices-2026-worlds-largest-importer-energy-security': 'China oil prices, China oil imports, Chinese oil demand, China strategic petroleum reserve, Sinopec, PetroChina, China energy security, Beijing oil policy',
+        'india-oil-prices-2026-second-largest-importer-energy-growth': 'India oil prices, India oil imports, Indian oil demand, Reliance refining, India Russia oil, Indian Oil Corporation, India energy policy, New Delhi oil',
+        'uae-oil-prices-2026-emirates-energy-diversification': 'UAE oil prices, ADNOC, Murban crude, Emirates oil production, Abu Dhabi oil, UAE energy diversification, Dubai petroleum, UAE OPEC',
+        'kuwait-oil-prices-2026-opec-producer-energy-wealth': 'Kuwait oil prices, KPC, Kuwait oil production, Kuwait Petroleum, OPEC Kuwait, Kuwait Future Generations Fund, Kuwait oil reserves',
+        'iraq-oil-prices-2026-opec-second-largest-recovery': 'Iraq oil prices, Iraq oil production, Basra oil, Iraq OPEC, Iraqi oil exports, Iraq reconstruction, Iraq petroleum industry',
+        'venezuela-oil-prices-2026-worlds-largest-reserves-crisis': 'Venezuela oil prices, PDVSA, Venezuela oil reserves, Venezuelan oil crisis, oil sanctions Venezuela, Caracas oil, Venezuela petroleum collapse',
+        'nigeria-oil-prices-2026-africa-largest-producer-challenges': 'Nigeria oil prices, NNPC, Nigeria oil production, Bonny Light, Niger Delta oil, Nigeria petroleum, African oil producer',
+        'canada-oil-prices-2026-oil-sands-production-global-market': 'Canada oil prices, WCS crude, Canadian oil sands, Alberta oil, Western Canadian Select, Canada petroleum, tar sands oil',
+        'brazil-oil-prices-2026-pre-salt-deepwater-production': 'Brazil oil prices, Petrobras, pre-salt oil, Brazil oil production, South America oil, Brazilian petroleum, deepwater drilling',
+        'norway-oil-prices-2026-north-sea-european-energy': 'Norway oil prices, Equinor, North Sea oil, Johan Sverdrup, Norway Oil Fund, Norwegian petroleum, Europe energy security',
+        'uk-oil-prices-2026-north-sea-decline-energy-transition': 'UK oil prices, Brent crude, North Sea oil, UK oil production, British oil, United Kingdom petroleum, Brent benchmark',
+        'qatar-oil-prices-2026-lng-giant-petroleum-producer': 'Qatar oil prices, QatarEnergy, Qatar LNG, North Field, Qatar petroleum, Doha oil gas, Qatari energy exports',
+        'iran-oil-prices-2026-sanctions-strait-hormuz-global-impact': 'Iran oil prices, Iran oil sanctions, Kharg Island, Iran oil exports, Strait of Hormuz oil, Tehran petroleum, Iranian crude',
+        'mexico-oil-prices-2026-pemex-production-decline-reform': 'Mexico oil prices, Pemex, Mexico oil production, Maya crude, Mexican oil, Mexico petroleum reform, Latin America oil',
+        'angola-oil-prices-2026-africa-second-largest-opec-member': 'Angola oil prices, Sonangol, Angola oil production, Angola OPEC, African oil, Luanda petroleum, Angola offshore oil',
+        'algeria-oil-prices-2026-african-opec-member-gas-producer': 'Algeria oil prices, Sonatrach, Algeria gas exports, Algeria OPEC, North African oil, Algerian petroleum, Sahara oil',
+        'libya-oil-prices-2026-instability-african-reserves': 'Libya oil prices, Libya oil production, Libyan oil reserves, NOC Libya, Africa oil, Tripoli petroleum, Libyan conflict oil',
+      };
+      
+      keywords = keywordMap[slug] || keywords;
       
       return {
         title: `${post.title} | ${siteName}`,
