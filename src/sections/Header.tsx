@@ -17,19 +17,19 @@ const Header = () => {
       ],
     },
     {
-      label: 'Oil Markets',
+      label: 'Topics',
       items: [
-        { label: 'Kharg Island Attack', path: '/blog/kharg-island-attack-global-oil-prices-surge' },
-        { label: 'Strait of Hormuz', path: '/blog/strait-of-hormuz-crisis-oil-shipping-2026' },
-        { label: 'All Oil Analysis', path: '/blogs' },
+        { label: 'Nuclear Program', path: '/topic/nuclear-program' },
+        { label: 'Proxy Networks', path: '/topic/proxy-networks' },
+        { label: 'Sanctions', path: '/topic/economic-sanctions' },
+        { label: 'Strait of Hormuz', path: '/topic/strait-of-hormuz' },
       ],
     },
     {
-      label: 'Analysis',
+      label: 'Oil Markets',
       items: [
-        { label: 'Iran Nuclear Program', path: '/blog/iran-nuclear-program-2026-update' },
-        { label: 'Proxy Networks', path: '/blog/iran-proxy-network-hezbollah-hamas-houthis' },
-        { label: 'Sanctions Impact', path: '/blog/us-sanctions-iran-economic-impact' },
+        { label: 'Kharg Island Attack', path: '/blog/kharg-island-attack-global-oil-prices-surge' },
+        { label: 'Global Oil Prices', path: '/blogs' },
       ],
     },
   ];

@@ -2,6 +2,8 @@ import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, ExternalLink, Clock, Tag } from 'lucide-react';
 import { blogs } from '../content/blogs';
 import type { BlogPost } from '../content/blogs';
+import Header from '../sections/Header';
+import Footer from '../sections/NewFooter';
 
 // Category mapping based on blog slug/content
 function getCategory(post: BlogPost): { label: string; color: string } {
@@ -57,15 +59,19 @@ const BlogPostPage = () => {
 
   if (!slug || !post) {
     return (
-      <div className="min-h-screen bg-white text-gray-900 flex flex-col items-center justify-center px-6">
-        <h1 className="text-3xl font-bold mb-4">Post not found</h1>
-        <Link
-          to="/blogs"
-          className="flex items-center gap-2 text-red-600 hover:text-red-700 font-semibold transition-colors"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          Back to blogs
-        </Link>
+      <div className="min-h-screen bg-white text-gray-900">
+        <Header />
+        <div className="flex flex-col items-center justify-center px-6 py-32">
+          <h1 className="text-3xl font-bold mb-4">Post not found</h1>
+          <Link
+            to="/blogs"
+            className="flex items-center gap-2 text-red-600 hover:text-red-700 font-semibold transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Back to blogs
+          </Link>
+        </div>
+        <Footer />
       </div>
     );
   }
@@ -75,22 +81,20 @@ const BlogPostPage = () => {
 
   return (
     <div className="min-h-screen bg-white text-gray-900">
-      {/* Header */}
-      <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/95 backdrop-blur">
-        <div className="max-w-4xl mx-auto px-6 py-4">
-          <Link
-            to="/blogs"
-            className="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-red-600 transition-colors font-semibold uppercase tracking-wider"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            All Articles
-          </Link>
-        </div>
-      </header>
+      <Header />
 
       {/* Hero Section */}
-      <div className="bg-gray-50 border-b border-gray-200">
+      <div className="bg-gray-50 border-b border-gray-200 pt-4">
         <article className="max-w-4xl mx-auto px-6 py-12 md:py-16">
+          {/* Breadcrumb */}
+          <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6">
+            <Link to="/" className="hover:text-red-600 transition-colors">Home</Link>
+            <span>/</span>
+            <Link to="/blogs" className="hover:text-red-600 transition-colors">Articles</Link>
+            <span>/</span>
+            <span className="text-gray-900 font-medium truncate max-w-[200px]">{post.title.split(':')[0]}</span>
+          </nav>
+          
           {/* Meta */}
           <div className="flex flex-wrap items-center gap-3 mb-4">
             <span className={`${category.color} text-white text-xs font-bold px-3 py-1 rounded uppercase tracking-wide`}>
@@ -215,15 +219,7 @@ const BlogPostPage = () => {
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="bg-gray-50 border-t border-gray-200 py-8 mt-12">
-        <div className="max-w-4xl mx-auto px-6 text-center text-gray-600">
-          <p className="text-sm">
-            Stay informed with our in-depth analysis of the US-Iran war 2026, Israel-Iran conflict, 
-            Gaza war, Hezbollah operations, global oil markets, and Middle East crisis.
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

@@ -1,100 +1,115 @@
 import { useParams, Link } from 'react-router-dom';
 import { topicPagesConfig, topicLinks } from '../config';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Clock } from 'lucide-react';
+import { blogs } from '../content/blogs';
+import Header from '../sections/Header';
+import Footer from '../sections/NewFooter';
 
 const TopicPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const topic = slug ? topicPagesConfig[slug] : null;
 
+  // Get related blogs for this topic
+  const relatedBlogs = blogs.filter(blog => {
+    if (!slug) return false;
+    const topicKeywords: Record<string, string[]> = {
+      'nuclear-program': ['nuclear', 'natanz', 'fordow', 'enrichment', 'uranium'],
+      'proxy-networks': ['proxy', 'hezbollah', 'hamas', 'houthi', 'axis-of-resistance'],
+      'economic-sanctions': ['sanctions', 'economic', 'oil-exports'],
+      'strait-of-hormuz': ['strait-of-hormuz', 'hormuz', 'shipping', 'kharg'],
+      'operation-epic-fury': ['operation-epic', 'epic-fury', 'military'],
+      'military-buildup': ['military', 'troops', 'aircraft', 'carrier'],
+      'regional-impact': ['regional', 'middle-east', 'gulf'],
+    };
+    const keywords = topicKeywords[slug] || [];
+    return keywords.some(keyword => blog.slug.includes(keyword) || blog.title.toLowerCase().includes(keyword));
+  }).slice(0, 3);
+
   if (!slug || !topic) {
     return (
-      <div className="min-h-screen bg-void-black text-white flex flex-col items-center justify-center px-6">
-        <h1 className="font-display text-3xl mb-4">Topic not found</h1>
-        <Link
-          to="/"
-          className="flex items-center gap-2 text-neon-cyan hover:text-neon-soft transition-colors"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          Back to home
-        </Link>
+      <div className="min-h-screen bg-white text-gray-900">
+        <Header />
+        <div className="flex flex-col items-center justify-center px-6 py-32">
+          <h1 className="text-3xl font-bold mb-4">Topic not found</h1>
+          <Link
+            to="/"
+            className="flex items-center gap-2 text-red-600 hover:text-red-700 transition-colors font-semibold"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Back to home
+          </Link>
+        </div>
+        <Footer />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-void-black text-white">
-      {/* Top bar with back link and topic nav */}
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-void-black/95 backdrop-blur">
-        <div className="max-w-4xl mx-auto px-6 py-4 flex flex-wrap items-center justify-between gap-4">
-          <Link
-            to="/"
-            className="flex items-center gap-2 text-sm text-white/70 hover:text-neon-cyan transition-colors font-mono-custom uppercase tracking-wider"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Home
-          </Link>
-          <nav className="flex flex-wrap gap-2">
-            {topicLinks.map((link) => (
-              <Link
-                key={link.slug}
-                to={link.path}
-                className={`px-3 py-1.5 rounded-full text-xs font-mono-custom uppercase tracking-wider transition-colors ${
-                  link.slug === slug
-                    ? 'bg-neon-cyan/20 text-neon-cyan'
-                    : 'text-white/60 hover:text-white hover:bg-white/5'
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-        </div>
-      </header>
+    <div className="min-h-screen bg-white text-gray-900">
+      <Header />
 
-      <main className="max-w-4xl mx-auto px-6 py-16">
-        {/* Hero Image */}
-        {topic.image && (
-          <div className="mb-12 -mx-6 md:mx-0 md:rounded-lg overflow-hidden">
-            <img
-              src={topic.image}
-              alt={topic.title}
-              className="w-full h-auto object-cover"
-            />
+      {/* Hero Section */}
+      {topic.image && (
+        <div className="relative h-64 md:h-80 lg:h-96 overflow-hidden">
+          <img
+            src={topic.image}
+            alt={topic.title}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
+            <div className="max-w-4xl mx-auto">
+              <span className="inline-block px-3 py-1 bg-red-600 text-white text-xs font-bold uppercase tracking-wide rounded mb-4">
+                In-Depth Analysis
+              </span>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
+                {topic.title}
+              </h1>
+            </div>
           </div>
-        )}
+        </div>
+      )}
 
-        <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-white mb-6">
-          {topic.title}
-        </h1>
-        <p className="text-lg text-neon-soft/80 mb-12 font-mono-custom uppercase tracking-wider">
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Breadcrumb */}
+        <nav className="flex items-center gap-2 text-sm text-gray-500 mb-8">
+          <Link to="/" className="hover:text-red-600 transition-colors">Home</Link>
+          <span>/</span>
+          <Link to="/blogs" className="hover:text-red-600 transition-colors">Analysis</Link>
+          <span>/</span>
+          <span className="text-gray-900 font-medium">{topic.title.split(':')[0]}</span>
+        </nav>
+
+        {/* Description */}
+        <p className="text-xl text-gray-600 leading-relaxed mb-8 border-b border-gray-200 pb-8">
           {topic.description}
         </p>
 
-        {/* Body Content - Rendered as HTML */}
+        {/* Body Content */}
         <div
-          className="prose prose-invert prose-lg max-w-none
-            prose-headings:font-display prose-headings:text-white
-            prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:pb-4 prose-h2:border-b prose-h2:border-white/10
-            prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4 prose-h3:text-neon-soft
-            prose-p:text-white/80 prose-p:leading-relaxed prose-p:mb-6
-            prose-ul:my-6 prose-ul:space-y-3
-            prose-li:text-white/80 prose-li:leading-relaxed
-            prose-strong:text-white prose-strong:font-semibold
-            prose-a:text-neon-cyan prose-a:no-underline hover:prose-a:underline"
+          className="prose prose-lg max-w-none
+            prose-headings:font-bold prose-headings:text-gray-900
+            prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:pb-3 prose-h2:border-b-2 prose-h2:border-red-600
+            prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3 prose-h3:text-gray-800
+            prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-4
+            prose-ul:my-4 prose-ul:space-y-2
+            prose-li:text-gray-700 prose-li:leading-relaxed
+            prose-strong:text-gray-900 prose-strong:font-semibold
+            prose-a:text-red-600 prose-a:no-underline hover:prose-a:underline"
           dangerouslySetInnerHTML={{ __html: topic.body }}
         />
 
         {/* Keywords */}
         {topic.keywords && (
-          <div className="mt-12 pt-8 border-t border-white/10">
-            <h4 className="text-sm font-mono-custom uppercase tracking-wider text-white/50 mb-4">
+          <div className="mt-12 pt-8 border-t border-gray-200">
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-4">
               Related Topics
             </h4>
             <div className="flex flex-wrap gap-2">
               {topic.keywords.split(', ').map((keyword, index) => (
                 <span
                   key={index}
-                  className="px-3 py-1 bg-white/5 text-white/60 text-sm rounded-full font-mono-custom"
+                  className="px-3 py-1.5 bg-gray-100 text-gray-700 text-sm rounded-full hover:bg-red-50 hover:text-red-600 transition-colors cursor-pointer"
                 >
                   {keyword}
                 </span>
@@ -103,16 +118,80 @@ const TopicPage = () => {
           </div>
         )}
 
-        <div className="mt-16 pt-8 border-t border-white/10">
+        {/* Related Articles */}
+        {relatedBlogs.length > 0 && (
+          <div className="mt-12 pt-8 border-t border-gray-200">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">Related Articles</h3>
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {relatedBlogs.map((post) => (
+                <Link
+                  key={post.slug}
+                  to={`/blog/${post.slug}`}
+                  className="group"
+                >
+                  <article className="h-full flex flex-col bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                    <div className="relative h-40 overflow-hidden bg-gray-100">
+                      {post.image ? (
+                        <img
+                          src={post.image}
+                          alt={post.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300" />
+                      )}
+                    </div>
+                    <div className="flex-1 p-4">
+                      <h4 className="font-semibold text-gray-900 line-clamp-2 group-hover:text-red-600 transition-colors mb-2">
+                        {post.title}
+                      </h4>
+                      <div className="flex items-center gap-1 text-xs text-gray-500">
+                        <Clock className="w-3 h-3" />
+                        {post.date}
+                      </div>
+                    </div>
+                  </article>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Navigation to other topics */}
+        <div className="mt-12 pt-8 border-t border-gray-200">
+          <h4 className="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-4">
+            Explore More Topics
+          </h4>
+          <div className="flex flex-wrap gap-2">
+            {topicLinks.map((link) => (
+              <Link
+                key={link.slug}
+                to={link.path}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                  link.slug === slug
+                    ? 'bg-red-600 text-white'
+                    : 'bg-gray-100 text-gray-700 hover:bg-red-50 hover:text-red-600'
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* Back link */}
+        <div className="mt-12">
           <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-neon-cyan hover:text-neon-soft transition-colors font-mono-custom uppercase tracking-wider"
+            to="/blogs"
+            className="inline-flex items-center gap-2 text-red-600 hover:text-red-700 font-semibold transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            Back to home
+            View All Articles
           </Link>
         </div>
       </main>
+
+      <Footer />
     </div>
   );
 };

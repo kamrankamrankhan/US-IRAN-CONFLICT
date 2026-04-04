@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Clock, ExternalLink } from 'lucide-react';
+import { Clock, ExternalLink } from 'lucide-react';
 import { blogs } from '../content/blogs';
 import type { BlogPost } from '../content/blogs';
+import Header from '../sections/Header';
+import Footer from '../sections/NewFooter';
 
 // Category mapping based on blog slug/content
 function getCategory(post: BlogPost): { label: string; color: string } {
@@ -99,22 +101,16 @@ const BlogsListPage = () => {
 
   return (
     <div className="min-h-screen bg-white text-gray-900">
-      {/* Header */}
-      <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/95 backdrop-blur">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-red-600 transition-colors font-semibold uppercase tracking-wider"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back to Home
-          </Link>
-        </div>
-      </header>
+      <Header />
 
-      <main className="max-w-7xl mx-auto px-6 py-12 md:py-16">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         {/* Page Title */}
         <div className="mb-12">
+          <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6">
+            <Link to="/" className="hover:text-red-600 transition-colors">Home</Link>
+            <span>/</span>
+            <span className="text-gray-900 font-medium">All Articles</span>
+          </nav>
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             US Iran War & Global Oil Prices
           </h1>
@@ -167,15 +163,7 @@ const BlogsListPage = () => {
         )}
       </main>
 
-      {/* Footer */}
-      <footer className="bg-gray-100 border-t border-gray-200 py-8">
-        <div className="max-w-7xl mx-auto px-6 text-center text-gray-600">
-          <p>
-            Stay informed with our in-depth analysis of the US-Iran war 2026, Israel-Iran conflict, 
-            Gaza war, Hezbollah operations, global oil markets, and Middle East crisis.
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

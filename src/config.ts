@@ -313,6 +313,7 @@ export const topicLinks: TopicLink[] = [
   { label: "Military Buildup", path: "/topic/military-buildup", slug: "military-buildup" },
   { label: "Economic Sanctions", path: "/topic/economic-sanctions", slug: "economic-sanctions" },
   { label: "Iran Proxy Networks", path: "/topic/proxy-networks", slug: "proxy-networks" },
+  { label: "Strait of Hormuz", path: "/topic/strait-of-hormuz", slug: "strait-of-hormuz" },
   { label: "Regional Impact", path: "/topic/regional-impact", slug: "regional-impact" },
 ];
 
@@ -610,6 +611,97 @@ export const topicPagesConfig: Record<string, TopicPageContent> = {
 </ul>`,
     image: "/topic-regional-impact.jpg",
     keywords: "Regional impact, Middle East conflict, Strait of Hormuz, Israel Iran war, Saudi Arabia, UAE, oil prices, refugee crisis, Gulf states, regional war risk",
+  },
+  "strait-of-hormuz": {
+    title: "Strait of Hormuz Crisis 2026: Global Oil Supply Chokepoint Under Threat",
+    description: "Strait of Hormuz crisis 2026: Analysis of the world's most critical oil shipping chokepoint. Iranian threats to close the strait, impact on 21 million barrels daily, global energy crisis risks, and military tensions in the Persian Gulf.",
+    body: `<h2>Strait of Hormuz Crisis 2026: The World's Most Critical Oil Chokepoint</h2>
+<p>The Strait of Hormuz has become the most dangerous flashpoint in the US-Iran conflict, with global implications that extend far beyond the Middle East. This narrow waterway between Iran and Oman serves as the primary shipping route for approximately 21 million barrels of oil daily—roughly 20% of global oil consumption. Iranian threats to close the strait have triggered fears of a global energy crisis.</p>
+
+<h3>Strait of Hormuz: Key Facts</h3>
+<ul>
+<li><strong>Location:</strong> Between Iran (north) and Oman/UAE (south)</li>
+<li><strong>Width:</strong> Only 21 miles wide at narrowest point</li>
+<li><strong>Shipping Lanes:</strong> Two 2-mile wide lanes for inbound and outbound traffic</li>
+<li><strong>Daily Oil Flow:</strong> Approximately 21 million barrels (20% of global consumption)</li>
+<li><strong>Gas Trade:</strong> One-third of global liquefied natural gas (LNG) trade</li>
+<li><strong>Key Exporters:</strong> Saudi Arabia, Iran, UAE, Kuwait, Iraq, Qatar</li>
+</ul>
+
+<h3>Why the Strait of Hormuz Matters</h3>
+<p>The Strait of Hormuz is the only sea passage from the Persian Gulf to the open ocean. For countries like Saudi Arabia, Iran, Iraq, Kuwait, UAE, and Qatar, this strait represents their primary export route for oil and natural gas. Any disruption would force these nations to shut down production or find alternative routes, which are extremely limited.</p>
+
+<h3>Iran's Threat to Close the Strait</h3>
+<p>Iran has repeatedly threatened to close the Strait of Hormuz in response to sanctions or military attacks. The Iranian Revolutionary Guard Corps (IRGC) Navy maintains positions along the strait with capabilities including:</p>
+<ul>
+<li><strong>Anti-ship Missiles:</strong> Land-based batteries capable of targeting vessels</li>
+<li><strong>Naval Mines:</strong> Ability to mine shipping lanes</li>
+<li><strong>Small Boat Attacks:</strong> Fast attack craft for swarm operations</li>
+<li><strong>Submarines:</strong> Iranian submarines capable of disrupting shipping</li>
+<li><strong>Drones:</strong> Unmanned aerial vehicles for surveillance and attack</li>
+</ul>
+
+<h3>US Military Presence in the Strait</h3>
+<p>The United States maintains significant naval forces to keep the Strait of Hormuz open:</p>
+<ul>
+<li><strong>Fifth Fleet:</strong> Headquarters in Bahrain, responsible for Persian Gulf operations</li>
+<li><strong>Aircraft Carriers:</strong> Carrier strike groups rotated through the region</li>
+<li><strong>Mine Countermeasures:</strong> Specialized vessels to clear mined waters</li>
+<li><strong>Guided Missile Destroyers:</strong> Anti-air and anti-surface warfare capabilities</li>
+<li><strong>Patrol Aircraft:</strong> Maritime surveillance and reconnaissance</li>
+</ul>
+
+<h3>Economic Impact of a Closure</h3>
+<p>If Iran successfully closed the Strait of Hormuz, the global economic consequences would be severe:</p>
+<ul>
+<li><strong>Oil Prices:</strong> Analysts predict prices could triple to $200-300+ per barrel</li>
+<li><strong>Supply Shortage:</strong> Loss of 21 million barrels daily would create immediate shortages</li>
+<li><strong>Inflation:</strong> Energy costs would drive inflation worldwide</li>
+<li><strong>Economic Recession:</strong> Global economic slowdown or recession likely</li>
+<li><strong>Supply Chains:</strong> Manufacturing and transportation severely disrupted</li>
+</ul>
+
+<h3>2026 Strait of Hormuz Crisis Timeline</h3>
+<p>Following the February 28, 2026 US military strikes on Iran (Operation Epic Fury), tensions around the Strait of Hormuz escalated dramatically:</p>
+<ul>
+<li><strong>February 28:</strong> Iran threatens to close strait in retaliation for US strikes</li>
+<li><strong>March 1:</strong> US Navy increases presence, commercial ships reroute</li>
+<li><strong>March 2:</strong> Oil prices surge 15-20% on closure fears</li>
+<li><strong>March 3:</strong> Iran conducts military exercises near the strait</li>
+<li><strong>Ongoing:</strong> Continued threats and elevated military readiness</li>
+</ul>
+
+<h3>Alternative Export Routes</h3>
+<p>Gulf states have developed limited alternatives to Strait of Hormuz shipping:</p>
+<ul>
+<li><strong>Saudi Arabia:</strong> East-West pipeline to Red Sea (5 million bpd capacity)</li>
+<li><strong>UAE:</strong> Abu Dhabi Crude Oil Pipeline (1.5 million bpd capacity)</li>
+<li><strong>Combined:</strong> Only about 6.5 million bpd alternative capacity vs 21 million bpd through strait</li>
+</ul>
+
+<h3>Historical Strait of Hormuz Incidents</h3>
+<p>The strait has seen multiple crisis situations:</p>
+<ul>
+<li><strong>1980s Tanker War:</strong> Iran and Iraq attacked oil tankers during Iran-Iraq War</li>
+<li><strong>1988 Operation Praying Mantis:</strong> US destroyed Iranian naval facilities after mine damage to USS Samuel B. Roberts</li>
+<li><strong>2019:</strong> Attacks on tankers near strait, US blamed Iran</li>
+<li><strong>2020:</strong> Iranian small boats harassed US warships</li>
+</ul>
+
+<h3>Global Response to Strait of Hormuz Threats</h3>
+<p>The international community has a strong interest in keeping the strait open:</p>
+<ul>
+<li><strong>United States:</strong> Committed to maintaining freedom of navigation</li>
+<li><strong>China:</strong> Heavily dependent on Gulf oil, concerned about disruption</li>
+<li><strong>European Union:</strong> Dependent on Gulf energy, supports diplomatic solutions</li>
+<li><strong>India:</strong> Receives significant oil imports through the strait</li>
+<li><strong>Japan:</strong> Major energy importer from Gulf region</li>
+</ul>
+
+<h3>Future Outlook: The Strait Remains a Flashpoint</h3>
+<p>As long as US-Iran tensions remain elevated, the Strait of Hormuz will continue to be a potential trigger for broader conflict. Iran's ability to threaten the strait gives it leverage disproportionate to its conventional military strength. For the global economy, maintaining open shipping through this chokepoint is essential for energy security and economic stability.</p>`,
+    image: "/blog-strait-of-hormuz-crisis.jpg",
+    keywords: "Strait of Hormuz, oil chokepoint, Persian Gulf shipping, Iran oil exports, global energy crisis, oil prices, Fifth Fleet, Hormuz crisis, oil tankers, energy security",
   },
 };
 
