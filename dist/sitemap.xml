@@ -6,20 +6,20 @@
   <!-- Homepage - Highest Priority -->
   <url>
     <loc>https://usiranconflict.com/</loc>
-    <lastmod>2026-03-05</lastmod>
+    <lastmod>2026-03-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://usiranconflict.com/gallery-6.jpg</image:loc>
-      <image:title>US Iran War 2026 Conflict Analysis</image:title>
-      <image:caption>Comprehensive coverage of the US-Iran conflict</image:caption>
+      <image:title>US Iran War 2026 and Israel Iran Conflict Analysis</image:title>
+      <image:caption>Comprehensive coverage of the US-Iran war and Israel-Iran conflict</image:caption>
     </image:image>
   </url>
   
   <!-- Article Page -->
   <url>
     <loc>https://usiranconflict.com/article</loc>
-    <lastmod>2026-03-05</lastmod>
+    <lastmod>2026-03-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -27,7 +27,7 @@
   <!-- Blogs List Page -->
   <url>
     <loc>https://usiranconflict.com/blogs</loc>
-    <lastmod>2026-03-05</lastmod>
+    <lastmod>2026-03-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
@@ -35,9 +35,89 @@
   <!-- Live Coverage Page -->
   <url>
     <loc>https://usiranconflict.com/live-coverage</loc>
-    <lastmod>2026-03-05</lastmod>
+    <lastmod>2026-03-24</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.9</priority>
+  </url>
+  
+  <!-- News Page -->
+  <url>
+    <loc>https://usiranconflict.com/news</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>0.95</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Strategic Intelligence</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-03-24</news:publication_date>
+      <news:title>US Iran War and Israel Iran Conflict News</news:title>
+      <news:keywords>US Iran war news, Israel Iran conflict, Middle East war news, Iran nuclear, Hezbollah, Hamas, Gaza war</news:keywords>
+    </news:news>
+  </url>
+  
+  <!-- Blog Post: Israel Iran Direct Conflict -->
+  <url>
+    <loc>https://usiranconflict.com/blog/israel-iran-direct-conflict-2026</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Strategic Intelligence</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-03-24</news:publication_date>
+      <news:title>Israel Iran War: How Decades of Proxy Conflict Became Direct Confrontation</news:title>
+      <news:keywords>Israel Iran war, Israel Iran conflict, Iran proxy war, Hezbollah, Hamas, Middle East war</news:keywords>
+    </news:news>
+    <image:image>
+      <image:loc>https://usiranconflict.com/blog-iran-us-israel-global-impact.png</image:loc>
+      <image:title>Israel Iran Conflict Analysis</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Blog Post: Hezbollah Israel War -->
+  <url>
+    <loc>https://usiranconflict.com/blog/hezbollah-israel-war-lebanon-front</loc>
+    <lastmod>2026-03-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Strategic Intelligence</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-03-22</news:publication_date>
+      <news:title>Hezbollah Israel War: The Lebanon Front Explained</news:title>
+      <news:keywords>Hezbollah Israel war, Lebanon Israel conflict, Hezbollah missiles, Iran proxy, Israel Lebanon border</news:keywords>
+    </news:news>
+    <image:image>
+      <image:loc>https://usiranconflict.com/gallery-5.jpg</image:loc>
+      <image:title>Hezbollah Israel Lebanon Conflict</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Blog Post: Gaza War -->
+  <url>
+    <loc>https://usiranconflict.com/blog/gaza-war-israel-hamas-2026</loc>
+    <lastmod>2026-03-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Strategic Intelligence</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-03-20</news:publication_date>
+      <news:title>Gaza War 2026: Israel Hamas Conflict and the Humanitarian Crisis</news:title>
+      <news:keywords>Gaza war, Israel Hamas war, Hamas October 7, Gaza humanitarian crisis, Israel Palestine conflict</news:keywords>
+    </news:news>
+    <image:image>
+      <image:loc>https://usiranconflict.com/gallery-4.jpg</image:loc>
+      <image:title>Gaza War Israel Hamas</image:title>
+    </image:image>
   </url>
   
   <!-- Blog Post: US Iran Conflict Causes and Impact -->
@@ -103,46 +183,532 @@
     </image:image>
   </url>
   
+  <!-- Blog Post: Iran US Israel Global Impact -->
+  <url>
+    <loc>https://usiranconflict.com/blog/iran-us-israel-conflict-global-impact</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Strategic Intelligence</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-03-24</news:publication_date>
+      <news:title>Rising Tensions: The Iran, U.S., Israel Conflict and Its Global Impact</news:title>
+      <news:keywords>Iran US Israel conflict, Middle East war, Operation Epic Fury, Iran nuclear program, regional escalation</news:keywords>
+    </news:news>
+    <image:image>
+      <image:loc>https://usiranconflict.com/blog-iran-us-israel-global-impact.png</image:loc>
+      <image:title>Iran US Israel Conflict Global Impact</image:title>
+    </image:image>
+  </url>
+  
   <!-- Topic Pages -->
   <url>
     <loc>https://usiranconflict.com/topic/operation-epic-fury</loc>
-    <lastmod>2026-03-05</lastmod>
+    <lastmod>2026-03-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://usiranconflict.com/topic/nuclear-program</loc>
-    <lastmod>2026-03-05</lastmod>
+    <lastmod>2026-03-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://usiranconflict.com/topic/military-buildup</loc>
-    <lastmod>2026-03-05</lastmod>
+    <lastmod>2026-03-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://usiranconflict.com/topic/economic-sanctions</loc>
-    <lastmod>2026-03-05</lastmod>
+    <lastmod>2026-03-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://usiranconflict.com/topic/proxy-networks</loc>
-    <lastmod>2026-03-05</lastmod>
+    <lastmod>2026-03-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
     <loc>https://usiranconflict.com/topic/regional-impact</loc>
-    <lastmod>2026-03-05</lastmod>
+    <lastmod>2026-03-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  
+  <!-- New Israel Iran Topic Pages -->
+  <url>
+    <loc>https://usiranconflict.com/topic/israel-iran-conflict</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://usiranconflict.com/topic/gaza-war</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://usiranconflict.com/topic/hezbollah</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://usiranconflict.com/topic/hamas</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://usiranconflict.com/topic/strait-of-hormuz</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://usiranconflict.com/topic/oil-prices</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Oil Prices by Country - High Priority Pages -->
+  
+  <!-- Saudi Arabia Oil Prices -->
+  <url>
+    <loc>https://usiranconflict.com/blog/saudi-arabia-oil-prices-2026-global-energy-market</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Strategic Intelligence</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-03-28</news:publication_date>
+      <news:title>Saudi Arabia Oil Prices 2026: Kingdom's Role in Global Energy Markets</news:title>
+      <news:keywords>Saudi Arabia oil prices, Aramco, OPEC+, Saudi oil production, Middle East oil, Arab Light crude</news:keywords>
+    </news:news>
+    <image:image>
+      <image:loc>https://usiranconflict.com/gallery-1.jpg</image:loc>
+      <image:title>Saudi Arabia Oil Production and OPEC Strategy</image:title>
+    </image:image>
+  </url>
+  
+  <!-- USA Oil Prices -->
+  <url>
+    <loc>https://usiranconflict.com/blog/usa-oil-prices-2026-shale-production-energy-independence</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Strategic Intelligence</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-03-27</news:publication_date>
+      <news:title>USA Oil Prices 2026: Shale Revolution and Energy Independence</news:title>
+      <news:keywords>USA oil prices, WTI crude, US shale production, American oil, Permian Basin, US strategic petroleum reserve</news:keywords>
+    </news:news>
+    <image:image>
+      <image:loc>https://usiranconflict.com/gallery-2.jpg</image:loc>
+      <image:title>US Shale Oil Production and WTI Pricing</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Russia Oil Prices -->
+  <url>
+    <loc>https://usiranconflict.com/blog/russia-oil-prices-2026-sanctions-ural-crude-global-market</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Strategic Intelligence</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-03-26</news:publication_date>
+      <news:title>Russia Oil Prices 2026: Sanctions Impact and Urals Crude Trading</news:title>
+      <news:keywords>Russia oil prices, Urals crude, Russian oil sanctions, Russia China oil, Russian oil exports</news:keywords>
+    </news:news>
+    <image:image>
+      <image:loc>https://usiranconflict.com/gallery-3.jpg</image:loc>
+      <image:title>Russian Urals Crude and Sanctions Impact</image:title>
+    </image:image>
+  </url>
+  
+  <!-- China Oil Prices -->
+  <url>
+    <loc>https://usiranconflict.com/blog/china-oil-prices-2026-worlds-largest-importer-energy-security</loc>
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Strategic Intelligence</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-03-25</news:publication_date>
+      <news:title>China Oil Prices 2026: World's Largest Importer Seeks Energy Security</news:title>
+      <news:keywords>China oil prices, China oil imports, Chinese oil demand, China strategic petroleum reserve, Sinopec</news:keywords>
+    </news:news>
+    <image:image>
+      <image:loc>https://usiranconflict.com/gallery-4.jpg</image:loc>
+      <image:title>China Oil Imports and Energy Security</image:title>
+    </image:image>
+  </url>
+  
+  <!-- India Oil Prices -->
+  <url>
+    <loc>https://usiranconflict.com/blog/india-oil-prices-2026-second-largest-importer-energy-growth</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Strategic Intelligence</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-03-24</news:publication_date>
+      <news:title>India Oil Prices 2026: Second Largest Importer Powers Economic Growth</news:title>
+      <news:keywords>India oil prices, India oil imports, Indian oil demand, Reliance refining, India Russia oil</news:keywords>
+    </news:news>
+    <image:image>
+      <image:loc>https://usiranconflict.com/gallery-5.jpg</image:loc>
+      <image:title>India Oil Imports and Refining Industry</image:title>
+    </image:image>
+  </url>
+  
+  <!-- UAE Oil Prices -->
+  <url>
+    <loc>https://usiranconflict.com/blog/uae-oil-prices-2026-emirates-energy-diversification</loc>
+    <lastmod>2026-03-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Strategic Intelligence</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-03-23</news:publication_date>
+      <news:title>UAE Oil Prices 2026: Emirates' Energy Strategy and Diversification</news:title>
+      <news:keywords>UAE oil prices, ADNOC, Murban crude, Emirates oil production, Abu Dhabi oil</news:keywords>
+    </news:news>
+    <image:image>
+      <image:loc>https://usiranconflict.com/gallery-6.jpg</image:loc>
+      <image:title>UAE ADNOC and Murban Crude Production</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Kuwait Oil Prices -->
+  <url>
+    <loc>https://usiranconflict.com/blog/kuwait-oil-prices-2026-opec-producer-energy-wealth</loc>
+    <lastmod>2026-03-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Strategic Intelligence</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-03-22</news:publication_date>
+      <news:title>Kuwait Oil Prices 2026: OPEC Producer Manages Energy Wealth</news:title>
+      <news:keywords>Kuwait oil prices, KPC, Kuwait oil production, Kuwait Petroleum, OPEC Kuwait</news:keywords>
+    </news:news>
+    <image:image>
+      <image:loc>https://usiranconflict.com/cube-1.jpg</image:loc>
+      <image:title>Kuwait Oil Production and Wealth Management</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Iraq Oil Prices -->
+  <url>
+    <loc>https://usiranconflict.com/blog/iraq-oil-prices-2026-opec-second-largest-recovery</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Strategic Intelligence</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-03-21</news:publication_date>
+      <news:title>Iraq Oil Prices 2026: OPEC's Second Largest Producer Recovers</news:title>
+      <news:keywords>Iraq oil prices, Iraq oil production, Basra oil, Iraq OPEC, Iraqi oil exports</news:keywords>
+    </news:news>
+    <image:image>
+      <image:loc>https://usiranconflict.com/cube-2.jpg</image:loc>
+      <image:title>Iraq Oil Production Recovery</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Venezuela Oil Prices -->
+  <url>
+    <loc>https://usiranconflict.com/blog/venezuela-oil-prices-2026-worlds-largest-reserves-crisis</loc>
+    <lastmod>2026-03-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Strategic Intelligence</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-03-20</news:publication_date>
+      <news:title>Venezuela Oil Prices 2026: World's Largest Reserves in Crisis</news:title>
+      <news:keywords>Venezuela oil prices, PDVSA, Venezuela oil reserves, Venezuelan oil crisis, oil sanctions Venezuela</news:keywords>
+    </news:news>
+    <image:image>
+      <image:loc>https://usiranconflict.com/cube-3.jpg</image:loc>
+      <image:title>Venezuela Oil Reserves and Crisis</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Nigeria Oil Prices -->
+  <url>
+    <loc>https://usiranconflict.com/blog/nigeria-oil-prices-2026-africa-largest-producer-challenges</loc>
+    <lastmod>2026-03-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Strategic Intelligence</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-03-19</news:publication_date>
+      <news:title>Nigeria Oil Prices 2026: Africa's Largest Producer Faces Challenges</news:title>
+      <news:keywords>Nigeria oil prices, NNPC, Nigeria oil production, Bonny Light, Niger Delta oil</news:keywords>
+    </news:news>
+    <image:image>
+      <image:loc>https://usiranconflict.com/cube-4.jpg</image:loc>
+      <image:title>Nigeria Oil Production and Challenges</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Canada Oil Prices -->
+  <url>
+    <loc>https://usiranconflict.com/blog/canada-oil-prices-2026-oil-sands-production-global-market</loc>
+    <lastmod>2026-03-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Strategic Intelligence</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-03-18</news:publication_date>
+      <news:title>Canada Oil Prices 2026: Oil Sands Production and Global Market</news:title>
+      <news:keywords>Canada oil prices, WCS crude, Canadian oil sands, Alberta oil, Western Canadian Select</news:keywords>
+    </news:news>
+    <image:image>
+      <image:loc>https://usiranconflict.com/cube-5.jpg</image:loc>
+      <image:title>Canada Oil Sands Production</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Brazil Oil Prices -->
+  <url>
+    <loc>https://usiranconflict.com/blog/brazil-oil-prices-2026-pre-salt-deepwater-production</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Strategic Intelligence</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-03-17</news:publication_date>
+      <news:title>Brazil Oil Prices 2026: Pre-Salt Deepwater Production Soars</news:title>
+      <news:keywords>Brazil oil prices, Petrobras, pre-salt oil, Brazil oil production, South America oil</news:keywords>
+    </news:news>
+    <image:image>
+      <image:loc>https://usiranconflict.com/cube-6.jpg</image:loc>
+      <image:title>Brazil Pre-Salt Oil Production</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Norway Oil Prices -->
+  <url>
+    <loc>https://usiranconflict.com/blog/norway-oil-prices-2026-north-sea-european-energy</loc>
+    <lastmod>2026-03-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Strategic Intelligence</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-03-16</news:publication_date>
+      <news:title>Norway Oil Prices 2026: North Sea Producer Powers Europe</news:title>
+      <news:keywords>Norway oil prices, Equinor, North Sea oil, Johan Sverdrup, Norway Oil Fund</news:keywords>
+    </news:news>
+    <image:image>
+      <image:loc>https://usiranconflict.com/para-1.jpg</image:loc>
+      <image:title>Norway North Sea Oil Production</image:title>
+    </image:image>
+  </url>
+  
+  <!-- UK Oil Prices -->
+  <url>
+    <loc>https://usiranconflict.com/blog/uk-oil-prices-2026-north-sea-decline-energy-transition</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Strategic Intelligence</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-03-15</news:publication_date>
+      <news:title>UK Oil Prices 2026: North Sea Decline and Energy Transition</news:title>
+      <news:keywords>UK oil prices, Brent crude, North Sea oil, UK oil production, British oil</news:keywords>
+    </news:news>
+    <image:image>
+      <image:loc>https://usiranconflict.com/para-2.jpg</image:loc>
+      <image:title>UK North Sea Oil Decline</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Qatar Oil Prices -->
+  <url>
+    <loc>https://usiranconflict.com/blog/qatar-oil-prices-2026-lng-giant-petroleum-producer</loc>
+    <lastmod>2026-03-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Strategic Intelligence</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-03-14</news:publication_date>
+      <news:title>Qatar Oil Prices 2026: LNG Giant and Petroleum Producer</news:title>
+      <news:keywords>Qatar oil prices, QatarEnergy, Qatar LNG, North Field, Qatar petroleum</news:keywords>
+    </news:news>
+    <image:image>
+      <image:loc>https://usiranconflict.com/para-3.jpg</image:loc>
+      <image:title>Qatar LNG and Oil Production</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Iran Oil Prices -->
+  <url>
+    <loc>https://usiranconflict.com/blog/iran-oil-prices-2026-sanctions-strait-hormuz-global-impact</loc>
+    <lastmod>2026-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Strategic Intelligence</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-03-13</news:publication_date>
+      <news:title>Iran Oil Prices 2026: Sanctions, Conflict and Global Impact</news:title>
+      <news:keywords>Iran oil prices, Iran oil sanctions, Kharg Island, Iran oil exports, Strait of Hormuz oil</news:keywords>
+    </news:news>
+    <image:image>
+      <image:loc>https://usiranconflict.com/para-4.jpg</image:loc>
+      <image:title>Iran Oil Production Under Sanctions</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Mexico Oil Prices -->
+  <url>
+    <loc>https://usiranconflict.com/blog/mexico-oil-prices-2026-pemex-production-decline-reform</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Strategic Intelligence</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-03-12</news:publication_date>
+      <news:title>Mexico Oil Prices 2026: Pemex Struggles and Production Decline</news:title>
+      <news:keywords>Mexico oil prices, Pemex, Mexico oil production, Maya crude, Mexican oil</news:keywords>
+    </news:news>
+    <image:image>
+      <image:loc>https://usiranconflict.com/para-5.jpg</image:loc>
+      <image:title>Mexico Pemex Oil Production</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Angola Oil Prices -->
+  <url>
+    <loc>https://usiranconflict.com/blog/angola-oil-prices-2026-africa-second-largest-opec-member</loc>
+    <lastmod>2026-03-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Strategic Intelligence</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-03-11</news:publication_date>
+      <news:title>Angola Oil Prices 2026: Africa's Second Largest Producer and OPEC Exit</news:title>
+      <news:keywords>Angola oil prices, Sonangol, Angola oil production, Angola OPEC, African oil</news:keywords>
+    </news:news>
+    <image:image>
+      <image:loc>https://usiranconflict.com/para-6.jpg</image:loc>
+      <image:title>Angola Oil Production</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Algeria Oil Prices -->
+  <url>
+    <loc>https://usiranconflict.com/blog/algeria-oil-prices-2026-african-opec-member-gas-producer</loc>
+    <lastmod>2026-03-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Strategic Intelligence</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-03-10</news:publication_date>
+      <news:title>Algeria Oil Prices 2026: African OPEC Member and Gas Exporter</news:title>
+      <news:keywords>Algeria oil prices, Sonatrach, Algeria gas exports, Algeria OPEC, North African oil</news:keywords>
+    </news:news>
+    <image:image>
+      <image:loc>https://usiranconflict.com/timeline-1.jpg</image:loc>
+      <image:title>Algeria Oil and Gas Production</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Libya Oil Prices -->
+  <url>
+    <loc>https://usiranconflict.com/blog/libya-oil-prices-2026-instability-african-reserves</loc>
+    <lastmod>2026-03-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <news:news>
+      <news:publication>
+        <news:name>Strategic Intelligence</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-03-09</news:publication_date>
+      <news:title>Libya Oil Prices 2026: Instability and African Oil Reserves</news:title>
+      <news:keywords>Libya oil prices, Libya oil production, Libyan oil reserves, NOC Libya, Africa oil</news:keywords>
+    </news:news>
+    <image:image>
+      <image:loc>https://usiranconflict.com/timeline-2.jpg</image:loc>
+      <image:title>Libya Oil Production Instability</image:title>
+    </image:image>
   </url>
 </urlset>
