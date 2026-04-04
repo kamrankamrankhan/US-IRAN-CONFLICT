@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, FileText, Clock } from 'lucide-react';
-import { blogs, BlogPost } from '../content/blogs';
+import { blogs } from '../content/blogs';
+import type { BlogPost } from '../content/blogs';
 
 // Category mapping based on blog slug/content
 function getCategory(post: BlogPost): { label: string; color: string } {
