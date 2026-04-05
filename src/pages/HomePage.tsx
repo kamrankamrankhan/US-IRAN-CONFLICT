@@ -35,7 +35,7 @@ export default function HomePage() {
     p.slug.includes('libya-oil')
   ).slice(0, 3);
   
-  // War & conflict blogs
+  // War & conflict blogs (including Night Stalker special operations)
   const warConflictBlogs = blogs.filter(p => 
     p.slug.includes('israel') ||
     p.slug.includes('hezbollah') ||
@@ -45,7 +45,9 @@ export default function HomePage() {
     p.slug.includes('operation-epic') ||
     p.slug.includes('proxy') ||
     p.slug.includes('axis-of-resistance') ||
-    p.slug.includes('nuclear')
+    p.slug.includes('nuclear') ||
+    p.slug.includes('night-stalker') ||
+    p.slug.includes('little-bird')
   ).slice(0, 3);
 
   // Recent analysis blogs

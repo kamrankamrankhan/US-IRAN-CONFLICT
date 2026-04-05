@@ -39,6 +39,9 @@ function getCategory(post: BlogPost): { label: string; color: string } {
       slug.includes('gaza')) {
     return { label: 'ISRAEL-IRAN WAR', color: 'bg-red-600' };
   }
+  if (slug.includes('night-stalker') || slug.includes('little-bird') || slug.includes('special-operations')) {
+    return { label: 'SPECIAL OPS', color: 'bg-slate-700' };
+  }
   if (slug.includes('strait-of-hormuz')) {
     return { label: 'STRAIT OF HORMUZ', color: 'bg-orange-600' };
   }

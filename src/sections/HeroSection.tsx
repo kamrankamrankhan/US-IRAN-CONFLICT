@@ -3,13 +3,12 @@ import { ArrowRight } from 'lucide-react';
 import { blogs } from '../content/blogs';
 
 const HeroSection = () => {
-  // Get the most recent featured blog
-  const featuredBlog = blogs.find(b => b.slug === 'israel-iran-war-2026-direct-confrontation') || blogs[0];
+  // Get the most recent blog as featured (sorted by date descending)
+  const sortedBlogs = [...blogs].sort((a, b) => (b.date > a.date ? 1 : -1));
+  const featuredBlog = sortedBlogs[0];
   
-  // Get a few secondary featured blogs
-  const secondaryBlogs = blogs
-    .filter(b => b.slug !== featuredBlog?.slug)
-    .slice(0, 3);
+  // Get a few secondary featured blogs (next most recent)
+  const secondaryBlogs = sortedBlogs.slice(1, 4);
 
   return (
     <section className="bg-white">
