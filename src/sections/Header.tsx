@@ -1,10 +1,29 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, Search, ChevronDown } from 'lucide-react';
+import { Menu, X, Search, ChevronDown, Radio, ExternalLink } from 'lucide-react';
+import { breakingNews, newsItems } from '../content/news';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [currentNewsIndex, setCurrentNewsIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  // Combine breaking news with regular news for the ticker
+  const liveNewsItems = [...breakingNews, ...newsItems.slice(0, 5)];
+
+  // Auto-rotate news ticker
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setCurrentNewsIndex((prev) => (prev + 1) % liveNewsItems.length);
+        setIsTransitioning(false);
+      }, 300);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [liveNewsItems.length]);
 
   const navItems = [
     {
@@ -36,9 +55,49 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-gray-200">
-      {/* Top bar */}
-      <div className="bg-red-600 text-white text-xs py-2 px-4 text-center font-medium">
-        Breaking: US-Iran tensions escalate amid Strait of Hormuz crisis. Follow our live coverage.
+      {/* Live News Ticker Bar */}
+      <div className="bg-gradient-to-r from-red-700 via-red-600 to-red-700 text-white overflow-hidden">
+        <div className="flex items-center">
+          {/* LIVE Badge */}
+          <div className="flex-shrink-0 bg-red-900 px-4 py-2 flex items-center gap-2 border-r border-red-500">
+            <Radio className="w-4 h-4 animate-pulse" />
+            <span className="font-bold text-sm uppercase tracking-wider">LIVE</span>
+          </div>
+          
+          {/* News Ticker */}
+          <div className="flex-1 overflow-hidden px-4">
+            <a
+              href={liveNewsItems[currentNewsIndex]?.sourceUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`flex items-center gap-2 py-2 transition-all duration-300 hover:text-red-200 ${
+                isTransitioning ? 'opacity-0 -translate-y-2' : 'opacity-100 translate-y-0'
+              }`}
+            >
+              <span className="text-xs font-medium bg-white/20 px-2 py-0.5 rounded uppercase">
+                {liveNewsItems[currentNewsIndex]?.source}
+              </span>
+              <span className="text-sm font-medium truncate">
+                {liveNewsItems[currentNewsIndex]?.title}
+              </span>
+              <ExternalLink className="w-3 h-3 flex-shrink-0 opacity-60" />
+            </a>
+          </div>
+
+          {/* Navigation dots */}
+          <div className="hidden sm:flex items-center gap-1 px-4">
+            {liveNewsItems.slice(0, 5).map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentNewsIndex(index)}
+                className={`w-1.5 h-1.5 rounded-full transition-all ${
+                  index === currentNewsIndex ? 'bg-white w-3' : 'bg-white/40 hover:bg-white/60'
+                }`}
+                aria-label={`Go to news ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
       </div>
 
       {/* Main navigation */}

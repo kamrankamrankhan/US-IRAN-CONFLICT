@@ -1,6 +1,7 @@
 import Header from '../sections/Header';
 import HeroSection from '../sections/HeroSection';
 import ContentSection from '../sections/ContentSection';
+import LatestNewsSection from '../sections/LatestNewsSection';
 import NewsletterSection from '../sections/NewsletterSection';
 import Footer from '../sections/NewFooter';
 import { blogs } from '../content/blogs';
@@ -55,6 +56,9 @@ export default function HomePage() {
       <Header />
       <HeroSection />
       
+      {/* Latest News Section - CNN, Al Jazeera, Wikipedia etc */}
+      <LatestNewsSection />
+      
       {/* Global Oil Prices Section */}
       <ContentSection
         title="Global Oil Prices"
@@ -76,7 +80,7 @@ export default function HomePage() {
         title="Latest Updates"
         description="Recent analysis and breaking coverage from the US-Iran conflict zone."
         blogs={recentBlogs}
-        accentColor="dark"
+        accentColor="white"
       />
 
       <NewsletterSection />
