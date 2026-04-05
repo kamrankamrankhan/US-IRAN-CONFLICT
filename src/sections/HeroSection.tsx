@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Youtube, Play, ExternalLink } from 'lucide-react';
 import { blogs } from '../content/blogs';
 
 const HeroSection = () => {
@@ -60,6 +60,40 @@ const HeroSection = () => {
 
           {/* Mission Statement + Secondary Articles */}
           <div className="space-y-6">
+            {/* YouTube Live Widget */}
+            <a
+              href="https://www.youtube.com/watch?v=gCNeDWCI0vo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group block relative overflow-hidden rounded-lg bg-gradient-to-br from-red-600 to-red-700 p-4 hover:from-red-700 hover:to-red-800 transition-all shadow-lg hover:shadow-xl"
+            >
+              <div className="flex items-center gap-4">
+                <div className="relative">
+                  <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors">
+                    <Youtube className="w-8 h-8 text-white" />
+                  </div>
+                  <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-white rounded-full flex items-center justify-center">
+                    <Play className="w-3 h-3 text-red-600 ml-0.5" />
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="flex items-center gap-1 text-xs font-bold text-white/90 uppercase tracking-wider">
+                      <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                      LIVE
+                    </span>
+                  </div>
+                  <h4 className="text-white font-bold text-lg leading-tight">
+                    Watch Live Coverage
+                  </h4>
+                  <p className="text-white/80 text-sm mt-1">
+                    US-Iran Conflict Updates
+                  </p>
+                </div>
+                <ExternalLink className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" />
+              </div>
+            </a>
+
             {/* Mission Box */}
             <div className="bg-gray-50 border-l-4 border-red-600 p-6 rounded-r-lg">
               <h3 className="text-lg font-bold text-red-600 mb-2 uppercase tracking-wide">

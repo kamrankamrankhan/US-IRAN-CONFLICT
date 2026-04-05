@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, Search, ChevronDown, Radio, ExternalLink } from 'lucide-react';
+import { Menu, X, Search, ChevronDown, Radio, ExternalLink, Youtube, Play } from 'lucide-react';
 import { breakingNews, newsItems } from '../content/news';
 
 const Header = () => {
@@ -149,6 +149,17 @@ const Header = () => {
 
           {/* Right side actions */}
           <div className="flex items-center gap-3">
+            {/* YouTube Channel Button */}
+            <a
+              href="https://www.youtube.com/watch?v=gCNeDWCI0vo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-3 py-1.5 bg-red-600 text-white text-sm font-semibold rounded-full hover:bg-red-700 transition-colors shadow-md hover:shadow-lg"
+            >
+              <Youtube className="w-4 h-4" />
+              <span className="hidden sm:inline">Watch Live</span>
+              <Play className="w-3 h-3" />
+            </a>
             <button className="p-2 text-gray-600 hover:text-red-600 transition-colors" aria-label="Search">
               <Search className="w-5 h-5" />
             </button>
