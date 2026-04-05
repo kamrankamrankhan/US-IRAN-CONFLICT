@@ -58,6 +58,32 @@ const HeroSection = () => {
             </article>
           )}
 
+          {/* Second YouTube Video Player - Additional News Channel */}
+          <div className="rounded-lg overflow-hidden border border-gray-200 bg-white shadow-sm">
+            <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 border-b border-gray-200">
+              <Youtube className="w-5 h-5 text-red-600" />
+              <span className="font-semibold text-gray-800 text-sm">NEWS COVERAGE</span>
+              <span className="ml-auto flex items-center gap-1 text-xs font-medium text-red-600">
+                <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                LIVE
+              </span>
+            </div>
+            <div className="aspect-video relative bg-gray-100">
+              <iframe
+                src="https://www.youtube.com/embed/D0DVm4ZBzv0?autoplay=0&rel=0&modestbranding=1"
+                title="US Iran Conflict News Coverage"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                className="w-full h-full"
+              ></iframe>
+            </div>
+            <div className="px-3 py-2 bg-gray-50 border-t border-gray-200">
+              <p className="text-xs text-gray-500">
+                Watch directly on this page - no redirect needed
+              </p>
+            </div>
+          </div>
+
           {/* Mission Statement + Secondary Articles */}
           <div className="space-y-6">
             {/* YouTube Live Video Player - Watch Directly on Site */}
