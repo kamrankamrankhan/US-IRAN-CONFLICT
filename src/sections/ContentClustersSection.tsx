@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, NuclearWeapon, Flag, MilitaryTank, OilBarrel, DollarSign, Users } from 'lucide-react';
+import { ArrowRight, Atom, Flag, Shield, Droplet, DollarSign, Users } from 'lucide-react';
 import { contentClusters } from '../lib/seo-keywords';
 
 const clusterIcons: Record<string, React.ReactNode> = {
-  'nuclear-program': <NuclearWeapon className="w-6 h-6" />,
+  'nuclear-program': <Atom className="w-6 h-6" />,
   'israel-iran-conflict': <Flag className="w-6 h-6" />,
-  'us-military-involvement': <MilitaryTank className="w-6 h-6" />,
-  'oil-energy-markets': <OilBarrel className="w-6 h-6" />,
+  'us-military-involvement': <Shield className="w-6 h-6" />,
+  'oil-energy-markets': <Droplet className="w-6 h-6" />,
   'sanctions-economy': <DollarSign className="w-6 h-6" />,
   'proxy-networks': <Users className="w-6 h-6" />,
 };
