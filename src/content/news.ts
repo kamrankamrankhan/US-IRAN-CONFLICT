@@ -24,6 +24,16 @@ export const newsCategories = [
 
 export const newsItems: NewsItem[] = [
   {
+    id: 'news-0',
+    title: 'Night Stalker Little Bird Helicopters Destroyed at Forward Landing Site in Iran',
+    excerpt: 'US Army 160th SOAR AH-6 Little Bird helicopters destroyed at forward airfield in Iran during F-15E WSO rescue mission. Images show burned-out special operations aircraft near Isfahan, approximately 200 miles inside Iranian territory.',
+    source: 'The War Zone',
+    sourceUrl: 'https://www.twz.com/air/night-stalker-little-bird-helicopters-destroyed-at-forward-landing-site-in-iran',
+    date: '2026-04-05',
+    category: 'breaking',
+    isUrgent: true,
+  },
+  {
     id: 'news-1',
     title: 'US-Israel-Iran War Live: US hits 9,000 Iranian targets as conflict enters fourth week',
     excerpt: 'The Middle East conflict has entered its fourth week, with tensions showing tentative signs of easing alongside continued military posturing. US President Donald Trump has announced a five-day pause on planned strikes targeting Iranian power and energy infrastructure, citing "very good and productive" talks with Tehran aimed at a complete resolution.',

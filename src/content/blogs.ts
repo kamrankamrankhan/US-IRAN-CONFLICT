@@ -1706,4 +1706,69 @@ export const blogs: BlogPost[] = [
       },
     ],
   },
+  // ============================================================================
+  // BLOG 33: NIGHT STALKER LITTLE BIRD HELICOPTERS DESTROYED IN IRAN
+  // ============================================================================
+  {
+    slug: "night-stalker-little-bird-helicopters-destroyed-iran-2026",
+    title: "Night Stalker AH-6 Little Bird Helicopters Destroyed at Forward Landing Site in Iran",
+    excerpt: "Breaking: US Army 160th SOAR Night Stalker AH-6 Little Bird helicopters destroyed at forward landing site in Iran during F-15E WSO rescue mission. Analysis of special operations aviation losses and implications for US-Iran conflict.",
+    date: "2026-04-05",
+    content: "Analysis of destroyed Night Stalker Little Bird helicopters in Iran, special operations rescue mission details, and implications for US-Iran military conflict.",
+    image: "/blog-little-bird-iran.jpg",
+    sections: [
+      {
+        title: "Night Stalker Helicopters Destroyed in Iran: Breaking News",
+        content: "New images have emerged showing destroyed US special operations helicopters at a forward improvised airfield in Iran. The austere operating location served as a hub and forward arming and refueling point (FARP) for the rescue mission of a downed F-15E Weapon System Officer. Among the wreckage appear to be two burned-out MH-6/AH-6 Little Birds of the 160th Special Operations Aviation Regiment, better known as the Night Stalkers. This development provides rare insight into the complexity and risks of US special operations inside Iranian territory during the ongoing conflict.",
+      },
+      {
+        title: "The 160th SOAR Night Stalkers: Elite Aviation Unit",
+        content: "The 160th Special Operations Aviation Regiment (SOAR), nicknamed the Night Stalkers, is the US Army's premier special operations aviation unit. Based at Fort Campbell, Kentucky, the regiment operates modified helicopters designed for special operations missions including direct action, special reconnaissance, and counter-terrorism. The unit flies MH-6/AH-6 Little Birds, MH-60 Black Hawks, and MH-47 Chinooks configured for special operations. Night Stalkers are known for their ability to operate in denied areas, at night, and under the most challenging conditions. Their motto 'Night Stalkers Don't Quit' reflects the unit's ethos of completing missions regardless of obstacles.",
+      },
+      {
+        title: "AH-6 Little Bird: Specifications and Capabilities",
+        content: "The AH-6 Little Bird is a light attack helicopter derived from the Hughes OH-6 Cayuse. Despite its small size, the AH-6 packs significant firepower including machine guns, rockets, and Hellfire missiles. The aircraft can be configured in attack (AH-6) or assault (MH-6) variants. Key capabilities include: ability to be transported inside C-130 aircraft and rapidly deployed, minimal ground footprint allowing operations from austere locations, high speed and maneuverability for urban and close air support missions, and advanced sensors and communications for night operations. The Little Bird's small size makes it ideal for special operations where stealth and flexibility are essential.",
+      },
+      {
+        title: "Forward Landing Site in Iran: Location and Significance",
+        content: "The landing zone where the helicopters were destroyed has been geolocated to just south of Isfahan, approximately 200 miles from the Iranian coastline and roughly 230 miles from a land border. This location deep inside Iranian territory is significant—it indicates US forces established a forward operating base far within Iran during the rescue operation. The site served as a FARP where helicopters could refuel and rearm during the F-15E WSO rescue mission. The distance from friendly territory makes it extremely unlikely the Little Birds flew there directly; they were likely transported aboard MC-130J Commando II aircraft.",
+      },
+      {
+        title: "F-15E WSO Rescue Mission: What We Know",
+        content: "The rescue of the F-15E Weapon System Officer was conducted under extremely challenging conditions. The F-15E Strike Eagle was apparently shot down during operations over Iran, requiring a combat search and rescue (CSAR) mission. Special operations forces established the forward landing site as a staging area for the rescue. MC-130J aircraft transported personnel, equipment, and likely the Little Birds to the site. The operation involved multiple aircraft and personnel in hostile territory. The rescue was successful—the WSO was recovered—but the cost included destroyed special operations aircraft left behind during extraction.",
+      },
+      {
+        title: "Why Were the Little Birds Destroyed?",
+        content: "The destruction of the Little Birds at the forward site raises important questions about the operation's urgency. Several scenarios could explain why these valuable aircraft were destroyed rather than recovered: The two MC-130s at the site became immobilized and could not transport the helicopters; The extraction was conducted in a hurry with limited aircraft capacity; The Little Birds were damaged by enemy fire and could not fly; There was no time to refuel them from the stricken MC-130s. Destroying stranded special operations aircraft is standard procedure to prevent sensitive equipment from falling into enemy hands. The helicopters contain advanced sensors, communications systems, and defensive technologies that would be valuable intelligence for adversaries.",
+      },
+      {
+        title: "Destroyed C-130s: Additional Losses at the Site",
+        content: "Alongside the Little Birds, at least two MC-130J Commando II aircraft were destroyed at the forward site. These aircraft were reportedly demolished in place as they were incapable of departing. Three additional aircraft arrived to extract the special operations force. The loss of two MC-130Js represents significant equipment loss—each aircraft costs approximately $100 million and is configured with specialized equipment for special operations. The destruction of these valuable assets indicates the urgency and difficulty of the extraction under fire or threat of Iranian forces approaching the site.",
+      },
+      {
+        title: "AH-6 Little Bird Combat Role: Force Protection",
+        content: "If configured in AH-6 attack variants, the Little Birds at the Iranian site were likely providing close air support and force protection for the larger ground force deployed there. Reports suggest there may not have been a major firefight on the ground as originally reported, but Iranians were fired upon from the air when trying to approach the base. Video evidence shows firing aircraft that could be AH-6s engaging approaching forces. This force protection role is a key mission for AH-6 crews who train heavily for exactly this type of scenario. The Little Birds can be rapidly deployed, rolled out of transport aircraft, and flying in minutes to provide immediate protection for special operations forces.",
+      },
+      {
+        title: "Implications for US Special Operations in Iran",
+        content: "The revelation of destroyed US special operations aircraft deep inside Iran has significant implications. It confirms US forces are conducting sustained operations within Iranian territory, not just air strikes. The ability to establish forward bases inside Iran demonstrates sophisticated planning and execution capabilities. The losses, while significant, represent the acceptable cost of high-value missions like personnel recovery. Iranian forces will study the wreckage for intelligence on US special operations aviation technology. The operation demonstrates the complexity and risk of the ongoing conflict, with US forces operating far inside hostile territory.",
+      },
+      {
+        title: "Iran's Response and Information Warfare",
+        content: "Iranian media and social accounts have circulated images of the destroyed aircraft, using them for propaganda purposes. Iran claims the destruction of US aircraft as evidence of its ability to resist American operations within its borders. The images provide Iran with intelligence about US special operations capabilities and equipment. Iran may share information gleaned from the wreckage with allies including Russia and China. The public nature of the losses differs from typical special operations secrecy, suggesting Iran found and documented the site before US forces could prevent imagery release.",
+      },
+      {
+        title: "Comparison to Previous Special Operations Losses",
+        content: "The loss of special operations aircraft in hostile territory, while significant, has precedents. In 1980, Operation Eagle Claw to rescue American hostages in Iran resulted in the loss of multiple aircraft and personnel. In 2011, a stealth helicopter was destroyed during the Osama bin Laden raid in Pakistan. In Afghanistan and Iraq, various special operations aircraft were lost to enemy action and accidents. What makes this incident notable is the location deep inside Iran and the number of assets lost in a single operation. The successful personnel recovery distinguishes this mission from failures, but the equipment losses represent a significant cost.",
+      },
+      {
+        title: "Future Implications for US-Iran Conflict",
+        content: "The destruction of Night Stalker helicopters in Iran highlights several aspects of the ongoing conflict. US special operations forces continue to operate inside Iran despite the risks. The ability to conduct personnel recovery deep in hostile territory demonstrates capability, albeit at significant cost. Iran's ability to document and publicize US losses shows the information warfare dimension of the conflict. The loss of specialized aircraft will impact Night Stalker operational capacity until replacements arrive. Future operations will likely account for the risks demonstrated by this incident, potentially affecting planning and risk assessment for missions inside Iran.",
+      },
+      {
+        title: "Conclusion: The Cost of Special Operations",
+        content: "The destruction of Night Stalker AH-6 Little Birds and MC-130s at a forward landing site in Iran provides a rare glimpse into the complexity and cost of US special operations in the ongoing conflict. The successful rescue of the F-15E WSO demonstrates American capability and determination, while the loss of valuable aircraft shows the price paid for such operations. As the US-Iran conflict continues, special operations forces will remain at the tip of the spear, conducting high-risk missions deep in hostile territory. The images of burned helicopters in the Iranian desert serve as a reminder that even elite units and advanced technology cannot eliminate the inherent risks of combat operations.",
+      },
+    ],
+  },
 ];
