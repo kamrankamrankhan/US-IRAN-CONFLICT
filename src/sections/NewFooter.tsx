@@ -26,10 +26,10 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { icon: Twitter, label: 'Twitter', href: '#' },
-    { icon: Facebook, label: 'Facebook', href: '#' },
-    { icon: Linkedin, label: 'LinkedIn', href: '#' },
-    { icon: Youtube, label: 'YouTube', href: '#' },
+    { icon: Twitter, label: 'Twitter', href: 'https://twitter.com/usiranconflict' },
+    { icon: Facebook, label: 'Facebook', href: 'https://facebook.com/usiranconflict' },
+    { icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com/company/usiranconflict' },
+    { icon: Youtube, label: 'YouTube', href: 'https://youtube.com/@usiranconflict' },
   ];
 
   return (

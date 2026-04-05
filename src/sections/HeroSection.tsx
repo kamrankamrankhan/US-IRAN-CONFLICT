@@ -24,8 +24,9 @@ const HeroSection = () => {
                   {featuredBlog.image ? (
                     <img
                       src={featuredBlog.image}
-                      alt={featuredBlog.title}
+                      alt={`${featuredBlog.title} - Iran Israel Conflict Analysis 2026`}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="eager"
                     />
                   ) : (
                     <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
@@ -91,8 +92,9 @@ const HeroSection = () => {
                     {blog.image ? (
                       <img
                         src={blog.image}
-                        alt={blog.title}
+                        alt={`${blog.title} - Middle East War News`}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
                       />
                     ) : (
                       <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300" />

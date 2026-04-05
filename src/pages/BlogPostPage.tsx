@@ -4,6 +4,8 @@ import { blogs } from '../content/blogs';
 import type { BlogPost } from '../content/blogs';
 import Header from '../sections/Header';
 import Footer from '../sections/NewFooter';
+import SocialShare from '../components/SocialShare';
+import RelatedArticles from '../components/RelatedArticles';
 
 // Category mapping based on blog slug/content
 function getCategory(post: BlogPost): { label: string; color: string } {
@@ -187,25 +189,44 @@ const BlogPostPage = () => {
 
         {/* Tags/Keywords */}
         <div className="mt-12 pt-8 border-t border-gray-200">
-          <div className="flex items-center gap-2 mb-4">
-            <Tag className="w-4 h-4 text-gray-400" />
-            <span className="text-sm text-gray-500 font-semibold uppercase tracking-wider">Related Topics</span>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            <Link to="/blogs" className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full hover:bg-red-100 hover:text-red-700 transition-colors">
-              US Iran War
-            </Link>
-            <Link to="/blogs" className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full hover:bg-red-100 hover:text-red-700 transition-colors">
-              Middle East Crisis
-            </Link>
-            <Link to="/blogs" className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full hover:bg-red-100 hover:text-red-700 transition-colors">
-              Oil Prices
-            </Link>
-            <Link to="/blogs" className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full hover:bg-red-100 hover:text-red-700 transition-colors">
-              OPEC
-            </Link>
+          <div className="flex items-center justify-between flex-wrap gap-4">
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <Tag className="w-4 h-4 text-gray-400" />
+                <span className="text-sm text-gray-500 font-semibold uppercase tracking-wider">Related Topics</span>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                <Link to="/blogs" className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full hover:bg-red-100 hover:text-red-700 transition-colors">
+                  US Iran War
+                </Link>
+                <Link to="/blogs" className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full hover:bg-red-100 hover:text-red-700 transition-colors">
+                  Middle East Crisis
+                </Link>
+                <Link to="/blogs" className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full hover:bg-red-100 hover:text-red-700 transition-colors">
+                  Oil Prices
+                </Link>
+                <Link to="/blogs" className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full hover:bg-red-100 hover:text-red-700 transition-colors">
+                  OPEC
+                </Link>
+              </div>
+            </div>
+            
+            {/* Social Share */}
+            <SocialShare
+              url={`https://usiranconflict.com/blog/${post.slug}`}
+              title={post.title}
+              description={post.excerpt}
+              hashtags={['IranConflict', 'MiddleEastCrisis', 'USIranWar']}
+            />
           </div>
         </div>
+
+        {/* Related Articles */}
+        <RelatedArticles
+          currentSlug={post.slug}
+          keywords={post.title.split(' ').filter(w => w.length > 4)}
+          maxArticles={4}
+        />
 
         {/* Back to blogs */}
         <div className="mt-12 pt-8 border-t border-gray-200">
