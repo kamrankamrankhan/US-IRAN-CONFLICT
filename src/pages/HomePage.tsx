@@ -47,7 +47,10 @@ export default function HomePage() {
     p.slug.includes('axis-of-resistance') ||
     p.slug.includes('nuclear') ||
     p.slug.includes('night-stalker') ||
-    p.slug.includes('little-bird')
+    p.slug.includes('little-bird') ||
+    p.slug.includes('us-iran-war') ||
+    p.slug.includes('iran-us') ||
+    p.slug.includes('gulf-arab')
   ).slice(0, 3);
 
   // Recent analysis blogs

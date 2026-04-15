@@ -1771,4 +1771,135 @@ export const blogs: BlogPost[] = [
       },
     ],
   },
+  // ============================================================================
+  // BLOG 34–37: APRIL 2026 — LATEST DEVELOPMENTS & ANALYSIS
+  // ============================================================================
+  {
+    slug: "operation-epic-fury-april-2026-civilian-corridors-air-defenses",
+    title: "Operation Epic Fury: April 2026 Update on Air Defenses, Evacuations, and Civilian Corridors",
+    excerpt:
+      "April 2026 analysis: how coalition air defenses and emergency protocols are shaping civilian outcomes as strikes and retaliation continue across the region—and what humanitarian agencies are reporting from border zones.",
+    date: "2026-04-10",
+    content:
+      "April 2026 update on Operation Epic Fury: air defense posture, evacuation corridors, and civilian protection measures as the US-Iran conflict enters a new phase.",
+    image: "/topic-operation-epic-fury.jpg",
+    sections: [
+      {
+        title: "Integrated Air and Missile Defense Under Strain",
+        content:
+          "By early April 2026, missile and drone exchanges had become a daily feature of the broader war. US and partner forces continued to layer Patriot, THAAD, and naval air-defense systems with Israeli Arrow and David’s Sling batteries where operations overlapped. Analysts note that interceptors are consumable assets: magazine depth, crew fatigue, and logistics—not only radar coverage—now determine whether cities remain shielded during saturation raids. Commanders have publicly acknowledged trade-offs between defending population centers and protecting forward bases.",
+      },
+      {
+        title: "Civilian Corridors and Temporary Safe Passage",
+        content:
+          "Humanitarian organizations report patchy but meaningful progress opening short humanitarian windows along agreed routes near border governorates. These corridors are fragile: they depend on local cease-fires, communications between militaries, and deconfliction with air traffic. Where corridors hold, medical evacuations and aid convoys have moved more safely; where they collapse, civilians face the same dual pressures of strikes and road closures that defined earlier phases of the war.",
+      },
+      {
+        title: "Urban Shelters, Power, and Water",
+        content:
+          "April updates emphasize infrastructure resilience. Rolling blackouts, water-pumping disruptions, and hospital generator fuel shortages remain acute in several major urban areas on all sides of the conflict. Municipal authorities have prioritized restoring grid segments and distributing fuel for hospitals, while NGOs stress that long-term recovery will require both security guarantees and foreign technical assistance.",
+      },
+      {
+        title: "What Watchers Expect Next",
+        content:
+          "Military analysts expect continued attempts to degrade command-and-control and long-range strike networks rather than a rapid return to pre-war baselines. For civilians, the operative question in April is whether de-escalation talks—however informal—can widen humanitarian access before the next major round of strikes. Until then, evacuation guidance, early-warning apps, and redundant communications remain the front line of protection for millions.",
+      },
+    ],
+  },
+  {
+    slug: "us-iran-war-april-2026-un-security-council-divided-allies",
+    title: "US-Iran War April 2026: UN Deadlock, Sanctions Debates, and a Split Among Major Powers",
+    excerpt:
+      "Why the Security Council has struggled to agree on binding measures in April 2026, how European capitals are balancing energy security with diplomatic pressure, and what Russia and China are signaling from New York.",
+    date: "2026-04-12",
+    content:
+      "Diplomatic analysis of April 2026 UN and multilateral responses to the US-Iran war: vetoes, competing resolutions, and alliance strain.",
+    image: "/gallery-6.jpg",
+    sections: [
+      {
+        title: "Emergency Sessions Without Consensus",
+        content:
+          "Through March and into April 2026, the United Nations Security Council held repeated emergency sessions on the Middle East escalation. Draft resolutions ranged from unconditional cease-fire demands to narrower humanitarian-access mandates. Permanent members found little common ground: language condemning specific strikes, naming state actors, or authorizing enforcement measures proved divisive. The result has been a stream of statements and presidential rhetoric rather than unified Chapter VII action.",
+      },
+      {
+        title: "Europe: Energy Security vs. Humanitarian Pressure",
+        content:
+          "European governments face a bruising policy trilemma: sustaining support for allies, shielding consumers from oil and gas price shocks, and responding to domestic calls for de-escalation. Some capitals pushed harder for humanitarian carve-outs and diplomatic off-ramps; others emphasized deterrence and defense industrial cooperation with the United States. The lack of a single EU foreign-policy voice has complicated mediation efforts pitched from Brussels and individual member states.",
+      },
+      {
+        title: "Russia and China: Calls for Restraint, Criticism of Unilateral Action",
+        content:
+          "Moscow and Beijing have consistently framed the conflict as a failure of diplomacy and—in their public statements—criticized unilateral military action while stopping short of endorsing Iran’s entire war aims. Both emphasize sovereignty and regional stability, urging talks while expanding energy and diplomatic engagement where Western leverage is contested. Western diplomats read these positions as partly ideological alignment and partly strategic opportunism.",
+      },
+      {
+        title: "Sanctions and Secondary Pressure",
+        content:
+          "Parallel to UN debates, national sanctions lists and financial restrictions continued to evolve. Banks and insurers worldwide are repricing risk for Gulf shipping and Iranian trade, amplifying economic pain even when multilateral bodies stall. For businesses and humanitarian NGOs, the patchwork of rules has made compliance costly and slowed some aid flows—another reason diplomats say ‘UN deadlock’ does not mean ‘no consequences.’",
+      },
+    ],
+  },
+  {
+    slug: "iran-us-cyber-war-2026-critical-infrastructure-hybrid-conflict",
+    title: "The Hybrid Front: Iran–US Cyber Exchanges and Critical Infrastructure in the 2026 War",
+    excerpt:
+      "From wiper malware and DDoS campaigns to worries about industrial control systems: how the cyber dimension runs parallel to kinetic strikes, and why defenders treat hospitals, ports, and finance as contested terrain.",
+    date: "2026-04-14",
+    content:
+      "Analysis of cyber operations alongside the US-Iran war in 2026: targets, doctrine, and resilience.",
+    image: "/blog-us-sanctions-iran.jpg",
+    sections: [
+      {
+        title: "Cyber as a Parallel Battlefield",
+        content:
+          "Major conflicts in the 2020s rarely stay purely kinetic. In 2026, both sides and their sympathizers have traded network intrusions, website defacements, data leaks, and disruptive attacks that fall below the threshold of armed attack but still damage trust and operations. Cyber campaigns can signal resolve, gather intelligence, or impose costs without admitting responsibility—making attribution and escalation management harder than tracking missiles.",
+      },
+      {
+        title: "Critical Infrastructure in the Crosshairs",
+        content:
+          "Analysts highlight repeated probing of energy, water, transport, and health networks. Hospitals already stretched by mass-casualty events face ransomware-style disruptions; ports handling rerouted energy cargoes see IT outages; financial institutions cope with transaction delays during market volatility. Governments have urged operators to segment networks, patch aggressively, and rehearse offline procedures—treating cyber resilience as a pillar of national defense.",
+      },
+      {
+        title: "Attribution and the Risk of Miscalculation",
+        content:
+          "Unlike a crater on a runway, a cyber incident may involve cutouts, criminal groups, or third-country servers. False flags and noisy traffic increase the odds that a defender misreads intent. That ambiguity is dangerous: a kinetic response to the wrong actor—or an overreaction to a nuisance attack—could widen the war. Hence the push in April 2026 for clearer crisis hotlines and norms around protecting purely civilian systems even when political tempers flare.",
+      },
+      {
+        title: "What Citizens Can Reasonably Do",
+        content:
+          "Official guidance continues to emphasize basic hygiene: enable multifactor authentication, verify outage alerts through second channels, and avoid panic-sharing unverified battlefield or infrastructure claims. In hybrid war, clarity is a strategic asset—and rumor can be as harmful as malware.",
+      },
+    ],
+  },
+  {
+    slug: "gulf-arab-states-us-iran-war-2026-mediation-oil-neutrality",
+    title: "Gulf Arab States in the Middle: Mediation, Oil Policy, and Neutrality in the 2026 Crisis",
+    excerpt:
+      "How Saudi Arabia, the UAE, Qatar, Kuwait, and others balance security ties with Washington, economic links to Asia, and the imperative to keep oil flowing amid Hormuz-related risk.",
+    date: "2026-04-16",
+    content:
+      "Geopolitical analysis of Gulf Cooperation Council states’ posture during the US-Iran war in April 2026.",
+    image: "/blog-us-iran-israel-war-2026.jpg",
+    sections: [
+      {
+        title: "Security Partnerships vs. Regional Stability",
+        content:
+          "Gulf monarchies rely on US security architecture for missile defense and maritime awareness, yet they also fear being dragged into a long war that scares investment and invites attacks on their own infrastructure. April 2026 has seen a flurry of high-level travel: envoys shuttle between Western capitals and Tehran-aligned interlocutors, testing whether quiet channels can complement deadlocked public forums.",
+      },
+      {
+        title: "Oil Policy: Keep Markets Fed Without Picking a Side",
+        content:
+          "Energy exporters face a balancing act. They need stable prices and reliable Asian demand; they also know that any perception of taking sides could invite retaliation or domestic backlash. Spare-capacity decisions, OPEC+ coordination, and bilateral deals with major importers are all framed as ‘market stabilization’—even when everyone understands the geopolitical subtext.",
+      },
+      {
+        title: "Humanitarian and Financial Facilitation",
+        content:
+          "Some Gulf states have positioned themselves as potential hubs for humanitarian logistics or financial channels that comply with sanctions yet keep medicine and food moving. The complexity of compliance regimes means progress is incremental, but even incremental access matters when convoys are stalled elsewhere.",
+      },
+      {
+        title: "Outlook: No Single ‘Gulf Position’",
+        content:
+          "Analysts caution against treating the GCC as monolithic. Each capital weighs threat perceptions, domestic politics, and economic diversification goals differently. What unites them is a preference to avoid total regional collapse—even if their tactics to prevent it diverge sharply.",
+      },
+    ],
+  },
 ];

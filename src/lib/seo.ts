@@ -261,6 +261,14 @@ export function getPageSEO(pathname: string): SEOOptions {
         'angola-oil-prices-2026-africa-second-largest-opec-member': 'Angola oil prices, Sonangol, Angola oil production, Angola OPEC, African oil, Luanda petroleum, Angola offshore oil',
         'algeria-oil-prices-2026-african-opec-member-gas-producer': 'Algeria oil prices, Sonatrach, Algeria gas exports, Algeria OPEC, North African oil, Algerian petroleum, Sahara oil',
         'libya-oil-prices-2026-instability-african-reserves': 'Libya oil prices, Libya oil production, Libyan oil reserves, NOC Libya, Africa oil, Tripoli petroleum, Libyan conflict oil',
+        'operation-epic-fury-april-2026-civilian-corridors-air-defenses':
+          'Operation Epic Fury April 2026, US Iran war civilian corridors, air defense Middle East, humanitarian evacuation, missile defense Gulf',
+        'us-iran-war-april-2026-un-security-council-divided-allies':
+          'US Iran war UN Security Council 2026, Iran sanctions debate, Europe energy security, Russia China Middle East diplomacy',
+        'iran-us-cyber-war-2026-critical-infrastructure-hybrid-conflict':
+          'Iran US cyber war 2026, critical infrastructure attack, hybrid warfare Middle East, ransomware hospitals, Gulf cyber security',
+        'gulf-arab-states-us-iran-war-2026-mediation-oil-neutrality':
+          'Gulf states US Iran war, Saudi Arabia Iran mediation, UAE oil policy 2026, OPEC Strait of Hormuz, GCC neutrality',
       };
       
       keywords = keywordMap[slug] || keywords;
