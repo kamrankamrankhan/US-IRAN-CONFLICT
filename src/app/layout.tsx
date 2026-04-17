@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   },
   description:
     'Complete coverage of the US-Iran war 2026: Operation Epic Fury, nuclear tensions, Strait of Hormuz crisis, oil prices impact, and real-time updates.',
+  icons: {
+    apple: '/apple-touch-icon.svg',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
