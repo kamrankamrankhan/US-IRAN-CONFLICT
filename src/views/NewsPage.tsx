@@ -1,5 +1,7 @@
+'use client';
+
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { 
   ArrowLeft, 
   Newspaper, 
@@ -96,7 +98,7 @@ const NewsPage = () => {
       <header className="sticky top-0 z-50 border-b border-white/10 bg-void-black/95 backdrop-blur">
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link
-            to="/"
+            href="/"
             className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-neon-cyan transition-colors font-mono-custom uppercase tracking-wider"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -236,7 +238,7 @@ const NewsPage = () => {
             This news page aggregates the latest coverage of the US-Iran war 2026 and Israel-Iran conflict from major international news sources. Stay updated on Operation Epic Fury, Iranian nuclear developments, Strait of Hormuz tensions, Hezbollah attacks on Israel, Gaza war updates, and the broader Middle East crisis.
           </p>
           <p className="text-white/60 text-sm leading-relaxed">
-            For in-depth analysis, visit our <Link to="/blogs" className="text-neon-cyan hover:underline">blogs section</Link> or check our <Link to="/live-coverage" className="text-neon-cyan hover:underline">live coverage page</Link> for real-time updates.
+            For in-depth analysis, visit our <Link href="/blogs" className="text-neon-cyan hover:underline">blogs section</Link> or check our <Link href="/live-coverage" className="text-neon-cyan hover:underline">live coverage page</Link> for real-time updates.
           </p>
         </section>
       </main>

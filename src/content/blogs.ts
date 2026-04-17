@@ -22,6 +22,8 @@ export interface BlogPost {
   externalSource?: string;
   /** If set, the post title becomes a clickable link to this URL (e.g. promo/external destination) */
   titleLink?: string;
+  /** Written in Keystatic (/keystatic); body is Markdoc, not sections */
+  source?: 'keystatic';
 }
 
 export const blogs: BlogPost[] = [

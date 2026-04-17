@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { ArrowRight, Newspaper, AlertTriangle, Shield, MessageSquare, TrendingUp, Globe, ExternalLink } from 'lucide-react';
 import { newsItems, breakingNews } from '../content/news';
 
@@ -69,7 +69,7 @@ const NewsSection = () => {
             </h2>
           </div>
           <Link
-            to="/news"
+            href="/news"
             className="hidden md:flex items-center gap-2 px-5 py-2.5 border border-white/20 text-white/80 font-mono-custom text-sm uppercase tracking-wider rounded-full hover:border-neon-cyan hover:text-neon-cyan transition-colors"
           >
             All News
@@ -130,7 +130,7 @@ const NewsSection = () => {
         {/* Mobile View All Button */}
         <div className="mt-8 flex justify-center md:hidden">
           <Link
-            to="/news"
+            href="/news"
             className="flex items-center gap-2 px-5 py-2.5 border border-white/20 text-white/80 font-mono-custom text-sm uppercase tracking-wider rounded-full hover:border-neon-cyan hover:text-neon-cyan transition-colors"
           >
             All News

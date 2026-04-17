@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Twitter, Facebook, Linkedin, Youtube, Mail, ExternalLink } from 'lucide-react';
 
 const Footer = () => {
@@ -39,7 +39,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand column */}
           <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center gap-2 mb-4">
+            <Link href="/" className="flex items-center gap-2 mb-4">
               <div className="w-10 h-10 bg-red-600 rounded flex items-center justify-center">
                 <span className="text-white font-bold text-xl">UI</span>
               </div>
@@ -75,7 +75,7 @@ const Footer = () => {
               {footerLinks.coverage.map((link) => (
                 <li key={link.path}>
                   <Link
-                    to={link.path}
+                    href={link.path}
                     className="text-gray-400 hover:text-red-500 transition-colors flex items-center gap-1 group"
                   >
                     {link.label}
@@ -95,7 +95,7 @@ const Footer = () => {
               {footerLinks.analysis.map((link) => (
                 <li key={link.path}>
                   <Link
-                    to={link.path}
+                    href={link.path}
                     className="text-gray-400 hover:text-red-500 transition-colors flex items-center gap-1 group"
                   >
                     {link.label}
@@ -130,7 +130,7 @@ const Footer = () => {
                 {footerLinks.about.map((link) => (
                   <li key={link.label}>
                     <Link
-                      to={link.path}
+                      href={link.path}
                       className="text-gray-400 hover:text-red-500 transition-colors"
                     >
                       {link.label}

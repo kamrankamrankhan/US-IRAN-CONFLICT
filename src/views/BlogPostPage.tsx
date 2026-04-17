@@ -1,6 +1,8 @@
-import { useParams, Link } from 'react-router-dom';
+'use client';
+
+import Link from 'next/link';
+import type { ReactNode } from 'react';
 import { ArrowLeft, ExternalLink, Clock, Tag } from 'lucide-react';
-import { blogs } from '../content/blogs';
 import type { BlogPost } from '../content/blogs';
 import Header from '../sections/Header';
 import Footer from '../sections/NewFooter';
@@ -10,12 +12,12 @@ import RelatedArticles from '../components/RelatedArticles';
 // Category mapping based on blog slug/content
 function getCategory(post: BlogPost): { label: string; color: string } {
   const slug = post.slug;
-  
+
   // Oil prices blogs
   if (slug.includes('oil-prices') || slug.includes('kharg-island')) {
     return { label: 'OIL & ENERGY', color: 'bg-red-600' };
   }
-  if (slug.includes('saudi-arabia') || slug.includes('uae') || slug.includes('kuwait') || 
+  if (slug.includes('saudi-arabia') || slug.includes('uae') || slug.includes('kuwait') ||
       slug.includes('qatar') || slug.includes('iran-oil')) {
     return { label: 'MIDDLE EAST OIL', color: 'bg-amber-600' };
   }
@@ -25,17 +27,17 @@ function getCategory(post: BlogPost): { label: string; color: string } {
   if (slug.includes('china') || slug.includes('india') || slug.includes('japan')) {
     return { label: 'ASIA ENERGY', color: 'bg-blue-600' };
   }
-  if (slug.includes('usa') || slug.includes('canada') || slug.includes('mexico') || 
-      slug.includes('brazil') || slug.includes('venezuela') || slug.includes('nigeria') || 
+  if (slug.includes('usa') || slug.includes('canada') || slug.includes('mexico') ||
+      slug.includes('brazil') || slug.includes('venezuela') || slug.includes('nigeria') ||
       slug.includes('angola') || slug.includes('algeria') || slug.includes('libya')) {
     return { label: 'GLOBAL OIL', color: 'bg-teal-600' };
   }
   if (slug.includes('norway') || slug.includes('uk')) {
     return { label: 'NORTH SEA', color: 'bg-cyan-600' };
   }
-  
+
   // Conflict/war blogs
-  if (slug.includes('israel') || slug.includes('hezbollah') || slug.includes('hamas') || 
+  if (slug.includes('israel') || slug.includes('hezbollah') || slug.includes('hamas') ||
       slug.includes('gaza')) {
     return { label: 'ISRAEL-IRAN WAR', color: 'bg-red-600' };
   }
@@ -54,33 +56,17 @@ function getCategory(post: BlogPost): { label: string; color: string } {
   if (slug.includes('sanctions') || slug.includes('economic')) {
     return { label: 'SANCTIONS', color: 'bg-purple-600' };
   }
-  
+
   return { label: 'GEOPOLITICS', color: 'bg-gray-600' };
 }
 
-const BlogPostPage = () => {
-  const { slug } = useParams<{ slug: string }>();
-  const post = slug ? blogs.find((b) => b.slug === slug) : null;
+type BlogPostPageProps = {
+  post: BlogPost;
+  allBlogs: BlogPost[];
+  markdocBody: ReactNode | null;
+};
 
-  if (!slug || !post) {
-    return (
-      <div className="min-h-screen bg-white text-gray-900">
-        <Header />
-        <div className="flex flex-col items-center justify-center px-6 py-32">
-          <h1 className="text-3xl font-bold mb-4">Post not found</h1>
-          <Link
-            to="/blogs"
-            className="flex items-center gap-2 text-red-600 hover:text-red-700 font-semibold transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back to blogs
-          </Link>
-        </div>
-        <Footer />
-      </div>
-    );
-  }
-
+const BlogPostPage = ({ post, allBlogs, markdocBody }: BlogPostPageProps) => {
   const isExternal = !!post.externalUrl;
   const category = getCategory(post);
 
@@ -93,13 +79,13 @@ const BlogPostPage = () => {
         <article className="max-w-4xl mx-auto px-6 py-12 md:py-16">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6">
-            <Link to="/" className="hover:text-red-600 transition-colors">Home</Link>
+            <Link href="/" className="hover:text-red-600 transition-colors">Home</Link>
             <span>/</span>
-            <Link to="/blogs" className="hover:text-red-600 transition-colors">Articles</Link>
+            <Link href="/blogs" className="hover:text-red-600 transition-colors">Articles</Link>
             <span>/</span>
             <span className="text-gray-900 font-medium truncate max-w-[200px]">{post.title.split(':')[0]}</span>
           </nav>
-          
+
           {/* Meta */}
           <div className="flex flex-wrap items-center gap-3 mb-4">
             <span className={`${category.color} text-white text-xs font-bold px-3 py-1 rounded uppercase tracking-wide`}>
@@ -169,6 +155,10 @@ const BlogPostPage = () => {
               <ExternalLink className="w-4 h-4" />
             </a>
           </div>
+        ) : markdocBody ? (
+          <div className="prose prose-lg max-w-none text-gray-700 [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-gray-900 [&_h2]:mt-10 [&_h2]:mb-4 [&_h2]:pb-2 [&_h2]:border-b-2 [&_h2]:border-red-600">
+            {markdocBody}
+          </div>
         ) : post.sections && post.sections.length > 0 ? (
           <div className="space-y-12">
             {post.sections.map((section, i) => (
@@ -199,21 +189,21 @@ const BlogPostPage = () => {
                 <span className="text-sm text-gray-500 font-semibold uppercase tracking-wider">Related Topics</span>
               </div>
               <div className="flex flex-wrap gap-2">
-                <Link to="/blogs" className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full hover:bg-red-100 hover:text-red-700 transition-colors">
+                <Link href="/blogs" className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full hover:bg-red-100 hover:text-red-700 transition-colors">
                   US Iran War
                 </Link>
-                <Link to="/blogs" className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full hover:bg-red-100 hover:text-red-700 transition-colors">
+                <Link href="/blogs" className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full hover:bg-red-100 hover:text-red-700 transition-colors">
                   Middle East Crisis
                 </Link>
-                <Link to="/blogs" className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full hover:bg-red-100 hover:text-red-700 transition-colors">
+                <Link href="/blogs" className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full hover:bg-red-100 hover:text-red-700 transition-colors">
                   Oil Prices
                 </Link>
-                <Link to="/blogs" className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full hover:bg-red-100 hover:text-red-700 transition-colors">
+                <Link href="/blogs" className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full hover:bg-red-100 hover:text-red-700 transition-colors">
                   OPEC
                 </Link>
               </div>
             </div>
-            
+
             {/* Social Share */}
             <SocialShare
               url={`https://usiranconflict.com/blog/${post.slug}`}
@@ -229,12 +219,13 @@ const BlogPostPage = () => {
           currentSlug={post.slug}
           keywords={post.title.split(' ').filter(w => w.length > 4)}
           maxArticles={4}
+          allBlogs={allBlogs}
         />
 
         {/* Back to blogs */}
         <div className="mt-12 pt-8 border-t border-gray-200">
           <Link
-            to="/blogs"
+            href="/blogs"
             className="inline-flex items-center gap-2 text-red-600 hover:text-red-700 font-semibold transition-colors uppercase tracking-wider"
           >
             <ArrowLeft className="w-4 h-4" />

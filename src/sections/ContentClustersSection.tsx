@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { ArrowRight, Atom, Flag, Shield, Droplet, DollarSign, Users } from 'lucide-react';
 import { contentClusters } from '../lib/seo-keywords';
 
@@ -44,7 +44,7 @@ const ContentClustersSection = () => {
             return (
               <Link
                 key={cluster.slug}
-                to={`/topic/${cluster.slug}`}
+                href={`/topic/${cluster.slug}`}
                 className={`group p-6 rounded-xl border-2 ${colors.border} ${colors.bg} hover:shadow-lg transition-all duration-300`}
               >
                 <div className="flex items-start gap-4">

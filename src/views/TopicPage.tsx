@@ -1,12 +1,11 @@
-import { useParams, Link } from 'react-router-dom';
+import Link from 'next/link';
 import { topicPagesConfig, topicLinks } from '../config';
 import { ArrowLeft, Clock } from 'lucide-react';
-import { blogs } from '../content/blogs';
+import type { BlogPost } from '../content/blogs';
 import Header from '../sections/Header';
 import Footer from '../sections/NewFooter';
 
-const TopicPage = () => {
-  const { slug } = useParams<{ slug: string }>();
+const TopicPage = ({ slug, blogs }: { slug: string; blogs: BlogPost[] }) => {
   const topic = slug ? topicPagesConfig[slug] : null;
 
   // Get related blogs for this topic
@@ -32,7 +31,7 @@ const TopicPage = () => {
         <div className="flex flex-col items-center justify-center px-6 py-32">
           <h1 className="text-3xl font-bold mb-4">Topic not found</h1>
           <Link
-            to="/"
+            href="/"
             className="flex items-center gap-2 text-red-600 hover:text-red-700 transition-colors font-semibold"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -73,9 +72,9 @@ const TopicPage = () => {
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-sm text-gray-500 mb-8">
-          <Link to="/" className="hover:text-red-600 transition-colors">Home</Link>
+          <Link href="/" className="hover:text-red-600 transition-colors">Home</Link>
           <span>/</span>
-          <Link to="/blogs" className="hover:text-red-600 transition-colors">Analysis</Link>
+          <Link href="/blogs" className="hover:text-red-600 transition-colors">Analysis</Link>
           <span>/</span>
           <span className="text-gray-900 font-medium">{topic.title.split(':')[0]}</span>
         </nav>
@@ -126,7 +125,7 @@ const TopicPage = () => {
               {relatedBlogs.map((post) => (
                 <Link
                   key={post.slug}
-                  to={`/blog/${post.slug}`}
+                  href={`/blog/${post.slug}`}
                   className="group"
                 >
                   <article className="h-full flex flex-col bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
@@ -166,7 +165,7 @@ const TopicPage = () => {
             {topicLinks.map((link) => (
               <Link
                 key={link.slug}
-                to={link.path}
+                href={link.path}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                   link.slug === slug
                     ? 'bg-red-600 text-white'
@@ -182,7 +181,7 @@ const TopicPage = () => {
         {/* Back link */}
         <div className="mt-12">
           <Link
-            to="/blogs"
+            href="/blogs"
             className="inline-flex items-center gap-2 text-red-600 hover:text-red-700 font-semibold transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />

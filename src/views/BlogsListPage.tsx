@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom';
+'use client';
+
+import Link from 'next/link';
 import { Clock, ExternalLink } from 'lucide-react';
-import { blogs } from '../content/blogs';
 import type { BlogPost } from '../content/blogs';
 import Header from '../sections/Header';
 import Footer from '../sections/NewFooter';
@@ -56,7 +57,7 @@ function getCategory(post: BlogPost): { label: string; color: string } {
   return { label: 'GEOPOLITICS', color: 'bg-gray-600' };
 }
 
-const BlogsListPage = () => {
+const BlogsListPage = ({ blogs }: { blogs: BlogPost[] }) => {
   // Sort by date descending (newest first)
   const sorted = [...blogs].sort((a, b) => (b.date > a.date ? 1 : -1));
 
@@ -110,7 +111,7 @@ const BlogsListPage = () => {
         {/* Page Title */}
         <div className="mb-12">
           <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6">
-            <Link to="/" className="hover:text-red-600 transition-colors">Home</Link>
+            <Link href="/" className="hover:text-red-600 transition-colors">Home</Link>
             <span>/</span>
             <span className="text-gray-900 font-medium">All Articles</span>
           </nav>
@@ -260,7 +261,7 @@ const BlogCard = ({ post }: BlogCardProps) => {
   }
 
   return (
-    <Link to={`/blog/${post.slug}`} className="block">
+    <Link href={`/blog/${post.slug}`} className="block">
       {cardContent}
     </Link>
   );

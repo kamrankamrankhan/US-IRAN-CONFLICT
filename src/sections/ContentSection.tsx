@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { ArrowRight, Clock } from 'lucide-react';
 import type { BlogPost } from '../content/blogs';
 
@@ -108,7 +108,7 @@ const ContentSection = ({
           </div>
           {showViewAll && (
             <Link
-              to={viewAllLink}
+              href={viewAllLink}
               className={`hidden md:inline-flex items-center gap-2 font-semibold transition-colors ${
                 accentColor === 'dark' 
                   ? 'text-white hover:text-red-400' 
@@ -190,7 +190,7 @@ const ContentSection = ({
             }
 
             return (
-              <Link key={post.slug} to={`/blog/${post.slug}`} className="block">
+              <Link key={post.slug} href={`/blog/${post.slug}`} className="block">
                 {cardContent}
               </Link>
             );
@@ -201,7 +201,7 @@ const ContentSection = ({
         {showViewAll && (
           <div className="mt-8 flex justify-center md:hidden">
             <Link
-              to={viewAllLink}
+              href={viewAllLink}
               className="inline-flex items-center gap-2 px-5 py-2.5 bg-red-600 text-white font-semibold text-sm rounded hover:bg-red-700 transition-colors"
             >
               View All Articles

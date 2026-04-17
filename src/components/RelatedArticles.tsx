@@ -1,11 +1,14 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { ArrowRight, Clock } from 'lucide-react';
-import { blogs } from '../content/blogs';
+import { blogs as staticBlogs } from '../content/blogs';
+import type { BlogPost } from '../content/blogs';
 
 interface RelatedArticlesProps {
   currentSlug: string;
   keywords?: string[];
   maxArticles?: number;
+  /** Merged static + Keystatic posts (defaults to static `blogs` only) */
+  allBlogs?: BlogPost[];
 }
 
 // Category colors
@@ -31,12 +34,12 @@ function getCategoryColor(slug: string): string {
   return categoryColors['default'];
 }
 
-const RelatedArticles = ({ currentSlug, keywords = [], maxArticles = 4 }: RelatedArticlesProps) => {
+const RelatedArticles = ({ currentSlug, keywords = [], maxArticles = 4, allBlogs = staticBlogs }: RelatedArticlesProps) => {
   // Find related articles based on:
   // 1. Same keywords/topic
   // 2. Similar slug patterns
   // 3. Recent articles
-  const relatedArticles = blogs
+  const relatedArticles = allBlogs
     .filter(blog => blog.slug !== currentSlug)
     .map(blog => {
       let score = 0;
@@ -133,7 +136,7 @@ const RelatedArticles = ({ currentSlug, keywords = [], maxArticles = 4 }: Relate
           }
 
           return (
-            <Link key={article.slug} to={`/blog/${article.slug}`} className="block">
+            <Link key={article.slug} href={`/blog/${article.slug}`} className="block">
               {cardContent}
             </Link>
           );
@@ -143,7 +146,7 @@ const RelatedArticles = ({ currentSlug, keywords = [], maxArticles = 4 }: Relate
       {/* View All Link */}
       <div className="mt-6 text-center">
         <Link
-          to="/blogs"
+          href="/blogs"
           className="inline-flex items-center gap-2 text-red-600 font-semibold hover:gap-3 transition-all"
         >
           View All Articles

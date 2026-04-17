@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { ArrowLeft, ExternalLink, Radio } from 'lucide-react';
 import { externalNewsSources } from '../content/externalNews';
 
@@ -8,7 +8,7 @@ const LiveCoveragePage = () => {
       <header className="sticky top-0 z-50 border-b border-white/10 bg-void-black/95 backdrop-blur">
         <div className="max-w-4xl mx-auto px-6 py-4">
           <Link
-            to="/"
+            href="/"
             className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-neon-cyan transition-colors font-mono-custom uppercase tracking-wider"
           >
             <ArrowLeft className="w-4 h-4" />

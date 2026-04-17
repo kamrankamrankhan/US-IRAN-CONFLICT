@@ -1,8 +1,12 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { ArrowRight, Youtube } from 'lucide-react';
-import { blogs } from '../content/blogs';
+import type { BlogPost } from '../content/blogs';
 
-const HeroSection = () => {
+type HeroSectionProps = {
+  blogs: BlogPost[];
+};
+
+const HeroSection = ({ blogs }: HeroSectionProps) => {
   // Get the most recent blog as featured (sorted by date descending)
   const sortedBlogs = [...blogs].sort((a, b) => (b.date > a.date ? 1 : -1));
   const featuredBlog = sortedBlogs[0];
@@ -21,7 +25,7 @@ const HeroSection = () => {
           <div className="lg:col-span-3">
             {featuredBlog && (
               <article className="group">
-                <Link to={`/blog/${featuredBlog.slug}`} className="block">
+                <Link href={`/blog/${featuredBlog.slug}`} className="block">
                   <div className="relative aspect-[16/9] overflow-hidden rounded-xl mb-4 shadow-lg">
                     {featuredBlog.image ? (
                       <img
@@ -52,7 +56,7 @@ const HeroSection = () => {
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-gray-500">{featuredBlog.date}</span>
                   <Link
-                    to={`/blog/${featuredBlog.slug}`}
+                    href={`/blog/${featuredBlog.slug}`}
                     className="inline-flex items-center gap-1 text-red-600 font-semibold hover:gap-2 transition-all"
                   >
                     Read More <ArrowRight className="w-4 h-4" />
@@ -123,7 +127,7 @@ const HeroSection = () => {
                 conflict, Middle East tensions, and their impact on oil markets worldwide.
               </p>
               <Link
-                to="/blogs"
+                href="/blogs"
                 className="inline-flex items-center gap-2 px-5 py-2.5 bg-red-600 text-white font-semibold text-sm rounded-lg hover:bg-red-700 transition-colors shadow-sm"
               >
                 Find Out More
@@ -136,7 +140,7 @@ const HeroSection = () => {
           <div className="lg:col-span-2">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-bold text-gray-900">Latest Updates</h3>
-              <Link to="/blogs" className="text-sm text-red-600 font-medium hover:underline">
+              <Link href="/blogs" className="text-sm text-red-600 font-medium hover:underline">
                 View All
               </Link>
             </div>
@@ -144,7 +148,7 @@ const HeroSection = () => {
               {secondaryBlogs.map((blog) => (
                 <Link
                   key={blog.slug}
-                  to={`/blog/${blog.slug}`}
+                  href={`/blog/${blog.slug}`}
                   className="group flex flex-col rounded-xl overflow-hidden border border-gray-100 hover:border-red-200 hover:shadow-md transition-all"
                 >
                   <div className="aspect-video overflow-hidden bg-gray-100">

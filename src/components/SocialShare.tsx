@@ -1,3 +1,5 @@
+'use client';
+
 import { Twitter, Facebook, Linkedin, Link2, Check, Share2 } from 'lucide-react';
 import { useState } from 'react';
 

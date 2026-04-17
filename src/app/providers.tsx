@@ -1,11 +1,13 @@
-import { useEffect } from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
-import { Analytics } from '@vercel/analytics/react';
-import useLenis from '../hooks/useLenis';
-import { getPageSEO, updateSEO } from '../lib/seo';
+'use client';
 
-export default function RootLayout() {
-  const location = useLocation();
+import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
+import { Analytics } from '@vercel/analytics/react';
+import useLenis from '@/hooks/useLenis';
+import { getPageSEO, updateSEO } from '@/lib/seo';
+
+export default function Providers({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
   useLenis();
 
   useEffect(() => {
@@ -19,13 +21,13 @@ export default function RootLayout() {
   }, []);
 
   useEffect(() => {
-    const seo = getPageSEO(location.pathname);
+    const seo = getPageSEO(pathname ?? '/');
     updateSEO(seo);
-  }, [location.pathname]);
+  }, [pathname]);
 
   return (
     <>
-      <Outlet />
+      {children}
       <Analytics />
     </>
   );

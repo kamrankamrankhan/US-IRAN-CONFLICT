@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { articleMeta, articleSections, keyTakeaways } from '../content/featuredArticle';
 
@@ -8,7 +8,7 @@ const ArticlePage = () => {
       <header className="sticky top-0 z-50 border-b border-white/10 bg-void-black/95 backdrop-blur">
         <div className="max-w-3xl mx-auto px-6 py-4">
           <Link
-            to="/"
+            href="/"
             className="inline-flex items-center gap-2 text-sm text-white/70 hover:text-neon-cyan transition-colors font-mono-custom uppercase tracking-wider"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -92,7 +92,7 @@ const ArticlePage = () => {
 
         <div className="mt-16 pt-8">
           <Link
-            to="/"
+            href="/"
             className="inline-flex items-center gap-2 text-neon-cyan hover:text-neon-soft transition-colors font-mono-custom uppercase tracking-wider"
           >
             <ArrowLeft className="w-4 h-4" />

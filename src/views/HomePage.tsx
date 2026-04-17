@@ -1,3 +1,5 @@
+'use client';
+
 import Header from '../sections/Header';
 import HeroSection from '../sections/HeroSection';
 import ContentSection from '../sections/ContentSection';
@@ -6,9 +8,15 @@ import ContentClustersSection from '../sections/ContentClustersSection';
 import FAQSection from '../sections/FAQSection';
 import NewsletterSection from '../sections/NewsletterSection';
 import Footer from '../sections/NewFooter';
-import { blogs } from '../content/blogs';
+import type { BlogPost } from '../content/blogs';
+import { blogs as staticBlogs } from '../content/blogs';
 
-export default function HomePage() {
+type HomePageProps = {
+  blogs?: BlogPost[];
+};
+
+export default function HomePage({ blogs: blogsProp }: HomePageProps) {
+  const blogs = blogsProp ?? staticBlogs;
   // Oil prices blogs
   const oilPricesBlogs = blogs.filter(p => 
     p.slug.includes('oil-prices') || 
@@ -61,7 +69,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <HeroSection />
+      <HeroSection blogs={blogs} />
       
       {/* Latest News Section - CNN, Al Jazeera, Wikipedia etc */}
       <LatestNewsSection />

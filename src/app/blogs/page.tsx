@@ -1,0 +1,7 @@
+import BlogsListPage from '@/views/BlogsListPage';
+import { getAllBlogsMerged } from '@/lib/get-all-blogs';
+
+export default async function Page() {
+  const blogs = await getAllBlogsMerged();
+  return <BlogsListPage blogs={blogs} />;
+}
