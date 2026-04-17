@@ -2,10 +2,12 @@ import { createReader } from '@keystatic/core/reader';
 import Markdoc from '@markdoc/markdoc';
 import React from 'react';
 import keystaticConfig from '../../keystatic.config';
+import { normalizeSlugParam } from '@/lib/slug-utils';
 
 export async function renderKeystaticPostBody(slug: string): Promise<React.ReactNode | null> {
   const reader = createReader(process.cwd(), keystaticConfig);
-  const post = await reader.collections.posts.read(slug);
+  const key = normalizeSlugParam(slug);
+  const post = await reader.collections.posts.read(key);
   if (!post) return null;
   const { node } = await post.content();
   const errors = Markdoc.validate(node);
