@@ -20,6 +20,8 @@ export default config({
         }),
         content: fields.markdoc({
           label: 'Article body',
+          description:
+            'Use headings, lists, and **bold**. For images use: ![description](https://example.com/image.jpg) — not a plain link.',
         }),
       },
     }),

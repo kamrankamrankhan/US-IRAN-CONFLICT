@@ -156,7 +156,19 @@ const BlogPostPage = ({ post, allBlogs, markdocBody }: BlogPostPageProps) => {
             </a>
           </div>
         ) : markdocBody ? (
-          <div className="prose prose-lg max-w-none text-gray-700 [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-gray-900 [&_h2]:mt-10 [&_h2]:mb-4 [&_h2]:pb-2 [&_h2]:border-b-2 [&_h2]:border-red-600">
+          <div
+            className={[
+              'markdoc-body prose prose-lg max-w-none text-gray-800',
+              'prose-headings:scroll-mt-24 prose-headings:font-bold prose-headings:text-gray-900',
+              'prose-h2:border-b-2 prose-h2:border-red-600 prose-h2:pb-2 prose-h2:mt-10 prose-h2:mb-4',
+              'prose-h3:mt-8 prose-h3:mb-3',
+              'prose-p:leading-relaxed prose-li:my-1',
+              'prose-a:text-red-600 prose-a:no-underline hover:prose-a:underline',
+              'prose-blockquote:border-l-red-600 prose-blockquote:text-gray-700',
+              'prose-strong:text-gray-900',
+              'prose-figure:my-8 prose-img:rounded-lg prose-img:border prose-img:border-gray-200',
+            ].join(' ')}
+          >
             {markdocBody}
           </div>
         ) : post.sections && post.sections.length > 0 ? (
