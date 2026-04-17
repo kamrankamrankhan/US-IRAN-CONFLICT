@@ -2,6 +2,7 @@ import { createReader } from '@keystatic/core/reader';
 import keystaticConfig from '../../keystatic.config';
 import { blogs as staticBlogs, type BlogPost } from '@/content/blogs';
 import { normalizeSlugParam } from '@/lib/slug-utils';
+import { sortBlogsByDateDesc } from '@/lib/blog-sort';
 
 /** Vercel/serverless cwd is the app root. */
 function contentRoot(): string {
@@ -73,7 +74,7 @@ export async function getAllBlogsMerged(): Promise<BlogPost[]> {
   const map = new Map<string, BlogPost>();
   staticBlogs.forEach((b) => map.set(b.slug, b));
   ks.forEach((b) => map.set(b.slug, b));
-  return Array.from(map.values()).sort((a, b) => (a.date < b.date ? 1 : -1));
+  return sortBlogsByDateDesc(Array.from(map.values()));
 }
 
 function findBySlugVariants(all: BlogPost[], raw: string, normalized: string): BlogPost | undefined {

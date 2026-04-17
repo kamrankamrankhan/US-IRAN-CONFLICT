@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { Clock, ExternalLink } from 'lucide-react';
 import type { BlogPost } from '../content/blogs';
+import { sortBlogsByDateDesc } from '../lib/blog-sort';
 import Header from '../sections/Header';
 import Footer from '../sections/NewFooter';
 
@@ -58,8 +59,9 @@ function getCategory(post: BlogPost): { label: string; color: string } {
 }
 
 const BlogsListPage = ({ blogs }: { blogs: BlogPost[] }) => {
-  // Sort by date descending (newest first)
-  const sorted = [...blogs].sort((a, b) => (b.date > a.date ? 1 : -1));
+  const sorted = sortBlogsByDateDesc(blogs);
+  /** Top of page: newest across all sources (Keystatic + static). */
+  const latestUpdates = sorted.slice(0, 12);
 
   // Group blogs by category
   const oilPricesBlogs = sorted.filter(p => 
@@ -123,6 +125,23 @@ const BlogsListPage = ({ blogs }: { blogs: BlogPost[] }) => {
             and global oil market analysis. Expert insights on energy security, OPEC decisions, and regional tensions.
           </p>
         </div>
+
+        {/* Newest posts first — matches header "Latest Updates" expectation */}
+        {latestUpdates.length > 0 && (
+          <section className="mb-16" aria-labelledby="latest-updates-heading">
+            <h2
+              id="latest-updates-heading"
+              className="text-2xl md:text-3xl font-bold text-red-600 mb-8 pb-2 border-b-4 border-red-600"
+            >
+              Latest updates
+            </h2>
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {latestUpdates.map((post) => (
+                <BlogCard key={post.slug} post={post} />
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Energy in Wartime Section */}
         {oilPricesBlogs.length > 0 && (

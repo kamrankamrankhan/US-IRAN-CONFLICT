@@ -10,6 +10,7 @@ import NewsletterSection from '../sections/NewsletterSection';
 import Footer from '../sections/NewFooter';
 import type { BlogPost } from '../content/blogs';
 import { blogs as staticBlogs } from '../content/blogs';
+import { sortBlogsByDateDesc } from '../lib/blog-sort';
 
 type HomePageProps = {
   blogs?: BlogPost[];
@@ -61,10 +62,7 @@ export default function HomePage({ blogs: blogsProp }: HomePageProps) {
     p.slug.includes('gulf-arab')
   ).slice(0, 3);
 
-  // Recent analysis blogs
-  const recentBlogs = [...blogs]
-    .sort((a, b) => (b.date > a.date ? 1 : -1))
-    .slice(0, 6);
+  const recentBlogs = sortBlogsByDateDesc(blogs).slice(0, 6);
 
   return (
     <div className="min-h-screen bg-white">

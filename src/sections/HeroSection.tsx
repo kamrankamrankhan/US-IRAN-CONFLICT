@@ -1,14 +1,14 @@
 import Link from 'next/link';
 import { ArrowRight, Youtube } from 'lucide-react';
 import type { BlogPost } from '../content/blogs';
+import { sortBlogsByDateDesc } from '../lib/blog-sort';
 
 type HeroSectionProps = {
   blogs: BlogPost[];
 };
 
 const HeroSection = ({ blogs }: HeroSectionProps) => {
-  // Get the most recent blog as featured (sorted by date descending)
-  const sortedBlogs = [...blogs].sort((a, b) => (b.date > a.date ? 1 : -1));
+  const sortedBlogs = sortBlogsByDateDesc(blogs);
   const featuredBlog = sortedBlogs[0];
   
   // Get a few secondary featured blogs (next most recent)
