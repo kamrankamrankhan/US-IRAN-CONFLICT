@@ -25,7 +25,7 @@ export const siteConfig: SiteConfig = {
   language: "en",
   siteUrl: "https://usiranconflict.com",
   ogImage: "https://usiranconflict.com/gallery-6.jpg",
-  contactEmail: "kamrankamrankhan@gmail.com",
+  contactEmail: "kamrankamrankhan825@gmail.com",
   contactPhone: "+923499763379",
 };
 
