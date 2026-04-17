@@ -13,6 +13,10 @@ export interface SiteConfig {
   siteUrl: string;
   /** Optional: absolute URL for social share image (e.g. https://yoursite.com/og-image.jpg). Use 1200×630 for best results. Add image to public/ and set this to siteUrl + "/og-image.jpg". */
   ogImage?: string;
+  /** Public contact (shown in footer and structured data). */
+  contactEmail: string;
+  /** E.164-style value for `tel:` links, e.g. +923499763379 */
+  contactPhone: string;
 }
 
 export const siteConfig: SiteConfig = {
@@ -21,6 +25,8 @@ export const siteConfig: SiteConfig = {
   language: "en",
   siteUrl: "https://usiranconflict.com",
   ogImage: "https://usiranconflict.com/gallery-6.jpg",
+  contactEmail: "kamrankamrankhan@gmail.com",
+  contactPhone: "+923499763379",
 };
 
 // -- Hero Section -------------------------------------------------------------

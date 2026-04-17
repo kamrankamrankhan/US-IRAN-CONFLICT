@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { Twitter, Facebook, Linkedin, Youtube, Mail, ExternalLink } from 'lucide-react';
+import { Twitter, Facebook, Linkedin, Youtube, Mail, Phone, ExternalLink } from 'lucide-react';
+import { siteConfig } from '@/config';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -111,13 +112,28 @@ const Footer = () => {
             <h3 className="font-semibold text-white mb-4 uppercase tracking-wider text-sm">
               Contact
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <Mail className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+                <Mail className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" aria-hidden />
                 <div>
-                  <p className="text-gray-400 text-sm">Email us at</p>
-                  <a href="mailto:contact@usiranconflict.com" className="text-white hover:text-red-500 transition-colors">
-                    contact@usiranconflict.com
+                  <p className="text-gray-400 text-sm">Email</p>
+                  <a
+                    href={`mailto:${siteConfig.contactEmail}`}
+                    className="text-white hover:text-red-500 transition-colors break-all"
+                  >
+                    {siteConfig.contactEmail}
+                  </a>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <Phone className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" aria-hidden />
+                <div>
+                  <p className="text-gray-400 text-sm">Phone</p>
+                  <a
+                    href={`tel:${siteConfig.contactPhone.replace(/\s/g, '')}`}
+                    className="text-white hover:text-red-500 transition-colors"
+                  >
+                    {siteConfig.contactPhone}
                   </a>
                 </div>
               </li>

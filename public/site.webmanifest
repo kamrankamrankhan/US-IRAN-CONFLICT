@@ -1,0 +1,23 @@
+{
+  "name": "US Iran Conflict — War Analysis & News",
+  "short_name": "US-Iran Conflict",
+  "description": "US-Iran war 2026 coverage, Israel-Iran conflict analysis, oil markets, and Middle East crisis reporting.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#dc2626",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.svg",
+      "sizes": "180x180",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
