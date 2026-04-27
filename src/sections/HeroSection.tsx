@@ -96,13 +96,13 @@ const HeroSection = ({ blogs }: HeroSectionProps) => {
             <div className="rounded-xl overflow-hidden border border-gray-200 bg-white shadow-sm">
               <div className="flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-red-50 to-white border-b border-gray-100">
                 <Youtube className="w-4 h-4 text-red-600" />
-                <span className="font-semibold text-gray-800 text-xs">NBC News</span>
+                <span className="font-semibold text-gray-800 text-xs">Live Channel</span>
                 <span className="ml-auto text-xs font-medium text-red-600 uppercase">Live</span>
               </div>
               <div className="aspect-video relative bg-gray-100">
                 <iframe
-                  src="https://www.youtube.com/embed/zNt8wFOTke4?autoplay=0&rel=0&modestbranding=1"
-                  title="NBC News live coverage"
+                  src="https://www.youtube.com/embed/vYRfQo6JMxc?autoplay=0&rel=0&modestbranding=1"
+                  title="Live channel coverage"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
                   className="w-full h-full"
