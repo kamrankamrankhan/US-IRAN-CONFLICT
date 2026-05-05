@@ -3,10 +3,7 @@
 import Header from '../sections/Header';
 import HeroSection from '../sections/HeroSection';
 import ContentSection from '../sections/ContentSection';
-import LatestNewsSection from '../sections/LatestNewsSection';
-import ContentClustersSection from '../sections/ContentClustersSection';
 import FAQSection from '../sections/FAQSection';
-import NewsletterSection from '../sections/NewsletterSection';
 import Footer from '../sections/NewFooter';
 import type { BlogPost } from '../content/blogs';
 import { blogs as staticBlogs } from '../content/blogs';
@@ -17,7 +14,9 @@ type HomePageProps = {
 };
 
 export default function HomePage({ blogs: blogsProp }: HomePageProps) {
-  const blogs = blogsProp ?? staticBlogs;
+  /** Merged list from the server; if empty (edge case), keep static posts so the hero never goes blank */
+  const blogs =
+    blogsProp != null && blogsProp.length > 0 ? blogsProp : staticBlogs;
   // Oil prices blogs
   const oilPricesBlogs = blogs.filter(p => 
     p.slug.includes('oil-prices') || 
@@ -62,19 +61,22 @@ export default function HomePage({ blogs: blogsProp }: HomePageProps) {
     p.slug.includes('gulf-arab')
   ).slice(0, 3);
 
-  const recentBlogs = sortBlogsByDateDesc(blogs).slice(0, 6);
+  const sortedAll = sortBlogsByDateDesc(blogs);
+  const blogsSpotlight = sortedAll.slice(0, 6);
+  const recentBlogs = sortedAll.slice(6, 12);
 
   return (
     <div className="min-h-screen bg-white">
       <Header />
       <HeroSection blogs={blogs} />
-      
-      {/* Latest News Section - CNN, Al Jazeera, Wikipedia etc */}
-      <LatestNewsSection />
-      
-      {/* Content Clusters - Topic Categories for SEO */}
-      <ContentClustersSection />
-      
+
+      <ContentSection
+        title="Blogs"
+        description="Latest articles and analysis on US-Iran tensions, the Middle East, and oil markets—all in one place."
+        blogs={blogsSpotlight}
+        accentColor="gray"
+      />
+
       {/* Global Oil Prices Section */}
       <ContentSection
         title="Global Oil Prices"
@@ -102,7 +104,6 @@ export default function HomePage({ blogs: blogsProp }: HomePageProps) {
       {/* FAQ Section for SEO */}
       <FAQSection />
 
-      <NewsletterSection />
       <Footer />
     </div>
   );

@@ -19,10 +19,10 @@ const Footer = () => {
       { label: 'Strait of Hormuz', path: '/blog/strait-of-hormuz-crisis-oil-shipping-2026' },
     ],
     about: [
-      { label: 'About Us', path: '/blogs' },
-      { label: 'Contact', path: '/blogs' },
-      { label: 'Privacy Policy', path: '/blogs' },
-      { label: 'Terms of Use', path: '/blogs' },
+      { label: 'About Us', path: '/about' },
+      { label: 'Contact', path: '/contact' },
+      { label: 'Privacy Policy', path: '/privacy-policy' },
+      { label: 'Terms of Use', path: '/terms-of-use' },
     ],
   };
 
@@ -166,16 +166,16 @@ const Footer = () => {
             <p className="text-gray-500 text-sm">
               © {currentYear} US-Iran Conflict Coverage. All rights reserved.
             </p>
-            <div className="flex gap-6">
-              <a href="#" className="text-gray-500 hover:text-red-500 text-sm transition-colors">
+            <div className="flex flex-wrap justify-center gap-6">
+              <Link href="/privacy-policy" className="text-gray-500 hover:text-red-500 text-sm transition-colors">
                 Privacy Policy
-              </a>
-              <a href="#" className="text-gray-500 hover:text-red-500 text-sm transition-colors">
-                Terms of Service
-              </a>
-              <a href="#" className="text-gray-500 hover:text-red-500 text-sm transition-colors">
-                Cookie Policy
-              </a>
+              </Link>
+              <Link href="/terms-of-use" className="text-gray-500 hover:text-red-500 text-sm transition-colors">
+                Terms of Use
+              </Link>
+              <Link href="/privacy-policy#cookies" className="text-gray-500 hover:text-red-500 text-sm transition-colors">
+                Cookies
+              </Link>
             </div>
           </div>
         </div>

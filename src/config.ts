@@ -17,6 +17,12 @@ export interface SiteConfig {
   contactEmail: string;
   /** E.164-style value for `tel:` links, e.g. +923499763379 */
   contactPhone: string;
+  /** Shown on the About page; portrait file in `/public`. */
+  founder: {
+    name: string;
+    role: string;
+    portraitSrc: string;
+  };
 }
 
 export const siteConfig: SiteConfig = {
@@ -27,6 +33,11 @@ export const siteConfig: SiteConfig = {
   ogImage: "https://usiranconflict.com/gallery-6.jpg",
   contactEmail: "kamrankamrankhan825@gmail.com",
   contactPhone: "+923499763379",
+  founder: {
+    name: "Kamran Khan",
+    role: "Founder",
+    portraitSrc: "/kamrankhan.png",
+  },
 };
 
 // -- Hero Section -------------------------------------------------------------

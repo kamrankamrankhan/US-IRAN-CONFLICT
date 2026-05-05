@@ -316,6 +316,46 @@ export function getPageSEO(pathname: string): SEOOptions {
     };
   }
 
+  if (pathname === '/contact') {
+    return {
+      title: `Contact ${siteName}`,
+      description:
+        'Contact the US Iran Conflict team: editorial email, phone, and message form for tips, corrections, and inquiries.',
+      path: '/contact',
+      keywords: 'contact US Iran conflict, editorial contact, tips, corrections',
+    };
+  }
+
+  if (pathname === '/about') {
+    return {
+      title: `About Us | ${siteName}`,
+      description:
+        'About US-Iran Conflict Coverage: Kamran Khan, founder—mission, editorial approach, latest news & updates.',
+      path: '/about',
+      keywords: 'US Iran Conflict about, Kamran Khan, founder US Iran coverage',
+    };
+  }
+
+  if (pathname === '/privacy-policy') {
+    return {
+      title: `Privacy Policy | ${siteName}`,
+      description:
+        'How US-Iran Conflict Coverage handles personal data: collection, cookies, retention, sharing, your choices, contact.',
+      path: '/privacy-policy',
+      keywords: 'privacy policy, US Iran conflict, data cookies',
+    };
+  }
+
+  if (pathname === '/terms-of-use') {
+    return {
+      title: `Terms of Use | ${siteName}`,
+      description:
+        'Terms of Use for US-Iran Conflict Coverage: acceptable use, disclaimers, IP, limitation of liability, contact.',
+      path: '/terms-of-use',
+      keywords: 'terms of use US Iran conflict, disclaimers editorial',
+    };
+  }
+
   return { 
     title: baseTitle, 
     description: baseDescription, 
