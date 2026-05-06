@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import Providers from './providers';
 import SiteJsonLd from '@/components/SiteJsonLd';
 import { siteConfig } from '@/config';
@@ -88,6 +89,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="antialiased">
         <SiteJsonLd />
         <Providers>{children}</Providers>
+        <SpeedInsights />
       </body>
     </html>
   );
