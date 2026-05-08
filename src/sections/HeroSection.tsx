@@ -1,243 +1,172 @@
 import Link from 'next/link';
 import { ArrowRight, CalendarDays, Youtube } from 'lucide-react';
 import type { BlogPost } from '../content/blogs';
-import { sortBlogsByDateDesc, filterBlogsWithinLastDays } from '../lib/blog-sort';
+import { filterBlogsWithinLastDays, sortBlogsByDateDesc } from '../lib/blog-sort';
 
 type HeroSectionProps = {
   blogs: BlogPost[];
 };
 
-/** Rolling window; 14 days covers “last week” even with timezone / publish-date quirks */
-const HERO_RECENT_DAYS = 14;
+/** Matches reference layout “LAST 14 DAYS” rolling window */
+const LAST_DAYS_WINDOW = 14;
+const RECENT_LIST_LIMIT = 9;
 
 const HeroSection = ({ blogs }: HeroSectionProps) => {
   const sortedBlogs = sortBlogsByDateDesc(blogs);
   const featuredBlog = sortedBlogs[0];
-  const weekBlogs = filterBlogsWithinLastDays(blogs, HERO_RECENT_DAYS);
-  const inWindowSlugs = new Set(weekBlogs.map((b) => b.slug));
 
-  const sidebarWeekBlogs =
-    weekBlogs.length > 0
-      ? weekBlogs.filter((b) => b.slug !== featuredBlog?.slug)
-      : sortedBlogs.filter((b) => b.slug !== featuredBlog?.slug).slice(0, 10);
-
-  const secondaryBlogs = sortedBlogs
-    .filter((b) => b.slug !== featuredBlog?.slug)
-    .slice(0, 3);
+  const datedInWindow = filterBlogsWithinLastDays(sortedBlogs, LAST_DAYS_WINDOW);
+  const recentStoriesSource =
+    datedInWindow.length > 0 ? datedInWindow : sortedBlogs.filter((_, i) => i > 0);
+  const recentStories = featuredBlog
+    ? recentStoriesSource.filter((b) => b.slug !== featuredBlog.slug).slice(0, RECENT_LIST_LIMIT)
+    : recentStoriesSource.slice(0, RECENT_LIST_LIMIT);
+  const windowActive = datedInWindow.length > 0;
 
   return (
     <section className="bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
-        {/* Full-width featured story */}
-        <div className="mb-10">
-          {featuredBlog && (
-            <article className="group">
-              <Link href={`/blog/${featuredBlog.slug}`} className="block">
-                <div className="relative aspect-[16/9] lg:aspect-[21/9] overflow-hidden rounded-xl mb-4 shadow-lg max-h-[420px]">
-                  {featuredBlog.image ? (
-                    <img
-                      src={featuredBlog.image}
-                      alt={`${featuredBlog.title} - Iran Israel Conflict Analysis 2026`}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      loading="eager"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                      <span className="text-gray-400 text-4xl font-bold">FEATURED</span>
-                    </div>
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <span className="inline-block px-3 py-1 bg-red-600 text-white text-xs font-bold uppercase tracking-wide rounded mb-3">
-                      {featuredBlog && inWindowSlugs.has(featuredBlog.slug)
-                        ? 'Latest · recent'
-                        : 'Latest story'}
-                    </span>
-                    <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-white leading-tight line-clamp-2">
-                      {featuredBlog.title}
-                    </h2>
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
+        {/* Full-width featured (reference: large hero + headline on image) */}
+        {featuredBlog && (
+          <article className="group mb-10 lg:mb-12">
+            <Link href={`/blog/${featuredBlog.slug}`} className="block">
+              <div className="relative aspect-[21/9] min-h-[200px] overflow-hidden rounded-lg bg-gray-900 shadow-xl sm:aspect-[21/10] lg:aspect-[21/9]">
+                {featuredBlog.image ? (
+                  <img
+                    src={featuredBlog.image}
+                    alt={featuredBlog.title}
+                    className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
+                    loading="eager"
+                  />
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900">
+                    <span className="text-xl font-bold text-white/60">Featured</span>
                   </div>
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+                {/* Bottom-left badge + headline */}
+                <div className="absolute inset-x-0 bottom-0 p-5 md:p-7 lg:p-8">
+                  <div className="mb-3 flex flex-wrap items-center gap-2">
+                    <span className="inline-flex items-center rounded-sm bg-red-600 px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-[0.2em] text-white md:text-[11px]">
+                      Latest · Recent
+                    </span>
+                  </div>
+                  <h1 className="max-w-4xl text-2xl font-bold leading-snug tracking-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,.85)] md:text-3xl md:leading-tight lg:text-[2rem] xl:text-[2.25rem] line-clamp-3">
+                    {featuredBlog.title}
+                  </h1>
                 </div>
+              </div>
+            </Link>
+            <p className="mt-4 max-w-4xl text-base leading-relaxed text-gray-600 line-clamp-3 md:text-lg">
+              {featuredBlog.excerpt}
+            </p>
+            <div className="mt-4 flex flex-wrap items-center justify-between gap-4 border-b border-gray-100 pb-6">
+              <time className="text-sm font-medium text-gray-500" dateTime={featuredBlog.date}>
+                {featuredBlog.date}
+              </time>
+              <Link
+                href={`/blog/${featuredBlog.slug}`}
+                className="inline-flex items-center gap-1.5 font-semibold text-red-600 transition-all hover:gap-2 hover:text-red-700"
+              >
+                Read More <ArrowRight className="h-4 w-4" aria-hidden />
               </Link>
-              <p className="text-gray-600 leading-relaxed mb-3 line-clamp-2">{featuredBlog.excerpt}</p>
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-500">{featuredBlog.date}</span>
-                <Link
-                  href={`/blog/${featuredBlog.slug}`}
-                  className="inline-flex items-center gap-1 text-red-600 font-semibold hover:gap-2 transition-all"
-                >
-                  Read More <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-            </article>
-          )}
-        </div>
+            </div>
+          </article>
+        )}
 
-        {/* Recent posts (left) + live channels (right) */}
-        <div className="grid lg:grid-cols-5 gap-8 mb-10">
-          <div className="lg:col-span-3 flex flex-col gap-3 min-h-0">
-            <div className="flex items-center justify-between gap-2">
-              <div className="flex items-center gap-2">
-                <CalendarDays className="w-4 h-4 text-red-600 shrink-0" aria-hidden />
-                <span className="text-sm font-bold text-red-600 uppercase tracking-wide">
-                  {weekBlogs.length > 0 ? `Last ${HERO_RECENT_DAYS} days` : 'Recent articles'}
-                </span>
+        {/* Two columns: LAST 14 DAYS | LIVE COVERAGE */}
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-12 lg:items-start">
+          {/* Left: recent posts list */}
+          <div className="lg:col-span-7 xl:col-span-7">
+            <div className="mb-6 flex flex-wrap items-center justify-between gap-3 border-b border-gray-200 pb-4">
+              <div className="flex items-center gap-2 text-red-600">
+                <CalendarDays className="h-4 w-4 shrink-0" aria-hidden />
+                <span className="text-[11px] font-bold uppercase tracking-[0.14em]">Last {LAST_DAYS_WINDOW} days</span>
               </div>
-              <Link href="/blogs" className="text-xs font-semibold text-gray-600 hover:text-red-600 shrink-0">
+              <Link
+                href="/blogs"
+                className="text-sm font-semibold text-red-600 hover:text-red-700 hover:underline"
+              >
                 All articles →
               </Link>
             </div>
-
-            <div className="rounded-xl border border-gray-200 bg-gradient-to-b from-gray-50 to-white shadow-sm flex flex-col flex-1 min-h-[280px] max-h-[min(720px,75vh)]">
-              {sidebarWeekBlogs.length === 0 ? (
-                <div className="flex flex-1 items-center justify-center p-6 text-center text-gray-600 text-sm">
-                  <p>
-                    No other articles to list yet. Open{' '}
-                    <Link href="/blogs" className="text-red-600 font-semibold hover:underline">
-                      all articles
-                    </Link>
-                    .
-                  </p>
-                </div>
+            {!windowActive && (
+              <p className="-mt-3 mb-4 text-xs text-gray-500">
+                No articles dated inside this window right now—the list below shows the newest stories instead.
+              </p>
+            )}
+            <div className="divide-y divide-gray-100">
+              {recentStories.length === 0 ? (
+                <p className="py-8 text-center text-gray-500">More coverage coming soon.</p>
               ) : (
-                <ul className="overflow-y-auto overscroll-contain divide-y divide-gray-100 flex-1 p-2 space-y-0">
-                  {sidebarWeekBlogs.map((blog) => (
-                    <li key={blog.slug}>
-                      <Link
-                        href={`/blog/${blog.slug}`}
-                        className="group flex gap-3 rounded-lg p-2 hover:bg-red-50/80 transition-colors"
+                recentStories.map((blog) => (
+                  <Link
+                    key={blog.slug}
+                    href={`/blog/${blog.slug}`}
+                    className="group flex gap-4 py-5 first:pt-0 transition-colors hover:bg-gray-50/80 sm:gap-5"
+                  >
+                    <div className="relative h-20 w-[7.25rem] shrink-0 overflow-hidden rounded-md bg-gray-100 sm:h-24 sm:w-32">
+                      {blog.image ? (
+                        <img
+                          src={blog.image}
+                          alt={blog.title}
+                          className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <div className="h-full w-full bg-gradient-to-br from-gray-200 to-gray-300" />
+                      )}
+                    </div>
+                    <div className="min-w-0 flex-1 py-0.5">
+                      <h2 className="text-[15px] font-bold leading-snug text-gray-900 transition-colors hover:text-red-600 sm:text-base line-clamp-3">
+                        {blog.title}
+                      </h2>
+                      <time
+                        dateTime={blog.date}
+                        className="mt-2 block text-xs font-medium text-gray-500"
                       >
-                        <div className="w-24 h-[4.25rem] shrink-0 rounded-md overflow-hidden bg-gray-200 border border-gray-100">
-                          {blog.image ? (
-                            <img
-                              src={blog.image}
-                              alt=""
-                              className="w-full h-full object-cover"
-                              loading="lazy"
-                              decoding="async"
-                            />
-                          ) : (
-                            <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300" />
-                          )}
-                        </div>
-                        <div className="min-w-0 flex-1 py-0.5">
-                          <p className="text-sm font-semibold text-gray-900 line-clamp-2 leading-snug group-hover:text-red-700">
-                            {blog.title}
-                          </p>
-                          <p className="text-xs text-gray-500 mt-1">{blog.date}</p>
-                        </div>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+                        {blog.date}
+                      </time>
+                    </div>
+                  </Link>
+                ))
               )}
             </div>
-            <p className="text-xs text-gray-500">
-              {weekBlogs.length > 0
-                ? `${weekBlogs.length} published in the last ${HERO_RECENT_DAYS} days (by date).`
-                : 'Showing other recent posts — none in the rolling window, or only the featured story above.'}
-            </p>
           </div>
 
-          <div className="lg:col-span-2 space-y-4">
-            <div className="flex items-center gap-2 mb-2">
-              <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
-              <span className="text-sm font-bold text-red-600 uppercase tracking-wide">Live Coverage</span>
+          {/* Right: single live embed */}
+          <aside className="lg:col-span-5 xl:col-span-5 lg:sticky lg:top-[5.25rem]">
+            <div className="flex items-center gap-2 pb-4">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-60" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-red-600" />
+              </span>
+              <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-red-600">
+                Live Coverage
+              </span>
             </div>
-
-            <div className="rounded-xl overflow-hidden border border-gray-200 bg-white shadow-sm">
-              <div className="flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-red-50 to-white border-b border-gray-100">
-                <Youtube className="w-4 h-4 text-red-600" />
-                <span className="font-semibold text-gray-800 text-xs">NEWS FEED</span>
-                <span className="ml-auto text-xs font-medium text-red-600 uppercase">Live</span>
+            <div className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md ring-1 ring-black/5">
+              <div className="flex items-center gap-2 border-b border-gray-100 bg-gradient-to-r from-red-50 via-white to-white px-4 py-2.5">
+                <Youtube className="h-4 w-4 shrink-0 text-red-600" aria-hidden />
+                <span className="text-[11px] font-bold uppercase tracking-wider text-gray-800">
+                  News feed
+                </span>
+                <span className="ml-auto text-[10px] font-semibold uppercase text-red-600">Live</span>
               </div>
-              <div className="aspect-video relative bg-gray-100">
+              <div className="relative aspect-video bg-gray-950">
                 <iframe
                   src="https://www.youtube.com/embed/gCNeDWCI0vo?autoplay=0&rel=0&modestbranding=1"
-                  title="US Iran Conflict Live News Coverage"
+                  title="US Iran Conflict live news coverage"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
-                  className="w-full h-full"
+                  className="absolute inset-0 h-full w-full"
                 />
               </div>
             </div>
-
-            <div className="rounded-xl overflow-hidden border border-gray-200 bg-white shadow-sm">
-              <div className="flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-red-50 to-white border-b border-gray-100">
-                <Youtube className="w-4 h-4 text-red-600" />
-                <span className="font-semibold text-gray-800 text-xs">Live Channel</span>
-                <span className="ml-auto text-xs font-medium text-red-600 uppercase">Live</span>
-              </div>
-              <div className="aspect-video relative bg-gray-100">
-                <iframe
-                  src="https://www.youtube.com/embed/vYRfQo6JMxc?autoplay=0&rel=0&modestbranding=1"
-                  title="Live channel coverage"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                  className="w-full h-full"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="grid lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-1">
-            <div className="bg-gradient-to-br from-gray-50 to-white border border-gray-200 rounded-xl p-6 h-full">
-              <h3 className="text-lg font-bold text-red-600 mb-3 uppercase tracking-wide">
-                People & Planet
-              </h3>
-              <p className="text-gray-600 leading-relaxed mb-4 text-sm">
-                We expose how geopolitical conflicts affect global energy security and stand with communities impacted
-                by war, sanctions, and economic instability. Our in-depth analysis covers the US-Iran conflict,
-                Middle East tensions, and their impact on oil markets worldwide.
-              </p>
-              <Link
-                href="/blogs"
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-red-600 text-white font-semibold text-sm rounded-lg hover:bg-red-700 transition-colors shadow-sm"
-              >
-                Find Out More
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </div>
-
-          <div className="lg:col-span-2">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-bold text-gray-900">Latest Updates</h3>
-              <Link href="/blogs" className="text-sm text-red-600 font-medium hover:underline">
-                View All
-              </Link>
-            </div>
-            <div className="grid md:grid-cols-3 gap-4">
-              {secondaryBlogs.map((blog) => (
-                <Link
-                  key={blog.slug}
-                  href={`/blog/${blog.slug}`}
-                  className="group flex flex-col rounded-xl overflow-hidden border border-gray-100 hover:border-red-200 hover:shadow-md transition-all"
-                >
-                  <div className="aspect-video overflow-hidden bg-gray-100">
-                    {blog.image ? (
-                      <img
-                        src={blog.image}
-                        alt={`${blog.title} - Middle East War News`}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300" />
-                    )}
-                  </div>
-                  <div className="p-3">
-                    <h4 className="font-semibold text-gray-900 line-clamp-2 group-hover:text-red-600 transition-colors text-sm">
-                      {blog.title}
-                    </h4>
-                    <span className="text-xs text-gray-500 mt-1 block">{blog.date}</span>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
+            <p className="mt-4 text-xs leading-relaxed text-gray-500">
+              Streams from third‑party outlets for context; attribution belongs to respective broadcasters.
+            </p>
+          </aside>
         </div>
       </div>
     </section>

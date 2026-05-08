@@ -3,10 +3,12 @@
  * Optimized for "US Iran War" and related search queries.
  */
 
-import { siteConfig } from '../config';
-import { articleMeta } from '../content/featuredArticle';
-import { blogs } from '../content/blogs';
-import { topicPagesConfig } from '../config';
+import type { Metadata } from 'next';
+import { siteConfig, topicPagesConfig } from '@/config';
+import type { BlogPost } from '@/content/blogs';
+import { articleMeta } from '@/content/featuredArticle';
+import { blogs } from '@/content/blogs';
+import { BLOG_SLUG_KEYWORDS } from '@/lib/blog-seo-keywords';
 
 export interface SEOOptions {
   title: string;
@@ -17,6 +19,8 @@ export interface SEOOptions {
   image?: string;
   /** Optional Article JSON-LD for blog/article pages. If not set, any existing Article script is removed. */
   articleJsonLd?: Record<string, unknown>;
+  /** When JSON-LD is omitted (e.g. blog uses server-rendered schema), still mark Open Graph as an article. */
+  ogTypeOverride?: 'article' | 'website';
   /** Keywords for meta keywords tag */
   keywords?: string;
 }
@@ -85,7 +89,7 @@ function normalizeArticleJsonLd(
  * Call on route change or when page-specific SEO is needed.
  */
 export function updateSEO(options: SEOOptions): void {
-  const { title, description, path, image, articleJsonLd, keywords } = options;
+  const { title, description, path, image, articleJsonLd, keywords, ogTypeOverride } = options;
   const baseUrl = runtimeBaseUrl();
   const canonicalPath = path ?? (typeof window !== 'undefined' ? window.location.pathname : '/');
   const url = `${baseUrl}${canonicalPath.startsWith('/') ? canonicalPath : `/${canonicalPath}`}`;
@@ -104,7 +108,11 @@ export function updateSEO(options: SEOOptions): void {
   setMeta('og:description', description, true);
   setMeta('og:image', imageUrl, true);
   setMeta('og:url', url, true);
-  setMeta('og:type', articleJsonLd ? 'article' : 'website', true);
+  setMeta(
+    'og:type',
+    ogTypeOverride ?? (articleJsonLd ? 'article' : 'website'),
+    true,
+  );
   setMeta('og:image:width', '1200', true);
   setMeta('og:image:height', '630', true);
   setMeta('og:site_name', 'US Iran Conflict Analysis', true);
@@ -130,10 +138,25 @@ export function updateSEO(options: SEOOptions): void {
 
 const baseUrl = () => siteConfig.siteUrl.replace(/\/$/, '');
 
-function buildPublisher(): { '@type': string; name: string; url: string; logo?: { '@type': string; url: string } } {
+export function truncateMetaDescription(text: string, maxLen = 158): string {
+  const t = text.replace(/\s+/g, ' ').trim();
+  if (t.length <= maxLen) return t;
+  const cut = t.slice(0, maxLen - 1);
+  const lastSpace = cut.lastIndexOf(' ');
+  return (lastSpace > 40 ? cut.slice(0, lastSpace) : cut).trimEnd() + '…';
+}
+
+function buildOrganizationPublisher(): {
+  '@type': string;
+  name: string;
+  alternateName?: string;
+  url: string;
+  logo: { '@type': string; url: string };
+} {
   return {
     '@type': 'Organization',
-    name: 'Strategic Intelligence',
+    name: 'US Iran Conflict Analysis',
+    alternateName: 'US-Iran Conflict Coverage',
     url: baseUrl(),
     logo: {
       '@type': 'ImageObject',
@@ -142,27 +165,156 @@ function buildPublisher(): { '@type': string; name: string; url: string; logo?: 
   };
 }
 
+function buildPersonAuthor(): { '@type': string; name: string; url: string } {
+  return {
+    '@type': 'Person',
+    name: siteConfig.founder.name,
+    url: `${baseUrl()}/about`,
+  };
+}
+
 function buildArticleJsonLd(
   post: { title: string; excerpt: string; date: string; image?: string },
   url: string,
-  keywords?: string
+  keywords?: string,
 ): Record<string, unknown> {
+  const excerpt = truncateMetaDescription(post.excerpt || post.title, 220);
   return {
     '@context': 'https://schema.org',
     '@type': 'NewsArticle',
-    headline: post.title,
-    description: post.excerpt,
+    headline: truncateMetaDescription(post.title, 110),
+    description: excerpt,
     datePublished: post.date,
     dateModified: post.date,
     image: post.image ? toAbsoluteUrl(baseUrl(), post.image) : `${baseUrl()}/gallery-6.jpg`,
-    author: buildPublisher(),
-    publisher: buildPublisher(),
+    author: buildPersonAuthor(),
+    publisher: buildOrganizationPublisher(),
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
     url,
     articleSection: 'Geopolitics',
     keywords: keywords || 'US Iran war, Iran conflict, Middle East crisis',
     inLanguage: 'en-US',
     isAccessibleForFree: true,
+  };
+}
+
+function resolveBlogKeywords(post: BlogPost): string {
+  const mapped = BLOG_SLUG_KEYWORDS[post.slug];
+  if (mapped) return mapped;
+  const titleWords = post.title
+    .replace(/[|–—:;•]/g, ' ')
+    .split(/\s+/)
+    .map((w) => w.replace(/[^\w\s-]/g, ''))
+    .filter((w) => w.length > 3)
+    .filter((w, i, a) => a.indexOf(w) === i)
+    .slice(0, 14);
+  const slugBits = post.slug
+    .split('-')
+    .filter((s) => s.length > 2 && !/^\d{4}$/.test(s))
+    .slice(0, 10);
+  return ['US Iran war 2026', 'Iran conflict', 'Middle East news', ...titleWords, ...slugBits].join(', ');
+}
+
+const siteBrand = 'US Iran Conflict Analysis';
+
+export function getSEOOptionsForBlogPost(post: BlogPost): SEOOptions {
+  const pathname = `/blog/${post.slug}`;
+  const url = `${baseUrl()}${pathname}`;
+  const keywords = resolveBlogKeywords(post);
+  return {
+    title: `${post.title} | ${siteBrand}`,
+    description: truncateMetaDescription(post.excerpt || post.title),
+    path: pathname,
+    image: post.image,
+    keywords,
+    articleJsonLd: buildArticleJsonLd(post, url, keywords),
+  };
+}
+
+/** Meta tags for client `updateSEO` without duplicating server-rendered `BlogArticleJsonLd`. */
+export function getClientBlogHeadSEO(post: BlogPost): SEOOptions {
+  const base = getSEOOptionsForBlogPost(post);
+  return { ...base, articleJsonLd: undefined, ogTypeOverride: 'article' };
+}
+
+export function buildNewsArticleJsonLdForPost(post: BlogPost): Record<string, unknown> {
+  const pathname = `/blog/${post.slug}`;
+  const url = `${baseUrl()}${pathname}`;
+  return buildArticleJsonLd(post, url, resolveBlogKeywords(post));
+}
+
+export function toNextBlogMetadata(post: BlogPost): Metadata {
+  const seo = getSEOOptionsForBlogPost(post);
+  const canonicalPath = `/blog/${post.slug}`;
+  const absUrl = `${baseUrl()}${canonicalPath}`;
+  const desc = truncateMetaDescription(post.excerpt || post.title);
+  const ogImageRel = post.image ?? siteConfig.ogImage ?? '/gallery-6.jpg';
+  const ogAbs = toAbsoluteUrl(baseUrl(), ogImageRel);
+  const kw =
+    seo.keywords?.split(',').map((k) => k.trim()).filter(Boolean) ?? [];
+
+  return {
+    title: post.title,
+    description: desc,
+    keywords: kw.length ? kw : undefined,
+    alternates: { canonical: canonicalPath },
+    openGraph: {
+      type: 'article',
+      url: absUrl,
+      siteName: siteBrand,
+      locale: 'en_US',
+      title: post.title,
+      description: desc,
+      publishedTime: post.date,
+      modifiedTime: post.date,
+      images: [{ url: ogAbs, width: 1200, height: 630, alt: post.title }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      site: '@usiranconflict',
+      title: post.title,
+      description: desc,
+      images: [ogAbs],
+    },
+    robots: { index: true, follow: true },
+  };
+}
+
+export function toNextTopicMetadata(slug: string): Metadata | null {
+  const topic = topicPagesConfig[slug];
+  if (!topic) return null;
+  const canonicalPath = `/topic/${slug}`;
+  const absUrl = `${baseUrl()}${canonicalPath}`;
+  const desc = truncateMetaDescription(topic.description);
+  const kw = topic.keywords
+    ? topic.keywords.split(',').map((k) => k.trim()).filter(Boolean)
+    : undefined;
+  const ogAbs = topic.image
+    ? toAbsoluteUrl(baseUrl(), topic.image)
+    : toAbsoluteUrl(baseUrl(), siteConfig.ogImage ?? '/gallery-6.jpg');
+
+  return {
+    title: topic.title,
+    description: desc,
+    keywords: kw?.length ? kw : undefined,
+    alternates: { canonical: canonicalPath },
+    openGraph: {
+      type: 'article',
+      url: absUrl,
+      siteName: siteBrand,
+      locale: 'en_US',
+      title: topic.title,
+      description: desc,
+      images: [{ url: ogAbs, width: 1200, height: 630, alt: topic.title }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      site: '@usiranconflict',
+      title: topic.title,
+      description: desc,
+      images: [ogAbs],
+    },
+    robots: { index: true, follow: true },
   };
 }
 
@@ -199,8 +351,8 @@ export function getPageSEO(pathname: string): SEOOptions {
         description: articleMeta.metaDescription,
         datePublished: '2026-03-01',
         dateModified: '2026-03-05',
-        author: buildPublisher(),
-        publisher: buildPublisher(),
+        author: buildPersonAuthor(),
+        publisher: buildOrganizationPublisher(),
         mainEntityOfPage: { '@type': 'WebPage', '@id': url },
         url,
         articleSection: 'Geopolitics',
@@ -212,9 +364,22 @@ export function getPageSEO(pathname: string): SEOOptions {
   if (pathname === '/blogs') {
     return {
       title: `US Iran War News & Analysis | Latest Updates | ${siteName}`,
-      description: 'Latest news and analysis on the US-Iran war 2026. Stay informed on Operation Epic Fury, nuclear tensions, Strait of Hormuz crisis, and regional developments.',
+      description: truncateMetaDescription(
+        'Latest news and analysis on the US-Iran war 2026. Stay informed on Operation Epic Fury, nuclear tensions, Strait of Hormuz crisis, and regional developments.',
+      ),
       path: '/blogs',
-      keywords: 'US Iran war news, Iran conflict updates, Middle East news, Iran war latest',
+      keywords: 'US Iran war news, Iran conflict updates, Middle East news, Iran war latest, Operation Epic Fury, Iran nuclear program',
+    };
+  }
+
+  if (pathname === '/news') {
+    return {
+      title: `Breaking News Feed | Iran War Headlines | ${siteName}`,
+      description: truncateMetaDescription(
+        'Breaking headlines and wires on US-Iran tensions, Gaza, Lebanon, the Strait of Hormuz, and regional security—Reuters, AFP, NPR, Axios, CNBC Iran coverage and more.',
+      ),
+      path: '/news',
+      keywords: 'US Iran breaking news, Reuters Iran headlines, Middle East news today, Hormuz Strait news',
     };
   }
 
@@ -222,66 +387,7 @@ export function getPageSEO(pathname: string): SEOOptions {
   if (blogMatch) {
     const slug = blogMatch[1];
     const post = blogs.find((b) => b.slug === slug);
-    if (post) {
-      const url = `${baseUrl()}${pathname}`;
-      let keywords = 'US Iran war, Iran conflict';
-      
-      // Comprehensive keywords based on blog content - Original blogs
-      const keywordMap: Record<string, string> = {
-        'us-iran-conflict-causes-and-impact': 'US Iran conflict, Iran war causes, US Iran relations, Middle East tensions, Iran nuclear program, US sanctions Iran',
-        'global-oil-prices-rise-kharg-island-attack': 'Kharg Island attack, Iran oil prices, US Iran oil war, global oil crisis, Iran oil exports, Persian Gulf conflict',
-        'strait-of-hormuz-crisis-global-energy-crisis': 'Strait of Hormuz crisis, Iran blockade, global energy crisis, oil shipping, Hormuz chokepoint, Iran US tensions',
-        'iran-us-israel-conflict-global-impact': 'Iran US Israel conflict, Middle East war 2026, Strait of Hormuz closure, Iran nuclear program, JCPOA, Hezbollah Lebanon, Iran proxies, US Iran escalation',
-        'israel-iran-war-2026-direct-confrontation': 'Israel Iran war 2026, Israel Iran direct conflict, Iran missile attacks, Israel airstrikes Iran, Hezbollah involvement, Middle East escalation',
-        'hezbollah-israel-war-2026-lebanon-front': 'Hezbollah Israel war, Lebanon front conflict, Hezbollah 150000 missiles, Iran proxy, Israel Lebanon border, Hezbollah rockets',
-        'gaza-war-2026-israel-hamas-humanitarian-crisis': 'Gaza war 2026, Israel Hamas conflict, October 7 attack, Gaza humanitarian crisis, Hamas Iran support, Israel Gaza',
-        'us-iran-conflict-causes-nuclear-sanctions-strait-hormuz': 'US Iran conflict, Iran nuclear program, US sanctions, Strait of Hormuz crisis, Iran US relations, nuclear tensions',
-        'kharg-island-attack-global-oil-prices-surge': 'Kharg Island attack, global oil prices, Iran oil terminal, oil price surge, energy crisis, Persian Gulf',
-        'iran-proxy-network-hezbollah-hamas-houthis': 'Iran proxy network, Hezbollah, Hamas, Houthis, Iran militias, Axis of Resistance, Quds Force',
-        'us-iran-israel-war-2026-axis-of-resistance': 'US Iran Israel war 2026, Axis of Resistance, Iran proxy forces, Operation Epic Fury timeline, Iran Israel conflict',
-        
-        // Oil Prices by Country - Comprehensive Keywords
-        'saudi-arabia-oil-prices-2026-global-energy-market': 'Saudi Arabia oil prices, Aramco, OPEC+, Saudi oil production, Middle East oil, Arab Light crude, Saudi Vision 2030, Saudi petroleum exports, Kingdom oil revenue',
-        'usa-oil-prices-2026-shale-production-energy-independence': 'USA oil prices, WTI crude, US shale production, American oil, Permian Basin, US strategic petroleum reserve, American energy independence, US oil exports',
-        'russia-oil-prices-2026-sanctions-ural-crude-global-market': 'Russia oil prices, Urals crude, Russian oil sanctions, Russia China oil, Russian oil exports, Moscow oil, Russia India oil trade, Russian petroleum',
-        'china-oil-prices-2026-worlds-largest-importer-energy-security': 'China oil prices, China oil imports, Chinese oil demand, China strategic petroleum reserve, Sinopec, PetroChina, China energy security, Beijing oil policy',
-        'india-oil-prices-2026-second-largest-importer-energy-growth': 'India oil prices, India oil imports, Indian oil demand, Reliance refining, India Russia oil, Indian Oil Corporation, India energy policy, New Delhi oil',
-        'uae-oil-prices-2026-emirates-energy-diversification': 'UAE oil prices, ADNOC, Murban crude, Emirates oil production, Abu Dhabi oil, UAE energy diversification, Dubai petroleum, UAE OPEC',
-        'kuwait-oil-prices-2026-opec-producer-energy-wealth': 'Kuwait oil prices, KPC, Kuwait oil production, Kuwait Petroleum, OPEC Kuwait, Kuwait Future Generations Fund, Kuwait oil reserves',
-        'iraq-oil-prices-2026-opec-second-largest-recovery': 'Iraq oil prices, Iraq oil production, Basra oil, Iraq OPEC, Iraqi oil exports, Iraq reconstruction, Iraq petroleum industry',
-        'venezuela-oil-prices-2026-worlds-largest-reserves-crisis': 'Venezuela oil prices, PDVSA, Venezuela oil reserves, Venezuelan oil crisis, oil sanctions Venezuela, Caracas oil, Venezuela petroleum collapse',
-        'nigeria-oil-prices-2026-africa-largest-producer-challenges': 'Nigeria oil prices, NNPC, Nigeria oil production, Bonny Light, Niger Delta oil, Nigeria petroleum, African oil producer',
-        'canada-oil-prices-2026-oil-sands-production-global-market': 'Canada oil prices, WCS crude, Canadian oil sands, Alberta oil, Western Canadian Select, Canada petroleum, tar sands oil',
-        'brazil-oil-prices-2026-pre-salt-deepwater-production': 'Brazil oil prices, Petrobras, pre-salt oil, Brazil oil production, South America oil, Brazilian petroleum, deepwater drilling',
-        'norway-oil-prices-2026-north-sea-european-energy': 'Norway oil prices, Equinor, North Sea oil, Johan Sverdrup, Norway Oil Fund, Norwegian petroleum, Europe energy security',
-        'uk-oil-prices-2026-north-sea-decline-energy-transition': 'UK oil prices, Brent crude, North Sea oil, UK oil production, British oil, United Kingdom petroleum, Brent benchmark',
-        'qatar-oil-prices-2026-lng-giant-petroleum-producer': 'Qatar oil prices, QatarEnergy, Qatar LNG, North Field, Qatar petroleum, Doha oil gas, Qatari energy exports',
-        'iran-oil-prices-2026-sanctions-strait-hormuz-global-impact': 'Iran oil prices, Iran oil sanctions, Kharg Island, Iran oil exports, Strait of Hormuz oil, Tehran petroleum, Iranian crude',
-        'mexico-oil-prices-2026-pemex-production-decline-reform': 'Mexico oil prices, Pemex, Mexico oil production, Maya crude, Mexican oil, Mexico petroleum reform, Latin America oil',
-        'angola-oil-prices-2026-africa-second-largest-opec-member': 'Angola oil prices, Sonangol, Angola oil production, Angola OPEC, African oil, Luanda petroleum, Angola offshore oil',
-        'algeria-oil-prices-2026-african-opec-member-gas-producer': 'Algeria oil prices, Sonatrach, Algeria gas exports, Algeria OPEC, North African oil, Algerian petroleum, Sahara oil',
-        'libya-oil-prices-2026-instability-african-reserves': 'Libya oil prices, Libya oil production, Libyan oil reserves, NOC Libya, Africa oil, Tripoli petroleum, Libyan conflict oil',
-        'operation-epic-fury-april-2026-civilian-corridors-air-defenses':
-          'Operation Epic Fury April 2026, US Iran war civilian corridors, air defense Middle East, humanitarian evacuation, missile defense Gulf',
-        'us-iran-war-april-2026-un-security-council-divided-allies':
-          'US Iran war UN Security Council 2026, Iran sanctions debate, Europe energy security, Russia China Middle East diplomacy',
-        'iran-us-cyber-war-2026-critical-infrastructure-hybrid-conflict':
-          'Iran US cyber war 2026, critical infrastructure attack, hybrid warfare Middle East, ransomware hospitals, Gulf cyber security',
-        'gulf-arab-states-us-iran-war-2026-mediation-oil-neutrality':
-          'Gulf states US Iran war, Saudi Arabia Iran mediation, UAE oil policy 2026, OPEC Strait of Hormuz, GCC neutrality',
-      };
-      
-      keywords = keywordMap[slug] || keywords;
-      
-      return {
-        title: `${post.title} | ${siteName}`,
-        description: post.excerpt,
-        path: pathname,
-        image: post.image,
-        keywords,
-        articleJsonLd: buildArticleJsonLd(post, url, keywords),
-      };
-    }
+    if (post) return getSEOOptionsForBlogPost(post);
   }
 
   const topicMatch = pathname.match(/^\/topic\/(.+)$/);

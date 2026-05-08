@@ -21,7 +21,10 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   }, []);
 
   useEffect(() => {
-    const seo = getPageSEO(pathname ?? '/');
+    const path = pathname ?? '/';
+    /* Blog titles vary by post (including Keystatic); BlogPostPage calls updateSEO. */
+    if (path.startsWith('/blog/')) return;
+    const seo = getPageSEO(path);
     updateSEO(seo);
   }, [pathname]);
 

@@ -1,7 +1,9 @@
 'use client';
 
 import Link from 'next/link';
+import { useEffect } from 'react';
 import type { ReactNode } from 'react';
+import { updateSEO, getClientBlogHeadSEO } from '@/lib/seo';
 import { ArrowLeft, ExternalLink, Clock, Tag } from 'lucide-react';
 import type { BlogPost } from '../content/blogs';
 import Header from '../sections/Header';
@@ -69,6 +71,10 @@ type BlogPostPageProps = {
 const BlogPostPage = ({ post, allBlogs, markdocBody }: BlogPostPageProps) => {
   const isExternal = !!post.externalUrl;
   const category = getCategory(post);
+
+  useEffect(() => {
+    updateSEO(getClientBlogHeadSEO(post));
+  }, [post]);
 
   return (
     <div className="min-h-screen bg-white text-gray-900">

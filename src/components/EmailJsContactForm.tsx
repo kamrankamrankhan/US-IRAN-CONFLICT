@@ -27,7 +27,7 @@ export type ContactFormValues = z.infer<typeof contactSchema>;
 type EmailJsContactFormProps = {
   /** Extra class on the outer wrapper */
   className?: string;
-  /** Dark footer / charcoal backgrounds (readable labels & inputs). */
+  /** Light text on dark background (e.g. red newsletter band) */
   variant?: 'default' | 'onDark';
 };
 
@@ -81,9 +81,9 @@ export default function EmailJsContactForm({
   };
 
   const dark = variant === 'onDark';
-  const labelClass = dark ? 'text-gray-200' : 'text-foreground';
+  const labelClass = dark ? 'text-red-50' : 'text-foreground';
   const fieldClass = dark
-    ? 'border-gray-600 bg-gray-800/90 text-gray-100 placeholder:text-gray-500'
+    ? 'bg-white text-gray-900 border-white/20 placeholder:text-gray-500'
     : '';
 
   if (status === 'success') {
@@ -173,7 +173,7 @@ export default function EmailJsContactForm({
         disabled={isSubmitting}
         className={cn(
           'w-full sm:w-auto',
-          variant === 'onDark' && 'bg-red-600 text-white hover:bg-red-700',
+          variant === 'onDark' && 'bg-gray-900 text-white hover:bg-gray-800',
         )}
       >
         {isSubmitting ? (

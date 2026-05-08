@@ -104,33 +104,30 @@ const Header = () => {
 
       {/* Main navigation */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between min-h-16 h-16 gap-3">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex shrink-0 items-center gap-2">
+          <Link href="/" className="flex items-center gap-2">
             <div className="w-10 h-10 bg-red-600 rounded flex items-center justify-center">
               <span className="text-white font-bold text-xl">UI</span>
             </div>
-            <div className="hidden sm:block whitespace-nowrap leading-none">
+            <div className="hidden sm:block">
               <span className="font-bold text-xl text-gray-900">US-IRAN</span>
-              <span className="font-bold text-xl text-red-600"> CONFLICT</span>
+              <span className="text-red-600 font-bold text-xl"> CONFLICT</span>
             </div>
           </Link>
 
-          {/* Desktop Navigation — xl+ so labels stay on one row; lg uses hamburger */}
-          <nav className="hidden xl:flex min-w-0 flex-1 items-center justify-center gap-0.5 2xl:gap-1">
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-1">
             {navItems.map((item) => (
               <div
                 key={item.label}
-                className="relative shrink-0"
+                className="relative"
                 onMouseEnter={() => setActiveDropdown(item.label)}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
-                <button
-                  type="button"
-                  className="flex items-center gap-1 whitespace-nowrap px-2.5 py-2 text-sm font-medium text-gray-700 hover:text-red-600 transition-colors"
-                >
+                <button className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 transition-colors">
                   {item.label}
-                  <ChevronDown className="w-4 h-4 shrink-0" />
+                  <ChevronDown className="w-4 h-4" />
                 </button>
                 {activeDropdown === item.label && (
                   <div className="absolute top-full left-0 w-56 bg-white border border-gray-200 shadow-lg rounded-md py-2">
@@ -147,63 +144,36 @@ const Header = () => {
                 )}
               </div>
             ))}
-            <Link
-              href="/blogs"
-              className="shrink-0 whitespace-nowrap px-2.5 py-2 text-sm font-medium text-gray-700 hover:text-red-600 transition-colors"
-            >
+            <Link href="/blogs" className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 transition-colors">
               All Articles
-            </Link>
-            <Link
-              href="/about"
-              className="ml-1 shrink-0 whitespace-nowrap px-2.5 py-2 text-sm font-medium text-gray-700 hover:text-red-600 transition-colors"
-            >
-              About
-            </Link>
-            <Link
-              href="/contact"
-              className="ml-2 shrink-0 whitespace-nowrap px-3 py-2 text-sm font-semibold text-red-600 border border-red-600 rounded-md hover:bg-red-50 transition-colors"
-            >
-              Contact
             </Link>
           </nav>
 
           {/* Right side actions */}
-          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-3">
             {/* YouTube Channel Button */}
             <a
               href="https://www.youtube.com/watch?v=gCNeDWCI0vo"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-md transition-colors hover:bg-red-700 hover:shadow-lg"
+              className="flex items-center gap-2 px-3 py-1.5 bg-red-600 text-white text-sm font-semibold rounded-full hover:bg-red-700 transition-colors shadow-md hover:shadow-lg"
             >
-              <Youtube className="h-4 w-4 shrink-0" />
+              <Youtube className="w-4 h-4" />
               <span className="hidden sm:inline">Watch Live</span>
-              <Play className="h-3 w-3 shrink-0" />
+              <Play className="w-3 h-3" />
             </a>
             <button className="p-2 text-gray-600 hover:text-red-600 transition-colors" aria-label="Search">
               <Search className="w-5 h-5" />
             </button>
             <Link
-              href="/about"
-              className="hidden md:inline-flex xl:hidden items-center whitespace-nowrap px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 transition-colors"
-            >
-              About
-            </Link>
-            <Link
-              href="/contact"
-              className="hidden md:inline-flex xl:hidden items-center whitespace-nowrap px-4 py-2 text-sm font-semibold text-red-600 border border-red-600 rounded-md hover:bg-red-50 transition-colors"
-            >
-              Contact
-            </Link>
-            <Link
               href="/blogs"
-              className="hidden sm:inline-flex shrink-0 items-center whitespace-nowrap rounded px-4 py-2 text-sm font-semibold bg-red-600 text-white hover:bg-red-700 transition-colors"
+              className="hidden sm:inline-flex items-center px-4 py-2 bg-red-600 text-white text-sm font-semibold rounded hover:bg-red-700 transition-colors"
             >
               Latest Updates
             </Link>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="xl:hidden p-2 text-gray-600 hover:text-red-600 transition-colors"
+              className="lg:hidden p-2 text-gray-600 hover:text-red-600 transition-colors"
               aria-label="Menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -212,9 +182,9 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile / tablet menu (full nav hidden below xl) */}
+      {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="xl:hidden bg-white border-t border-gray-200">
+        <div className="lg:hidden bg-white border-t border-gray-200">
           <div className="px-4 py-4 space-y-4">
             {navItems.map((item) => (
               <div key={item.label}>
@@ -235,20 +205,6 @@ const Header = () => {
                 </div>
               </div>
             ))}
-            <Link
-              href="/about"
-              className="block py-3 text-center text-gray-800 font-semibold rounded border border-gray-200 hover:bg-gray-50 transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              About
-            </Link>
-            <Link
-              href="/contact"
-              className="block py-3 text-center border-2 border-red-600 text-red-600 font-semibold rounded hover:bg-red-50 transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Contact
-            </Link>
             <Link
               href="/blogs"
               className="block py-3 text-center bg-red-600 text-white font-semibold rounded hover:bg-red-700 transition-colors"
