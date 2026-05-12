@@ -1,4 +1,4 @@
-import { faqSchemaData } from '@/lib/seo-keywords';
+import { faqSchemaData } from '@/lib/faq-schema-data';
 
 /** FAQPage JSON-LD for homepage FAQ (server-rendered for crawlers). */
 export default function FaqPageJsonLd() {

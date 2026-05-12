@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, Clock } from 'lucide-react';
@@ -48,7 +50,7 @@ function getCategory(post: BlogPost): { label: string; color: string } {
     return { label: 'SPECIAL OPS', color: 'bg-slate-700' };
   }
   if (slug.includes('strait-of-hormuz')) {
-    return { label: 'STRAIT OF HORMUZ', color: 'bg-orange-600' };
+    return { label: 'STRAIT OF HORMUZ', color: 'bg-orange-800' };
   }
   if (slug.includes('nuclear') || slug.includes('operation-epic')) {
     return { label: 'NUCLEAR PROGRAM', color: 'bg-yellow-600' };

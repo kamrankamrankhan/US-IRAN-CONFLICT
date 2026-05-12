@@ -21,7 +21,7 @@ const categoryColors: Record<string, string> = {
   'oil': 'bg-amber-600',
   'sanctions': 'bg-purple-600',
   'proxy': 'bg-indigo-600',
-  'strait': 'bg-orange-600',
+  'strait': 'bg-orange-800',
   'default': 'bg-gray-600',
 };
 

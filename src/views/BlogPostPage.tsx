@@ -52,7 +52,7 @@ function getCategory(post: BlogPost): { label: string; color: string } {
     return { label: 'SPECIAL OPS', color: 'bg-slate-700' };
   }
   if (slug.includes('strait-of-hormuz')) {
-    return { label: 'STRAIT OF HORMUZ', color: 'bg-orange-600' };
+    return { label: 'STRAIT OF HORMUZ', color: 'bg-orange-800' };
   }
   if (slug.includes('nuclear') || slug.includes('operation-epic')) {
     return { label: 'NUCLEAR PROGRAM', color: 'bg-yellow-600' };
@@ -85,8 +85,9 @@ const BlogPostPage = ({ post, allBlogs, markdocBody }: BlogPostPageProps) => {
     <div className="min-h-screen bg-white text-gray-900">
       <Header />
 
-      {/* Hero Section */}
-      <div className="bg-gray-50 border-b border-gray-200 pt-4">
+      <main id="main-content">
+        {/* Hero Section */}
+        <div className="bg-gray-50 border-b border-gray-200 pt-4">
         <article className="max-w-4xl mx-auto px-6 py-12 md:py-16">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
@@ -292,6 +293,7 @@ const BlogPostPage = ({ post, allBlogs, markdocBody }: BlogPostPageProps) => {
           </Link>
         </div>
       </div>
+      </main>
 
       <Footer />
     </div>

@@ -11,16 +11,6 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   useLenis();
 
   useEffect(() => {
-    const metaViewport = document.querySelector('meta[name="viewport"]');
-    if (metaViewport) {
-      metaViewport.setAttribute(
-        'content',
-        'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no',
-      );
-    }
-  }, []);
-
-  useEffect(() => {
     const path = pathname ?? '/';
     /* Blog titles vary by post (including Keystatic); BlogPostPage calls updateSEO. */
     if (path.startsWith('/blog/')) return;

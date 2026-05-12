@@ -29,7 +29,7 @@ const TopicPage = ({ slug, blogs }: { slug: string; blogs: BlogPost[] }) => {
     return (
       <div className="min-h-screen bg-white text-gray-900">
         <Header />
-        <div className="flex flex-col items-center justify-center px-6 py-32">
+        <main id="main-content" className="flex flex-col items-center justify-center px-6 py-32">
           <h1 className="text-3xl font-bold mb-4">Topic not found</h1>
           <Link
             href="/"
@@ -38,7 +38,7 @@ const TopicPage = ({ slug, blogs }: { slug: string; blogs: BlogPost[] }) => {
             <ArrowLeft className="w-4 h-4" />
             Back to home
           </Link>
-        </div>
+        </main>
         <Footer />
       </div>
     );
@@ -48,6 +48,7 @@ const TopicPage = ({ slug, blogs }: { slug: string; blogs: BlogPost[] }) => {
     <div className="min-h-screen bg-white text-gray-900">
       <Header />
 
+      <main id="main-content">
       {/* Hero Section */}
       {topic.image && (
         <div className="relative h-64 md:h-80 lg:h-96 overflow-hidden">
@@ -73,7 +74,7 @@ const TopicPage = ({ slug, blogs }: { slug: string; blogs: BlogPost[] }) => {
         </div>
       )}
 
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-sm text-gray-500 mb-8">
           <Link href="/" className="hover:text-red-600 transition-colors">Home</Link>
@@ -194,6 +195,7 @@ const TopicPage = ({ slug, blogs }: { slug: string; blogs: BlogPost[] }) => {
             View All Articles
           </Link>
         </div>
+      </div>
       </main>
 
       <Footer />

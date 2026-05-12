@@ -10,9 +10,18 @@ const Header = () => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [currentNewsIndex, setCurrentNewsIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  /** Avoid SSR/CSR markup drift for ticker controls (e.g. stale flight data vs fresh client bundle). */
+  const [tickerDotsMounted, setTickerDotsMounted] = useState(false);
 
   // Combine breaking news with regular news for the ticker
   const liveNewsItems = [...breakingNews, ...newsItems.slice(0, 5)];
+
+  useEffect(() => {
+    const id = requestAnimationFrame(() => {
+      setTickerDotsMounted(true);
+    });
+    return () => cancelAnimationFrame(id);
+  }, []);
 
   // Auto-rotate news ticker
   useEffect(() => {
@@ -86,18 +95,38 @@ const Header = () => {
             </a>
           </div>
 
-          {/* Navigation dots */}
-          <div className="hidden sm:flex items-center gap-1 px-4">
-            {liveNewsItems.slice(0, 5).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentNewsIndex(index)}
-                className={`w-1.5 h-1.5 rounded-full transition-all ${
-                  index === currentNewsIndex ? 'bg-white w-3' : 'bg-white/40 hover:bg-white/60'
-                }`}
-                aria-label={`Go to news ${index + 1}`}
-              />
-            ))}
+          {/* Navigation dots: SSR + first client pass use a layout placeholder; real controls after mount (hydration-safe). */}
+          <div className="hidden sm:flex shrink-0 items-center gap-0.5 px-2">
+            {tickerDotsMounted ? (
+              <div className="flex items-center gap-0.5" role="tablist" aria-label="News ticker items">
+                {liveNewsItems.slice(0, 5).map((_, index) => (
+                  <button
+                    key={index}
+                    type="button"
+                    role="tab"
+                    aria-selected={index === currentNewsIndex}
+                    onClick={() => setCurrentNewsIndex(index)}
+                    className="flex h-11 min-h-[44px] min-w-[44px] w-11 items-center justify-center rounded-full text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-red-700"
+                    aria-label={`Go to news ${index + 1}`}
+                  >
+                    <span
+                      className={`block rounded-full transition-all ${
+                        index === currentNewsIndex
+                          ? 'h-2.5 w-5 bg-white'
+                          : 'h-2.5 w-2.5 bg-white/50 hover:bg-white/85'
+                      }`}
+                      aria-hidden
+                    />
+                  </button>
+                ))}
+              </div>
+            ) : (
+              <div className="flex items-center gap-0.5" aria-hidden>
+                {Array.from({ length: Math.min(5, liveNewsItems.length) }).map((_, index) => (
+                  <div key={index} className="h-11 w-11 shrink-0" />
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
