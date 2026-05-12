@@ -10,6 +10,8 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       { protocol: 'https', hostname: 'usiranconflict.com', pathname: '/**' },
       { protocol: 'https', hostname: 'www.usiranconflict.com', pathname: '/**' },
+      /** External hero / article images (e.g. Keystatic or wire thumbnails) */
+      { protocol: 'https', hostname: 'images.wsj.net', pathname: '/**' },
     ],
   },
   async headers() {
