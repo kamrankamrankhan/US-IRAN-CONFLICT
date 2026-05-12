@@ -20,21 +20,18 @@ const FAQSection = () => {
           </p>
         </div>
 
-        {/* FAQ Items - SEO Optimized with Schema */}
-        <div className="space-y-4" itemScope itemType="https://schema.org/FAQPage">
+        {/* FAQ Items — visual only; FAQPage JSON-LD is server-rendered on the homepage (`FaqPageJsonLd`). */}
+        <div className="space-y-4">
           {faqSchemaData.map((faq, index) => (
             <div
               key={index}
               className="border border-gray-200 rounded-lg overflow-hidden"
-              itemProp="mainEntity"
-              itemScope
-              itemType="https://schema.org/Question"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
                 className="w-full flex items-center justify-between p-5 text-left hover:bg-gray-50 transition-colors"
               >
-                <h3 className="text-lg font-semibold text-gray-900 pr-4" itemProp="name">
+                <h3 className="text-lg font-semibold text-gray-900 pr-4">
                   {faq.question}
                 </h3>
                 <ChevronDown
@@ -44,13 +41,8 @@ const FAQSection = () => {
                 />
               </button>
               {openIndex === index && (
-                <div
-                  className="px-5 pb-5 text-gray-600 leading-relaxed"
-                  itemProp="acceptedAnswer"
-                  itemScope
-                  itemType="https://schema.org/Answer"
-                >
-                  <p itemProp="text">{faq.answer}</p>
+                <div className="px-5 pb-5 text-gray-600 leading-relaxed">
+                  <p>{faq.answer}</p>
                 </div>
               )}
             </div>

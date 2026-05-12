@@ -34,7 +34,7 @@ function getCategoryColor(slug: string): string {
   return categoryColors['default'];
 }
 
-const RelatedArticles = ({ currentSlug, keywords = [], maxArticles = 4, allBlogs = staticBlogs }: RelatedArticlesProps) => {
+const RelatedArticles = ({ currentSlug, keywords = [], maxArticles = 6, allBlogs = staticBlogs }: RelatedArticlesProps) => {
   // Find related articles based on:
   // 1. Same keywords/topic
   // 2. Similar slug patterns

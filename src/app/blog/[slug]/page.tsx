@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import BlogArticleJsonLd from '@/components/BlogArticleJsonLd';
+import BlogBreadcrumbJsonLd from '@/components/BlogBreadcrumbJsonLd';
 import BlogPostPage from '@/views/BlogPostPage';
 import { getPostBySlug, getAllBlogsMerged } from '@/lib/get-all-blogs';
 import { renderKeystaticPostBody } from '@/lib/render-keystatic-post';
@@ -32,9 +33,18 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     markdocBody = await renderKeystaticPostBody(post.slug);
   }
 
+  const breadcrumbTitle = post.title.split(':')[0]?.trim() || post.title;
+
   return (
     <>
       <BlogArticleJsonLd post={post} />
+      <BlogBreadcrumbJsonLd
+        items={[
+          { name: 'Home', path: '/' },
+          { name: 'Articles', path: '/blogs' },
+          { name: breadcrumbTitle.slice(0, 80), path: `/blog/${post.slug}` },
+        ]}
+      />
       <BlogPostPage post={post} allBlogs={allBlogs} markdocBody={markdocBody} />
     </>
   );

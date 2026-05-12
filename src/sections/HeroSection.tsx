@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, CalendarDays, Youtube } from 'lucide-react';
 import type { BlogPost } from '../content/blogs';
 import { filterBlogsWithinLastDays, sortBlogsByDateDesc } from '../lib/blog-sort';
@@ -32,11 +33,13 @@ const HeroSection = ({ blogs }: HeroSectionProps) => {
             <Link href={`/blog/${featuredBlog.slug}`} className="block">
               <div className="relative aspect-[21/9] min-h-[200px] overflow-hidden rounded-lg bg-gray-900 shadow-xl sm:aspect-[21/10] lg:aspect-[21/9]">
                 {featuredBlog.image ? (
-                  <img
+                  <Image
                     src={featuredBlog.image}
-                    alt={featuredBlog.title}
-                    className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
-                    loading="eager"
+                    alt={`${featuredBlog.title} — US Iran war news and analysis`}
+                    fill
+                    className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
+                    sizes="(max-width: 1280px) 100vw, 1280px"
+                    priority
                   />
                 ) : (
                   <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900">

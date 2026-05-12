@@ -18,6 +18,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${base}/about`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.75 },
     { url: `${base}/privacy-policy`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.55 },
     { url: `${base}/terms-of-use`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.55 },
+    { url: `${base}/rss.xml`, lastModified: new Date(), changeFrequency: 'hourly', priority: 0.65 },
+    { url: `${base}/google-news.xml`, lastModified: new Date(), changeFrequency: 'hourly', priority: 0.75 },
   ];
 
   const posts = await getAllBlogsMerged();

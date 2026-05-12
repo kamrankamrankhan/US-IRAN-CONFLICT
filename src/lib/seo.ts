@@ -9,6 +9,7 @@ import type { BlogPost } from '@/content/blogs';
 import { articleMeta } from '@/content/featuredArticle';
 import { blogs } from '@/content/blogs';
 import { BLOG_SLUG_KEYWORDS } from '@/lib/blog-seo-keywords';
+import { formatSerpDescription, formatSerpTitle } from '@/lib/seo-meta-format';
 
 export interface SEOOptions {
   title: string;
@@ -195,6 +196,10 @@ function buildArticleJsonLd(
     keywords: keywords || 'US Iran war, Iran conflict, Middle East crisis',
     inLanguage: 'en-US',
     isAccessibleForFree: true,
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['h1.article-headline', 'p.article-summary'],
+    },
   };
 }
 
@@ -221,9 +226,11 @@ export function getSEOOptionsForBlogPost(post: BlogPost): SEOOptions {
   const pathname = `/blog/${post.slug}`;
   const url = `${baseUrl()}${pathname}`;
   const keywords = resolveBlogKeywords(post);
+  const title = formatSerpTitle(`${post.title} | ${siteBrand}`);
+  const description = formatSerpDescription(post.excerpt || post.title);
   return {
-    title: `${post.title} | ${siteBrand}`,
-    description: truncateMetaDescription(post.excerpt || post.title),
+    title,
+    description,
     path: pathname,
     image: post.image,
     keywords,
@@ -247,14 +254,15 @@ export function toNextBlogMetadata(post: BlogPost): Metadata {
   const seo = getSEOOptionsForBlogPost(post);
   const canonicalPath = `/blog/${post.slug}`;
   const absUrl = `${baseUrl()}${canonicalPath}`;
-  const desc = truncateMetaDescription(post.excerpt || post.title);
+  const desc = formatSerpDescription(post.excerpt || post.title);
+  const titleSerp = formatSerpTitle(`${post.title} | ${siteBrand}`);
   const ogImageRel = post.image ?? siteConfig.ogImage ?? '/gallery-6.jpg';
   const ogAbs = toAbsoluteUrl(baseUrl(), ogImageRel);
   const kw =
     seo.keywords?.split(',').map((k) => k.trim()).filter(Boolean) ?? [];
 
   return {
-    title: post.title,
+    title: titleSerp,
     description: desc,
     keywords: kw.length ? kw : undefined,
     alternates: { canonical: canonicalPath },
@@ -263,16 +271,16 @@ export function toNextBlogMetadata(post: BlogPost): Metadata {
       url: absUrl,
       siteName: siteBrand,
       locale: 'en_US',
-      title: post.title,
+      title: titleSerp,
       description: desc,
       publishedTime: post.date,
       modifiedTime: post.date,
-      images: [{ url: ogAbs, width: 1200, height: 630, alt: post.title }],
+      images: [{ url: ogAbs, width: 1200, height: 630, alt: `${post.title} — US Iran conflict analysis` }],
     },
     twitter: {
       card: 'summary_large_image',
       site: '@usiranconflict',
-      title: post.title,
+      title: titleSerp,
       description: desc,
       images: [ogAbs],
     },
@@ -285,7 +293,8 @@ export function toNextTopicMetadata(slug: string): Metadata | null {
   if (!topic) return null;
   const canonicalPath = `/topic/${slug}`;
   const absUrl = `${baseUrl()}${canonicalPath}`;
-  const desc = truncateMetaDescription(topic.description);
+  const titleSerp = formatSerpTitle(`${topic.title} | ${siteBrand}`);
+  const descSerp = formatSerpDescription(topic.description);
   const kw = topic.keywords
     ? topic.keywords.split(',').map((k) => k.trim()).filter(Boolean)
     : undefined;
@@ -294,8 +303,8 @@ export function toNextTopicMetadata(slug: string): Metadata | null {
     : toAbsoluteUrl(baseUrl(), siteConfig.ogImage ?? '/gallery-6.jpg');
 
   return {
-    title: topic.title,
-    description: desc,
+    title: titleSerp,
+    description: descSerp,
     keywords: kw?.length ? kw : undefined,
     alternates: { canonical: canonicalPath },
     openGraph: {
@@ -303,15 +312,15 @@ export function toNextTopicMetadata(slug: string): Metadata | null {
       url: absUrl,
       siteName: siteBrand,
       locale: 'en_US',
-      title: topic.title,
-      description: desc,
-      images: [{ url: ogAbs, width: 1200, height: 630, alt: topic.title }],
+      title: titleSerp,
+      description: descSerp,
+      images: [{ url: ogAbs, width: 1200, height: 630, alt: `${topic.title} — topic guide` }],
     },
     twitter: {
       card: 'summary_large_image',
       site: '@usiranconflict',
-      title: topic.title,
-      description: desc,
+      title: titleSerp,
+      description: descSerp,
       images: [ogAbs],
     },
     robots: { index: true, follow: true },

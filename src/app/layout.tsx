@@ -7,6 +7,8 @@ import '../index.css';
 
 const baseUrl = siteConfig.siteUrl.replace(/\/$/, '');
 
+const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
+
 const defaultKeywords = [
   'US Iran war',
   'Iran war 2026',
@@ -27,7 +29,10 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   keywords: defaultKeywords,
-  authors: [{ name: 'US Iran Conflict Analysis', url: baseUrl }],
+  authors: [
+    { name: siteConfig.founder.name, url: `${baseUrl}/about` },
+    { name: 'US Iran Conflict Analysis', url: baseUrl },
+  ],
   creator: 'US Iran Conflict Analysis',
   publisher: 'US Iran Conflict Analysis',
   applicationName: 'US Iran Conflict',
@@ -73,6 +78,9 @@ export const metadata: Metadata = {
   },
   manifest: '/site.webmanifest',
   category: 'news',
+  ...(googleVerification
+    ? { verification: { google: googleVerification } }
+    : {}),
 };
 
 export const viewport: Viewport = {

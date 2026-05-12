@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useEffect } from 'react';
 import type { ReactNode } from 'react';
 import { updateSEO, getClientBlogHeadSEO } from '@/lib/seo';
@@ -10,6 +11,10 @@ import Header from '../sections/Header';
 import Footer from '../sections/NewFooter';
 import SocialShare from '../components/SocialShare';
 import RelatedArticles from '../components/RelatedArticles';
+import ArticleTableOfContents from '../components/ArticleTableOfContents';
+import BlogTopicPillarLinks from '../components/BlogTopicPillarLinks';
+import BlogAuthorBox from '../components/BlogAuthorBox';
+import { siteConfig } from '@/config';
 
 // Category mapping based on blog slug/content
 function getCategory(post: BlogPost): { label: string; color: string } {
@@ -84,7 +89,7 @@ const BlogPostPage = ({ post, allBlogs, markdocBody }: BlogPostPageProps) => {
       <div className="bg-gray-50 border-b border-gray-200 pt-4">
         <article className="max-w-4xl mx-auto px-6 py-12 md:py-16">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6">
+          <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
             <Link href="/" className="hover:text-red-600 transition-colors">Home</Link>
             <span>/</span>
             <Link href="/blogs" className="hover:text-red-600 transition-colors">Articles</Link>
@@ -101,6 +106,9 @@ const BlogPostPage = ({ post, allBlogs, markdocBody }: BlogPostPageProps) => {
               <Clock className="w-4 h-4" />
               <time dateTime={post.date}>{post.date}</time>
             </div>
+            <span className="text-xs text-gray-400" title="Editorial publish date">
+              Last updated: {post.date}
+            </span>
             {post.externalSource && (
               <span className="text-sm text-red-600 font-medium">
                 · {post.externalSource}
@@ -109,7 +117,7 @@ const BlogPostPage = ({ post, allBlogs, markdocBody }: BlogPostPageProps) => {
           </div>
 
           {/* Title */}
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
+          <h1 className="article-headline text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
             {post.titleLink ? (
               <a
                 href={post.titleLink}
@@ -125,7 +133,7 @@ const BlogPostPage = ({ post, allBlogs, markdocBody }: BlogPostPageProps) => {
           </h1>
 
           {/* Excerpt */}
-          <p className="text-xl text-gray-600 leading-relaxed">
+          <p className="article-summary text-xl text-gray-600 leading-relaxed">
             {post.excerpt}
           </p>
         </article>
@@ -134,11 +142,14 @@ const BlogPostPage = ({ post, allBlogs, markdocBody }: BlogPostPageProps) => {
       {/* Featured Image */}
       {post.image && (
         <div className="max-w-4xl mx-auto px-6 -mt-4">
-          <figure className="rounded-lg overflow-hidden border border-gray-200 shadow-lg">
-            <img
+          <figure className="rounded-lg overflow-hidden border border-gray-200 shadow-lg relative aspect-[2/1] max-h-[480px] w-full bg-gray-100">
+            <Image
               src={post.image}
-              alt={post.title}
-              className="w-full h-auto object-cover"
+              alt={`${post.title} — US Iran conflict analysis illustration`}
+              fill
+              className="object-cover"
+              sizes="(max-width: 896px) 100vw, 896px"
+              priority
             />
           </figure>
         </div>
@@ -162,34 +173,62 @@ const BlogPostPage = ({ post, allBlogs, markdocBody }: BlogPostPageProps) => {
             </a>
           </div>
         ) : markdocBody ? (
-          <div
-            className={[
-              'markdoc-body prose prose-lg max-w-none text-gray-800',
-              'prose-headings:scroll-mt-24 prose-headings:font-bold prose-headings:text-gray-900',
-              'prose-h2:border-b-2 prose-h2:border-red-600 prose-h2:pb-2 prose-h2:mt-10 prose-h2:mb-4',
-              'prose-h3:mt-8 prose-h3:mb-3',
-              'prose-p:leading-relaxed prose-li:my-1',
-              'prose-a:text-red-600 prose-a:no-underline hover:prose-a:underline',
-              'prose-blockquote:border-l-red-600 prose-blockquote:text-gray-700',
-              'prose-strong:text-gray-900',
-              'prose-figure:my-8 prose-img:rounded-lg prose-img:border prose-img:border-gray-200',
-            ].join(' ')}
-          >
-            {markdocBody}
-          </div>
+          <>
+            <ArticleTableOfContents
+              contentSelector=".markdoc-body"
+              minHeadings={3}
+              watchKey={post.slug}
+            />
+            <div
+              className={[
+                'markdoc-body prose prose-lg max-w-none text-gray-800',
+                'prose-headings:scroll-mt-24 prose-headings:font-bold prose-headings:text-gray-900',
+                'prose-h2:border-b-2 prose-h2:border-red-600 prose-h2:pb-2 prose-h2:mt-10 prose-h2:mb-4',
+                'prose-h3:mt-8 prose-h3:mb-3',
+                'prose-p:leading-relaxed prose-li:my-1',
+                'prose-a:text-red-600 prose-a:no-underline hover:prose-a:underline',
+                'prose-blockquote:border-l-red-600 prose-blockquote:text-gray-700',
+                'prose-strong:text-gray-900',
+                'prose-figure:my-8 prose-img:rounded-lg prose-img:border prose-img:border-gray-200',
+              ].join(' ')}
+            >
+              {markdocBody}
+            </div>
+          </>
         ) : post.sections && post.sections.length > 0 ? (
-          <div className="space-y-12">
-            {post.sections.map((section, i) => (
-              <section key={i} className="prose prose-lg max-w-none">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b-2 border-red-600">
-                  {section.title}
+          <>
+            {post.sections.length >= 3 && (
+              <nav
+                className="mb-10 rounded-xl border border-gray-200 bg-gray-50 p-5"
+                aria-labelledby="static-toc-heading"
+              >
+                <h2 id="static-toc-heading" className="text-sm font-bold uppercase tracking-wider text-gray-900 mb-3">
+                  On this page
                 </h2>
-                <p className="text-gray-700 leading-relaxed whitespace-pre-line">
-                  {section.content}
-                </p>
-              </section>
-            ))}
-          </div>
+                <ol className="space-y-2 text-sm">
+                  {post.sections.map((section, i) => (
+                    <li key={`toc-${i}`}>
+                      <a href={`#sec-${i}`} className="text-red-600 hover:text-red-800 hover:underline">
+                        {section.title}
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </nav>
+            )}
+            <div className="space-y-12">
+              {post.sections.map((section, i) => (
+                <section key={i} id={`sec-${i}`} className="prose prose-lg max-w-none scroll-mt-24">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b-2 border-red-600">
+                    {section.title}
+                  </h2>
+                  <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+                    {section.content}
+                  </p>
+                </section>
+              ))}
+            </div>
+          </>
         ) : (
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-700 leading-relaxed text-lg">
@@ -198,7 +237,6 @@ const BlogPostPage = ({ post, allBlogs, markdocBody }: BlogPostPageProps) => {
           </div>
         )}
 
-        {/* Tags/Keywords */}
         <div className="mt-12 pt-8 border-t border-gray-200">
           <div className="flex items-center justify-between flex-wrap gap-4">
             <div>
@@ -224,7 +262,7 @@ const BlogPostPage = ({ post, allBlogs, markdocBody }: BlogPostPageProps) => {
 
             {/* Social Share */}
             <SocialShare
-              url={`https://usiranconflict.com/blog/${post.slug}`}
+              url={`${siteConfig.siteUrl.replace(/\/$/, '')}/blog/${post.slug}`}
               title={post.title}
               description={post.excerpt}
               hashtags={['IranConflict', 'MiddleEastCrisis', 'USIranWar']}
@@ -232,11 +270,14 @@ const BlogPostPage = ({ post, allBlogs, markdocBody }: BlogPostPageProps) => {
           </div>
         </div>
 
+        <BlogTopicPillarLinks />
+        <BlogAuthorBox />
+
         {/* Related Articles */}
         <RelatedArticles
           currentSlug={post.slug}
           keywords={post.title.split(' ').filter(w => w.length > 4)}
-          maxArticles={4}
+          maxArticles={6}
           allBlogs={allBlogs}
         />
 

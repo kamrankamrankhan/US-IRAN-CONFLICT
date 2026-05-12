@@ -1,8 +1,9 @@
 import { siteConfig } from '@/config';
 
-/** Organization + WebSite schema for rich results (contact, brand). */
+const base = siteConfig.siteUrl.replace(/\/$/, '');
+
+/** Organization + WebSite + SearchAction (site-limited Google search) for rich results. */
 export default function SiteJsonLd() {
-  const base = siteConfig.siteUrl.replace(/\/$/, '');
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -10,13 +11,18 @@ export default function SiteJsonLd() {
         '@type': 'Organization',
         '@id': `${base}/#organization`,
         name: 'US Iran Conflict Analysis',
-        alternateName: ['Strategic Intelligence', 'US-Iran Conflict'],
+        alternateName: ['US-Iran Conflict Coverage', 'US Iran Conflict'],
         url: base,
         logo: {
           '@type': 'ImageObject',
           url: `${base}/favicon.svg`,
         },
         image: `${base}/gallery-6.jpg`,
+        founder: {
+          '@type': 'Person',
+          name: siteConfig.founder.name,
+          url: `${base}/about`,
+        },
         sameAs: [
           'https://twitter.com/usiranconflict',
           'https://www.youtube.com/@usiranconflict',
@@ -40,6 +46,14 @@ export default function SiteJsonLd() {
         description: siteConfig.description,
         inLanguage: siteConfig.language,
         publisher: { '@id': `${base}/#organization` },
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: {
+            '@type': 'EntryPoint',
+            urlTemplate: `https://www.google.com/search?q={search_term_string}+site:usiranconflict.com`,
+          },
+          'query-input': 'required name=search_term_string',
+        },
       },
     ],
   };

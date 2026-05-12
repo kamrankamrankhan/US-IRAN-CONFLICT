@@ -167,6 +167,9 @@ const Footer = () => {
               © {currentYear} US-Iran Conflict Coverage. All rights reserved.
             </p>
             <div className="flex flex-wrap justify-center gap-6">
+              <Link href="/rss.xml" className="text-gray-500 hover:text-red-500 text-sm transition-colors">
+                RSS feed
+              </Link>
               <Link href="/privacy-policy" className="text-gray-500 hover:text-red-500 text-sm transition-colors">
                 Privacy Policy
               </Link>
