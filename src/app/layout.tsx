@@ -3,6 +3,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import Providers from './providers';
 import SiteJsonLd from '@/components/SiteJsonLd';
 import { siteConfig } from '@/config';
+import { inter } from '@/lib/fonts';
 import '../index.css';
 
 const baseUrl = siteConfig.siteUrl.replace(/\/$/, '');
@@ -93,8 +94,8 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className="antialiased">
+    <html lang="en" className={inter.variable}>
+      <body className={`${inter.className} antialiased`}>
         <SiteJsonLd />
         <Providers>{children}</Providers>
         <SpeedInsights />

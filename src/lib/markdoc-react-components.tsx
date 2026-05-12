@@ -1,4 +1,6 @@
 import React from 'react';
+import Image from 'next/image';
+import { shouldUseNextImage } from '@/lib/image-remote-hosts';
 
 /** Plain URL pasted as a markdown link `[url](url)` should still render as an image when it points at media. */
 function isLikelyImageUrl(href: string): boolean {
@@ -20,6 +22,13 @@ function textFromChildren(node: React.ReactNode): string {
   return '';
 }
 
+function toPositiveInt(value: unknown, fallback: number): number {
+  const n = typeof value === 'string' ? parseInt(value, 10) : Number(value);
+  return Number.isFinite(n) && n > 0 ? Math.round(n) : fallback;
+}
+
+const figureClass = 'w-full max-h-[min(560px,70vh)] rounded-lg border border-gray-200 bg-gray-50 object-contain';
+
 function SmartImageOrLink({ href, children, ...rest }: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
   if (!href) {
     return <a {...rest}>{children}</a>;
@@ -29,15 +38,33 @@ function SmartImageOrLink({ href, children, ...rest }: React.AnchorHTMLAttribute
     const fromLabel = textFromChildren(children).trim();
     const alt =
       fromLabel && !/^https?:\/\//i.test(fromLabel) && fromLabel.length < 200 ? fromLabel : 'Article image';
+
+    if (shouldUseNextImage(href)) {
+      return (
+        <figure className="my-8">
+          <Image
+            src={href}
+            alt={alt}
+            width={1200}
+            height={675}
+            sizes="(max-width: 768px) 100vw, 896px"
+            className={figureClass}
+          />
+        </figure>
+      );
+    }
+
     return (
       <figure className="my-8">
         <img
           src={href}
           alt={alt}
+          width={1200}
+          height={675}
           loading="lazy"
           decoding="async"
           referrerPolicy="no-referrer"
-          className="w-full max-h-[min(560px,70vh)] rounded-lg border border-gray-200 bg-gray-50 object-contain"
+          className={figureClass}
         />
       </figure>
     );
@@ -57,15 +84,41 @@ function SmartImageOrLink({ href, children, ...rest }: React.AnchorHTMLAttribute
 }
 
 function MarkdocImg(props: React.ImgHTMLAttributes<HTMLImageElement>) {
+  const { src: srcProp, alt: altProp, width, height, className, title } = props;
+  const src = typeof srcProp === 'string' ? srcProp : '';
+  const alt = typeof altProp === 'string' ? altProp : '';
+  const w = toPositiveInt(width, 1200);
+  const h = toPositiveInt(height, 675);
+  const mergedClass = [figureClass, className].filter(Boolean).join(' ');
+
+  if (src && shouldUseNextImage(src)) {
+    return (
+      <figure className="my-8">
+        <Image
+          src={src}
+          alt={alt}
+          title={title}
+          width={w}
+          height={h}
+          sizes="(max-width: 768px) 100vw, 896px"
+          className={mergedClass}
+        />
+      </figure>
+    );
+  }
+
   return (
     <figure className="my-8">
       <img
-        {...props}
-        alt={props.alt ?? ''}
+        src={src}
+        alt={alt}
+        title={title}
+        width={w}
+        height={h}
         loading="lazy"
         decoding="async"
         referrerPolicy="no-referrer"
-        className="w-full max-h-[min(560px,70vh)] rounded-lg border border-gray-200 bg-gray-50 object-contain"
+        className={mergedClass}
       />
     </figure>
   );

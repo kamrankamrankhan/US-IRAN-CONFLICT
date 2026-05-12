@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, Clock } from 'lucide-react';
 import type { BlogPost } from '../content/blogs';
 
@@ -131,12 +132,12 @@ const ContentSection = ({
                 {/* Image */}
                 <div className="relative h-48 overflow-hidden bg-gray-100">
                   {post.image ? (
-                    <img
+                    <Image
                       src={post.image}
                       alt={post.title}
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   ) : (
                     <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { topicPagesConfig, topicLinks } from '../config';
 import { ArrowLeft, Clock } from 'lucide-react';
 import type { BlogPost } from '../content/blogs';
@@ -50,10 +51,13 @@ const TopicPage = ({ slug, blogs }: { slug: string; blogs: BlogPost[] }) => {
       {/* Hero Section */}
       {topic.image && (
         <div className="relative h-64 md:h-80 lg:h-96 overflow-hidden">
-          <img
+          <Image
             src={topic.image}
             alt={topic.title}
-            className="w-full h-full object-cover"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
@@ -131,10 +135,12 @@ const TopicPage = ({ slug, blogs }: { slug: string; blogs: BlogPost[] }) => {
                   <article className="h-full flex flex-col bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
                     <div className="relative h-40 overflow-hidden bg-gray-100">
                       {post.image ? (
-                        <img
+                        <Image
                           src={post.image}
                           alt={post.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          fill
+                          sizes="(max-width: 768px) 100vw, 33vw"
+                          className="object-cover transition-transform duration-300 group-hover:scale-105"
                         />
                       ) : (
                         <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300" />

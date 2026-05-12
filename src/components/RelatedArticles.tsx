@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, Clock } from 'lucide-react';
 import { blogs as staticBlogs } from '../content/blogs';
 import type { BlogPost } from '../content/blogs';
@@ -91,11 +92,13 @@ const RelatedArticles = ({ currentSlug, keywords = [], maxArticles = 6, allBlogs
             <article className="flex gap-4 p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md hover:border-gray-300 transition-all group">
               {/* Image */}
               {article.image && (
-                <div className="flex-shrink-0 w-24 h-20 rounded overflow-hidden bg-gray-100">
-                  <img
+                <div className="relative shrink-0 h-20 w-24 overflow-hidden rounded bg-gray-100">
+                  <Image
                     src={article.image}
                     alt={article.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    fill
+                    sizes="96px"
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                 </div>
               )}

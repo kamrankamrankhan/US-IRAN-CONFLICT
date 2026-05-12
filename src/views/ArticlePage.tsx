@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowLeft } from 'lucide-react';
 import { articleMeta, articleSections, keyTakeaways } from '../content/featuredArticle';
 
@@ -20,11 +21,14 @@ const ArticlePage = () => {
       <div className="max-w-3xl mx-auto px-6 py-12 md:py-20">
         {/* Hero Image */}
         {articleMeta.image && (
-          <div className="mb-12 -mx-6 md:mx-0 md:rounded-lg overflow-hidden">
-            <img
+          <div className="relative mb-12 aspect-[1200/630] w-full max-h-[70vh] -mx-6 overflow-hidden md:mx-0 md:rounded-lg">
+            <Image
               src={articleMeta.image}
               alt={articleMeta.headline}
-              className="w-full h-auto object-cover"
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, 768px"
+              className="object-cover"
             />
           </div>
         )}

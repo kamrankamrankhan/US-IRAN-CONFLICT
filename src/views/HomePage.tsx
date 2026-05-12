@@ -1,13 +1,17 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import Header from '../sections/Header';
 import HeroSection from '../sections/HeroSection';
 import ContentSection from '../sections/ContentSection';
-import FAQSection from '../sections/FAQSection';
 import Footer from '../sections/NewFooter';
 import type { BlogPost } from '../content/blogs';
 import { blogs as staticBlogs } from '../content/blogs';
 import { sortBlogsByDateDesc } from '../lib/blog-sort';
+
+const FAQSection = dynamic(() => import('../sections/FAQSection'), {
+  loading: () => <div className="min-h-[240px] bg-gray-50" aria-hidden />,
+});
 
 type HomePageProps = {
   blogs?: BlogPost[];

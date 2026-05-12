@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, CalendarDays, Youtube } from 'lucide-react';
+import LazyYouTubeEmbed from '@/components/LazyYouTubeEmbed';
 import type { BlogPost } from '../content/blogs';
 import { filterBlogsWithinLastDays, sortBlogsByDateDesc } from '../lib/blog-sort';
 
@@ -110,11 +111,12 @@ const HeroSection = ({ blogs }: HeroSectionProps) => {
                   >
                     <div className="relative h-20 w-[7.25rem] shrink-0 overflow-hidden rounded-md bg-gray-100 sm:h-24 sm:w-32">
                       {blog.image ? (
-                        <img
+                        <Image
                           src={blog.image}
                           alt={blog.title}
-                          className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-                          loading="lazy"
+                          fill
+                          sizes="(max-width: 640px) 7.25rem, 8rem"
+                          className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
                         />
                       ) : (
                         <div className="h-full w-full bg-gradient-to-br from-gray-200 to-gray-300" />
@@ -156,15 +158,11 @@ const HeroSection = ({ blogs }: HeroSectionProps) => {
                 </span>
                 <span className="ml-auto text-[10px] font-semibold uppercase text-red-600">Live</span>
               </div>
-              <div className="relative aspect-video bg-gray-950">
-                <iframe
-                  src="https://www.youtube.com/embed/gCNeDWCI0vo?autoplay=0&rel=0&modestbranding=1"
-                  title="US Iran Conflict live news coverage"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                  className="absolute inset-0 h-full w-full"
-                />
-              </div>
+              <LazyYouTubeEmbed
+                videoId="gCNeDWCI0vo"
+                title="US Iran Conflict live news coverage"
+                embedParams="rel=0&modestbranding=1"
+              />
             </div>
             <p className="mt-4 text-xs leading-relaxed text-gray-500">
               Streams from third‑party outlets for context; attribution belongs to respective broadcasters.
