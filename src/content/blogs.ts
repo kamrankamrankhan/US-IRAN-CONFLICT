@@ -24,6 +24,11 @@ export interface BlogPost {
   titleLink?: string;
   /** Written in Keystatic (/keystatic); body is Markdoc, not sections */
   source?: 'keystatic';
+  /**
+   * Server-only sort key (ms). For Keystatic posts, max(publish date, .mdoc file mtime)
+   * so a newly published post is not buried under older publish dates.
+   */
+  sortTimeMs?: number;
 }
 
 export const blogs: BlogPost[] = [

@@ -1,11 +1,20 @@
 import type { BlogPost } from '@/content/blogs';
 
-/** Newest first; uses numeric dates so ISO strings sort reliably. */
+/** Timestamp used for ordering lists (newest first). */
+export function getBlogSortTimeMs(post: BlogPost): number {
+  if (post.sortTimeMs != null && Number.isFinite(post.sortTimeMs)) {
+    return post.sortTimeMs;
+  }
+  return postPublicationTimeMs(post.date) ?? 0;
+}
+
+/** Newest first; uses `sortTimeMs` when set, else publish date. */
 export function sortBlogsByDateDesc(blogs: BlogPost[]): BlogPost[] {
   return [...blogs].sort((a, b) => {
-    const ta = postPublicationTimeMs(a.date) ?? 0;
-    const tb = postPublicationTimeMs(b.date) ?? 0;
-    return tb - ta;
+    const tb = getBlogSortTimeMs(b);
+    const ta = getBlogSortTimeMs(a);
+    if (tb !== ta) return tb - ta;
+    return a.slug.localeCompare(b.slug);
   });
 }
 
@@ -43,8 +52,8 @@ export function filterBlogsWithinLastDays(
   const cutoff = now.getTime() - safeDays * 86400000;
 
   return sortBlogsByDateDesc(blogs).filter((b) => {
-    const t = postPublicationTimeMs(b.date);
-    if (t === null) return false;
+    const t = getBlogSortTimeMs(b);
+    if (t <= 0) return false;
     return t >= cutoff;
   });
 }

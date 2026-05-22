@@ -4,8 +4,8 @@ import { getAllBlogsMerged } from '@/lib/get-all-blogs';
 import FaqPageJsonLd from '@/components/FaqPageJsonLd';
 import HomeLiveVideoJsonLd from '@/components/HomeLiveVideoJsonLd';
 
-/** Hero “last 14 days” list uses merged blogs + rolling date window; ISR keeps Keystatic in sync after deploy */
-export const revalidate = 3600;
+/** Regenerate often so new Keystatic posts show on the homepage after deploy (was 3600s). */
+export const revalidate = 300;
 
 export const metadata: Metadata = {
   alternates: {

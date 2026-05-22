@@ -136,7 +136,8 @@ export default function HomePage({ blogs: blogsProp }: HomePageProps) {
 
   const sortedAll = sortBlogsByDateDesc(blogs);
   const blogsSpotlight = sortedAll.slice(0, 6);
-  const recentBlogs = sortedAll.slice(6, 12);
+  /** Next 6 newest after the hero feature — not ranks 7–12 (that pushed “old” posts here when you published). */
+  const recentBlogs = sortedAll.slice(1, 7);
 
   return (
     <div className="min-h-screen bg-white">

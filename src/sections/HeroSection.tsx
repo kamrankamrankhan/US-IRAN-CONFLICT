@@ -21,7 +21,9 @@ const HeroSection = ({ blogs }: HeroSectionProps) => {
 
   const datedInWindow = filterBlogsWithinLastDays(sortedBlogs, LAST_DAYS_WINDOW);
   const recentStoriesSource =
-    datedInWindow.length > 0 ? datedInWindow : sortedBlogs.filter((_, i) => i > 0);
+    datedInWindow.length > 0
+      ? datedInWindow
+      : sortedBlogs.slice(1, RECENT_LIST_LIMIT + 1);
   const recentStories = featuredBlog
     ? recentStoriesSource.filter((b) => b.slug !== featuredBlog.slug).slice(0, RECENT_LIST_LIMIT)
     : recentStoriesSource.slice(0, RECENT_LIST_LIMIT);
