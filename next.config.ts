@@ -34,7 +34,7 @@ const nextConfig: NextConfig = {
           {
             key: 'Link',
             value:
-              '<https://www.youtube.com>; rel=preconnect; crossorigin, <https://i.ytimg.com>; rel=preconnect',
+              '<https://www.youtube.com>; rel=preconnect; crossorigin, <https://i.ytimg.com>; rel=preconnect, <https://pagead2.googlesyndication.com>; rel=preconnect; crossorigin, <https://googleads.g.doubleclick.net>; rel=preconnect; crossorigin',
           },
           ...security,
         ],

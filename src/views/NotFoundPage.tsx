@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Home, Newspaper, Radio, BookOpen, Mail } from 'lucide-react';
-import { updateSEO } from '@/lib/seo';
+import { updateSEO } from '@/lib/seo-client';
 
 export default function NotFoundPage() {
   useEffect(() => {

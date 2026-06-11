@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from 'next';
+import dynamic from 'next/dynamic';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import Providers from './providers';
+
+const Providers = dynamic(() => import('./providers'), { loading: () => null });
 import SiteJsonLd from '@/components/SiteJsonLd';
 import { siteConfig } from '@/config';
 import { inter } from '@/lib/fonts';
@@ -9,6 +11,10 @@ import '../index.css';
 const baseUrl = siteConfig.siteUrl.replace(/\/$/, '');
 
 const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();
+
+/** Google AdSense publisher client (set in env to override or leave empty to disable). */
+const adsenseClient =
+  process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT?.trim() ?? 'ca-pub-5831523939287299';
 
 const defaultKeywords = [
   'US Iran war',
@@ -98,6 +104,15 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={inter.variable}>
+      <head>
+        {adsenseClient ? (
+          <script
+            async
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`}
+            crossOrigin="anonymous"
+          />
+        ) : null}
+      </head>
       <body className={`${inter.className} antialiased`}>
         <SiteJsonLd />
         <Providers>{children}</Providers>

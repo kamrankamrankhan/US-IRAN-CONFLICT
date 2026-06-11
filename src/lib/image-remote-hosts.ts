@@ -23,6 +23,7 @@ export const IMAGE_REMOTE_HOSTNAMES = [
   'kslnewsradio.com',
   'live-production.wcms.abc-cdn.net.au',
   'media.cnn.com',
+  'imageio.forbes.com',
 ] as const;
 
 const HOST_SET = new Set<string>(IMAGE_REMOTE_HOSTNAMES);

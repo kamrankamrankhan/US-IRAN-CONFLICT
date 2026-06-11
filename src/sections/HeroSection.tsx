@@ -1,8 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowRight, CalendarDays, Youtube } from 'lucide-react';
+import CoverImage from '@/components/CoverImage';
 import LazyYouTubeEmbed from '@/components/LazyYouTubeEmbed';
 import type { BlogPost } from '../content/blogs';
 import { filterBlogsWithinLastDays, sortBlogsByDateDesc } from '../lib/blog-sort';
@@ -20,14 +20,19 @@ const HeroSection = ({ blogs }: HeroSectionProps) => {
   const featuredBlog = sortedBlogs[0];
 
   const datedInWindow = filterBlogsWithinLastDays(sortedBlogs, LAST_DAYS_WINDOW);
+  const excludeFeatured = (list: BlogPost[]) =>
+    featuredBlog ? list.filter((b) => b.slug !== featuredBlog.slug) : list;
+
+  // Sidebar must not repeat the hero post. If the 14-day window only contains that post,
+  // fall back to the next newest stories so the list is not empty.
+  const inWindowWithoutFeatured = excludeFeatured(datedInWindow);
   const recentStoriesSource =
-    datedInWindow.length > 0
-      ? datedInWindow
-      : sortedBlogs.slice(1, RECENT_LIST_LIMIT + 1);
-  const recentStories = featuredBlog
-    ? recentStoriesSource.filter((b) => b.slug !== featuredBlog.slug).slice(0, RECENT_LIST_LIMIT)
-    : recentStoriesSource.slice(0, RECENT_LIST_LIMIT);
-  const windowActive = datedInWindow.length > 0;
+    inWindowWithoutFeatured.length > 0
+      ? inWindowWithoutFeatured
+      : excludeFeatured(sortedBlogs.slice(1, RECENT_LIST_LIMIT + 1));
+
+  const recentStories = recentStoriesSource.slice(0, RECENT_LIST_LIMIT);
+  const showingInWindowPosts = inWindowWithoutFeatured.length > 0;
 
   return (
     <section className="bg-white">
@@ -38,10 +43,9 @@ const HeroSection = ({ blogs }: HeroSectionProps) => {
             <Link href={`/blog/${featuredBlog.slug}`} className="block">
               <div className="relative aspect-[21/9] min-h-[200px] overflow-hidden rounded-lg bg-gray-900 shadow-xl sm:aspect-[21/10] lg:aspect-[21/9]">
                 {featuredBlog.image ? (
-                  <Image
+                  <CoverImage
                     src={featuredBlog.image}
                     alt={`${featuredBlog.title} — US Iran war news and analysis`}
-                    fill
                     className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
                     sizes="(max-width: 1280px) 100vw, 1280px"
                     priority
@@ -98,9 +102,9 @@ const HeroSection = ({ blogs }: HeroSectionProps) => {
                 All articles →
               </Link>
             </div>
-            {!windowActive && (
+            {!showingInWindowPosts && recentStories.length > 0 && (
               <p className="-mt-3 mb-4 text-xs text-gray-500">
-                No articles dated inside this window right now—the list below shows the newest stories instead.
+                No other articles dated in the last {LAST_DAYS_WINDOW} days—the list below shows the next newest stories.
               </p>
             )}
             <div className="divide-y divide-gray-100">
@@ -115,10 +119,9 @@ const HeroSection = ({ blogs }: HeroSectionProps) => {
                   >
                     <div className="relative h-20 w-[7.25rem] shrink-0 overflow-hidden rounded-md bg-gray-100 sm:h-24 sm:w-32">
                       {blog.image ? (
-                        <Image
+                        <CoverImage
                           src={blog.image}
                           alt={blog.title}
-                          fill
                           sizes="(max-width: 640px) 7.25rem, 8rem"
                           className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
                         />
