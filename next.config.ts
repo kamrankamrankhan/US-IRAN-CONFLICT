@@ -1,6 +1,12 @@
 import type { NextConfig } from 'next';
 import { IMAGE_REMOTE_HOSTNAMES } from './src/lib/image-remote-hosts';
 
+/** Keystatic .mdoc files must ship with every serverless route that calls getAllBlogsMerged(). */
+const KEYSTATIC_SERVER_BUNDLE = [
+  './src/content/keystatic-posts/**/*',
+  './keystatic.config.ts',
+] as const;
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
@@ -45,9 +51,15 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-  // Ensure Keystatic .mdoc files are included in the serverless bundle (Vercel).
+  // Ensure Keystatic content is in serverless bundles (Vercel ISR was missing posts on `/`).
   outputFileTracingIncludes: {
-    '/blog/[slug]': ['./src/content/keystatic-posts/**/*'],
+    '/': [...KEYSTATIC_SERVER_BUNDLE],
+    '/blogs': [...KEYSTATIC_SERVER_BUNDLE],
+    '/blog/[slug]': [...KEYSTATIC_SERVER_BUNDLE],
+    '/topic/[slug]': [...KEYSTATIC_SERVER_BUNDLE],
+    '/rss.xml': [...KEYSTATIC_SERVER_BUNDLE],
+    '/google-news.xml': [...KEYSTATIC_SERVER_BUNDLE],
+    '/sitemap.xml': [...KEYSTATIC_SERVER_BUNDLE],
   },
 };
 

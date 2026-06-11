@@ -37,9 +37,6 @@ function keystaticMtimeMs(slug: string, index: Map<string, number>): number | nu
   if (index.has(slug)) return index.get(slug)!;
   const lower = slug.toLowerCase();
   if (index.has(lower)) return index.get(lower)!;
-  for (const [stem, ms] of index) {
-    if (stem.includes(slug) || slug.includes(stem)) return ms;
-  }
   return null;
 }
 
@@ -66,8 +63,53 @@ function displayTitle(title: unknown): string {
 function sortTimeForKeystatic(date: string, slug: string, mtimeIndex: Map<string, number>): number {
   const dateMs = postPublicationTimeMs(date) ?? 0;
   const fileMs = keystaticMtimeMs(slug, mtimeIndex);
+  // Newly published Keystatic posts can use a backdated `date`; prefer file mtime when newer.
   if (fileMs != null && fileMs > dateMs) return fileMs;
   return dateMs;
+}
+
+/** Fallback when the Keystatic reader fails at runtime (e.g. missing trace on a route). */
+function loadKeystaticPostsFromDisk(mtimeIndex: Map<string, number>): BlogPost[] {
+  const posts: BlogPost[] = [];
+  try {
+    for (const name of fs.readdirSync(KEYSTATIC_POSTS_DIR)) {
+      if (!name.endsWith('.mdoc')) continue;
+      const full = path.join(KEYSTATIC_POSTS_DIR, name);
+      const raw = fs.readFileSync(full, 'utf8');
+      const fmMatch = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+      if (!fmMatch) continue;
+
+      const fm = fmMatch[1];
+      const pick = (key: string): string | undefined => {
+        const m = fm.match(new RegExp(`^${key}:\\s*(?:>[-]?\\s*)?['"]?([^'"]+)['"]?`, 'm'));
+        if (m) return m[1].trim();
+        const block = fm.match(new RegExp(`^${key}:\\s*>-\\s*\\n([\\s\\S]*?)(?=^\\w|$)`, 'm'));
+        if (block) return block[1].replace(/\n\s+/g, ' ').trim();
+        return undefined;
+      };
+
+      const title = pick('title');
+      const date = pick('date') ?? new Date().toISOString().slice(0, 10);
+      const excerpt = pick('excerpt') ?? '';
+      const image = pick('image');
+      const slug = name.slice(0, -'.mdoc'.length);
+
+      posts.push({
+        slug,
+        title: title ?? slug,
+        excerpt,
+        date,
+        content: '',
+        image,
+        sections: [],
+        source: 'keystatic',
+        sortTimeMs: sortTimeForKeystatic(date, slug, mtimeIndex),
+      });
+    }
+  } catch (e) {
+    console.error('[keystatic] loadKeystaticPostsFromDisk', e);
+  }
+  return posts;
 }
 
 /** Parsed Keystatic entry (from `all()` or `read()`). */
@@ -120,7 +162,11 @@ export async function getAllBlogsMerged(): Promise<BlogPost[]> {
       ks.push(mapKeystaticItem(item, mtimeIndex));
     }
   } catch (e) {
-    console.error('[keystatic] getAllBlogsMerged', e);
+    console.error('[keystatic] getAllBlogsMerged reader', e);
+  }
+
+  if (ks.length === 0) {
+    ks.push(...loadKeystaticPostsFromDisk(mtimeIndex));
   }
   const map = new Map<string, BlogPost>();
   staticBlogs.forEach((b) => map.set(b.slug, b));

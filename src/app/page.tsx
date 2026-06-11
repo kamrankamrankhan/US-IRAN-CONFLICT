@@ -4,8 +4,8 @@ import { getAllBlogsMerged } from '@/lib/get-all-blogs';
 import FaqPageJsonLd from '@/components/FaqPageJsonLd';
 import HomeLiveVideoJsonLd from '@/components/HomeLiveVideoJsonLd';
 
-/** Regenerate often so new Keystatic posts show on the homepage after deploy (was 3600s). */
-export const revalidate = 300;
+/** Regenerate so new Keystatic posts appear on the hero soon after publish/deploy. */
+export const revalidate = 120;
 
 export const metadata: Metadata = {
   alternates: {
