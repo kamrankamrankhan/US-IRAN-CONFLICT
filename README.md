@@ -1,31 +1,31 @@
-# Playza Template
+# US Iran Conflict
 
-A high-impact, immersive single-page website template designed for music artists, bands, and entertainment brands. Features a dark cyberpunk aesthetic with neon accents, 3D album cube, parallax galleries, and smooth scroll-driven animations.
+News and analysis site covering the US–Iran war, Middle East tensions, oil markets, and related geopolitics. Built with Next.js App Router, Keystatic CMS, and SEO-focused static generation.
+
+**Live site:** [usiranconflict.com](https://usiranconflict.com)
 
 ## Features
 
-- Full-screen hero with animated text decode effect
-- 3D rotating album cube (Three.js / React Three Fiber)
-- Dual parallax image strips with scroll-driven movement
-- Horizontal-scrolling gallery with pinned scroll
-- Infinite marquee ticker
-- Tour schedule section with venue previews
-- Full-screen artist portrait with parallax overlay
-- Comprehensive footer with social links, contact info, newsletter
-- Lenis smooth scrolling integrated with GSAP ScrollTrigger
-- Velocity-based motion blur and letter-spacing effects
-- Fully responsive design (mobile, tablet, desktop)
+- Homepage with **Latest · Recent** hero and rolling **Last 14 days** sidebar
+- Blog articles at `/blog/[slug]` (static catalog + Keystatic `.mdoc` posts)
+- Topic guides, featured analysis, breaking news feed, and live YouTube coverage
+- Keystatic admin at `/keystatic` for publishing without editing code
+- SEO: metadata, JSON-LD, sitemap, RSS, Google News feed, canonical URLs
+- Google AdSense (standard site script in root layout — not AMP)
+- Contact form via EmailJS
+- Vercel Analytics and Speed Insights
+- Lenis smooth scrolling (lazy-loaded on the client)
 
 ## Tech Stack
 
-- **Framework**: React 19 + TypeScript
-- **Build**: Vite 7
-- **Styling**: Tailwind CSS 3.4 + custom CSS animations
-- **3D**: Three.js + React Three Fiber + Drei
-- **Animation**: GSAP 3 + ScrollTrigger
-- **Smooth Scroll**: Lenis
-- **Icons**: Lucide React
-- **UI Components**: Radix UI primitives
+| Layer | Technology |
+|-------|------------|
+| Framework | Next.js 15 (App Router) |
+| UI | React 19, TypeScript, Tailwind CSS 3 |
+| CMS | Keystatic (local `.mdoc` files in repo) |
+| Content | Markdoc for Keystatic bodies; static posts in `src/content/blogs.ts` |
+| Animation | GSAP, Lenis (client-only, dynamic import) |
+| Deploy | Vercel |
 
 ## Quick Start
 
@@ -33,250 +33,140 @@ A high-impact, immersive single-page website template designed for music artists
 # Install dependencies
 npm install
 
-# Start development server
+# Copy env template and fill in optional keys
+cp env.example .env.local
+
+# Development (http://localhost:3000)
 npm run dev
 
-# Build for production
+# Clean cache + dev (use after dependency or config changes)
+npm run dev:fresh
+
+# Production build
 npm run build
 
-# Preview production build
-npm run preview
+# Run production server locally
+npm start
+
+# Lint
+npm run lint
 ```
+
+If port 3000 is in use:
+
+```bash
+fuser -k 3000/tcp
+npm run dev
+```
+
+## Environment Variables
+
+Copy `env.example` to `.env.local`:
+
+| Variable | Purpose |
+|----------|---------|
+| `NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT` | AdSense publisher ID (`ca-pub-…`). Leave empty to disable ads locally. |
+| `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | Google Search Console verification (optional) |
+| `NEXT_PUBLIC_EMAILJS_PUBLIC_KEY` | EmailJS public key for contact form |
+| `NEXT_PUBLIC_EMAILJS_SERVICE_ID` | EmailJS service ID |
+| `NEXT_PUBLIC_EMAILJS_TEMPLATE_ID` | EmailJS template ID |
+
+## Publishing Blog Posts
+
+### Option A — Keystatic (recommended)
+
+1. Run `npm run dev`
+2. Open [http://localhost:3000/keystatic](http://localhost:3000/keystatic)
+3. Create or edit a post (title, excerpt, publish date, hero image, Markdoc body)
+4. Commit the new `.mdoc` file under `src/content/keystatic-posts/`
+5. Push and deploy
+
+New Keystatic posts are merged with the static catalog in `getAllBlogsMerged()`. The **newest post** (by publish date, or file mtime when the date is backdated) appears in the homepage **Latest · Recent** hero until a newer post is published.
+
+### Option B — Static catalog
+
+Add or edit entries in `src/content/blogs.ts`. Keystatic posts with the same slug override static entries.
+
+### Hero image URLs
+
+- **Local images:** paths under `public/`, e.g. `/gallery-6.jpg`
+- **Remote images:** hostnames must be listed in `src/lib/image-remote-hosts.ts` for `next/image`, or the `CoverImage` component falls back to a native `<img>` tag
 
 ## Configuration
 
-All site content is managed through a single file: `src/config.ts`. Edit only this file to customize the entire site.
+| File | What to edit |
+|------|----------------|
+| `src/config.ts` | Site title, URL, contact, hero nav, topic pages, footer links |
+| `keystatic.config.ts` | Keystatic collection schema |
+| `src/content/blogs.ts` | Legacy/static blog posts |
+| `src/content/keystatic-posts/*.mdoc` | CMS-authored posts |
+| `src/lib/image-remote-hosts.ts` | Allowed remote image hostnames for optimization |
+| `next.config.ts` | Images, headers, Keystatic serverless bundle paths |
 
-### SiteConfig
-
-```ts
-siteConfig: {
-  title: string;       // Browser tab title
-  description: string; // Site meta description
-  language: string;    // Language code (e.g., "en", "zh-CN")
-}
-```
-
-### HeroConfig
-
-```ts
-heroConfig: {
-  backgroundImage: string;     // Hero background image path (e.g., "/concert-1.jpg")
-  brandName: string;           // Brand name shown in top-left logo
-  decodeText: string;          // Main title text with decode animation
-  decodeChars: string;         // Characters used in the decode scramble effect
-  subtitle: string;            // Subtitle below the main title
-  ctaPrimary: string;          // Primary CTA button text
-  ctaPrimaryTarget: string;    // Section ID to scroll to (e.g., "tour")
-  ctaSecondary: string;        // Secondary CTA button text
-  ctaSecondaryTarget: string;  // Section ID to scroll to (e.g., "albums")
-  cornerLabel: string;         // Top-right corner label text
-  cornerDetail: string;        // Top-right corner detail text
-  navItems: [                  // Navigation pill buttons
-    {
-      label: string;           // Button label text
-      sectionId: string;       // Target section ID
-      icon: "disc" | "play" | "calendar" | "music";
-    }
-  ];
-}
-```
-
-### AlbumCubeConfig
-
-```ts
-albumCubeConfig: {
-  albums: [                    // Album data for info overlay and progress dots
-    {
-      id: number;
-      title: string;           // Album title (displayed large)
-      subtitle: string;         // Subtitle text (background watermark + secondary label)
-      image: string;           // Album cover image path
-    }
-  ];
-  cubeTextures: string[];      // Exactly 6 image paths for cube faces
-                               // Order: right, left, top, bottom, front, back
-  scrollHint: string;          // Scroll hint text (bottom-right)
-}
-```
-
-### ParallaxGalleryConfig
-
-```ts
-parallaxGalleryConfig: {
-  sectionLabel: string;        // Small label above parallax section title
-  sectionTitle: string;        // Parallax strips section title
-  galleryLabel: string;        // Small label above gallery title
-  galleryTitle: string;        // Horizontal gallery section title
-  marqueeTexts: string[];      // Array of texts displayed in the marquee ticker
-  endCtaText: string;          // CTA text at the end of the gallery
-  parallaxImagesTop: [         // Top row images (move left on scroll)
-    { id: number; src: string; alt: string; }
-  ];
-  parallaxImagesBottom: [      // Bottom row images (move right on scroll)
-    { id: number; src: string; alt: string; }
-  ];
-  galleryImages: [             // Horizontal gallery images
-    { id: number; src: string; title: string; date: string; }
-  ];
-}
-```
-
-### TourScheduleConfig
-
-```ts
-tourScheduleConfig: {
-  sectionLabel: string;        // Small label above section title
-  sectionTitle: string;        // Tour section title
-  vinylImage: string;          // Spinning vinyl disc image path
-  buyButtonText: string;       // Buy ticket button text
-  detailsButtonText: string;   // Details button text
-  bottomNote: string;          // Note text below tour list
-  bottomCtaText: string;       // CTA button text below tour list
-  statusLabels: {              // Status badge labels
-    onSale: string;
-    soldOut: string;
-    comingSoon: string;
-    default: string;
-  };
-  tourDates: [                 // Tour date entries
-    {
-      id: number;
-      date: string;            // Format: "YYYY.MM.DD"
-      time: string;            // Format: "HH:MM"
-      city: string;
-      venue: string;
-      status: "on-sale" | "sold-out" | "coming-soon";
-      image: string;           // Venue preview image path
-    }
-  ];
-}
-```
-
-### FooterConfig
-
-```ts
-footerConfig: {
-  portraitImage: string;         // Full-screen portrait image path
-  portraitAlt: string;           // Portrait alt text
-  heroTitle: string;             // Large overlay title text
-  heroSubtitle: string;          // Subtitle below overlay title
-  artistLabel: string;           // Small label above artist name
-  artistName: string;            // Artist display name
-  artistSubtitle: string;        // Artist subtitle text
-  brandName: string;             // Brand name in footer
-  brandDescription: string;      // Brand description paragraph
-  quickLinksTitle: string;       // Quick links column title
-  quickLinks: string[];          // Array of quick link labels
-  contactTitle: string;          // Contact column title
-  emailLabel: string;            // Email field label
-  email: string;                 // Email address
-  phoneLabel: string;            // Phone field label
-  phone: string;                 // Phone number
-  addressLabel: string;          // Address field label
-  address: string;               // Physical address
-  newsletterTitle: string;       // Newsletter column title
-  newsletterDescription: string; // Newsletter description text
-  newsletterButtonText: string;  // Subscribe button text
-  subscribeAlertMessage: string; // Alert shown on subscribe click
-  copyrightText: string;         // Copyright line text
-  bottomLinks: string[];         // Bottom bar link labels
-  socialLinks: [                 // Social media links
-    {
-      icon: "instagram" | "twitter" | "youtube" | "music";
-      label: string;
-      href: string;
-    }
-  ];
-  galleryImages: [               // Footer image grid
-    { id: number; src: string; }
-  ];
-}
-```
-
-## Required Images
-
-Place all images in the `public/` directory. Recommended dimensions:
-
-| Image | Recommended Size | Usage |
-|-------|-----------------|-------|
-| Hero background | 1920x1080px | Hero section background |
-| Album covers (4) | 800x800px (square) | Album cube faces and album data |
-| Cube extra texture | 800x800px (square) | Additional cube face texture |
-| Concert/gallery photos (6+) | 800x500px | Parallax strips and gallery |
-| Venue photos (4) | 800x600px | Tour schedule venue previews |
-| Artist portrait | 800x1200px (2:3 ratio) | Footer portrait section |
-| Vinyl disc | 400x400px (PNG, transparent) | Tour section spinning disc |
-
-## Design Specifications
-
-### Colors
-
-| Name | Hex | Usage |
-|------|-----|-------|
-| Void Black | `#050508` | Primary background |
-| Void Dark | `#0A0A0F` | Secondary dark background |
-| Neon Cyan | `#00D4FF` | Primary accent, glows, links |
-| Neon Blue | `#4D9FFF` | Secondary accent |
-| Soft Blue | `#9DC4FF` | Tertiary accent, tour section background |
-
-### Fonts
-
-- **Display**: Inter (weight 800, tracking -0.02em) -- headings, brand name, buttons
-- **Monospace**: JetBrains Mono -- labels, dates, code-style text, decode animation
-
-### Animations
-
-- Text decode effect (hero title scramble animation)
-- GSAP-powered nav slide-in and subtitle fade-in
-- Scroll-driven 3D cube rotation with velocity blur
-- Dual-direction parallax image strips
-- Horizontal pinned gallery scroll
-- Infinite marquee ticker
-- Tour items stagger-in on visibility
-- Footer parallax title overlay
-- Lenis smooth scrolling with GSAP ticker integration
+Homepage ISR revalidates every **2 minutes** (`src/app/page.tsx`) so new posts appear soon after deploy.
 
 ## Project Structure
 
 ```
-playza/
-  index.html              # Entry HTML
-  package.json            # Dependencies
-  tailwind.config.js      # Tailwind theme (colors, fonts, animations)
-  vite.config.ts          # Vite configuration
-  postcss.config.js       # PostCSS configuration
-  tsconfig.json           # TypeScript config
-  public/
-    images/               # Place your images here
-      .gitkeep
-  src/
-    config.ts             # ** ALL CONTENT CONFIGURATION **
-    main.tsx              # React entry point
-    App.tsx               # Root component with Lenis init
-    App.css               # Default Vite styles (can be removed)
-    index.css             # Global styles, custom classes, animations
-    sections/
-      Hero.tsx            # Hero section with decode text effect
-      AlbumCube.tsx       # 3D album cube with scroll rotation
-      ParallaxGallery.tsx # Parallax strips + horizontal gallery
-      TourSchedule.tsx    # Tour dates with venue preview
-      Footer.tsx          # Artist portrait + footer content
-    hooks/
-      useLenis.ts         # Lenis smooth scroll hook
-      useScrollTrigger.ts # ScrollTrigger utility hook
-      use-mobile.ts       # Mobile breakpoint detection hook
-    components/
-      ui/                 # Radix UI component primitives
-    lib/
-      utils.ts            # Utility functions (cn)
+US-IRAN-CONFLICT/
+├── src/
+│   ├── app/                    # Next.js routes (pages, API, sitemap, RSS)
+│   │   ├── page.tsx            # Homepage (server; loads merged blogs)
+│   │   ├── blog/[slug]/        # Article pages
+│   │   ├── blogs/              # All articles listing
+│   │   ├── keystatic/          # CMS admin UI
+│   │   └── layout.tsx          # Root layout, AdSense, Providers
+│   ├── views/                  # Page-level client/server views
+│   ├── sections/               # Header, Hero, Content, Footer
+│   ├── components/             # Shared UI (CoverImage, JSON-LD, forms)
+│   ├── content/
+│   │   ├── blogs.ts            # Static blog catalog
+│   │   └── keystatic-posts/    # Keystatic .mdoc files
+│   ├── lib/
+│   │   ├── get-all-blogs.ts    # Merges static + Keystatic posts
+│   │   ├── blog-sort.ts        # Date / sortTimeMs ordering
+│   │   ├── seo.ts              # Server SEO helpers
+│   │   ├── seo-client.ts       # Lightweight client SEO (layout)
+│   │   └── seo-blog.ts         # Per-post SEO without blogs catalog import
+│   └── config.ts               # Site-wide content config
+├── public/                     # Static assets (images, favicon, manifest)
+├── keystatic.config.ts
+├── next.config.ts
+└── env.example
 ```
 
-## Notes
+## Deployment (Vercel)
 
-- Edit ONLY `src/config.ts` to change all site content.
-- Do not modify section component files unless changing layout or animations.
-- All animations are scroll-driven via GSAP ScrollTrigger and remain unchanged when updating content.
-- The 3D cube requires exactly 6 textures in `cubeTextures` array.
-- Images should be placed in `public/` and referenced with paths like `"/image-name.jpg"`.
-- The template renders nothing when config fields are empty (null checks in each section).
+1. Connect the GitHub repo to Vercel (framework preset: **Next.js**)
+2. Set environment variables in the Vercel project settings
+3. Deploy — Keystatic `.mdoc` files are included in serverless bundles via `outputFileTracingIncludes` in `next.config.ts`
+
+After publishing a new post, push to `main` (or your production branch). The homepage updates within the revalidate window without a full redeploy, but **new `.mdoc` files must be committed and deployed** so they exist on the server.
+
+## SEO & Feeds
+
+- `/sitemap.xml` — dynamic sitemap (blogs + topics)
+- `/rss.xml` — RSS feed
+- `/google-news.xml` — Google News sitemap
+- `/robots.txt` — crawl rules
+
+Structured data (Organization, WebSite, FAQ, NewsArticle) is rendered via JSON-LD components.
+
+## AdSense
+
+This is a **standard HTML site**, not AMP. Only the global AdSense script in `src/app/layout.tsx` is required. Enable **Auto ads** or create display units in the [AdSense dashboard](https://www.google.com/adsense); do not add `amp-auto-ads` markup.
+
+## Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start dev server on port 3000 |
+| `npm run dev:fresh` | Remove `.next` cache, then start dev |
+| `npm run build` | Production build |
+| `npm start` | Serve production build (runs `prestart` check) |
+| `npm run clean` | Delete `.next` and webpack cache |
+| `npm run lint` | ESLint |
+
+## License
+
+Private project. All rights reserved.
