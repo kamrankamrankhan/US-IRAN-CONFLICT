@@ -85,6 +85,9 @@ export const metadata: Metadata = {
   },
   manifest: '/site.webmanifest',
   category: 'news',
+  ...(adsenseClient
+    ? { other: { 'google-adsense-account': adsenseClient } }
+    : {}),
   ...(googleVerification
     ? { verification: { google: googleVerification } }
     : {}),
