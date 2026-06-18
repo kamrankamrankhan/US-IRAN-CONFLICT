@@ -86,8 +86,8 @@ export const metadata: Metadata = {
   manifest: '/site.webmanifest',
   category: 'news',
   ...(adsenseClient
-    ? { other: { 'google-adsense-account': adsenseClient } }
-    : {}),
+    ? { other: { 'google-adsense-account': adsenseClient, 'monetag': '062c06489bd3ee16a8fa2820cc07485c' } }
+    : { other: { 'monetag': '062c06489bd3ee16a8fa2820cc07485c' } }),
   ...(googleVerification
     ? { verification: { google: googleVerification } }
     : {}),
@@ -108,6 +108,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={inter.variable}>
       <head>
+        <meta name="monetag" content="062c06489bd3ee16a8fa2820cc07485c" />
         {adsenseClient ? (
           <script
             async
