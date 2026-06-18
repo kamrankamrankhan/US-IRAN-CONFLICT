@@ -117,6 +117,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           />
         ) : null}
       </head>
+      <script src="https://quge5.com/88/tag.min.js" data-zone="251101" async data-cfasync="false"></script>
       <body className={`${inter.className} antialiased`}>
         <SiteJsonLd />
         <Providers>{children}</Providers>
