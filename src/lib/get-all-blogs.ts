@@ -5,6 +5,7 @@ import keystaticConfig from '../../keystatic.config';
 import { blogs as staticBlogs, type BlogPost } from '@/content/blogs';
 import { normalizeSlugParam } from '@/lib/slug-utils';
 import { postPublicationTimeMs, sortBlogsByDateDesc } from '@/lib/blog-sort';
+import { isPublishedPostSlug } from '@/lib/unpublished-posts';
 
 /** Vercel/serverless cwd is the app root. */
 function contentRoot(): string {
@@ -171,7 +172,7 @@ export async function getAllBlogsMerged(): Promise<BlogPost[]> {
   const map = new Map<string, BlogPost>();
   staticBlogs.forEach((b) => map.set(b.slug, b));
   ks.forEach((b) => map.set(b.slug, b));
-  return sortBlogsByDateDesc(Array.from(map.values()));
+  return sortBlogsByDateDesc(Array.from(map.values()).filter((b) => isPublishedPostSlug(b.slug)));
 }
 
 function findBySlugVariants(all: BlogPost[], raw: string, normalized: string): BlogPost | undefined {
@@ -190,6 +191,7 @@ function findBySlugVariants(all: BlogPost[], raw: string, normalized: string): B
  */
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
   const normalized = normalizeSlugParam(slug);
+  if (!isPublishedPostSlug(normalized) && !isPublishedPostSlug(slug)) return null;
   const all = await getAllBlogsMerged();
   const fromList = findBySlugVariants(all, slug, normalized);
   if (fromList) return fromList;

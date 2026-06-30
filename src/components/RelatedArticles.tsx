@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/image';
+import CoverImage from '@/components/CoverImage';
 import { ArrowRight, Clock } from 'lucide-react';
 import { blogs as staticBlogs } from '../content/blogs';
 import type { BlogPost } from '../content/blogs';
@@ -93,10 +93,9 @@ const RelatedArticles = ({ currentSlug, keywords = [], maxArticles = 6, allBlogs
               {/* Image */}
               {article.image && (
                 <div className="relative shrink-0 h-20 w-24 overflow-hidden rounded bg-gray-100">
-                  <Image
+                  <CoverImage
                     src={article.image}
                     alt={article.title}
-                    fill
                     sizes="96px"
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />

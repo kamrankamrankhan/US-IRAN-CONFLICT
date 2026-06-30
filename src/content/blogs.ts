@@ -209,7 +209,6 @@ export const blogs: BlogPost[] = [
     date: "2026-03-03",
     content: "Complete guide to US-Iran conflict: nuclear dispute, sanctions regime, military escalation, regional dynamics, and global impact on energy markets.",
     image: "/gallery-6.jpg",
-    titleLink: "https://enjoy-game.club/m/share?channel=7&userId=9061450&shareCode=9061450&t=45908&bindCode=0",
     sections: [
       {
         title: "US-Iran Conflict 2026: Origins and Current Crisis",

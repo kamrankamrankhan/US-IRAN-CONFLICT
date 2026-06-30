@@ -7,7 +7,7 @@ const PILLAR_LINKS = [
   { href: '/topic/nuclear-program', label: 'Iran nuclear program' },
   { href: '/topic/strait-of-hormuz', label: 'Strait of Hormuz' },
   { href: '/blogs', label: 'Middle East oil & energy' },
-  { href: '/news', label: 'Breaking headlines' },
+  { href: '/topic/israel-iran-conflict', label: 'Israel–Iran conflict' },
 ] as const;
 
 export default function BlogTopicPillarLinks() {

@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
+import CoverImage from '@/components/CoverImage';
 import { useEffect } from 'react';
 import type { ReactNode } from 'react';
 import { getClientBlogHeadSEO } from '@/lib/seo-blog';
@@ -145,10 +145,9 @@ const BlogPostPage = ({ post, allBlogs, markdocBody }: BlogPostPageProps) => {
       {post.image && (
         <div className="max-w-4xl mx-auto px-6 -mt-4">
           <figure className="rounded-lg overflow-hidden border border-gray-200 shadow-lg relative aspect-[2/1] max-h-[480px] w-full bg-gray-100">
-            <Image
+            <CoverImage
               src={post.image}
               alt={`${post.title} — US Iran conflict analysis illustration`}
-              fill
               className="object-cover"
               sizes="(max-width: 896px) 100vw, 896px"
               priority

@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Home, Newspaper, Radio, BookOpen, Mail } from 'lucide-react';
+import { ArrowLeft, Home, BookOpen, Radio, Mail } from 'lucide-react';
 import { updateSEO } from '@/lib/seo-client';
 
 export default function NotFoundPage() {
@@ -10,7 +10,7 @@ export default function NotFoundPage() {
     updateSEO({
       title: 'Page not found',
       description:
-        'This URL is not on US Iran Conflict. Browse articles, live coverage, breaking news, or return home.',
+        'This URL is not on US Iran Conflict. Browse articles, topic guides, or return home.',
       path: '/404',
     });
   }, []);
@@ -18,8 +18,8 @@ export default function NotFoundPage() {
   const links = [
     { href: '/', label: 'Home', icon: Home },
     { href: '/blogs', label: 'All articles', icon: BookOpen },
-    { href: '/news', label: 'Breaking news', icon: Newspaper },
-    { href: '/live-coverage', label: 'Live coverage', icon: Radio },
+    { href: '/article', label: 'Full conflict guide', icon: BookOpen },
+    { href: '/topic/operation-epic-fury', label: 'Operation Epic Fury', icon: Radio },
     { href: '/contact', label: 'Contact', icon: Mail },
   ];
 

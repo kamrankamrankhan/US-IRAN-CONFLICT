@@ -85,9 +85,7 @@ export const metadata: Metadata = {
   },
   manifest: '/site.webmanifest',
   category: 'news',
-  ...(adsenseClient
-    ? { other: { 'google-adsense-account': adsenseClient, 'monetag': '062c06489bd3ee16a8fa2820cc07485c' } }
-    : { other: { 'monetag': '062c06489bd3ee16a8fa2820cc07485c' } }),
+  ...(adsenseClient ? { other: { 'google-adsense-account': adsenseClient } } : {}),
   ...(googleVerification
     ? { verification: { google: googleVerification } }
     : {}),
@@ -108,7 +106,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={inter.variable}>
       <head>
-        <meta name="monetag" content="062c06489bd3ee16a8fa2820cc07485c" />
         {adsenseClient ? (
           <script
             async
@@ -117,7 +114,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           />
         ) : null}
       </head>
-      <script src="https://quge5.com/88/tag.min.js" data-zone="251101" async data-cfasync="false"></script>
       <body className={`${inter.className} antialiased`}>
         <SiteJsonLd />
         <Providers>{children}</Providers>

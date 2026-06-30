@@ -1,40 +1,19 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
-import { Menu, X, Search, ChevronDown, Radio, ExternalLink, Youtube, Play } from 'lucide-react';
-import { breakingNews, newsItems } from '../content/news';
+import { Menu, X, Search, ChevronDown, Radio, Youtube, Play } from 'lucide-react';
+import HeaderTickerShell from './HeaderTickerShell';
+
+const HeaderTicker = dynamic(() => import('./HeaderTicker'), {
+  ssr: false,
+  loading: () => <HeaderTickerShell />,
+});
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const [currentNewsIndex, setCurrentNewsIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  /** Avoid SSR/CSR markup drift for ticker controls (e.g. stale flight data vs fresh client bundle). */
-  const [tickerDotsMounted, setTickerDotsMounted] = useState(false);
-
-  // Combine breaking news with regular news for the ticker
-  const liveNewsItems = [...breakingNews, ...newsItems.slice(0, 5)];
-
-  useEffect(() => {
-    const id = requestAnimationFrame(() => {
-      setTickerDotsMounted(true);
-    });
-    return () => cancelAnimationFrame(id);
-  }, []);
-
-  // Auto-rotate news ticker
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsTransitioning(true);
-      setTimeout(() => {
-        setCurrentNewsIndex((prev) => (prev + 1) % liveNewsItems.length);
-        setIsTransitioning(false);
-      }, 300);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [liveNewsItems.length]);
 
   const navItems = [
     {
@@ -75,59 +54,8 @@ const Header = () => {
             <span className="font-bold text-sm uppercase tracking-wider">LIVE</span>
           </div>
           
-          {/* News Ticker */}
-          <div className="flex-1 overflow-hidden px-4">
-            <a
-              href={liveNewsItems[currentNewsIndex]?.sourceUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`flex items-center gap-2 py-2 transition-all duration-300 hover:text-red-200 ${
-                isTransitioning ? 'opacity-0 -translate-y-2' : 'opacity-100 translate-y-0'
-              }`}
-            >
-              <span className="text-xs font-medium bg-white/20 px-2 py-0.5 rounded uppercase">
-                {liveNewsItems[currentNewsIndex]?.source}
-              </span>
-              <span className="text-sm font-medium truncate">
-                {liveNewsItems[currentNewsIndex]?.title}
-              </span>
-              <ExternalLink className="w-3 h-3 flex-shrink-0 opacity-60" />
-            </a>
-          </div>
-
-          {/* Navigation dots: SSR + first client pass use a layout placeholder; real controls after mount (hydration-safe). */}
-          <div className="hidden sm:flex shrink-0 items-center gap-0.5 px-2">
-            {tickerDotsMounted ? (
-              <div className="flex items-center gap-0.5" role="tablist" aria-label="News ticker items">
-                {liveNewsItems.slice(0, 5).map((_, index) => (
-                  <button
-                    key={index}
-                    type="button"
-                    role="tab"
-                    aria-selected={index === currentNewsIndex}
-                    onClick={() => setCurrentNewsIndex(index)}
-                    className="flex h-11 min-h-[44px] min-w-[44px] w-11 items-center justify-center rounded-full text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-red-700"
-                    aria-label={`Go to news ${index + 1}`}
-                  >
-                    <span
-                      className={`block rounded-full transition-all ${
-                        index === currentNewsIndex
-                          ? 'h-2.5 w-5 bg-white'
-                          : 'h-2.5 w-2.5 bg-white/50 hover:bg-white/85'
-                      }`}
-                      aria-hidden
-                    />
-                  </button>
-                ))}
-              </div>
-            ) : (
-              <div className="flex items-center gap-0.5" aria-hidden>
-                {Array.from({ length: Math.min(5, liveNewsItems.length) }).map((_, index) => (
-                  <div key={index} className="h-11 w-11 shrink-0" />
-                ))}
-              </div>
-            )}
-          </div>
+          {/* News Ticker — client-only so rotating content never mismatches SSR HTML */}
+          <HeaderTicker />
         </div>
       </div>
 

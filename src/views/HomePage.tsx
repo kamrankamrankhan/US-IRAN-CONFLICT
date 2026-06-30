@@ -4,7 +4,8 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { ChevronDown } from 'lucide-react';
 import type { BlogPost } from '../content/blogs';
-import { sortBlogsByDateDesc } from '../lib/blog-sort';
+import { sortBlogsByPublishDateDesc } from '../lib/blog-sort';
+import { pickBlogsForTopicSection } from '@/lib/blog-categories';
 import { faqSchemaData } from '@/lib/faq-schema-data';
 import Header from '../sections/Header';
 import HeroSection from '../sections/HeroSection';
@@ -58,19 +59,19 @@ function HomepageFaq() {
           <p className="text-gray-600 text-sm leading-relaxed">
             This FAQ section is regularly updated with the latest information on the
             <strong> Iran Israel conflict</strong>, <strong>US Iran war developments</strong>, and{' '}
-            <strong>Middle East geopolitical analysis</strong>. For breaking news, visit our{' '}
+            <strong>Middle East geopolitical analysis</strong>. Browse our{' '}
             <Link
-              href="/news"
+              href="/blogs"
               className="font-medium text-red-800 underline decoration-red-800/60 underline-offset-2 hover:text-red-900 hover:decoration-red-900"
             >
-              news section
+              latest articles
             </Link>{' '}
-            or check our{' '}
+            or read the{' '}
             <Link
-              href="/live-coverage"
+              href="/article"
               className="font-medium text-red-800 underline decoration-red-800/60 underline-offset-2 hover:text-red-900 hover:decoration-red-900"
             >
-              live coverage page
+              full conflict guide
             </Link>.
           </p>
         </div>
@@ -85,59 +86,14 @@ function HomepageFaq() {
  */
 export default function HomePage({ blogs: blogsProp }: HomePageProps) {
   const blogs = blogsProp && blogsProp.length > 0 ? blogsProp : [];
+  const sortedByPublishDate = sortBlogsByPublishDateDesc(blogs);
 
-  const oilPricesBlogs = blogs
-    .filter(
-      (p) =>
-        p.slug.includes('oil-prices') ||
-        p.slug.includes('kharg-island') ||
-        p.slug.includes('saudi-arabia') ||
-        p.slug.includes('usa-oil') ||
-        p.slug.includes('russia-oil') ||
-        p.slug.includes('china-oil') ||
-        p.slug.includes('india-oil') ||
-        p.slug.includes('uae-oil') ||
-        p.slug.includes('kuwait-oil') ||
-        p.slug.includes('iraq-oil') ||
-        p.slug.includes('venezuela-oil') ||
-        p.slug.includes('nigeria-oil') ||
-        p.slug.includes('canada-oil') ||
-        p.slug.includes('brazil-oil') ||
-        p.slug.includes('norway-oil') ||
-        p.slug.includes('uk-oil') ||
-        p.slug.includes('qatar-oil') ||
-        p.slug.includes('iran-oil') ||
-        p.slug.includes('mexico-oil') ||
-        p.slug.includes('angola-oil') ||
-        p.slug.includes('algeria-oil') ||
-        p.slug.includes('libya-oil'),
-    )
-    .slice(0, 3);
+  const oilPricesBlogs = pickBlogsForTopicSection(blogs, 'oil', 3);
+  const warConflictBlogs = pickBlogsForTopicSection(blogs, 'war', 3);
 
-  const warConflictBlogs = blogs
-    .filter(
-      (p) =>
-        p.slug.includes('israel') ||
-        p.slug.includes('hezbollah') ||
-        p.slug.includes('gaza') ||
-        p.slug.includes('hamas') ||
-        p.slug.includes('strait-of-hormuz') ||
-        p.slug.includes('operation-epic') ||
-        p.slug.includes('proxy') ||
-        p.slug.includes('axis-of-resistance') ||
-        p.slug.includes('nuclear') ||
-        p.slug.includes('night-stalker') ||
-        p.slug.includes('little-bird') ||
-        p.slug.includes('us-iran-war') ||
-        p.slug.includes('iran-us') ||
-        p.slug.includes('gulf-arab'),
-    )
-    .slice(0, 3);
-
-  const sortedAll = sortBlogsByDateDesc(blogs);
-  const blogsSpotlight = sortedAll.slice(0, 6);
-  /** Next 6 newest after the hero feature — not ranks 7–12 (that pushed “old” posts here when you published). */
-  const recentBlogs = sortedAll.slice(1, 7);
+  const blogsSpotlight = sortedByPublishDate.slice(0, 6);
+  /** Newest after the hero feature (by publish date). */
+  const recentBlogs = sortedByPublishDate.slice(1, 7);
 
   return (
     <div className="min-h-screen bg-white">

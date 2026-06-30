@@ -1,9 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
+import CoverImage from '@/components/CoverImage';
 import { ArrowRight, Clock } from 'lucide-react';
 import type { BlogPost } from '../content/blogs';
+import { getBlogCategoryBadge } from '@/lib/blog-categories';
 
 interface ContentSectionProps {
   title: string;
@@ -12,57 +13,6 @@ interface ContentSectionProps {
   accentColor?: 'red' | 'gray' | 'dark' | 'white';
   showViewAll?: boolean;
   viewAllLink?: string;
-}
-
-// Category mapping based on blog slug/content
-function getCategory(post: BlogPost): { label: string; color: string } {
-  const slug = post.slug;
-  
-  // Oil prices blogs
-  if (slug.includes('oil-prices') || slug.includes('kharg-island')) {
-    return { label: 'OIL & ENERGY', color: 'bg-red-600' };
-  }
-  if (slug.includes('saudi-arabia') || slug.includes('uae') || slug.includes('kuwait') || 
-      slug.includes('qatar') || slug.includes('iran-oil')) {
-    return { label: 'MIDDLE EAST OIL', color: 'bg-amber-600' };
-  }
-  if (slug.includes('russia') || slug.includes('venezuela')) {
-    return { label: 'SANCTIONS', color: 'bg-purple-600' };
-  }
-  if (slug.includes('china') || slug.includes('india') || slug.includes('japan')) {
-    return { label: 'ASIA ENERGY', color: 'bg-blue-600' };
-  }
-  if (slug.includes('usa') || slug.includes('canada') || slug.includes('mexico') || 
-      slug.includes('brazil') || slug.includes('nigeria') || slug.includes('angola') || 
-      slug.includes('algeria') || slug.includes('libya')) {
-    return { label: 'GLOBAL OIL', color: 'bg-teal-600' };
-  }
-  if (slug.includes('norway') || slug.includes('uk')) {
-    return { label: 'NORTH SEA', color: 'bg-cyan-600' };
-  }
-  
-  // Conflict/war blogs
-  if (slug.includes('israel') || slug.includes('hezbollah') || slug.includes('hamas') || 
-      slug.includes('gaza')) {
-    return { label: 'ISRAEL-IRAN WAR', color: 'bg-red-600' };
-  }
-  if (slug.includes('night-stalker') || slug.includes('little-bird') || slug.includes('special-operations')) {
-    return { label: 'SPECIAL OPS', color: 'bg-slate-700' };
-  }
-  if (slug.includes('strait-of-hormuz')) {
-    return { label: 'STRAIT OF HORMUZ', color: 'bg-orange-800' };
-  }
-  if (slug.includes('nuclear') || slug.includes('operation-epic')) {
-    return { label: 'NUCLEAR PROGRAM', color: 'bg-yellow-600' };
-  }
-  if (slug.includes('proxy') || slug.includes('axis-of-resistance')) {
-    return { label: 'PROXY NETWORKS', color: 'bg-indigo-600' };
-  }
-  if (slug.includes('sanctions') || slug.includes('economic')) {
-    return { label: 'SANCTIONS', color: 'bg-purple-600' };
-  }
-  
-  return { label: 'GEOPOLITICS', color: 'bg-gray-600' };
 }
 
 const ContentSection = ({
@@ -126,7 +76,7 @@ const ContentSection = ({
         {/* Blog Cards Grid */}
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {blogs.map((post) => {
-            const category = getCategory(post);
+            const category = getBlogCategoryBadge(post);
             const isExternal = !!post.externalUrl;
 
             const cardContent = (
@@ -134,10 +84,9 @@ const ContentSection = ({
                 {/* Image */}
                 <div className="relative h-48 overflow-hidden bg-gray-100">
                   {post.image ? (
-                    <Image
+                    <CoverImage
                       src={post.image}
                       alt={post.title}
-                      fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />

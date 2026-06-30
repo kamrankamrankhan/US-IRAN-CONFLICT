@@ -8,6 +8,16 @@ export function getBlogSortTimeMs(post: BlogPost): number {
   return postPublicationTimeMs(post.date) ?? 0;
 }
 
+/** Newest first by publish date only (ignores Keystatic file mtime). */
+export function sortBlogsByPublishDateDesc(blogs: BlogPost[]): BlogPost[] {
+  return [...blogs].sort((a, b) => {
+    const tb = postPublicationTimeMs(b.date) ?? 0;
+    const ta = postPublicationTimeMs(a.date) ?? 0;
+    if (tb !== ta) return tb - ta;
+    return a.slug.localeCompare(b.slug);
+  });
+}
+
 /** Newest first; uses `sortTimeMs` when set, else publish date. */
 export function sortBlogsByDateDesc(blogs: BlogPost[]): BlogPost[] {
   return [...blogs].sort((a, b) => {
@@ -47,12 +57,13 @@ export function filterBlogsWithinLastDays(
   blogs: BlogPost[],
   days: number,
   now: Date = new Date(),
+  publishDateOnly = false,
 ): BlogPost[] {
   const safeDays = Math.max(1, days);
   const cutoff = now.getTime() - safeDays * 86400000;
 
   return sortBlogsByDateDesc(blogs).filter((b) => {
-    const t = getBlogSortTimeMs(b);
+    const t = publishDateOnly ? (postPublicationTimeMs(b.date) ?? 0) : getBlogSortTimeMs(b);
     if (t <= 0) return false;
     return t >= cutoff;
   });

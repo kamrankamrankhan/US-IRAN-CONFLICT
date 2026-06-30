@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   description: lcDesc,
   keywords: ['US Iran live coverage', 'Iran conflict live updates', 'breaking Middle East streams'],
   alternates: { canonical: '/live-coverage' },
+  robots: { index: false, follow: false },
   openGraph: {
     title: 'US Iran Conflict — Live coverage',
     description: lcDesc,

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/image';
+import CoverImage from '@/components/CoverImage';
 import { topicPagesConfig, topicLinks } from '../config';
 import { ArrowLeft, Clock } from 'lucide-react';
 import type { BlogPost } from '../content/blogs';
@@ -52,10 +52,9 @@ const TopicPage = ({ slug, blogs }: { slug: string; blogs: BlogPost[] }) => {
       {/* Hero Section */}
       {topic.image && (
         <div className="relative h-64 md:h-80 lg:h-96 overflow-hidden">
-          <Image
+          <CoverImage
             src={topic.image}
             alt={topic.title}
-            fill
             priority
             sizes="100vw"
             className="object-cover"
@@ -136,10 +135,9 @@ const TopicPage = ({ slug, blogs }: { slug: string; blogs: BlogPost[] }) => {
                   <article className="h-full flex flex-col bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
                     <div className="relative h-40 overflow-hidden bg-gray-100">
                       {post.image ? (
-                        <Image
+                        <CoverImage
                           src={post.image}
                           alt={post.title}
-                          fill
                           sizes="(max-width: 768px) 100vw, 33vw"
                           className="object-cover transition-transform duration-300 group-hover:scale-105"
                         />

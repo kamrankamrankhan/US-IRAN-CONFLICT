@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   description: newsDesc,
   keywords: ['US Iran breaking news', 'Iran war headlines today', 'Middle East news wire', 'Hormuz Strait news'],
   alternates: { canonical: '/news' },
+  robots: { index: false, follow: false },
   openGraph: {
     title: 'US Iran Conflict — Breaking news',
     description: newsDesc,

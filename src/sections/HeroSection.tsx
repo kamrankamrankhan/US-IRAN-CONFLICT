@@ -5,7 +5,7 @@ import { ArrowRight, CalendarDays, Youtube } from 'lucide-react';
 import CoverImage from '@/components/CoverImage';
 import LazyYouTubeEmbed from '@/components/LazyYouTubeEmbed';
 import type { BlogPost } from '../content/blogs';
-import { filterBlogsWithinLastDays, sortBlogsByDateDesc } from '../lib/blog-sort';
+import { filterBlogsWithinLastDays, sortBlogsByPublishDateDesc } from '../lib/blog-sort';
 
 type HeroSectionProps = {
   blogs: BlogPost[];
@@ -16,10 +16,10 @@ const LAST_DAYS_WINDOW = 14;
 const RECENT_LIST_LIMIT = 9;
 
 const HeroSection = ({ blogs }: HeroSectionProps) => {
-  const sortedBlogs = sortBlogsByDateDesc(blogs);
+  const sortedBlogs = sortBlogsByPublishDateDesc(blogs);
   const featuredBlog = sortedBlogs[0];
 
-  const datedInWindow = filterBlogsWithinLastDays(sortedBlogs, LAST_DAYS_WINDOW);
+  const datedInWindow = filterBlogsWithinLastDays(sortedBlogs, LAST_DAYS_WINDOW, new Date(), true);
   const excludeFeatured = (list: BlogPost[]) =>
     featuredBlog ? list.filter((b) => b.slug !== featuredBlog.slug) : list;
 

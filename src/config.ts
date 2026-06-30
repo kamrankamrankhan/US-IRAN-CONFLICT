@@ -80,8 +80,7 @@ export const heroConfig: HeroConfig = {
     { label: "Visual Intel", sectionId: "gallery", icon: "play" },
     { label: "Analysis", sectionId: "contact", icon: "music" },
     { label: "Blogs", sectionId: "", icon: "blog", path: "/blogs" },
-    { label: "News", sectionId: "", icon: "news", path: "/news" },
-    { label: "Live coverage", sectionId: "", icon: "radio", path: "/live-coverage" },
+    { label: "Full guide", sectionId: "", icon: "disc", path: "/article" },
   ],
 };
 

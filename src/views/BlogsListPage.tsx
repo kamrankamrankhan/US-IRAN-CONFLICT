@@ -1,110 +1,28 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
+import CoverImage from '@/components/CoverImage';
 import { Clock, ExternalLink } from 'lucide-react';
 import type { BlogPost } from '../content/blogs';
-import { sortBlogsByDateDesc } from '../lib/blog-sort';
+import { sortBlogsByPublishDateDesc } from '../lib/blog-sort';
+import { getBlogCategoryBadge, getBlogTopicSection, pickBlogsForTopicSection } from '@/lib/blog-categories';
 import Header from '../sections/Header';
 import Footer from '../sections/NewFooter';
 
 // Category mapping based on blog slug/content
 function getCategory(post: BlogPost): { label: string; color: string } {
-  const slug = post.slug;
-  
-  // Oil prices blogs
-  if (slug.includes('oil-prices') || slug.includes('kharg-island')) {
-    return { label: 'OIL & ENERGY', color: 'bg-red-600' };
-  }
-  if (slug.includes('saudi-arabia') || slug.includes('uae') || slug.includes('kuwait') || 
-      slug.includes('qatar') || slug.includes('iran-oil')) {
-    return { label: 'MIDDLE EAST OIL', color: 'bg-amber-600' };
-  }
-  if (slug.includes('russia') || slug.includes('venezuela')) {
-    return { label: 'SANCTIONS', color: 'bg-purple-600' };
-  }
-  if (slug.includes('china') || slug.includes('india') || slug.includes('japan')) {
-    return { label: 'ASIA ENERGY', color: 'bg-blue-600' };
-  }
-  if (slug.includes('usa') || slug.includes('canada') || slug.includes('mexico') || 
-      slug.includes('brazil') || slug.includes('venezuela') || slug.includes('nigeria') || 
-      slug.includes('angola') || slug.includes('algeria') || slug.includes('libya')) {
-    return { label: 'GLOBAL OIL', color: 'bg-teal-600' };
-  }
-  if (slug.includes('norway') || slug.includes('uk')) {
-    return { label: 'NORTH SEA', color: 'bg-cyan-600' };
-  }
-  
-  // Conflict/war blogs
-  if (slug.includes('israel') || slug.includes('hezbollah') || slug.includes('hamas') || 
-      slug.includes('gaza')) {
-    return { label: 'ISRAEL-IRAN WAR', color: 'bg-red-600' };
-  }
-  if (slug.includes('night-stalker') || slug.includes('little-bird') || slug.includes('special-operations')) {
-    return { label: 'SPECIAL OPS', color: 'bg-slate-700' };
-  }
-  if (slug.includes('strait-of-hormuz')) {
-    return { label: 'STRAIT OF HORMUZ', color: 'bg-orange-800' };
-  }
-  if (slug.includes('nuclear') || slug.includes('operation-epic')) {
-    return { label: 'NUCLEAR PROGRAM', color: 'bg-yellow-600' };
-  }
-  if (slug.includes('proxy') || slug.includes('axis-of-resistance')) {
-    return { label: 'PROXY NETWORKS', color: 'bg-indigo-600' };
-  }
-  if (slug.includes('sanctions') || slug.includes('economic')) {
-    return { label: 'SANCTIONS', color: 'bg-purple-600' };
-  }
-  
-  return { label: 'GEOPOLITICS', color: 'bg-gray-600' };
+  return getBlogCategoryBadge(post);
 }
 
 const BlogsListPage = ({ blogs }: { blogs: BlogPost[] }) => {
-  const sorted = sortBlogsByDateDesc(blogs);
+  const sorted = sortBlogsByPublishDateDesc(blogs);
   /** Top of page: newest across all sources (Keystatic + static). */
   const latestUpdates = sorted.slice(0, 12);
 
-  // Group blogs by category
-  const oilPricesBlogs = sorted.filter(p => 
-    p.slug.includes('oil-prices') || 
-    p.slug.includes('kharg-island') ||
-    p.slug.includes('saudi-arabia') ||
-    p.slug.includes('usa-oil') ||
-    p.slug.includes('russia-oil') ||
-    p.slug.includes('china-oil') ||
-    p.slug.includes('india-oil') ||
-    p.slug.includes('uae-oil') ||
-    p.slug.includes('kuwait-oil') ||
-    p.slug.includes('iraq-oil') ||
-    p.slug.includes('venezuela-oil') ||
-    p.slug.includes('nigeria-oil') ||
-    p.slug.includes('canada-oil') ||
-    p.slug.includes('brazil-oil') ||
-    p.slug.includes('norway-oil') ||
-    p.slug.includes('uk-oil') ||
-    p.slug.includes('qatar-oil') ||
-    p.slug.includes('iran-oil') ||
-    p.slug.includes('mexico-oil') ||
-    p.slug.includes('angola-oil') ||
-    p.slug.includes('algeria-oil') ||
-    p.slug.includes('libya-oil')
-  );
-  
-  const warConflictBlogs = sorted.filter(p => 
-    p.slug.includes('israel') ||
-    p.slug.includes('hezbollah') ||
-    p.slug.includes('gaza') ||
-    p.slug.includes('hamas') ||
-    p.slug.includes('strait-of-hormuz') ||
-    p.slug.includes('operation-epic') ||
-    p.slug.includes('proxy') ||
-    p.slug.includes('axis-of-resistance') ||
-    p.slug.includes('nuclear')
-  );
-  
-  const otherBlogs = sorted.filter(p => 
-    !oilPricesBlogs.includes(p) && !warConflictBlogs.includes(p)
-  );
+  const oilPricesBlogs = pickBlogsForTopicSection(blogs, 'oil', sorted.length);
+  const warConflictBlogs = pickBlogsForTopicSection(blogs, 'war', sorted.length);
+
+  const otherBlogs = sorted.filter((p) => getBlogTopicSection(p) === null);
 
   return (
     <div className="min-h-screen bg-white text-gray-900">
@@ -206,10 +124,9 @@ const BlogCard = ({ post }: BlogCardProps) => {
       {/* Image */}
       <div className="relative h-48 overflow-hidden bg-gray-100">
         {post.image ? (
-          <Image
+          <CoverImage
             src={post.image}
             alt={post.title}
-            fill
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
